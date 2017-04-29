@@ -1,0 +1,30 @@
+//
+//  PR_Prefix.pch
+//  PR
+//
+//  Created by 黄小雪 on 06/01/2017.
+//  Copyright © 2017 黄小雪. All rights reserved.
+//
+
+#ifndef PR_Prefix_pch
+#define PR_Prefix_pch
+#import <UIKit/UIKit.h>
+#import "UIView+Category.h"
+#import "ErrorProtectCateGory.h"
+#import "AppUIUtil.h"
+#import "Utilities.h"
+#import "PRSingleton.h"
+#import "CustomInfoType.h"
+#import "PRMBureauDefine.h"
+#import "DebugEnvConfig.h"
+#import <sqlite3.h>
+#import "URLPathDefine.h"
+
+#if  (defined DEBUG) || (defined ISDebugLogViewValid)
+#define PRLOG(xx, ...)  NSLog(@"%s(%d): " xx, __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+#else
+#define PRLOG(xx, ...)  ((void)0)
+#endif // #ifdef DEBUG
+
+
+#endif /* PR_Prefix_pch */

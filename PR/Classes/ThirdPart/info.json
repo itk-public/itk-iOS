@@ -1,0 +1,18 @@
+{
+    "code": 0,
+    "data": {
+        "balance": 67632,
+        "coupon": 0,
+        "id": 19,
+        "phonenum": "18516241657",
+        "nickname": "这样就要来源的士都匀2",
+        "refunding": 20,
+        "tocomment": 0,
+        "todelivery": 109,
+        "topickup": 128,
+        "topay":30
+        "sex":1
+    },
+    "message": "OK",
+    "now": 1490088964173
+}

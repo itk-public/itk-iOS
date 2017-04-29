@@ -1,0 +1,47 @@
+//请求参数：/api/order/list?filter = n    get请求   全部=1 ，待配送=2， 待自提=3，待评价=4,退款中= 5
+
+{
+    "code": 0,
+    "data": {
+        "count": 1,   //总订单数
+        "orders": [{
+                   "totalpayment": 25800,   //小计以分为单位
+                   "id": "1497417040998528",
+                   "ispickself": 1,   //是否是自提
+                   "products": [{
+                                "action": "myyh://yhlife.com/show/native?name=prddetail&id=793427&merid=2",
+                                "id": "793427",
+                                "imgurl": "http://image.yonghuivip.com//image/1471227484528dfaaeed694eae97c85b434d102c0fe199eb9c461?imageMogr2/thumbnail/200x200",
+                                "num": 100,
+                                "price": {
+                                "market": 3300,
+                                },
+                                "shopid": "2",
+                                "spec": "180g",
+                                "subtitle": "澳洲优选草饲牛眼肉180g",
+                                "title": "澳洲优选草饲牛眼肉180g"
+                                }],
+                   "shop": {  //店铺信息
+                   "action": "myyh://yhlife.com/show/native?name=merhome&merid=2",
+                   "icon": "http://image.yonghuivip.com/hydlogo.png",
+                   "id": "2",
+                   "title": "永辉会员店-梅川路店"
+                   },
+                   "status": 1,
+                   "timeinfo": {
+                   "generate": 1491741737000,   //下单时间
+                   "payend": 1491743537000,     //支付截至时间
+                   "appointment":{              //预约时间
+                      "date": 1490803200000,
+                      "timeslots": {
+                      "from": "11:30",
+                      "to": "12:30"},
+                     }，
+                   }
+                   }],
+        "page": 0,  //当前的page
+        "pagecount": 1   //总页数
+    },
+    "message": "",
+    "now": 1491741793089
+}

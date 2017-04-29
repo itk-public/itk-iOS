@@ -1,0 +1,165 @@
+{
+    "code": 0,
+    "data": {
+        "address": "田林路店",
+        "floors": [
+                   {
+                   "key": "banner",
+                   "value": [
+                             {
+                             "action": "myyh://yhlife.com/show/native?name=activitypage&id=58b68cb3e4b02bff9126eff3",
+                             "id": "58b685e2e4b02bff9126ef9f",
+                             "imgurl": "http://image.yonghuivip.com/image/1488356832787df8c61a884d47cb5fdb1e3dddb1c501f0bc42200?imageView2/0/w/750/h/380/format/webp/q/100",
+                             "name": "001",
+                             "position": 0
+                             },
+                             {
+                             "action": "myyh://yhlife.com/show/native?name=activitypage&id=58b406a3e4b0994cfd9b8cdc",
+                             "id": "58b5308be4b04db6dbc7be5c",
+                             "imgurl": "http://image.yonghuivip.com/image/14882694457025cb060dab9b835a22812b9b3dc42570c6e516319?imageView2/0/w/750/h/380/format/webp/q/100",
+                             "name": "ZBX清仓",
+                             "position": 1
+                             }
+                             ]
+                   },
+                   {
+                   "key": "jewel",
+                   "value": [
+                             {
+                             "action": "myyh://yhlife.com/show/native?name=merhome&merid=2",
+                             "id": "58ad30e860b2bcd74a054123",
+                             "imgurl": "http://image.yonghuivip.com/image/1487745253738164ac13c816e4c46f61c7ea153180e690601c3ff?imageView2/0/w/375/h/154/format/webp/q/100",
+                             "name": "会员店"
+                             },
+                             {
+                             "action": "myyh://yhlife.com/show/web?url=https%3a%2f%2factivity.yonghuivip.com%2fh5%2fgroup-buy%2flist.html&needlogin=1",
+                             "id": "58ad35d160b29aff44c97af5",
+                             "imgurl": "http://image.yonghuivip.com/image/1487746512037cf2ff02a1c72575b67770064c3a098451a3f80fa?imageView2/0/w/375/h/154/format/webp/q/100",
+                             "name": "拼团"
+                             },
+                             {
+                             "action": "myyh://yhlife.com/show/web?url=https%3a%2f%2factivity.yonghuivip.com%2fevents&needlogin=1",
+                             "id": "58ad363860b2bcd74a054124",
+                             "imgurl": "http://image.yonghuivip.com/image/14877466148270b247d16903dff4ec2414b4ed9e3acc8a7ccd89d?imageView2/0/w/375/h/154/format/webp/q/100",
+                             "name": "试吃"
+                             },
+                             {
+                             "action": "myyh://yhlife.com/show/web?url=https%3a%2f%2factivity.yonghuivip.com%2fh5%2fyh-app-discovery%2f%23%2fhome",
+                             "id": "58ad365a60b2f84700ac9bd1",
+                             "imgurl": "http://image.yonghuivip.com/image/1487746648514f512349bd9d2e1bd36fe4338929eb25acc9fe9e0?imageView2/0/w/375/h/154/format/webp/q/100",
+                             "name": "发现"
+                             },
+                             {
+                             "action": "myyh://yhlife.com/show/web?url=http%3a%2f%2fhyd.yonghui.cn%2fapp%2factivity%2fvip%2fhyzmxg3%2findex.html",
+                             "id": "58ad369d60b2bcd74a054125",
+                             "imgurl": "http://image.yonghuivip.com/image/1487746715108d6f53d5544a44f7c515a5f940f50ccf756cd5885?imageView2/0/w/375/h/154/format/webp/q/100",
+                             "name": "会员招募"
+                             }
+                             ]
+                   },
+                   {
+                   "key": "partingline",
+                   "value": {}
+                   },
+                   {
+                   "key": "shop",
+                   "value": {
+                   "icon": "http://image.yonghuivip.com/hydlogo.png",
+                   "saleNum": 4548,
+                   "id": "9D03",
+                   "title": "永辉会员店-政本路店"
+                   }
+                   },
+                   {
+                   "key": "shopinfo",
+                   "value": {
+                   "icon": "http://image.yonghuivip.com/hydlogo.png",
+                   "title": "满100减20元"
+                   }
+                   },
+                   {
+                   "key": "shopproducts",
+                   "value": [
+                             {
+                             "action": "myyh://yhlife.com/show/native?name=prddetail&id=793427&merid=2",
+                             "id": "793427",
+                             "imgurl": "http://image.yonghuivip.com//image/1471227484528dfaaeed694eae97c85b434d102c0fe199eb9c461?imageMogr2/thumbnail/200x200",
+                             "price": {
+                             "market": 3300
+                             },
+                             "spec": "180g",
+                             "title": "澳洲优选草饲牛眼肉180g"
+                             },
+                             {
+                             "action": "myyh://yhlife.com/show/native?name=prddetail&id=793427&merid=2",
+                             "id": "793427",
+                             "imgurl": "http://image.yonghuivip.com//image/1471227484528dfaaeed694eae97c85b434d102c0fe199eb9c461?imageMogr2/thumbnail/200x200",
+                             "price": {
+                             "market": 3300
+                             },
+                             "title": "澳洲优选草饲牛眼肉180g"
+                             },
+                             {
+                             "action": "myyh://yhlife.com/show/native?name=prddetail&id=793427&merid=2",
+                             "id": "793427",
+                             "imgurl": "http://image.yonghuivip.com//image/1471227484528dfaaeed694eae97c85b434d102c0fe199eb9c461?imageMogr2/thumbnail/200x200",
+                             "price": {
+                             "market": 3300
+                             },
+                             "title": "澳洲优选草饲牛眼肉180g"
+                             }
+                             ]
+                   },
+                   {
+                   "key": "shopcoupon",
+                   "value": {
+                   "icon": "http://image.yonghuivip.com/hydlogo.png",
+                   "title": "15元店铺优惠券"
+                   }
+                   },
+                   {
+                   "key": "skupos3c",
+                   "value": [
+                             {
+                             "action": "myyh://yhlife.com/show/native?name=prddetail&id=793427&merid=2",
+                             "id": "793427",
+                             "imgurl": "http://image.yonghuivip.com//image/1471227484528dfaaeed694eae97c85b434d102c0fe199eb9c461?imageMogr2/thumbnail/200x200",
+                             "price": {
+                             "market": 3300
+                             },
+                             "title": "澳洲优选草饲牛眼肉180g"
+                             },
+                             {
+                             "action": "myyh://yhlife.com/show/native?name=prddetail&id=793427&merid=2",
+                             "id": "793427",
+                             "imgurl": "http://image.yonghuivip.com//image/1471227484528dfaaeed694eae97c85b434d102c0fe199eb9c461?imageMogr2/thumbnail/200x200",
+                             "price": {
+                             "market": 3300
+                             },
+                             "title": "澳洲优选草饲牛眼肉180g"
+                             },
+                             {
+                             "action": "myyh://yhlife.com/show/native?name=prddetail&id=793427&merid=2",
+                             "id": "793427",
+                             "imgurl": "http://image.yonghuivip.com//image/1471227484528dfaaeed694eae97c85b434d102c0fe199eb9c461?imageMogr2/thumbnail/200x200",
+                             "price": {
+                             "market": 3300
+                             },
+                             "title": "澳洲优选草饲牛眼肉180g"
+                             },
+                             {
+                             "action": "myyh://yhlife.com/show/native?name=prddetail&id=793427&merid=2",
+                             "id": "793427",
+                             "imgurl": "http://image.yonghuivip.com//image/1471227484528dfaaeed694eae97c85b434d102c0fe199eb9c461?imageMogr2/thumbnail/200x200",
+                             "price": {
+                             "market": 3300
+                             },
+                             "title": "澳洲优选草饲牛眼肉180g"
+                             }
+                             ]
+                   }
+                   ]
+    },
+    "message": "",
+    "now": 1488810675644
+}
