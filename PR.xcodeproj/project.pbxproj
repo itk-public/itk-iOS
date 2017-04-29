@@ -119,6 +119,7 @@
 		B45A1A271E24D43C00D50F16 /* BaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B45A1A261E24D43C00D50F16 /* BaseRequest.m */; };
 		B45A1A2C1E24D79E00D50F16 /* IGURL.m in Sources */ = {isa = PBXBuildFile; fileRef = B45A1A2B1E24D79E00D50F16 /* IGURL.m */; };
 		B45A1A2F1E24D7BD00D50F16 /* IGUtilties.m in Sources */ = {isa = PBXBuildFile; fileRef = B45A1A2E1E24D7BD00D50F16 /* IGUtilties.m */; };
+		B45C832C1EB45EE60085A4C9 /* LocalShopcartDataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B45C832B1EB45EE60085A4C9 /* LocalShopcartDataHandler.m */; };
 		B466E7301E7A75E60073760B /* ExhibitImageTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = B466E72F1E7A75E60073760B /* ExhibitImageTextView.m */; };
 		B466E7331E7A76110073760B /* ProductImageView2.m in Sources */ = {isa = PBXBuildFile; fileRef = B466E7321E7A76110073760B /* ProductImageView2.m */; };
 		B47074AF1E6C579900ADC9E8 /* NSObject+NSCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = B47074AE1E6C579900ADC9E8 /* NSObject+NSCoding.m */; };
@@ -514,6 +515,8 @@
 		B45A1A2B1E24D79E00D50F16 /* IGURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGURL.m; sourceTree = "<group>"; };
 		B45A1A2D1E24D7BD00D50F16 /* IGUtilties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGUtilties.h; sourceTree = "<group>"; };
 		B45A1A2E1E24D7BD00D50F16 /* IGUtilties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGUtilties.m; sourceTree = "<group>"; };
+		B45C832A1EB45EE60085A4C9 /* LocalShopcartDataHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalShopcartDataHandler.h; sourceTree = "<group>"; };
+		B45C832B1EB45EE60085A4C9 /* LocalShopcartDataHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalShopcartDataHandler.m; sourceTree = "<group>"; };
 		B466E72E1E7A75E60073760B /* ExhibitImageTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExhibitImageTextView.h; sourceTree = "<group>"; };
 		B466E72F1E7A75E60073760B /* ExhibitImageTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExhibitImageTextView.m; sourceTree = "<group>"; };
 		B466E7311E7A76110073760B /* ProductImageView2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductImageView2.h; sourceTree = "<group>"; };
@@ -2492,6 +2495,8 @@
 				B4F2B0181E63FDD100468E01 /* DataBaseManager.m */,
 				B4F2B01D1E641DF700468E01 /* CartShopDataBaseModel.h */,
 				B4F2B01E1E641DF700468E01 /* CartShopDataBaseModel.m */,
+				B45C832A1EB45EE60085A4C9 /* LocalShopcartDataHandler.h */,
+				B45C832B1EB45EE60085A4C9 /* LocalShopcartDataHandler.m */,
 			);
 			path = "DataBaseManager ";
 			sourceTree = "<group>";
@@ -2774,6 +2779,7 @@
 				B42E3CDB1E55D701007B7A55 /* SDWebImageManager.m in Sources */,
 				B4C93BB01E6DA76D00E17E6D /* HomeCouponCell.m in Sources */,
 				B4F2AFF91E63D54300468E01 /* MJRefreshAutoFooter.m in Sources */,
+				B45C832C1EB45EE60085A4C9 /* LocalShopcartDataHandler.m in Sources */,
 				B40A8FC71E6BF4CD00C598D8 /* OrderDetailProductViewCell.m in Sources */,
 				B4A470421E7512E100397BFB /* HomeDataConstructor.m in Sources */,
 				B4377ED01E7FB8620052E81F /* CouponModel.m in Sources */,

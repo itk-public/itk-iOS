@@ -14,4 +14,15 @@
 
 +(instancetype)sharedDataBaseManager;
 
+//增
+-(BOOL)insertCartShopDataBaseModel:(CartShopDataBaseModel *)cartShop;
+//删除
+-(BOOL)deleteCartShopDataBaseModel:(CartShopDataBaseModel *)cartShop;
+//更新
+-(BOOL)updateCartShopDataBaseModel:(CartShopDataBaseModel *)cartShop;
+//查
+-(CartShopDataBaseModel *)queryCartShopDataBaseModel:(CartShopDataBaseModel *)cartShop;
+//删除所有
+- (BOOL)deleteAllProducts;
+-(NSArray *)queryCartShop;
 @end

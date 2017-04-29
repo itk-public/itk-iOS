@@ -8,9 +8,10 @@
 
 #import "CartShopDataBaseModel.h"
 
-NSString *kPidKey         = @"kpidkey";
-NSString *kSelleridKey    = @"kselleridkey";
-NSString *kSelectstateKey = @"kselectstatekey";
+
+NSString *kPidKey         = @"kPidKey";
+NSString *kShopIdKey      = @"kShopIdKey";
+NSString *kIsSelectedKey  = @"kIsSelectedKey";
 NSString *kNumKey         = @"keynumkey";
 
 @implementation CartShopDataBaseModel
@@ -19,15 +20,10 @@ NSString *kNumKey         = @"keynumkey";
 {
     CONDITION_CHECK_RETURN_VAULE([dic isKindOfClass:[NSDictionary class]], nil);
     if (self = [super initWithDictionary:dic]) {
-         _pid = [dic safeObjectForKey:kPidKey
-                            hintClass:[NSString class]];
-        _sellerid    = [dic safeObjectForKey:kSelleridKey
-                                   hintClass:[NSString class]];
-        _selectstate = [[dic safeObjectForKey:kSelectstateKey
-                                    hintClass:[NSNumber class]]boolValue];
-        _num         = [[dic safeObjectForKey:kNumKey
-                                    hintClass:[NSNumber class]]integerValue];
-      
+         _id        = [dic safeObjectForKey:kPidKey hintClass:[NSString class]];
+        _shopId     = [dic safeObjectForKey:kShopIdKey hintClass:[NSString class]];
+        _isSelected = [[dic safeObjectForKey:kIsSelectedKey hintClass:[NSNumber class]]boolValue];
+        _num        = [[dic safeObjectForKey:kNumKey hintClass:[NSNumber class]]integerValue];
     }
     return self;
 }

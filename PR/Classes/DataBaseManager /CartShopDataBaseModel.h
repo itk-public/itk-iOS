@@ -10,15 +10,15 @@
 #import "YHDataModel.h"
 
 FOUNDATION_EXTERN NSString *kPidKey;
-FOUNDATION_EXTERN NSString *kSelleridKey;
-FOUNDATION_EXTERN NSString *kSelectstateKey;
+FOUNDATION_EXTERN NSString *kShopIdKey;
+FOUNDATION_EXTERN NSString *kIsSelectedKey;
 FOUNDATION_EXTERN NSString *kNumKey;
 
 @interface CartShopDataBaseModel :YHDataModel
 
-@property (readonly,nonatomic) NSString  *pid;
-@property (readonly,nonatomic) NSString  *sellerid;
-@property (readonly,nonatomic) BOOL      selectstate;
+@property (readonly,nonatomic) NSString  *id;
+@property (readonly,nonatomic) NSString  *shopId;
+@property (readonly,nonatomic) BOOL      isSelected;
 @property (readonly,nonatomic) NSInteger num;
 
 @end
