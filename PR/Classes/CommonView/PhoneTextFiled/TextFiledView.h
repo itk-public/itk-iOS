@@ -18,9 +18,10 @@ typedef NS_ENUM(NSInteger,TextFiledType)
 };
 
 @protocol TextFiledViewDelegate  <NSObject>
-
+@optional
 -(void)textFiledViewDidBeginEditing:(UITextField *)textFiled;
 -(void)textFiledViewDidEndEditing:(UITextField *)textFiled;
+-(void)securityCodeBtnOnClicked;
 @end
 
 @interface InputModel : NSObject
@@ -42,5 +43,6 @@ typedef NS_ENUM(NSInteger,TextFiledType)
 @property (weak,nonatomic) id<TextFiledViewDelegate> delegate;
 -(BOOL)checkInputInfo;
 -(NSString *)getContentString;
+-(void)timeOut;
 
 @end

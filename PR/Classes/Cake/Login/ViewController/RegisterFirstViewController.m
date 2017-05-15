@@ -11,13 +11,17 @@
 #import "TextFiledView.h"
 #import "RegisterSecondViewController.h"
 #import "AgreementProtocolView.h"
+#import "UserDataManager.h"
+#import "PRShowToastUtil.h"
+#import "PRLoadingAnimation.h"
 
-@interface RegisterFirstViewController()
+@interface RegisterFirstViewController()<UserDataManagerDelegate,TextFiledViewDelegate>
 @property (strong,nonatomic) TextFiledView *phoneTextFiled;
 @property (strong,nonatomic) TextFiledView *codeTextFiled;
 @property (strong,nonatomic) ThemeButton   *nextBtn;
 @property (strong,nonatomic) AgreementProtocolView *protocolView;
 @property (strong,nonatomic) RegisterSecondViewController *registerSecondVC;
+@property (strong,nonatomic) UserDataManager *userManager;
 
 
 @end
@@ -36,6 +40,7 @@
     
     InputModel *codeModel = [InputModel inputModelWithIconName:@"icon_safety_code" placeStr:@"请输入验证码" textFiledType:TextFiledTypeInputCode hiddenBottomLine:YES];
     self.codeTextFiled = [TextFiledView textFiledViewWithInputModel:codeModel];
+    self.codeTextFiled.delegate = self;
     [self.view addSubview:self.codeTextFiled];
     
     self.nextBtn = [ThemeButton buttonWithType:UIButtonTypeSystem];
@@ -71,11 +76,46 @@
 
 -(void)nextBtnOnClicked
 {
-    if (self.registerSecondVC == nil) {
-        self.registerSecondVC = [[RegisterSecondViewController alloc]init];
-        self.registerSecondVC.type = self.type;
+    if ([self.phoneTextFiled checkInputInfo] && [self.codeTextFiled checkInputInfo]) {
+        if (self.registerSecondVC == nil) {
+            self.registerSecondVC = [[RegisterSecondViewController alloc]init];
+            self.registerSecondVC.type = self.type;
+        }
+        self.registerSecondVC.phoneNum = [self.phoneTextFiled getContentString];
+        self.registerSecondVC.safetyCode = [self.codeTextFiled getContentString];
+        [self.navigationController pushViewController:self.registerSecondVC animated:YES];
     }
-    [self.navigationController pushViewController:self.registerSecondVC animated:YES];
-    
 }
+
+#pragma mark --getter
+-(UserDataManager *)userManager
+{
+    if (_userManager == nil) {
+        _userManager = [[UserDataManager alloc]init];
+        _userManager.delegate = self;
+    }
+    return _userManager;
+}
+
+-(void)securityCodeBtnOnClicked
+{
+    if ([self.phoneTextFiled checkInputInfo]) {
+        [self.codeTextFiled timeOut];
+        [[PRLoadingAnimation sharedInstance] addLoadingAnimationOnView:self.view];
+        [self.userManager securityCodeWithPhoneNum:[self.phoneTextFiled getContentString]];
+    }
+}
+#pragma mark UserDataManager的代理
+-(void)loadDataSuccessful:(UserDataManager *)manager dataType:(UserDataManangerType)dataType  data:(id)data  isCache:(BOOL)isCache;
+{
+    [[PRLoadingAnimation sharedInstance]removeLoadingAnimation:self.view];
+    [PRShowToastUtil showNotice:@"获取验证码成功"];
+
+}
+-(void)loadDataFailed:(UserDataManager *)manager dataType:(UserDataManangerType)dataType error:(NSError*)error
+{
+    [[PRLoadingAnimation sharedInstance]removeLoadingAnimation:self.view];
+    [PRShowToastUtil showNotice:error.localizedDescription];
+}
+
 @end

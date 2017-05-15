@@ -7,14 +7,14 @@
 //
 
 #import "UserManager.h"
-#import "UserInfo.h"
+#import "UserDetailInfo.h"
 
 
 NSString *const UserManagerLoginNotification      = @"userlogin";
 NSString *const UserMananegrDidLogoutNotification = @"userlogout";
 
 @interface UserManager()
-@property (strong,nonatomic)UserInfo *loginUserData;
+@property (strong,nonatomic)UserDetailInfo *loginUserData;
 
 @end
 @implementation UserManager
@@ -46,10 +46,10 @@ IMP_SINGLETON
     }
 }
 
--(UserInfo *)loginUserData
+-(UserDetailInfo *)loginUserData
 {
     if (_loginUserData == nil) {
-        _loginUserData = [UserInfo newUserFromLocal];
+        _loginUserData = [UserDetailInfo newUserFromLocal];
     }
     return _loginUserData;
 }

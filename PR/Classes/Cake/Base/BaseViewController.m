@@ -103,6 +103,9 @@
                               forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.backBarButtonItem = nil;
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:backBtton]];
+    
+    UIView *rightView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, backBtton.width, backBtton.height)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:rightView];
 }
 
 - (BOOL)needShowBackButton
@@ -117,7 +120,6 @@
 
 - (void)setNavTitle:(NSString *)title
 {
-    
     _navTitle = title;
     if (nil == [self.navigationItem titleView])
     {
@@ -128,8 +130,7 @@
         [lab setBackgroundColor:[UIColor clearColor]];
         [lab setTextAlignment:NSTextAlignmentCenter];
         [self.navigationItem setTitleView:lab];
-    }
-    else if ([[self.navigationItem titleView] isKindOfClass:[UILabel class]])
+    }else if ([[self.navigationItem titleView] isKindOfClass:[UILabel class]])
     {
         UILabel * lab = (UILabel *)[self.navigationItem titleView];
         [lab setText:title];

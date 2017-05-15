@@ -21,6 +21,17 @@
 //个人中心
 #define  MemberInfo_URLPATH                       @"/api/member/info"
 
+
+
+#pragma mark --------登录模块-----------------
 //手机快捷登录
 #define  PhoneLogin_URLPATH                       @"/api/member/phoneLogin"
+//账号登录
+#define  AccountLogin_URLPATH                     @"/api/member/accountLogin"
+//获取验证码
+#define  GetSecurityCode_URLPATH                  @"/api/member/getSecurityCode"
+//注册
+#define  Register_URLPATH                         @"/api/member/register"
+//忘记密码
+#define  ForgetPwd_URLPATH                        @"/api/member/forgetPwd"
 #endif /* URLPathDefine_h */

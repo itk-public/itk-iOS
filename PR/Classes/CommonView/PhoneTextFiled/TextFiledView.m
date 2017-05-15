@@ -141,12 +141,11 @@
         self.rightBtn.hidden = NO;
         [self.rightBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
         [self.rightBtn setTitleColor:kColorTheme forState:UIControlStateNormal];
+        [self.rightBtn addTarget:self action:@selector(securityCodeBtnOnClicked) forControlEvents:UIControlEventTouchUpInside];
         [self.rightBtn setPixelSepSet:PSRectEdgeLeft];
         self.textFiled.keyboardType = UIKeyboardTypeNumberPad;
     }else if (inputModel.type == TextFiledTypeSetPwd){
         self.rightBtn.hidden = NO;
-//        [self.rightBtn setTintColor:UIColorFromRGB(0xacacac)];
-//        [self.rightBtn setTintColor:[UIColor redColor]];
         [self.rightBtn setImage:[UIImage imageNamed:@"icon_eye_open"]  forState:UIControlStateNormal];
         [self.rightBtn setImage:[UIImage imageNamed:@"icon_eye_close"] forState:UIControlStateSelected];
         self.rightBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 30, 0, 0);
@@ -241,5 +240,43 @@
 -(NSString *)getContentString
 {
     return self.textFiled.text;
+}
+
+-(void)securityCodeBtnOnClicked{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(securityCodeBtnOnClicked)]) {
+        [self.delegate securityCodeBtnOnClicked];
+    }
+}
+
+-(void)timeOut;
+{
+    //倒计时
+    __block NSInteger timeOut = 60;
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+    // 每秒执行一次
+    dispatch_source_set_timer(_timer, dispatch_walltime(NULL, 0), 1.0 * NSEC_PER_SEC, 0);
+    dispatch_source_set_event_handler(_timer, ^{
+        // 倒计时结束，关闭
+        if(timeOut <= 0){
+            dispatch_source_cancel(_timer);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.rightBtn setTitleColor:kColorTheme forState:UIControlStateNormal];
+                [self.rightBtn setTitle:@"重新获取验证码" forState:UIControlStateNormal];
+                self.rightBtn.userInteractionEnabled = YES;
+            });
+        }else{
+            int seconds = timeOut;
+            NSString * timeStr = [NSString stringWithFormat:@"%0.2d",seconds];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.backgroundColor = [UIColor whiteColor];
+                [self.rightBtn setTitle:[NSString stringWithFormat:@"%@秒后重发",timeStr] forState:UIControlStateNormal];
+                [self.rightBtn setTitleColor:UIColorFromRGB(0xcdcdcd) forState:UIControlStateNormal];
+                self.userInteractionEnabled = NO;
+            });
+            timeOut --;
+        }
+    });
+    dispatch_resume(_timer);
 }
 @end

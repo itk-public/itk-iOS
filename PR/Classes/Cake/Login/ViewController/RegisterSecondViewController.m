@@ -10,14 +10,17 @@
 #import "ThemeButton.h"
 #import "TextFiledView.h"
 #import "AgreementProtocolView.h"
+#import "PRShowToastUtil.h"
+#import "PRLoadingAnimation.h"
+#import "UserDataManager.h"
 
-@interface RegisterSecondViewController()
+
+@interface RegisterSecondViewController()<UserDataManagerDelegate>
 @property (strong,nonatomic) TextFiledView *setPwdTextFiled;
 @property (strong,nonatomic) TextFiledView *inputPwdTextFiled;
 @property (strong,nonatomic) ThemeButton   *finishBtn;
 @property (strong,nonatomic) AgreementProtocolView *protocolView;
-
-
+@property (strong,nonatomic) UserDataManager *userManager;
 
 @end
 @implementation RegisterSecondViewController
@@ -65,11 +68,52 @@
     if (self.protocolView) {
          self.protocolView.frame   = CGRectMake(kLeftMargin, self.finishBtn.bottom + 15, self.view.width - 2*kLeftMargin, 20);
     }
-   
 }
 
+-(UserDataManager *)userManager
+{
+    if (_userManager == nil) {
+        _userManager = [[UserDataManager alloc]init];
+        _userManager.delegate = self;
+    }
+    return _userManager;
+}
 -(void)finishBtnOnClicked
 {
-    
+    if ([self.setPwdTextFiled checkInputInfo] && [self.inputPwdTextFiled checkInputInfo]) {
+        if ([[self.setPwdTextFiled getContentString] isEqualToString:[self.inputPwdTextFiled getContentString]]) {
+            if ([self.protocolView isSeletedProtocol]) {
+                [self goRequest];
+            }
+        }else{
+            [PRShowToastUtil showNotice:@"两次密码输入不一致，请重新输入"];
+        }
+    }
+}
+
+-(void)goRequest
+{
+     [[PRLoadingAnimation sharedInstance]addLoadingAnimationOnView:self.view];
+    if (self.type == LoginViewControllerTypeRegister) {
+        [self.userManager registerWithPhoneNum:self.phoneNum safetyCode:self.safetyCode pwd:[self.setPwdTextFiled getContentString]];
+    }else if (self.type == LoginViewControllerTypeForgotPwd){
+       [self.userManager forgetPwdWithPhoneNum:self.phoneNum safetyCode:self.safetyCode pwd:[self.setPwdTextFiled getContentString]];
+    }
+}
+#pragma mark UserDataManagerDelegate
+-(void)loadDataSuccessful:(UserDataManager *)manager dataType:(UserDataManangerType)dataType  data:(id)data  isCache:(BOOL)isCache
+{
+     [[PRLoadingAnimation sharedInstance]removeLoadingAnimation:self.view];
+    if (dataType == UserDataManangerTypeRegister) {
+        [PRShowToastUtil showNotice:@"注册成功"];
+    }else if (dataType == UserDataManangerTypeForgetPwd){
+         [PRShowToastUtil showNotice:@"修改密码成功"];
+    }
+}
+
+-(void)loadDataFailed:(UserDataManager *)manager dataType:(UserDataManangerType)dataType error:(NSError*)error
+{
+     [[PRLoadingAnimation sharedInstance]removeLoadingAnimation:self.view];
+    [PRShowToastUtil showNotice:error.localizedDescription];
 }
 @end

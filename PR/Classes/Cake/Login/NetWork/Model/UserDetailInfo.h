@@ -10,7 +10,7 @@
 #import "YHDataModel.h"
 #import "UserInfoData.h"
 
-@interface UserInfo : YHDataModel
+@interface UserDetailInfo : YHDataModel
 @property (copy,nonatomic) NSString *userId;
 @property (copy,nonatomic) NSString *userToken;
 @property(nonatomic,strong)NSString * versionNum;

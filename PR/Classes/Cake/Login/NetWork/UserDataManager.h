@@ -13,6 +13,10 @@ typedef NS_ENUM(NSInteger,UserDataManangerType)
 {
     
     UserDataManangerTypePhoneQuickLogin,     //手机快捷登录
+    UserDataManangerTypeAccoutLogin,         //用户名密码登录
+    UserDataManangerTypeSafetyCode,          //获取验证码
+    UserDataManangerTypeRegister,            //注册
+    UserDataManangerTypeForgetPwd,           //忘记密码
     
 };
 
@@ -30,5 +34,13 @@ typedef NS_ENUM(NSInteger,UserDataManangerType)
 
 //手机快捷登录，phoneNum:手机号码，safetyCode验证码
 -(BOOL)loginWithPhoneNum:(NSString *)phoneNum safetyCode:(NSString *)safetyCode;
+//用户名密码登录
+-(void)loginWithAccout:(NSString *)phoneNum pwd:(NSString *)pwd;
+//获取验证码
+-(void)securityCodeWithPhoneNum:(NSString *)phoneNum;
+//注册
+-(void)registerWithPhoneNum:(NSString *)phoneNum safetyCode:(NSString *)safetyCode pwd:(NSString *)pwd;
+//忘记密码
+-(void)forgetPwdWithPhoneNum:(NSString *)phoneNum safetyCode:(NSString *)safetyCode pwd:(NSString *)pwd;
 @end
 

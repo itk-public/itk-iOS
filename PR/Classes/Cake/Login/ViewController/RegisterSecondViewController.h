@@ -9,5 +9,6 @@
 #import "LoginBaseViewController.h"
 
 @interface RegisterSecondViewController : LoginBaseViewController
-
+@property (strong,nonatomic) NSString *phoneNum;
+@property (strong,nonatomic) NSString *safetyCode;
 @end

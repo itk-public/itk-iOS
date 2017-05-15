@@ -6,7 +6,7 @@
 //  Copyright © 2017年 黄小雪. All rights reserved.
 //
 
-#import "UserInfo.h"
+#import "UserDetailInfo.h"
 #import "FileManager.h"
 
 NSString *keyOfUid       = @"uid";
@@ -15,7 +15,7 @@ NSString *keyOfVersion   = @"infoVersion";
 
 #define UserSaveFileName  @"uif.data"
 #define curVersion @"1.0"
-@implementation UserInfo
+@implementation UserDetailInfo
 #pragma mark super method
 -(instancetype)initWithDictionary:(NSDictionary *)dic
 {
@@ -36,7 +36,7 @@ NSString *keyOfVersion   = @"infoVersion";
 
 +(instancetype)newUserFromLocal
 {
-    UserInfo * newUser = nil;
+    UserDetailInfo * newUser = nil;
     
     NSString * filePath = [self saveModelPath];
     NSFileManager* manager = [[NSFileManager alloc] init];
@@ -44,13 +44,13 @@ NSString *keyOfVersion   = @"infoVersion";
     {
         // 从文件中解压获得本地保存的用户信息
         NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:filePath];
-        newUser = [UserInfo modelFromDictionary:dict];
+        newUser = [UserDetailInfo modelFromDictionary:dict];
         [newUser updateWithVersion:newUser.versionNum];
     }
     if (nil == newUser)
     {
         // 本地部存在，构建一个默认的
-        newUser = [[UserInfo alloc] init];
+        newUser = [[UserDetailInfo alloc] init];
     }
     return newUser;
 }

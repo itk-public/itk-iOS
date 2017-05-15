@@ -13,8 +13,9 @@
 #import "UserDataManager.h"
 #import "QuickBtn.h"
 #import "PRLoadingAnimation.h"
+#import "PRShowToastUtil.h"
 
-@interface LoginViewController()<UserDataManagerDelegate>
+@interface LoginViewController()<UserDataManagerDelegate,TextFiledViewDelegate>
 @property (strong,nonatomic) TextFiledView *phoneView;
 @property (strong,nonatomic) TextFiledView *pwdView;
 @property (strong,nonatomic) TextFiledView *codeView;
@@ -93,6 +94,7 @@
     
     InputModel *codeModel  = [InputModel inputModelWithIconName:@"icon_safety_code" placeStr:@"请输入验证码" textFiledType:TextFiledTypeInputCode hiddenBottomLine:YES];
     self.codeView          = [TextFiledView textFiledViewWithInputModel:codeModel];
+    self.codeView.delegate = self;
     [self.view addSubview:self.codeView];
     
     self.loginBtn          = [ThemeButton buttonWithType:UIButtonTypeSystem];
@@ -175,6 +177,8 @@
     }else if (self.seletedQuickBtn.tag == CustomBtnTypeAccountLogin){
         if ([self.phoneView checkInputInfo]) {
             if ([self.pwdView checkInputInfo]) {
+                [[PRLoadingAnimation sharedInstance] addLoadingAnimationOnView:self.view];
+                [self.userManager loginWithAccout:[self.phoneView getContentString] pwd:[self.pwdView getContentString]];
             }
         }
     }
@@ -202,12 +206,23 @@
     return _userManager;
 }
 
+#pragma mark  TextFiledViewDelegate
+-(void)securityCodeBtnOnClicked
+{
+    if ([self.phoneView checkInputInfo]) {
+        [self.codeView timeOut];
+        [[PRLoadingAnimation sharedInstance] addLoadingAnimationOnView:self.view];
+        [self.userManager securityCodeWithPhoneNum:[self.phoneView getContentString]];
+    }
+}
 #pragma mark userDataManger
 -(void)loadDataSuccessful:(UserDataManager *)manager dataType:(UserDataManangerType)dataType  data:(id)data  isCache:(BOOL)isCache
 {
      [[PRLoadingAnimation sharedInstance]removeLoadingAnimation:self.view];
-    if (dataType == UserDataManangerTypePhoneQuickLogin) {
+    if (dataType == UserDataManangerTypePhoneQuickLogin || dataType == UserDataManangerTypeAccoutLogin) {
         NSLog(@"登录成功");
+    }else if (dataType == UserDataManangerTypeSafetyCode){
+        [PRShowToastUtil showNotice:@"获取验证码成功"];
     }
 }
 
