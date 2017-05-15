@@ -9,6 +9,7 @@
 #import "YHDataModel.h"
 #import "Action.h"
 #import "ImageInfo.h"
+#import "CartModelDefine.h"
 
 @interface PriceInfo:YHDataModel
 //市场价
@@ -49,5 +50,7 @@
 @property (readonly,nonatomic) NSString *title;
 //subtitle
 @property (readonly,nonatomic) NSString *subtitle;
+
+@property (nonatomic, assign  ) PTDeliveryType      deliverySupportType;// 该商品支持 次日达还是当日达， 当日达为1， 次日达为2
 
 @end

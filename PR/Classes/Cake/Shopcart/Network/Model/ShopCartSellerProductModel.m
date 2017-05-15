@@ -47,7 +47,7 @@
         _infoModel.isOutDelivered         = viewModel.product.isOutDelivered;
         
         
-        _sellerInfo  = [ShopDescInfo modelFromDictionary:[dict safeObjectForKey:@"seller" hintClass:[NSDictionary class]]];
+        _sellerInfo  = [ShopDescInfo modelFromDictionary:[dict safeObjectForKey:@"shop" hintClass:[NSDictionary class]]];
         
     }
     return self;

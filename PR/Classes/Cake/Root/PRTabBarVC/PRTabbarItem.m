@@ -7,7 +7,7 @@
 //
 
 #import "PRTabbarItem.h"
-#import "CartViewController.h"
+#import "ShopcartViewController.h"
 #import "CategoryViewController.h"
 #import "HomeViewController.h"
 #import "UserCenterViewController.h"
@@ -39,7 +39,7 @@
 + (instancetype)cartPage
 {
     PRTabbarItem * item = [[PRTabbarItem alloc] init];
-    item.rootvc = [[CartViewController alloc] initWithNibName:nil bundle:nil];
+    item.rootvc = [[ShopcartViewController alloc] initWithNibName:nil bundle:nil];
     item.tabbarTitle = @"购物车";
     item.image = [UIImage imageNamed:@"tabbar_three_unselected"];
     item.selectedImage = [UIImage imageNamed:@"tabbar_three_selected"];

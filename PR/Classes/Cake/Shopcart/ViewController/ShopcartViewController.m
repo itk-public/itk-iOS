@@ -73,6 +73,7 @@
     if(self.shopcartTableView.scrollEnabled){
         [self setWaittingStatus:YES];
     }
+    [self requestShopcartListData];
 }
 
 -(void)requestShopcartListData{
@@ -264,11 +265,11 @@
 -(void)loadDataSuccessful:(ShopcartFormat *)shopcartFormat dataType:(ShopcartFormatDataType)dataType  data:(id)data extraInfo:(NSDictionary *)extraInfo
 {
     [[PRLoadingAnimation sharedInstance] removeLoadingAnimation:self.view];
-    [self asynDataArrived];
+//    [self asynDataArrived];
 //    if (dataType == ShopcartFormatDataTypeFreshen) { //刷新购物车
-//        self.cartDataSoure  = data;
-//        self.shopcartTableViewProxy.cartDataSoure = data;
-//        [self.shopcartTableView reloadData];
+        self.cartDataSoure  = data;
+        self.shopcartTableViewProxy.cartDataSoure = data;
+        [self.shopcartTableView reloadData];
 //    }else if([data isKindOfClass:[OrderDetail class]]){
 //        CKConfirmOrderViewController * confirmVC = [[CKConfirmOrderViewController alloc] init];
 //        confirmVC.orderToCheck                   = data;

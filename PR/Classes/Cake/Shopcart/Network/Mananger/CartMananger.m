@@ -34,7 +34,7 @@
 
 -(void)refreshCartDataWithMerid:(NSString *)merid
 {
-//    [self.cartShopAPI refreshCartDataWithProductArr:[self.cartDataHandle cartArrWithMerid:merid]];
+    [self.cartShopAPI refreshCartDataWithProductArr:nil];
 }
 
 -(void)csxRefreshCartDataWithMerid:(NSString *)merid

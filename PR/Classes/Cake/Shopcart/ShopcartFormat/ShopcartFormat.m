@@ -76,7 +76,8 @@ NSString * kToCommitSelleridKey   = @"toCommitSellerid";
         if(self.reloadTableViewBlock){
             self.reloadTableViewBlock();
         }
-        [self requestShopcartProductList];
+#warning 暂时在注释掉
+//        [self requestShopcartProductList];
     }
 }
 
@@ -106,9 +107,9 @@ NSString * kToCommitSelleridKey   = @"toCommitSellerid";
     if(self.reloadTableViewBlock){
         self.reloadTableViewBlock();
     }
-    if (!sellerData.isEdit) {
-        [self requestShopcartProductList];
-    }
+//    if (!sellerData.isEdit) {
+//        [self requestShopcartProductList];
+//    }
 }
 
 //修改个数

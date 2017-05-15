@@ -14,6 +14,7 @@
     CONDITION_CHECK_RETURN_VAULE([product isKindOfClass:[product class]], nil);
     if (self = [super init]) {
         _product  = product;
+        _product.deliverySupportType = PTDeliveryFast;
         _deletedState     = NO;
         
     }

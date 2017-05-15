@@ -123,12 +123,16 @@
 -(NSArray *)productSeleted
 {
     NSMutableArray *temp = [NSMutableArray array];
-    NSArray *fast        = [self productSelectedWithType:PTDeliveryFast];
-    NSArray *slow        = [self productSelectedWithType:PTDeliverySlow];
-    NSArray *csx         = [self productSelectedWithType:PTDeliveryEP];
-    [temp safeAddObjectsFromArray:fast];
-    [temp safeAddObjectsFromArray:slow];
-    [temp safeAddObjectsFromArray:csx];
+    for (CartOrderCellViewModel *vM in self.seller.productArr) {
+        if ([vM isKindOfClass:[CartOrderCellViewModel class]]) {
+            if (vM.product.isOutOfStock == NO &&
+                vM.product.isOffTheShelf == NO &&
+                vM.product.isOutDelivered == NO &&
+                vM.product.isSelected) {
+                [temp addObject:vM];
+            }
+        }
+    }
     return temp;
 }
 

@@ -16,27 +16,14 @@
 @end
 
 @implementation RefreshCartAPIInteract
-//-(BaseRequest *)networkRequest{
-//    NSMutableDictionary * params  = [NSMutableDictionary dictionary];
-//    if (self.productsArr) {
-//         [params setObject:self.productsArr forKey:@"seller"];
-//    }
-//    [params safeSetObject:self.uid forKey:@"uid"];
-//    BOOL pickSelf                 = [ShipAddrManager sharedInstance].deliveryInfo.pickselfStyle;
-//    [params safeSetObject:(pickSelf? @(1) : @(0)) forKey:@"pickself"];
-//    AcceptAddressModel * addrInfo = [ShipAddrManager sharedInstance].deliveryInfo.shareAddr;
-//    BackLocationModel  * longitude  = [ShipAddrManager sharedInstance].deliveryInfo.overallSituationLocation;
-//    [params safeSetObject:addrInfo.cid forKey:@"addressid"];
-//    NSDictionary *location        = @{@"lng":longitude.lng?:@"",
-//                               @"lat":longitude.lat?:@""};
-//    [params safeSetObject:location forKey:@"location"];
-//
-//    BaseRequest *request          = [BaseRequest requsetWithURL:[IGURLManager urlWithPath:CartMultiplace_URLPATH]
-//                                             andParams:params];
-//    request.needPublicInfo        = YES;
-//    request.httpMethod            = kHttpMethodPost;
-//    return request;
-//}
+-(BaseRequest *)networkRequest{
+    BaseRequest *request = [BaseRequest requsetWithURL:
+                            [IGURLManager urlWithPath:Cart_URLPATH]
+                                             andParams:nil];
+    request.needPublicInfo = YES;
+    request.httpMethod     = kHttpMethodGet;
+    return request;
+}
 
 - (id<IGParserInterface>)modelParser
 {

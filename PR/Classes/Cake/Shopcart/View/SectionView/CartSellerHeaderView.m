@@ -26,7 +26,7 @@
 @property (assign,nonatomic) NSInteger       section;
 @property (strong,nonatomic) UILabel         *promptLabel;
 @property (strong,nonatomic) UILabel         *grayLabel;
-@property (strong,nonatomic) UILabel         *sellerNotBuyLabel;
+//@property (strong,nonatomic) UILabel         *sellerNotBuyLabel;
 
 @end
 @implementation CartSellerHeaderView
@@ -41,7 +41,6 @@
         [self addEditBtn];
         [self addPromptLabel];
         [self addGrayLabel];
-        [self addSellerNotBuyLabel];
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapCartSellerHeaderView)];
         [self addGestureRecognizer:tap];
     }
@@ -53,24 +52,19 @@
     [super layoutSubviews];
     CGFloat marginX         = 15;
     self.grayLabel.frame    = CGRectMake(0, 0, self.width, 10);
-    CGFloat sellerNotBuyLabelH = 34;
-    if (self.sellerNotBuyLabel.hidden) {
-        sellerNotBuyLabelH = 0;
-    }
-    self.sellerNotBuyLabel.frame = CGRectMake(marginX, self.grayLabel.bottom, self.width - 2*marginX,sellerNotBuyLabelH);
     
     CGFloat marginTopX      = 12;
     CGFloat seletedBtnW     = 25;
     CGFloat titleMarginX    = 15;
-    self.seletedBtn.frame   = CGRectMake(0, self.sellerNotBuyLabel.bottom, seletedBtnW + titleMarginX,self.height - self.grayLabel.height);
+    self.seletedBtn.frame   = CGRectMake(0, 0, seletedBtnW + titleMarginX,self.height );
     
     CGFloat editBtnW        = 40;
-    self.editBtn.frame      = CGRectMake(self.width - editBtnW - marginX, self.sellerNotBuyLabel.bottom, editBtnW, 41);
+    self.editBtn.frame      = CGRectMake(self.width - editBtnW - marginX, 0, editBtnW, self.height);
     
     CGFloat titleLabX       = self.seletedBtn.right;
     CGFloat titleLabW       = self.width - titleLabX - editBtnW - 2*marginX ;
     CGFloat titleLabH       = [self.title sizeThatFits:CGSizeMake(titleLabW, MAXFLOAT)].height;
-    self.title.frame        = CGRectMake(titleLabX,marginTopX + self.sellerNotBuyLabel.bottom,titleLabW, titleLabH);
+    self.title.frame        = CGRectMake(titleLabX,(self.height - titleLabH)/2.0,titleLabW, titleLabH);
     
     if (self.promptLabel.hidden == NO) {
         CGFloat promptLabelW = self.width - titleLabX - marginX;
@@ -115,70 +109,24 @@
     }else{
         self.promptLabel.hidden = YES;
     }
-    if ([[self class] showSellerNotBuyLabel:dataHandle]) {
-        self.sellerNotBuyLabel.text = [self sellerNotBuyLabelTitle:dataHandle]?:@"";
-        self.sellerNotBuyLabel.hidden = NO;
-    }else{
-        self.sellerNotBuyLabel.hidden = YES;
-    }
 }
 
 
 +(CGFloat)getHeight:(NSString *)freightPromotionMsg cartDataHandle:(CartDataHandle *)dataHandle;
 {
-    CGFloat cartSellerHeaderViewH  = 51;
-    if (freightPromotionMsg && [freightPromotionMsg length]) {
-        cartSellerHeaderViewH = cartSellerHeaderViewH + 20;
-    }
-    if ([[self class] showSellerNotBuyLabel:dataHandle]) {
-         cartSellerHeaderViewH = cartSellerHeaderViewH + 34;
-    }
-    return cartSellerHeaderViewH;
+    return 51;
 }
 
-+(BOOL)showSellerNotBuyLabel:(CartDataHandle *)dataHandle
-{
-    return YES;
-    NSInteger countOfSellerProduct = [dataHandle countOfSellerProduct];
-    NSInteger countOfOffShelfProduct = [dataHandle countOfOffTheShelfArr];
-    NSInteger countOfOutOfStockProduct = [dataHandle countOfOutOfDelivered];
-    NSInteger countOfOutOfDeliveredProduct = [dataHandle countOfOutOfDelivered];
-    if (countOfSellerProduct == countOfOffShelfProduct ||
-        countOfSellerProduct == countOfOutOfStockProduct ||
-        countOfSellerProduct == countOfOutOfDeliveredProduct) {
-        return YES;
-    }
-    return NO;
-}
 
--(NSString *)sellerNotBuyLabelTitle:(CartDataHandle *)dataHandle
-{
-    return @"巴巴爸爸吧";
-    NSInteger countOfSellerProduct = [dataHandle countOfSellerProduct];
-    NSInteger countOfOffShelfProduct = [dataHandle countOfOffTheShelfArr];
-    NSInteger countOfOutOfStockProduct = [dataHandle countOfOutOfDelivered];
-    NSInteger countOfOutOfDeliveredProduct = [dataHandle countOfOutOfDelivered];
-    if (countOfSellerProduct == countOfOutOfDeliveredProduct) {
-        return @"以下商家超出配送范围";
-    }else if (countOfSellerProduct == countOfOutOfStockProduct){
-        return @"以下商家库存不足文案待定";
-    }else if (countOfSellerProduct == countOfOffShelfProduct){
-        return @"以下商家商品已下架文案待定";
-    }
-    return nil;
-}
 #pragma mark privte method
 #pragma mark add
 -(void)addSeletedBtn
 {
     _seletedBtn                    = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_seletedBtn setImage:[UIImage imageNamed:@"icon_radio_normal"]forState:UIControlStateNormal];
+    [_seletedBtn setImage:[UIImage imageNamed:@"icon_radio_selected"] forState:UIControlStateSelected];
+    [_seletedBtn setImage: [UIImage imageNamed:@"icon_radio_disable"] forState:UIControlStateDisabled];
     [_seletedBtn setBackgroundColor:[UIColor clearColor]];
-    [_seletedBtn setImage:[UIImage imageNamed:@"The-radio"]
-                 forState:UIControlStateNormal];
-    [_seletedBtn setImage:[UIImage imageNamed:@"The-radio-is-selected"]
-                 forState:UIControlStateSelected];
-    [_seletedBtn setImage:[UIImage imageNamed:@"Do-not-choose"]
-                 forState:UIControlStateDisabled];
     _seletedBtn.tag                = BtnTagSeleted;
     [_seletedBtn addTarget:self action:@selector(btnOnClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_seletedBtn];
@@ -225,14 +173,6 @@
     [_grayLabel setBackgroundColor:UIColorFromRGB(0x666666)];
     [self addSubview:_grayLabel];
 }
-
--(void)addSellerNotBuyLabel
-{
-    _sellerNotBuyLabel = [[UILabel alloc]init];
-    [_sellerNotBuyLabel setBackgroundColor:[UIColor brownColor]];
-    [self addSubview:_sellerNotBuyLabel];
-}
-
 #pragma mark 交互
 -(void)tapCartSellerHeaderView
 {

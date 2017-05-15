@@ -163,8 +163,8 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         _seletedBtn         = [UIButton  buttonWithType:UIButtonTypeCustom];
         [_seletedBtn setImage:[UIImage imageNamed:@"icon_radio_normal"]forState:UIControlStateNormal];
-         [_seletedBtn setImage:[UIImage imageNamed:@"icon_radio_selected"] forState:UIControlStateSelected];
-         [_seletedBtn setImage: [UIImage imageNamed:@"icon_radio_disable"] forState:UIControlStateDisabled];
+        [_seletedBtn setImage:[UIImage imageNamed:@"icon_radio_selected"] forState:UIControlStateSelected];
+        [_seletedBtn setImage: [UIImage imageNamed:@"icon_radio_disable"] forState:UIControlStateDisabled];
         [_seletedBtn addTarget:self action:@selector(seletedBtnOnClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_seletedBtn];
 
@@ -203,6 +203,7 @@
 {
     CONDITION_CHECK_RETURN([vM isKindOfClass:[CartOrderCellViewModel class]]);
     CartOrderCellViewModel *info = vM;
+    self.seletedBtn.selected  = vM.product.isSelected;
     [self.detailView setProduct:info];
     [self.editingView setProduct:info];
     self.detailView.hidden  = info.isEdit;
@@ -213,13 +214,18 @@
 
 +(CGFloat)getHeightWithCartOrderCellViewModel:(CartOrderCellViewModel *)vM;
 {
-    CONDITION_CHECK_RETURN_VAULE([vM isKindOfClass:[CartProductInfo class]], 0);
+    CONDITION_CHECK_RETURN_VAULE([vM isKindOfClass:[CartOrderCellViewModel class]], 0);
     return 95;
 }
 
 
 -(void)seletedBtnOnClicked:(UIButton *)sender
 {
-    sender.selected = !sender.selected;
+    if (self.shopcartCellBlock) {
+        if (!(self.vM.product.isOutOfStock && !self.vM.isEdit)) {
+            sender.selected = !sender.isSelected;
+        }
+        self.shopcartCellBlock(sender.isSelected);
+    }
 }
 @end

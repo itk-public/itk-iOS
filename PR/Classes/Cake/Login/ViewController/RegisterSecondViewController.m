@@ -66,7 +66,7 @@
     CGFloat kLeftMargin       = 20;
     self.finishBtn.frame        = CGRectMake(kLeftMargin, self.inputPwdTextFiled.bottom + 35,self.view.width - 2*kLeftMargin ,kTextFiledViewH);
     if (self.protocolView) {
-         self.protocolView.frame   = CGRectMake(kLeftMargin, self.finishBtn.bottom + 15, self.view.width - 2*kLeftMargin, 20);
+         self.protocolView.frame = CGRectMake(kLeftMargin, self.finishBtn.bottom + 15, self.view.width - 2*kLeftMargin, 20);
     }
 }
 
@@ -78,6 +78,7 @@
     }
     return _userManager;
 }
+
 -(void)finishBtnOnClicked
 {
     if ([self.setPwdTextFiled checkInputInfo] && [self.inputPwdTextFiled checkInputInfo]) {

@@ -28,7 +28,7 @@
 	</dict>
 	<dict>
 		<key>className</key>
-		<string>CartViewController</string>
+		<string>ShopcartViewController</string>
 		<key>description</key>
 		<string>平台购物车</string>
 		<key>identifier</key>
