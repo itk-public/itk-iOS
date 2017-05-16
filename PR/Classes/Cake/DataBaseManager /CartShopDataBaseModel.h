@@ -16,7 +16,7 @@ FOUNDATION_EXTERN NSString *kNumKey;
 
 @interface CartShopDataBaseModel :YHDataModel
 
-@property (readonly,nonatomic) NSString  *id;
+@property (readonly,nonatomic) NSString  *cid;
 @property (readonly,nonatomic) NSString  *shopId;
 @property (readonly,nonatomic) BOOL      isSelected;
 @property (readonly,nonatomic) NSInteger num;

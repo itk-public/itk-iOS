@@ -12,6 +12,9 @@
 		B408A0841EC8475E00695466 /* getSecurityCode.json in Resources */ = {isa = PBXBuildFile; fileRef = B408A0831EC8475E00695466 /* getSecurityCode.json */; };
 		B408A0871EC949A700695466 /* RegisterAPIInteract.m in Sources */ = {isa = PBXBuildFile; fileRef = B408A0861EC949A700695466 /* RegisterAPIInteract.m */; };
 		B408A08A1EC94DF100695466 /* ForgetPwdAPIInteract.m in Sources */ = {isa = PBXBuildFile; fileRef = B408A0891EC94DF100695466 /* ForgetPwdAPIInteract.m */; };
+		B408A0911EC9909800695466 /* ShopcartManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B408A0901EC9909800695466 /* ShopcartManager.m */; };
+		B408A0941EC992F900695466 /* LocalShopcartDataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B408A0931EC992F900695466 /* LocalShopcartDataHandler.m */; };
+		B408A0981EC99A4C00695466 /* QuantityView.m in Sources */ = {isa = PBXBuildFile; fileRef = B408A0971EC99A4C00695466 /* QuantityView.m */; };
 		B40A96221EBDA54100B4212A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B40A93B01EBDA54000B4212A /* AppDelegate.m */; };
 		B40A96231EBDA54100B4212A /* AsynDataLoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B40A93B51EBDA54000B4212A /* AsynDataLoadViewController.m */; };
 		B40A96241EBDA54100B4212A /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B40A93B71EBDA54000B4212A /* BaseNavigationController.m */; };
@@ -46,7 +49,6 @@
 		B40A96411EBDA54100B4212A /* CouponModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B40A94071EBDA54000B4212A /* CouponModel.m */; };
 		B40A96421EBDA54100B4212A /* CartShopDataBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B40A940A1EBDA54000B4212A /* CartShopDataBaseModel.m */; };
 		B40A96431EBDA54100B4212A /* DataBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B40A940C1EBDA54000B4212A /* DataBaseManager.m */; };
-		B40A96441EBDA54100B4212A /* LocalShopcartDataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B40A940E1EBDA54000B4212A /* LocalShopcartDataHandler.m */; };
 		B40A96451EBDA54100B4212A /* GoodDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B40A94111EBDA54000B4212A /* GoodDetailViewController.m */; };
 		B40A96461EBDA54100B4212A /* HomeDataConstructor.m in Sources */ = {isa = PBXBuildFile; fileRef = B40A94141EBDA54000B4212A /* HomeDataConstructor.m */; };
 		B40A96471EBDA54100B4212A /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B40A94161EBDA54000B4212A /* HomeViewController.m */; };
@@ -100,7 +102,6 @@
 		B40A967B1EBDA54100B4212A /* CartSectionData.m in Sources */ = {isa = PBXBuildFile; fileRef = B40A94A11EBDA54000B4212A /* CartSectionData.m */; };
 		B40A967C1EBDA54100B4212A /* CartTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B40A94A31EBDA54000B4212A /* CartTableViewDataSource.m */; };
 		B40A967E1EBDA54100B4212A /* RefreshCartAPIInteract.m in Sources */ = {isa = PBXBuildFile; fileRef = B40A94AB1EBDA54000B4212A /* RefreshCartAPIInteract.m */; };
-		B40A967F1EBDA54100B4212A /* CartShopAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = B40A94AD1EBDA54000B4212A /* CartShopAPI.m */; };
 		B40A96821EBDA54100B4212A /* CartOtherInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B40A94B71EBDA54000B4212A /* CartOtherInfoModel.m */; };
 		B40A96831EBDA54100B4212A /* CartSellerListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B40A94B91EBDA54000B4212A /* CartSellerListModel.m */; };
 		B40A96841EBDA54100B4212A /* LocalShopCartProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = B40A94BB1EBDA54000B4212A /* LocalShopCartProduct.m */; };
@@ -109,7 +110,6 @@
 		B40A96891EBDA54100B4212A /* CommitErrorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B40A94C51EBDA54000B4212A /* CommitErrorHandler.m */; };
 		B40A968A1EBDA54100B4212A /* ShopcartFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = B40A94C81EBDA54000B4212A /* ShopcartFormat.m */; };
 		B40A968C1EBDA54100B4212A /* ShopcartTableViewProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = B40A94CE1EBDA54000B4212A /* ShopcartTableViewProxy.m */; };
-		B40A96901EBDA54100B4212A /* CartOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B40A94D91EBDA54000B4212A /* CartOrderCell.m */; };
 		B40A96911EBDA54100B4212A /* CartSeparateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B40A94DB1EBDA54000B4212A /* CartSeparateCell.m */; };
 		B40A96921EBDA54100B4212A /* CartSellerFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B40A94DE1EBDA54000B4212A /* CartSellerFooterView.m */; };
 		B40A96931EBDA54100B4212A /* CartSellerHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B40A94E01EBDA54000B4212A /* CartSellerHeaderView.m */; };
@@ -256,7 +256,6 @@
 		B4925C461E5F0AF700E84762 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = B4925C3C1E5F0AF700E84762 /* AFURLResponseSerialization.m */; };
 		B4925C471E5F0AF700E84762 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B4925C3E1E5F0AF700E84762 /* AFURLSessionManager.m */; };
 		B4A0596A1EBDA81D004DD7B7 /* ITKFont.m in Sources */ = {isa = PBXBuildFile; fileRef = B4A059691EBDA81D004DD7B7 /* ITKFont.m */; };
-		B4A0596D1EBDAA1F004DD7B7 /* CartMananger.m in Sources */ = {isa = PBXBuildFile; fileRef = B4A0596C1EBDAA1F004DD7B7 /* CartMananger.m */; };
 		B4A059711EBDAC56004DD7B7 /* AlterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B4A059701EBDAC56004DD7B7 /* AlterView.m */; };
 		B4A7120D1E1FD38700368849 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B4A7120C1E1FD38700368849 /* main.m */; };
 		B4A712181E1FD38700368849 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4A712171E1FD38700368849 /* Assets.xcassets */; };
@@ -333,6 +332,12 @@
 		B408A0861EC949A700695466 /* RegisterAPIInteract.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterAPIInteract.m; sourceTree = "<group>"; };
 		B408A0881EC94DF100695466 /* ForgetPwdAPIInteract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPwdAPIInteract.h; sourceTree = "<group>"; };
 		B408A0891EC94DF100695466 /* ForgetPwdAPIInteract.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPwdAPIInteract.m; sourceTree = "<group>"; };
+		B408A08F1EC9909800695466 /* ShopcartManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopcartManager.h; sourceTree = "<group>"; };
+		B408A0901EC9909800695466 /* ShopcartManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopcartManager.m; sourceTree = "<group>"; };
+		B408A0921EC992F900695466 /* LocalShopcartDataHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalShopcartDataHandler.h; sourceTree = "<group>"; };
+		B408A0931EC992F900695466 /* LocalShopcartDataHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalShopcartDataHandler.m; sourceTree = "<group>"; };
+		B408A0961EC99A4C00695466 /* QuantityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuantityView.h; sourceTree = "<group>"; };
+		B408A0971EC99A4C00695466 /* QuantityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuantityView.m; sourceTree = "<group>"; };
 		B40A93AF1EBDA54000B4212A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B40A93B01EBDA54000B4212A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B40A93B11EBDA54000B4212A /* Define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
@@ -404,8 +409,6 @@
 		B40A940A1EBDA54000B4212A /* CartShopDataBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartShopDataBaseModel.m; sourceTree = "<group>"; };
 		B40A940B1EBDA54000B4212A /* DataBaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBaseManager.h; sourceTree = "<group>"; };
 		B40A940C1EBDA54000B4212A /* DataBaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBaseManager.m; sourceTree = "<group>"; };
-		B40A940D1EBDA54000B4212A /* LocalShopcartDataHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalShopcartDataHandler.h; sourceTree = "<group>"; };
-		B40A940E1EBDA54000B4212A /* LocalShopcartDataHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalShopcartDataHandler.m; sourceTree = "<group>"; };
 		B40A94101EBDA54000B4212A /* GoodDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodDetailViewController.h; sourceTree = "<group>"; };
 		B40A94111EBDA54000B4212A /* GoodDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodDetailViewController.m; sourceTree = "<group>"; };
 		B40A94131EBDA54000B4212A /* HomeDataConstructor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeDataConstructor.h; sourceTree = "<group>"; };
@@ -516,8 +519,6 @@
 		B40A94A51EBDA54000B4212A /* CSXCartCellDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSXCartCellDefine.h; sourceTree = "<group>"; };
 		B40A94AA1EBDA54000B4212A /* RefreshCartAPIInteract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshCartAPIInteract.h; sourceTree = "<group>"; };
 		B40A94AB1EBDA54000B4212A /* RefreshCartAPIInteract.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshCartAPIInteract.m; sourceTree = "<group>"; };
-		B40A94AC1EBDA54000B4212A /* CartShopAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartShopAPI.h; sourceTree = "<group>"; };
-		B40A94AD1EBDA54000B4212A /* CartShopAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartShopAPI.m; sourceTree = "<group>"; };
 		B40A94B51EBDA54000B4212A /* CartModelDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartModelDefine.h; sourceTree = "<group>"; };
 		B40A94B61EBDA54000B4212A /* CartOtherInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartOtherInfoModel.h; sourceTree = "<group>"; };
 		B40A94B71EBDA54000B4212A /* CartOtherInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartOtherInfoModel.m; sourceTree = "<group>"; };
@@ -535,8 +536,6 @@
 		B40A94C81EBDA54000B4212A /* ShopcartFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopcartFormat.m; sourceTree = "<group>"; };
 		B40A94CD1EBDA54000B4212A /* ShopcartTableViewProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopcartTableViewProxy.h; sourceTree = "<group>"; };
 		B40A94CE1EBDA54000B4212A /* ShopcartTableViewProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopcartTableViewProxy.m; sourceTree = "<group>"; };
-		B40A94D81EBDA54000B4212A /* CartOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartOrderCell.h; sourceTree = "<group>"; };
-		B40A94D91EBDA54000B4212A /* CartOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartOrderCell.m; sourceTree = "<group>"; };
 		B40A94DA1EBDA54000B4212A /* CartSeparateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartSeparateCell.h; sourceTree = "<group>"; };
 		B40A94DB1EBDA54000B4212A /* CartSeparateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartSeparateCell.m; sourceTree = "<group>"; };
 		B40A94DD1EBDA54000B4212A /* CartSellerFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartSellerFooterView.h; sourceTree = "<group>"; };
@@ -850,8 +849,6 @@
 		B4925C3E1E5F0AF700E84762 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
 		B4A059681EBDA81D004DD7B7 /* ITKFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITKFont.h; sourceTree = "<group>"; };
 		B4A059691EBDA81D004DD7B7 /* ITKFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITKFont.m; sourceTree = "<group>"; };
-		B4A0596B1EBDAA1F004DD7B7 /* CartMananger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartMananger.h; sourceTree = "<group>"; };
-		B4A0596C1EBDAA1F004DD7B7 /* CartMananger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartMananger.m; sourceTree = "<group>"; };
 		B4A0596F1EBDAC56004DD7B7 /* AlterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlterView.h; sourceTree = "<group>"; };
 		B4A059701EBDAC56004DD7B7 /* AlterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlterView.m; sourceTree = "<group>"; };
 		B4A712081E1FD38700368849 /* PR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PR.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -972,6 +969,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B408A0951EC99A4C00695466 /* QuantityView */ = {
+			isa = PBXGroup;
+			children = (
+				B408A0961EC99A4C00695466 /* QuantityView.h */,
+				B408A0971EC99A4C00695466 /* QuantityView.m */,
+			);
+			path = QuantityView;
+			sourceTree = "<group>";
+		};
 		B40A93AD1EBDA54000B4212A /* Cake */ = {
 			isa = PBXGroup;
 			children = (
@@ -1247,8 +1253,6 @@
 				B40A940A1EBDA54000B4212A /* CartShopDataBaseModel.m */,
 				B40A940B1EBDA54000B4212A /* DataBaseManager.h */,
 				B40A940C1EBDA54000B4212A /* DataBaseManager.m */,
-				B40A940D1EBDA54000B4212A /* LocalShopcartDataHandler.h */,
-				B40A940E1EBDA54000B4212A /* LocalShopcartDataHandler.m */,
 			);
 			path = "DataBaseManager ";
 			sourceTree = "<group>";
@@ -1648,8 +1652,6 @@
 			isa = PBXGroup;
 			children = (
 				B40A94A71EBDA54000B4212A /* APIInteractors */,
-				B40A94AC1EBDA54000B4212A /* CartShopAPI.h */,
-				B40A94AD1EBDA54000B4212A /* CartShopAPI.m */,
 				B40A94AE1EBDA54000B4212A /* Mananger */,
 				B40A94B41EBDA54000B4212A /* Model */,
 			);
@@ -1668,8 +1670,10 @@
 		B40A94AE1EBDA54000B4212A /* Mananger */ = {
 			isa = PBXGroup;
 			children = (
-				B4A0596B1EBDAA1F004DD7B7 /* CartMananger.h */,
-				B4A0596C1EBDAA1F004DD7B7 /* CartMananger.m */,
+				B408A0921EC992F900695466 /* LocalShopcartDataHandler.h */,
+				B408A0931EC992F900695466 /* LocalShopcartDataHandler.m */,
+				B408A08F1EC9909800695466 /* ShopcartManager.h */,
+				B408A0901EC9909800695466 /* ShopcartManager.m */,
 			);
 			path = Mananger;
 			sourceTree = "<group>";
@@ -1739,8 +1743,6 @@
 		B40A94D71EBDA54000B4212A /* CartCell */ = {
 			isa = PBXGroup;
 			children = (
-				B40A94D81EBDA54000B4212A /* CartOrderCell.h */,
-				B40A94D91EBDA54000B4212A /* CartOrderCell.m */,
 				B40A94DA1EBDA54000B4212A /* CartSeparateCell.h */,
 				B40A94DB1EBDA54000B4212A /* CartSeparateCell.m */,
 			);
@@ -2407,6 +2409,7 @@
 		B40A95DA1EBDA54100B4212A /* CommonView */ = {
 			isa = PBXGroup;
 			children = (
+				B408A0951EC99A4C00695466 /* QuantityView */,
 				B4B8F85D1EC82BFD006C8EAB /* QuickBtn */,
 				B4A0596E1EBDAC56004DD7B7 /* AlterView */,
 				B40A95DB1EBDA54100B4212A /* AgreementProtocolView */,
@@ -3190,7 +3193,6 @@
 				B4F2B0091E63D54300468E01 /* NSBundle+MJRefresh.m in Sources */,
 				B40A96331EBDA54100B4212A /* ProductOutline.m in Sources */,
 				B40A96BB1EBDA54100B4212A /* IGHttpTask.m in Sources */,
-				B4A0596D1EBDAA1F004DD7B7 /* CartMananger.m in Sources */,
 				B4B8F84D1EC820FC006C8EAB /* RegisterFirstViewController.m in Sources */,
 				B40A963E1EBDA54100B4212A /* CartCouponAPIInteract.m in Sources */,
 				B40A96A81EBDA54100B4212A /* AppURLCenter.m in Sources */,
@@ -3235,10 +3237,8 @@
 				B40A96D91EBDA54100B4212A /* NSObject+BSCategory.m in Sources */,
 				B4F2AEC41E63D15900468E01 /* FMResultSet.m in Sources */,
 				B40A96601EBDA54100B4212A /* OrderDetailProductViewCell.m in Sources */,
-				B40A967F1EBDA54100B4212A /* CartShopAPI.m in Sources */,
 				B40A96851EBDA54100B4212A /* ShopCartSellerProductModel.m in Sources */,
 				B42E3CD91E55D701007B7A55 /* SDWebImageDownloader.m in Sources */,
-				B40A96901EBDA54100B4212A /* CartOrderCell.m in Sources */,
 				B40A96B71EBDA54100B4212A /* BaseRequest.m in Sources */,
 				B40A96A91EBDA54100B4212A /* GTMBase64.m in Sources */,
 				B40A96E71EBDA54100B4212A /* PRMBWantedOffice.m in Sources */,
@@ -3297,6 +3297,7 @@
 				B40A96FD1EBDA54100B4212A /* OnePixelSepView.m in Sources */,
 				B40A96941EBDA54100B4212A /* CartTableViewDelegateAndDataSource.m in Sources */,
 				B40A96FB1EBDA54100B4212A /* MutiTitleHeaderView.m in Sources */,
+				B408A0981EC99A4C00695466 /* QuantityView.m in Sources */,
 				B40A969A1EBDA54100B4212A /* UserCenterAPIInteract.m in Sources */,
 				B42E3CD61E55D701007B7A55 /* SDImageCache.m in Sources */,
 				B40A96481EBDA54100B4212A /* HomeAPIInteract.m in Sources */,
@@ -3325,8 +3326,8 @@
 				B40A96A31EBDA54100B4212A /* HeadPortraitCell.m in Sources */,
 				B40A96891EBDA54100B4212A /* CommitErrorHandler.m in Sources */,
 				B40A96AD1EBDA54100B4212A /* YHDeviceInfo.m in Sources */,
+				B408A0911EC9909800695466 /* ShopcartManager.m in Sources */,
 				B40A96631EBDA54100B4212A /* ShopInfoViewCell.m in Sources */,
-				B40A96441EBDA54100B4212A /* LocalShopcartDataHandler.m in Sources */,
 				B408A0871EC949A700695466 /* RegisterAPIInteract.m in Sources */,
 				B40A97021EBDA54100B4212A /* PRTabbarView.m in Sources */,
 				B40A96A41EBDA54100B4212A /* ItemViewCell.m in Sources */,
@@ -3398,6 +3399,7 @@
 				B40A96FA1EBDA54100B4212A /* ItemView.m in Sources */,
 				B40A967B1EBDA54100B4212A /* CartSectionData.m in Sources */,
 				B40A963D1EBDA54100B4212A /* CartCouponViewControllerManager.m in Sources */,
+				B408A0941EC992F900695466 /* LocalShopcartDataHandler.m in Sources */,
 				B40A96A21EBDA54100B4212A /* AssetsCell.m in Sources */,
 				B40A967A1EBDA54100B4212A /* CartDataHandle.m in Sources */,
 				B4B8F8671EC8310C006C8EAB /* UserInfoData.m in Sources */,

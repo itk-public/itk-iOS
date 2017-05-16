@@ -22,6 +22,8 @@ static DataBaseManager *manager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         manager = [[DataBaseManager alloc]init];
+        [manager createDataBase];
+        [manager createTable];
     });
     return manager;
 }
@@ -39,7 +41,7 @@ static DataBaseManager *manager = nil;
 //创建表
 -(void)createTable{
     if ([self.db open]) {
-        BOOL result = [self.db executeUpdate:@"create table not exists t_cartshop (pid text not null,shopid text not null,num integet not null,selectstate no null);"];
+        BOOL result = [self.db executeUpdate:@"CREATE TABLE IF NOT EXISTS t_cartshop (pid text,shopid text ,num integer,selectstate integer)"];
         if (result) {
             PRLOG(@"创建成功");
         }else{
@@ -68,11 +70,12 @@ static DataBaseManager *manager = nil;
 {
     BOOL result = NO;
     if ([self.db open]) {
-         result = [self.db executeUpdate:@"insert into t_cartshop(pid,shopid,num,selectstate) values(?,?,?,?);",cartShop.id,cartShop.shopId,cartShop.num,cartShop.isSelected];
+        NSInteger isSelected = cartShop.isSelected?1:0;
+         result = [self.db executeUpdate:@"INSERT INTO t_cartshop (pid,shopid,num,selectstate) VALUES (?,?,?,?)",cartShop.cid,cartShop.shopId,@(cartShop.num),@(isSelected)];
         if (result) {
-            PRLOG(@"创建成功");
+            PRLOG(@"添加数据库商品成功");
         }else{
-            PRLOG(@"创建失败");
+            PRLOG(@"添加数据库商品失败");
         }
         [self.db close];
     }else{
@@ -87,12 +90,13 @@ static DataBaseManager *manager = nil;
 {
     BOOL result = NO;
     if ([self.db open]) {
-        BOOL result = [self.db executeUpdate:@"delete from t_cartshop where pid = ? & shopid = ?",cartShop.id,cartShop.shopId];
+        BOOL result = [self.db executeUpdate:@"delete from t_cartshop where pid = ? & shopid = ?",cartShop.cid,cartShop.shopId];
         if (result) {
             PRLOG(@"删除成功");
         }else{
             PRLOG(@"删除失败");
         }
+        [self.db close];
     }else{
         PRLOG(@"数据库打开失败");
     }
@@ -109,6 +113,7 @@ static DataBaseManager *manager = nil;
         }else{
             PRLOG(@"删除失败");
         }
+        [self.db close];
     }else{
         PRLOG(@"数据库打开失败");
     }
@@ -119,8 +124,15 @@ static DataBaseManager *manager = nil;
 {
     BOOL result = NO;
     if ([self.db open]) {
+        NSInteger isSelected = cartShop.isSelected?1:0;
         result = [self.db executeUpdate:@"update t_cartshop set num = ?,selectstate = ? where pid = ? & shopid = ?"
-                  ,cartShop.num,cartShop.isSelected,cartShop.id,cartShop.shopId];
+                  ,@(cartShop.num),@(isSelected),cartShop.cid,cartShop.shopId];
+        if(result){
+            PRLOG(@"更新成功");
+        }else{
+            PRLOG(@"更新失败");
+        }
+        [self.db close];
     }
     return result;
 }
@@ -128,16 +140,14 @@ static DataBaseManager *manager = nil;
 -(CartShopDataBaseModel *)queryCartShopDataBaseModel:(CartShopDataBaseModel *)cartShop
 {
     if ([self.db open]) {
-        FMResultSet *set = [self.db executeQuery:@"select * from t_cartshop where pid = ? & shopid = ?"
-                            ,cartShop.id,cartShop.shopId];
-        NSInteger index = 0;
-        if (set && [set next] && index == 0) {
-            return [self cartShopInResultSet:set];
+        FMResultSet *set = [self.db executeQuery:@"select * from t_cartshop"];
+        if ([set next]) {
+           return [self cartShopInResultSet:set];
         }
+        [self.db close];
     }
     return nil;
 }
-
 
 -(NSArray *)queryCartShop{
     NSMutableArray *array = [NSMutableArray array];
@@ -147,6 +157,7 @@ static DataBaseManager *manager = nil;
             CartShopDataBaseModel *cartShop = [self cartShopInResultSet:set];
             [array safeAddObject:cartShop];
         }
+        [self.db close];
     }
     return array;
 }

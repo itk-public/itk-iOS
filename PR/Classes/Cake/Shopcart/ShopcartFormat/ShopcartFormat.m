@@ -14,7 +14,7 @@
 
 #import "UserManager.h"
 #import "SceneMananger.h"
-#import "CartMananger.h"
+#import "ShopcartManager.h"
 
 #import "AdjustDataSouceHandler.h"
 #import "CommitErrorHandler.h"
@@ -22,12 +22,13 @@
 
 #import "CartOrderCellViewModel.h"
 #import "PRShowToastUtil.h"
+#import "LocalShopcartDataHandler.h"
 
 NSString * kToCommitStoridKey     = @"toCommitStorid";
 NSString * kToCommitSelleridKey   = @"toCommitSellerid";
 
-@interface ShopcartFormat()<CartShopAPIDelegate>
-@property (strong,nonatomic) CartMananger            *cartManager;
+@interface ShopcartFormat()<ShopcartManagerDelegate>
+@property (strong,nonatomic) ShopcartManager         *cartManager;
 @property (strong,nonatomic) CartTableViewDataSource *dataSource;
 //@property (strong,nonatomic) OrderManager            *orderGenerateManager;
 @property (strong,nonatomic) NSString                *toCommitStorid;
@@ -35,13 +36,14 @@ NSString * kToCommitSelleridKey   = @"toCommitSellerid";
 @property (strong,nonatomic) CommitErrorHandler      *commitErrorHandler;
 
 @property (strong,nonatomic) AdjustDataSouceHandler  *adjustHandler;
+@property (strong,nonatomic) LocalShopcartDataHandler *dataBaseHandler;
 @end
 @implementation ShopcartFormat
 
 #pragma mark public method
 - (void)requestShopcartProductList
 {
-     [self.cartManager refreshCartDataWithMerid:nil];
+     [self.cartManager refreshCart];
 }
 
 //勾选商品
@@ -66,12 +68,11 @@ NSString * kToCommitSelleridKey   = @"toCommitSellerid";
         [view show];
     }else{ //非编辑状态下，正常能购买的商品
         pModel.product.isSelected = isSelected;
-//        [self.cartManager.cartDataHandle updateWithCid:pModel.product.cid
-//                                                   num:pModel.product.num
-//                                           selectstate:isSelected
-//                                                 merid:pModel.product.seller
-//                                             extraInfo:nil];
-        
+        [self.dataBaseHandler updateProductWithProductId:pModel.product.cid
+                                                     num:pModel.product.num
+                                              isSelected:isSelected
+                                                  shopId:pModel.product.shopid
+                                               extraInfo:nil];
         [sellerData.dataHandle adjustFinalCellBottomLineView];
         if(self.reloadTableViewBlock){
             self.reloadTableViewBlock();
@@ -86,9 +87,9 @@ NSString * kToCommitSelleridKey   = @"toCommitSellerid";
 {
     CartSectionData *sellerData = [self sellerDataAtIndex:section];
     NSInteger countOfOutStock  = [sellerData.dataHandle countOfOutOfStockArr];
-//    if (countOfOutStock &&isSelected &&!sellerData.isEdit) { //全选、有库存不足时给提示
-//        [YHShowToastUtil showNotice:[CopyDescription CDShopCartOutOfStockWithKindNum:countOfOutStock]];
-//    }
+    if (countOfOutStock &&isSelected &&!sellerData.isEdit) { //全选、有库存不足时给提示
+        [PRShowToastUtil showNotice:[NSString stringWithFormat:@"购物车中%zd种商品库存不足\n请根据库存提示修改",countOfOutStock]];
+    }
     [sellerData.dataHandle emptyDeleteProducts];
     for(CartOrderCellViewModel *vm in sellerData.dataHandle.sortedSellerProducts) {
         if([vm isKindOfClass:[CartOrderCellViewModel class]]){
@@ -97,16 +98,17 @@ NSString * kToCommitSelleridKey   = @"toCommitSellerid";
             [sellerData.dataHandle upDateModel:vm
                              isEdit:sellerData.isEdit
                        seletedState:seletedState];
-//            [self.cartManager.cartDataHandle updateWithCid:vm.product.cid
-//                                                           num:vm.product.num
-//                                                   selectstate:vm.isEdit?vm.product.isSelected:seletedState
-//                                                         merid:vm.product.seller
-//                                                     extraInfo:nil];
+            [self.dataBaseHandler updateProductWithProductId:vm.product.cid
+                                                         num:vm.product.num
+                                                  isSelected:vm.isEdit?vm.product.isSelected:seletedState
+                                                      shopId:vm.product.shopid
+                                                   extraInfo:nil];
         }
     }
     if(self.reloadTableViewBlock){
         self.reloadTableViewBlock();
     }
+#warning 暂时注释掉
 //    if (!sellerData.isEdit) {
 //        [self requestShopcartProductList];
 //    }
@@ -127,27 +129,24 @@ NSString * kToCommitSelleridKey   = @"toCommitSellerid";
     }else{
         vM.deletedState         = NO;
     }
-    NSDictionary *extraInfo = nil;
-//    if (vM.product.isOutOfStock && vM.product.stockInfo.num) {
-//        extraInfo = @{kCartProOutStock:@(1)};
-//        self.cartManager.cartDataHandle.isChangeOutOfStock = YES;
-//    }
-//    vM.product.num = count;
-//    BOOL isSeleted              = vM.product.isOutOfStock?NO:YES;
-//    vM.product.isSelected       = isSeleted;
-//    [self.cartManager.cartDataHandle updateWithCid:vM.product.cid
-//                                               num:vM.product.num
-//                                       selectstate:isSeleted
-//                                             merid:vM.product.seller
-//                                         extraInfo:extraInfo];
+    vM.product.num = count;
+    BOOL isSeleted              = vM.product.isOutOfStock?NO:YES;
+    vM.product.isSelected       = isSeleted;
+    [self.dataBaseHandler updateProductWithProductId:vM.product.cid
+                                                 num:vM.product.num
+                                          isSelected:isSeleted
+                                              shopId:vM.product.shopid
+                                           extraInfo:nil];
+   
     
     [sellerData.dataHandle adjustFinalCellBottomLineView];
     if(self.reloadTableViewBlock){
         self.reloadTableViewBlock();
     }
-    if (vM.isEdit == NO) {
-        [self requestShopcartProductList];
-    }
+#warning 暂时注释掉
+//    if (vM.isEdit == NO) {
+//        [self requestShopcartProductList];
+//    }
 }
 
 //删除一个商品
@@ -165,9 +164,9 @@ NSString * kToCommitSelleridKey   = @"toCommitSellerid";
     if(self.reloadTableViewBlock){
         self.reloadTableViewBlock();
     }
-    if(!sellerData.isEdit){
-        [self requestShopcartProductList];
-    }
+//    if(!sellerData.isEdit){
+//        [self requestShopcartProductList];
+//    }
 }
 //结算
 -(void)commitSellerProductAtSection:(NSInteger)section
@@ -185,7 +184,7 @@ NSString * kToCommitSelleridKey   = @"toCommitSellerid";
 {
      CartSectionData *sellerData = [self sellerDataAtIndex:section];
     if ([sellerData.dataHandle countOfSeletedToDeletedArr] == 0) {
-//        [PRShowToastUtil showNotice:[CopyDescription CDShopCartUnSelectedProductPrompt]];
+        [PRShowToastUtil showNotice:@"请选择至少一种商品"];
         return;
     }
     AlterView *view = [[AlterView alloc]initWithcancelBtnTitle:@"取消"
@@ -252,7 +251,7 @@ NSString * kToCommitSelleridKey   = @"toCommitSellerid";
         if(self.reloadTableViewBlock){
             self.reloadTableViewBlock();
         }
-        [self requestShopcartProductList];
+//        [self requestShopcartProductList];
         
     }
 }
@@ -289,11 +288,11 @@ NSString * kToCommitSelleridKey   = @"toCommitSellerid";
 
 
 #pragma mark - getter
-- (CartMananger *)cartManager
+- (ShopcartManager *)cartManager
 {
     if (!_cartManager){
-        _cartManager = [[CartMananger alloc]init];
-        _cartManager.apiDelegate = self;
+        _cartManager = [[ShopcartManager alloc]init];
+        _cartManager.delegate = self;
     }
     return _cartManager;
 }
@@ -322,6 +321,11 @@ NSString * kToCommitSelleridKey   = @"toCommitSellerid";
     return _adjustHandler;
 }
 
+-(LocalShopcartDataHandler *)dataBaseHandler
+{
+    return [LocalShopcartDataHandler sharedInstance];
+}
+
 #pragma mark alterview的代理
 - (void) alterViewClickedCommitButton:(AlterView *)alterView;
 {
@@ -332,7 +336,7 @@ NSString * kToCommitSelleridKey   = @"toCommitSellerid";
             if (self.reloadTableViewBlock) {
                 self.reloadTableViewBlock();
             }
-            [self requestShopcartProductList];
+//            [self requestShopcartProductList];
         }
     }else if (alterView.tag == AlterViewTypeDeletedOne){
         [self deleteCartItem:alterView.object];
@@ -341,7 +345,7 @@ NSString * kToCommitSelleridKey   = @"toCommitSellerid";
 
 
 #pragma mark CartShopAPIDelegate
--(void)loadDataSuccessful:(CartShopAPI *)cartShopApi dataType:(CartDataAPIType)dataType  data:(id)data  isCache:(BOOL)isCache
+-(void)loadDataSuccessful:(ShopcartManager *)cartShopApi dataType:(CartDataAPIType)dataType  data:(id)data  isCache:(BOOL)isCache
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(loadDataSuccessful:dataType:data:extraInfo:)]) {
         if (self.dataSource == nil) {
@@ -361,7 +365,7 @@ NSString * kToCommitSelleridKey   = @"toCommitSellerid";
 }
 
 
--(void)loadDataFailed:(CartShopAPI*)cartShopApi dataType:(CartDataAPIType)dataType error:(NSError*)error
+-(void)loadDataFailed:(ShopcartManager*)cartShopApi dataType:(CartDataAPIType)dataType error:(NSError*)error
 {
     if (self.delegate &&
         [self.delegate respondsToSelector:@selector(loadDataFailed:dataType:error:)]) {

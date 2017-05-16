@@ -11,15 +11,14 @@
 #import "ServiceCenter.h"
 #import "CartSellerListModel.h"
 #import "CartSeparateModel.h"
-
 #import "CartViewDJStructure.h"
-
 #import "CartViewData.h"
+#import "LocalShopcartDataHandler.h"
 
 
 @interface CartDataHandle()
 
-//@property (strong,nonatomic)  LocalShopCartHandle   *dataBaseHandle;
+@property (strong,nonatomic) LocalShopcartDataHandler   *dataBaseHandle;
 //需要去删除的商品
 @property (strong,nonatomic) NSMutableArray        *deleteProducts;
 //排序后的商品
@@ -46,11 +45,11 @@
              viewModel.product.isOffTheShelf ||
              viewModel.product.isOutDelivered)){
         //更新本地数据库中的商品的选中状态（库存不足、已下架、超出配送范围的选中状态置为NO）
-//            [self.dataBaseHandle updateWithCid:viewModel.product.cid
-//                                           num:viewModel.product.num
-//                                   selectstate:NO
-//                                         merid:viewModel.product.seller
-//                                     extraInfo:nil];
+            [self.dataBaseHandle updateProductWithProductId:viewModel.product.cid
+                                                        num:viewModel.product.num
+                                                 isSelected:NO
+                                                     shopId:viewModel.product.shopid
+                                                  extraInfo:nil];
         }
     }
     [self.sortedProducts safeAddObjectsFromArray:self.cartViewData.dataArray];
@@ -163,11 +162,11 @@
                                       safeObjectAtIndex:i
                                       hintClass:[CartOrderCellViewModel class]];
         if ([vM.product.cid isEqualToString:model.product.cid]) {
-//            if ([self.dataBaseHandle delShopCartItemWithID:model.product.cid
-//                                                     merid:model.product.seller]) {
-//                [self removerItem:vM inArray:self.sortedProducts];
-//                [self.seller.productArr removeObject:vM];
-//            }
+            if ( [self.dataBaseHandle deleteProductWithProductId:model.product.cid
+                                                          shopId:model.product.shopid]) {
+                [self removerItem:vM inArray:self.sortedProducts];
+                [self.seller.productArr removeObject:vM];
+            }
             break;
         }
         
@@ -221,12 +220,12 @@
     NSArray *tempArray = [NSArray arrayWithArray:self.deleteProducts];
     for (CartOrderCellViewModel *vm in tempArray) {
         if ([vm isKindOfClass:[CartOrderCellViewModel class]]) {
-//            if ([self.dataBaseHandle delShopCartItemWithID:vm.product.cid
-//                                                     merid:vm.product.seller]) {
-//                [self removerItem:vm inArray:self.sortedProducts];
-//                [self removerItem:vm inArray:self.deleteProducts];
-//                [self.seller.productArr removeObject:vm];
-//            }
+            if ([self.dataBaseHandle deleteProductWithProductId:vm.product.cid
+                                                           shopId:vm.product.shopid]) {
+                [self removerItem:vm inArray:self.sortedProducts];
+                [self removerItem:vm inArray:self.deleteProducts];
+                [self.seller.productArr removeObject:vm];
+            }
         }
     }
     return YES;
@@ -313,13 +312,13 @@
     return _deleteProducts;
 }
 
-//-(LocalShopCartHandle *)dataBaseHandle
-//{
-//    if (!_dataBaseHandle) {
-//        _dataBaseHandle = [LocalShopCartHandle sharedInstance];
-//    }
-//    return _dataBaseHandle;
-//}
+-(LocalShopcartDataHandler *)dataBaseHandle
+{
+    if (!_dataBaseHandle) {
+        _dataBaseHandle = [LocalShopcartDataHandler sharedInstance];
+    }
+    return _dataBaseHandle;
+}
 
 -(CartViewDJStructure *)DJStructure{
     if (!_DJStructure) {

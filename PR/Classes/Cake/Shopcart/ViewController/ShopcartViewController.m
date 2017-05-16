@@ -12,7 +12,6 @@
 #import "ShopcartFormat.h"
 
 #import "PRLoadingAnimation.h"
-#import "CartMananger.h"
 #import "PRMBWantedOffice.h"
 
 @interface ShopcartViewController ()<ShopcartFormatDelegate,AsynDataLoadInterface>

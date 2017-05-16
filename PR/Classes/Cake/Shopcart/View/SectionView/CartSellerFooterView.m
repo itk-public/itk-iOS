@@ -8,7 +8,6 @@
 
 #import "CartSellerFooterView.h"
 #import "CartModelDefine.h"
-#import "CartMananger.h"
 #import "ServiceCenter.h"
 #import "OnePixelSepView.h"
 

@@ -10,12 +10,13 @@
 #import "CartProductInfo.h"
 #import "OnePixelSepView.h"
 #import "AutoImageView.h"
-#import "GoodNumController.h"
+//#import "GoodNumController.h"
 #import "CartOrderCellViewModel.h"
+#import "QuantityView.h"
 
 @interface EditingView : UIView
 
-@property (strong,nonatomic) GoodNumController *numController;
+@property (strong,nonatomic) QuantityView *numController;
 @property (strong,nonatomic) UILabel *priceLabel;
 @property (strong,nonatomic) UIButton *deleteBtn;
 @property (strong,nonatomic) CartOrderCellViewModel *product;
@@ -26,7 +27,7 @@
 -(instancetype)init
 {
     if (self = [super init]) {
-        _numController = [[GoodNumController alloc]init];
+        _numController = [[QuantityView alloc]init];
         [self addSubview:_numController];
         
         _priceLabel = [[UILabel alloc]init];
@@ -63,7 +64,8 @@
 {
     _product = product;
     self.priceLabel.text = product.product.priceInfo.marketPrice?:@"";
-    [self.numController setProduct:(ProductOutline *)product];
+    [self.numController setTempModel:product];
+    [self.numController updateQuantityViewCount:product.product.num];
 }
 @end
 
@@ -176,6 +178,17 @@
         [self.contentView addSubview:_detailView];
 
         _editingView        = [[EditingView alloc]init];
+        __weak typeof(self)weakSelf = self;
+        _editingView.numController.quantityViewEditBlock = ^(NSInteger count){
+            if (weakSelf.shopcartCellEditBlock) {
+                weakSelf.shopcartCellEditBlock(count);
+            }
+        };
+        _editingView.numController.quantityViewBeginEditBlock = ^(UITextField *textfiled){
+            if (weakSelf.shopcartCellBeginEditBlock) {
+                weakSelf.shopcartCellBeginEditBlock(textfiled);
+            }
+        };
         _editingView.hidden = NO;
         [self.contentView addSubview:_editingView];
         

@@ -20,7 +20,7 @@ NSString *kNumKey         = @"keynumkey";
 {
     CONDITION_CHECK_RETURN_VAULE([dic isKindOfClass:[NSDictionary class]], nil);
     if (self = [super initWithDictionary:dic]) {
-         _id        = [dic safeObjectForKey:kPidKey hintClass:[NSString class]];
+         _cid        = [dic safeObjectForKey:kPidKey hintClass:[NSString class]];
         _shopId     = [dic safeObjectForKey:kShopIdKey hintClass:[NSString class]];
         _isSelected = [[dic safeObjectForKey:kIsSelectedKey hintClass:[NSNumber class]]boolValue];
         _num        = [[dic safeObjectForKey:kNumKey hintClass:[NSNumber class]]integerValue];

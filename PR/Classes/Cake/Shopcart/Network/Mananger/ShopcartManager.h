@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "CartModelDefine.h"
 
-@class CartShopAPI;
+@class ShopcartManager;
 
-@protocol CartShopAPIDelegate <NSObject>
+@protocol ShopcartManagerDelegate <NSObject>
 @required
 
 /**
@@ -22,7 +22,7 @@
  *  @param data     数据
  *  @param isCache  是否是缓存，返回的数据中只要有一条是新数据，则为NO
  */
--(void)loadDataSuccessful:(CartShopAPI *)cartShopApi dataType:(CartDataAPIType)dataType  data:(id)data  isCache:(BOOL)isCache;
+-(void)loadDataSuccessful:(ShopcartManager *)cartShopApi dataType:(CartDataAPIType)dataType  data:(id)data  isCache:(BOOL)isCache;
 
 
 /**
@@ -31,12 +31,12 @@
  *@param dataType 加载的数据类型
  *@param error 错误信息
  */
--(void)loadDataFailed:(CartShopAPI*)cartShopApi dataType:(CartDataAPIType)dataType error:(NSError*)error;
+-(void)loadDataFailed:(ShopcartManager*)cartShopApi dataType:(CartDataAPIType)dataType error:(NSError*)error;
 
 @end
 
-@interface CartShopAPI : NSObject
-@property (nonatomic,weak) id<CartShopAPIDelegate> delegate;
+@interface ShopcartManager : NSObject
+@property (nonatomic,weak) id<ShopcartManagerDelegate> delegate;
 
 /**
  *  同步购物车（如果本地有快照先上传本地快照，然后获取到最新的数据)
@@ -44,16 +44,7 @@
  *  @param produtctArr 本地快照
  *  @param storeid     当前门店id
  */
--(void)refreshCartDataWithProductArr:(NSArray *)produtctArr;
+-(void)refreshCart;
 
-
-/**
- *  彩食鲜同步购物车（如果本地有快照先上传本地快照，然后获取到最新的数据)
- *
- *  @param produtctArr 本地快照
- *  @param storeid     当前门店id
- */
-
--(void)refreshCSXCartDataWithProductArr:(NSArray *)produtctArr;
 
 @end

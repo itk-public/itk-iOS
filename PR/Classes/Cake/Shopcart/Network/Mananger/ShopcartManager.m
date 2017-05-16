@@ -6,17 +6,17 @@
 //  Copyright © 2015年 YH. All rights reserved.
 //
 
-#import "CartShopAPI.h"
+#import "ShopcartManager.h"
 #import "RefreshCartAPIInteract.h"
 #import "UserManager.h"
 
-@interface CartShopAPI()
+@interface ShopcartManager()
 @property (strong,nonatomic) RefreshCartAPIInteract *refreshCartAPI;
 
 @end
-@implementation CartShopAPI
+@implementation ShopcartManager
 
--(void)refreshCartDataWithProductArr:(NSArray *)produtctArr{
+-(void)refreshCart{
     if (self.refreshCartAPI == nil) {
         self.refreshCartAPI =  [[RefreshCartAPIInteract alloc] init];
     }
