@@ -34,4 +34,10 @@
 #define  Register_URLPATH                         @"/api/member/register"
 //忘记密码
 #define  ForgetPwd_URLPATH                        @"/api/member/forgetPwd"
+
+
+#pragma mark --------地址模块-----------------
+//获取地址列表
+#define  DeliveryAddressList_URLPATH               @"/api/address/deliveryAddressList"
+
 #endif /* URLPathDefine_h */

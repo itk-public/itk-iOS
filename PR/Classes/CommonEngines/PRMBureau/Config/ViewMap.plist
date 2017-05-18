@@ -66,5 +66,21 @@
 		<key>identifier</key>
 		<string>goodDetail</string>
 	</dict>
+	<dict>
+		<key>className</key>
+		<string>SelectAddressViewController</string>
+		<key>description</key>
+		<string>选择地址页面</string>
+		<key>identifier</key>
+		<string>selectAddress</string>
+	</dict>
+	<dict>
+		<key>className</key>
+		<string>CreateAddressViewController</string>
+		<key>description</key>
+		<string>新建收货地址</string>
+		<key>identifier</key>
+		<string>createAddress</string>
+	</dict>
 </array>
 </plist>

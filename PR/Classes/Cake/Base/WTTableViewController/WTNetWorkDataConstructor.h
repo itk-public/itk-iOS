@@ -54,7 +54,7 @@
 
 @optional
 - (void)dataConstructorDidStartLoadData:(id)dataConstructor;
-- (void)dataConstructor:(id)dataConstructor didFinishLoad:(NSObject *)dataModel;
-- (void)dataConstructorDidFailLoadData:(id)dataConstructor withError:(NSObject *)errorDataModel;
+- (void)dataConstructor:(id)dataConstructor didFinishLoad:(id)dataModel;
+- (void)dataConstructorDidFailLoadData:(id)dataConstructor withError:(NSError *)errorDataModel;
 
 @end

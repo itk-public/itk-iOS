@@ -125,7 +125,7 @@ static DataBaseManager *manager = nil;
     BOOL result = NO;
     if ([self.db open]) {
         NSInteger isSelected = cartShop.isSelected?1:0;
-        result = [self.db executeUpdate:@"update t_cartshop set num = ?,selectstate = ? where pid = ? & shopid = ?"
+        result = [self.db executeUpdate:@"update t_cartshop set num = ?,selectstate = ? where pid = ? and shopid = ?"
                   ,@(cartShop.num),@(isSelected),cartShop.cid,cartShop.shopId];
         if(result){
             PRLOG(@"更新成功");
@@ -140,7 +140,7 @@ static DataBaseManager *manager = nil;
 -(CartShopDataBaseModel *)queryCartShopDataBaseModel:(CartShopDataBaseModel *)cartShop
 {
     if ([self.db open]) {
-        FMResultSet *set = [self.db executeQuery:@"select * from t_cartshop"];
+        FMResultSet *set = [self.db executeQuery:@"select * from t_cartshop where pid = ? and shopid = ?",cartShop.cid,cartShop.shopId];
         if ([set next]) {
            return [self cartShopInResultSet:set];
         }

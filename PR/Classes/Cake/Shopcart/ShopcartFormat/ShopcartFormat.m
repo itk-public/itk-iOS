@@ -137,6 +137,9 @@ NSString * kToCommitSelleridKey   = @"toCommitSellerid";
                                           isSelected:isSeleted
                                               shopId:vM.product.shopid
                                            extraInfo:nil];
+    
+    PRLOG(@"当前商品的个数=====%zd", [self.dataBaseHandler productNumWithProductId:vM.product.cid
+                                                                     shopId:vM.product.shopid]);
    
     
     [sellerData.dataHandle adjustFinalCellBottomLineView];

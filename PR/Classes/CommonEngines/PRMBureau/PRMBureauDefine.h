@@ -47,4 +47,9 @@
 //商品详情
 #define APPURL_VIEW_IDENTIFIER_GOODDETAIL   @"goodDetail"
 
+//选择收货地址
+#define APPURL_VIEW_IDENTIFIER_SELECTADDRESS  @"selectAddress"
+//新建收货地址
+#define APPURL_VIEW_IDENTIFIER_CREATEADDRESS  @"createAddress"
+
 #endif /* PRMBureauDefine_h */

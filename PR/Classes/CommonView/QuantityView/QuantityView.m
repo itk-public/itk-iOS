@@ -75,8 +75,8 @@
 {
     [super layoutSubviews];
     self.bgImg.frame       = CGRectMake(0, 0, kWidth, kHeight);
-    CGFloat margin         = 10;
-    CGFloat tempBtnW       = 28;
+    CGFloat margin         = 10*DDDisplayScale;
+    CGFloat tempBtnW       = 28 * DDDisplayScale;
     CGFloat btnW           = tempBtnW + margin;
     CGFloat btnH           = kHeight + 10;
     self.minusBtn.frame    = CGRectMake(-margin, 0, btnW, btnH);
