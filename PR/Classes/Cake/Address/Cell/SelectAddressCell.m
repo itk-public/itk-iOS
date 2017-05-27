@@ -9,6 +9,7 @@
 #import "SelectAddressCell.h"
 #import "SecretPhoneLabel.h"
 #import "AddressModel.h"
+#import "PRMBWantedOffice.h"
 
 #define kEditBtnW   50
 #define kLeftMargin 15
@@ -72,9 +73,9 @@
 -(void)addEditBtn
 {
     _editBtn = [[UIButton alloc]init];
-    [_editBtn setBackgroundColor:[UIColor redColor]];
     [_editBtn addTarget:self action:@selector(editBtnOnClick) forControlEvents:UIControlEventTouchUpInside];
-    [_editBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
+    [_editBtn setImage:[UIImage imageNamed:@"icon_edit"] forState:UIControlStateNormal];
+    [_editBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentCenter];
     [self.contentView addSubview:_editBtn];
 }
 
@@ -109,7 +110,7 @@
 #pragma mark 编辑地址
 -(void)editBtnOnClick
 {
-    PRLOG(@"点击编辑");
+     [PRMBWantedOffice nativeArrestWarrant:APPURL_VIEW_IDENTIFIER_CREATEADDRESS param:nil];
 }
 
 #pragma mark super method

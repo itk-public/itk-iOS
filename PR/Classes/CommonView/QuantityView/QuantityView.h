@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#define kWidth  (156 * DDDisplayScale)
+#define kWidth  (177 * DDDisplayScale)
 #define kHeight 38
 
 @class CartOrderCellViewModel;

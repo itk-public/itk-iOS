@@ -16,7 +16,7 @@
 @implementation UserCenterAPIInteract
 -(BaseRequest *)networkRequest
 {
-    BaseRequest *request  = [BaseRequest requsetWithURL:[IGURLManager securityURLWithPath:MemberInfo_URLPATH ]  andParams:nil];
+    BaseRequest *request  = [BaseRequest requsetWithURL:[IGURLManager securityURLWithPath:MemberInfo_URLPATH]  andParams:nil];
     request.httpMethod     = kHttpMethodGet;
     request.needPublicInfo = YES;
     return request;
@@ -29,8 +29,17 @@
 
 -(id)parserSourceData:(NSDictionary *)info forRespondObj:(BaseRespond *)respond
 {
+    NSLog(@"parserSourceData == parserSourceData");
     UserCenterModel *model = [UserCenterModel modelFromDictionary:info];
     return model;
+}
+
+#pragma mark - init
+-(instancetype)init{
+    if (self = [super init]) {
+        _repeatPolicy = APIInteractPolicy_CancelPrevious;
+    }
+    return self;
 }
 
 @end

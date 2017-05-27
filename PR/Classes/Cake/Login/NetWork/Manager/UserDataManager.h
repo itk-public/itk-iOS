@@ -17,6 +17,7 @@ typedef NS_ENUM(NSInteger,UserDataManangerType)
     UserDataManangerTypeSafetyCode,          //获取验证码
     UserDataManangerTypeRegister,            //注册
     UserDataManangerTypeForgetPwd,           //忘记密码
+    UserDataManangerTypeCenterInfo,          //个人中心
     
 };
 
@@ -42,5 +43,7 @@ typedef NS_ENUM(NSInteger,UserDataManangerType)
 -(void)registerWithPhoneNum:(NSString *)phoneNum safetyCode:(NSString *)safetyCode pwd:(NSString *)pwd;
 //忘记密码
 -(void)forgetPwdWithPhoneNum:(NSString *)phoneNum safetyCode:(NSString *)safetyCode pwd:(NSString *)pwd;
+//获取个人中心
+-(void)getCenterInfo;
 @end
 

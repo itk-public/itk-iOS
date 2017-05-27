@@ -53,6 +53,8 @@ typedef NS_ENUM(NSInteger,SexType)
  *  待评价
  */
 @property (readonly,nonatomic) NSInteger toComment;
+//退款中
+@property (readonly,nonatomic) NSInteger refunding;
 
 
 
@@ -64,5 +66,4 @@ typedef NS_ENUM(NSInteger,SexType)
 @property (strong,nonatomic) UserInfo *userInfo;
 @property (strong,nonatomic) AssetsInfo *assetInfo;
 @property (strong,nonatomic) OrderInfo *orderInfo;
-
 @end

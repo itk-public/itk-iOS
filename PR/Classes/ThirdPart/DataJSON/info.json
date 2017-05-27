@@ -10,7 +10,7 @@
         "tocomment": 0,
         "todelivery": 109,
         "topickup": 128,
-        "topay":30
+        "topay":30,
         "sex":1
     },
     "message": "OK",

@@ -11,10 +11,10 @@
 
 @interface ItemView()
 
-@property (strong,nonatomic) UILabel                *iconLabel;
+@property (strong,nonatomic) UIImageView            *iconImage;
 @property (strong,nonatomic) UILabel                *titleLabel;
 @property (strong,nonatomic) UILabel                *subTitleLabel;
-@property (strong,nonatomic) UILabel                *arrowLabel;
+@property (strong,nonatomic) UIImageView            *arrowImage;
 @property (strong,nonatomic) OnePixelSepView        *bottomLineView;
 @property (strong,nonatomic) UITapGestureRecognizer *tap;
 @property (strong,nonatomic) id                     modelData;
@@ -24,14 +24,14 @@
 @implementation ItemView
 -(instancetype)init{
     if (self = [super init]) {
-        _iconLabel                  = [[UILabel alloc]init];
-        [_iconLabel setBackgroundColor:[UIColor grayColor]];
-        [self addSubview:_iconLabel];
+        _iconImage                  = [[UIImageView alloc]init];
+        [_iconImage setContentMode:UIViewContentModeScaleAspectFit];
+        [self addSubview:_iconImage];
 
         _titleLabel                 = [[UILabel alloc]init];
-        [_titleLabel setFont:KFontNormal(14)];
+        [_titleLabel setFont:KFontNormal(15)];
         [_titleLabel setTextAlignment:NSTextAlignmentLeft];
-        [_titleLabel setTextColor:kColorNormal];
+        [_titleLabel setTextColor:UIColorFromRGB(0x323232)];
         [self addSubview:_titleLabel];
 
         _subTitleLabel              = [[UILabel alloc]init];
@@ -40,9 +40,9 @@
         [_subTitleLabel setTextAlignment:NSTextAlignmentRight];
         [self addSubview:_subTitleLabel];
 
-        _arrowLabel                 = [[UILabel alloc]init];
-        [_arrowLabel setBackgroundColor:kColorBlakLight];
-        [self addSubview:_arrowLabel];
+        _arrowImage                 = [[UIImageView alloc]init];
+        [_arrowImage setImage:[UIImage imageNamed:@"icon_arrow_right"]];
+        [self addSubview:_arrowImage];
 
         [self setPixelSepSet:PSRectEdgeBottom];
         _bottomLineView             = [self psBottomSep];
@@ -60,20 +60,20 @@
 -(void)layoutSubviews{
     [super layoutSubviews];
     
-    CGFloat iconLabelW = 15;
+    CGFloat iconLabelW = 20;
     CGFloat marginLeft = 15;
-    self.iconLabel.frame = CGRectMake(marginLeft, 0, iconLabelW, iconLabelW);
-    self.iconLabel.centerY = self.height/2.0;
+    self.iconImage.frame = CGRectMake(marginLeft, 0, iconLabelW, iconLabelW);
+    self.iconImage.centerY = self.height/2.0;
     
     CGFloat titleLabelW = [self.titleLabel sizeThatFits:CGSizeMake(MAXFLOAT, self.height)].width;
-    self.titleLabel.frame = CGRectMake(self.iconLabel.right + 5, 0, titleLabelW, self.height);
+    self.titleLabel.frame = CGRectMake(self.iconImage.right + 10, 0, titleLabelW, self.height);
     
     CGFloat arrowLabelW = 6;
     CGFloat arrowLabelH = 11;
-    self.arrowLabel.frame = CGRectMake(0, (self.height - arrowLabelH)/2.0, arrowLabelW, arrowLabelH);
-    self.arrowLabel.right = self.width - marginLeft;
+    self.arrowImage.frame = CGRectMake(0, (self.height - arrowLabelH)/2.0, arrowLabelW, arrowLabelH);
+    self.arrowImage.right = self.width - marginLeft;
     
-    CGFloat subTitleLabelW = self.arrowLabel.left - self.titleLabel.right - 5*2;
+    CGFloat subTitleLabelW = self.arrowImage.left - self.titleLabel.right - 5*2;
     self.subTitleLabel.frame = CGRectMake(self.titleLabel.right + 5, 0, subTitleLabelW, self.height);
 }
 
@@ -85,7 +85,7 @@
     ItemView *itemView = [[ItemView alloc]init];
     itemView.modelData = modelData;
     [itemView.titleLabel setText:title?:@""];
-    [itemView.iconLabel setText:iconName?:@""];
+    [itemView.iconImage setImage:[UIImage imageNamed:iconName]];
     [itemView.subTitleLabel setText:subTitle?:@""];
     return itemView;
 }
@@ -97,7 +97,7 @@
 {
     self.modelData = modelData;
     [self.titleLabel setText:title?:@""];
-    [self.iconLabel setText:iconName?:@""];
+    [self.iconImage setImage:[UIImage imageNamed:iconName]];
     [self.subTitleLabel setText:subTitle?:@""];
 }
 

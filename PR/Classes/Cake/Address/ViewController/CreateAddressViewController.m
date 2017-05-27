@@ -58,7 +58,7 @@
     self.phoneInputView.frame = CGRectMake(0, self.nameInputView.bottom, self.view.width, kInputViewH);
     self.addressView.frame   = CGRectMake(0, self.phoneInputView.bottom, self.view.width, kInputViewH);
     self.streetView.frame   = CGRectMake(0, self.addressView.bottom, self.view.width, kInputViewH);
-    self.detailView.frame   = CGRectMake(0, self.streetView.bottom, self.view.width, 99);
+    self.detailView.frame   = CGRectMake(0, self.streetView.bottom, self.view.width,180);
 }
 
 @end

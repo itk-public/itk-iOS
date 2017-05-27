@@ -15,29 +15,45 @@
 #import "SeparateCell.h"
 #import "UserCenterModel.h"
 #import "SeparateCell.h"
+#import "UserDataManager.h"
 
 
-@interface UserCenterDataConstructor()
+@interface UserCenterDataConstructor()<UserDataManagerDelegate>
 @property (strong,nonatomic) NSMutableArray *itemList;
+@property (strong,nonatomic) UserDataManager *userManager;
+@property (strong,nonatomic) UserCenterModel *userCenter;
 
 @end
 @implementation UserCenterDataConstructor
 
+-(UserDataManager *)userManager
+{
+    if (_userManager == nil) {
+        _userManager = [[UserDataManager alloc]init];
+        _userManager.delegate = self;
+    }
+    return _userManager;
+}
+
+-(void)loadData
+{
+    [self.userManager getCenterInfo];
+}
 -(void)constructData
 {
     [self.items removeAllObjects];
-    
-//    UserCenterModel *model = [[UserCenterModel alloc]init];
-//    [self.items addObject:model];
-//    
-//    [self.items addObjectsFromArray:self.itemList];
-    
-    UserInfo *userInfo = [[UserInfo alloc]init];
+    UserInfo *userInfo = self.userCenter.userInfo;
+    if (userInfo == nil) {
+        userInfo = [[UserInfo alloc]init];
+    }
     userInfo.cellClass = [HeadPortraitCell class];
     userInfo.cellType  = @"headPortraitcell";
     [self.items addObject:userInfo];
     
-    AssetsInfo *asstsInfo = [[AssetsInfo  alloc]init];
+    AssetsInfo *asstsInfo = self.userCenter.assetInfo;
+    if (asstsInfo == nil) {
+        asstsInfo = [[AssetsInfo alloc]init];
+    }
     asstsInfo.cellType  = @"assetsCell";
     asstsInfo.cellClass = [AssetsCell class];
     [self.items addObject:asstsInfo];
@@ -47,7 +63,10 @@
     separateModel1.cellType       = @"separatecell";
     [self.items addObject:separateModel1];
     
-    OrderInfo *orderinfo = [[OrderInfo alloc]init];
+    OrderInfo *orderinfo = self.userCenter.orderInfo;
+    if (orderinfo == nil) {
+        orderinfo = [[OrderInfo alloc]init];
+    }
     orderinfo.cellClass  = [OrderCell class];
     orderinfo.cellType   = @"orderCell";
     [self.items addObject:orderinfo];
@@ -75,5 +94,23 @@
         }
     }
     return _itemList;
+}
+
+#pragma mark usermanager的代理
+-(void)loadDataSuccessful:(UserDataManager *)manager dataType:(UserDataManangerType)dataType  data:(id)data  isCache:(BOOL)isCache
+{
+    if (data && [data isKindOfClass:[UserCenterModel class]]) {
+        self.userCenter = data;
+        if ([self.delegate respondsToSelector:@selector(dataConstructor:didFinishLoad:)]) {
+            [self.delegate dataConstructor:self didFinishLoad:nil];
+        }
+        
+    }
+}
+-(void)loadDataFailed:(UserDataManager *)manager dataType:(UserDataManangerType)dataType error:(NSError*)error
+{
+    if ([self.delegate respondsToSelector:@selector(dataConstructorDidFailLoadData:withError:)]) {
+        [self.delegate dataConstructorDidFailLoadData:self withError:error];
+    }
 }
 @end

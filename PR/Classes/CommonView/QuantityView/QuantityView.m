@@ -23,7 +23,6 @@
 @property (strong, nonatomic)  UIButton                      *minusBtn;
 @property (nonatomic,strong)   NSIndexPath                   *indexPath;
 @property (nonatomic,strong)   NoMenueTextField              *goodNumtf;
-@property (strong,nonatomic)   UIImageView                   *bgImg;
 @property (nonatomic, assign ) NSInteger                    lastQuantity;
 @property (nonatomic, strong   ) UIButton                    *addBtn;
 @property (assign,nonatomic)      BOOL                        addBtnEnable;
@@ -35,26 +34,30 @@
 -(instancetype)init
 {
     if (self = [super init]) {
-        self.layer.cornerRadius = 2.0;
-        self.layer.borderColor  = UIColorFromRGB(0xf1f6f9).CGColor;
+        self.layer.cornerRadius = 4.0;
+        self.layer.borderColor  = UIColorFromRGB(0xe1e1e1).CGColor;
         self.layer.borderWidth  = OnePoint;
         self.layer.masksToBounds= YES;
         
         _addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_addBtn setImage:[UIImage imageNamed:@"icon_cartplus"] forState:UIControlStateNormal];
+        [_addBtn setImage:[UIImage imageNamed:@"icon_cart_plus"] forState:UIControlStateNormal];
         [_addBtn setBackgroundColor:[UIColor clearColor]];
         [_addBtn addTarget:self action:@selector(addBtnOnClick) forControlEvents:UIControlEventTouchUpInside];
         [_addBtn setContentMode:UIViewContentModeRight];
         [_addBtn setPixelSepSet:PSRectEdgeLeft];
+        OnePixelSepView *leftLine = [_addBtn psLeftSep];
+        [leftLine setBackgroundColor:UIColorFromRGB(0xe1e1e1)];
         [self addSubview:_addBtn];
         
         
         _minusBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_minusBtn setImage:[UIImage imageNamed:@"icon_cartminus"] forState:UIControlStateNormal];
+        [_minusBtn setImage:[UIImage imageNamed:@"icon_cart_reduce"] forState:UIControlStateNormal];
         [_minusBtn setBackgroundColor:[UIColor clearColor]];
         [_minusBtn setContentMode:UIViewContentModeLeft];
         [_minusBtn addTarget:self action:@selector(minusBtnOnClick) forControlEvents:UIControlEventTouchUpInside];
         [_minusBtn setPixelSepSet:PSRectEdgeRight];
+        OnePixelSepView *rightLine = [_minusBtn psRightSep];
+        [rightLine setBackgroundColor:UIColorFromRGB(0xe1e1e1)];
         [self addSubview:_minusBtn];
         
         _goodNumtf = [[NoMenueTextField alloc]init];
@@ -74,9 +77,8 @@
 -(void)layoutSubviews
 {
     [super layoutSubviews];
-    self.bgImg.frame       = CGRectMake(0, 0, kWidth, kHeight);
     CGFloat margin         = 10*DDDisplayScale;
-    CGFloat tempBtnW       = 28 * DDDisplayScale;
+    CGFloat tempBtnW       = 55 * DDDisplayScale;
     CGFloat btnW           = tempBtnW + margin;
     CGFloat btnH           = kHeight + 10;
     self.minusBtn.frame    = CGRectMake(-margin, 0, btnW, btnH);
@@ -95,11 +97,9 @@
     self.addBtnEnable  = addBtnEnable;
     _minusBtn.enabled  = isEnable;
     _goodNumtf.enabled = isEnable;
-    _bgImg.highlighted = !isEnable;
     
     UIColor *color     = UIColorFromRGB(0x333333);
     [_goodNumtf setTextColor:color];
-    [_addBtn setImage:[UIImage imageNamed:@"+hui"] forState:UIControlStateNormal];
 }
 
 -(void)updateQuantityViewCount:(NSInteger)count
@@ -180,10 +180,10 @@
 
 -(void)addBtnOnClick
 {
-//    if (self.addBtnEnable == NO) {
-//        [PRShowToastUtil showNotice:[NSString stringWithFormat:@"库存只有%zd件，不能再加啦~",self.tempModel.product.stocknum]];
-//        return;
-//    }
+    if ([self.goodNumtf.text integerValue] >= self.tempModel.product.stocknum) {
+        [PRShowToastUtil showNotice:[NSString stringWithFormat:@"库存只有%zd件，不能再加啦~",self.tempModel.product.stocknum]];
+        return;
+    }
     self.lastQuantity = [self.goodNumtf.text integerValue];
     NSInteger count = [self.goodNumtf.text integerValue] + 1;
     if (self.quantityViewEditBlock) {

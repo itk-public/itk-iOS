@@ -12,6 +12,8 @@
 #import "SecurityCodeAPIInteract.h"
 #import "RegisterAPIInteract.h"
 #import "ForgetPwdAPIInteract.h"
+#import "UserCenterAPIInteract.h"
+
 
 @interface UserDataManager()
 @property (strong,nonatomic) PhoneQuickLoginAPIInteract *phoneQuickAPI;
@@ -19,6 +21,7 @@
 @property (strong,nonatomic) SecurityCodeAPIInteract    *securityCodeAPI;
 @property (strong,nonatomic) RegisterAPIInteract        *registerAPI;
 @property (strong,nonatomic) ForgetPwdAPIInteract       *forgetPwdAPI;
+@property (strong,nonatomic) UserCenterAPIInteract      *userCenterAPI;
 
 @end
 @implementation UserDataManager
@@ -100,6 +103,21 @@
     } failed:^(BaseAPIInteract *interact, NSError *error, id modelData) {
         if (self.delegate && [self.delegate respondsToSelector:@selector(loadDataFailed:dataType:error:)]) {
             [self.delegate loadDataFailed:self dataType:UserDataManangerTypeForgetPwd error:error];
+        }
+    }];
+}
+-(void)getCenterInfo
+{
+    if (self.userCenterAPI == nil) {
+        self.userCenterAPI = [[UserCenterAPIInteract alloc]init];
+    }
+    [self.userCenterAPI interactScuess:^(BaseAPIInteract *interact, id modelData) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(loadDataSuccessful:dataType:data:isCache:)]) {
+            [self.delegate loadDataSuccessful:self dataType:UserDataManangerTypeCenterInfo data:modelData isCache:NO];
+        }
+    } failed:^(BaseAPIInteract *interact, NSError *error, id modelData) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(loadDataFailed:dataType:error:)]) {
+            [self.delegate loadDataFailed:self dataType:UserDataManangerTypeCenterInfo error:error];
         }
     }];
 }

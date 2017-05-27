@@ -67,7 +67,7 @@
 }
 
 
-- (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+/*- (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     static NSString *footerViewId = @"cartShopfooterView";
     CartSellerFooterView *footerView = [[CartSellerFooterView alloc]initWithReuseIdentifier:footerViewId];
@@ -98,10 +98,10 @@
         return footerView;
     }
     return nil;
-}
+} */
 
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+/*- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     CartSectionData *setionData = [self.cartDataSoure sellerProductAtSection:section];
     if ([setionData isKindOfClass:[CartSectionData class]] && [setionData.sortedSellerProducts count]) {
@@ -109,7 +109,7 @@
                                                           isEdit:setionData.isEdit];
     }
     return 1.0;
-}
+}*/
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
      CartSectionData *setionData = [self.cartDataSoure sellerProductAtSection:section];

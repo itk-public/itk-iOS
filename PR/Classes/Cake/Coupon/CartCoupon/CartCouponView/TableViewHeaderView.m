@@ -16,17 +16,17 @@
 @implementation TableViewHeaderView
 -(instancetype)init{
     if (self = [super init]) {
+        [self setBackgroundColor:UIColorFromRGB(0xf8f8f8)];
         _shopNameLabel = [[UILabel alloc]init];
-        [_shopNameLabel setText:@"xxxxx店铺"];
-        [_shopNameLabel setFont:KFontNormal(18)];
-        [_shopNameLabel setTextColor:kColorNormal];
+        [_shopNameLabel setFont:KFontNormal(16)];
+        [_shopNameLabel setTextColor:UIColorFromRGB(0x4c4c4c)];
         [_shopNameLabel setTextAlignment:NSTextAlignmentCenter];
         [self addSubview:_shopNameLabel];
         
         _promptLabel = [[UILabel alloc]init];
         [_promptLabel setTextAlignment:NSTextAlignmentCenter];
         [_promptLabel setFont:KFontNormal(14)];
-        [_promptLabel setTextColor:kColorGray];
+        [_promptLabel setTextColor:UIColorFromRGB(0x959595)];
         [_promptLabel setText:@"领券优惠券"];
         [self addSubview:_promptLabel];
         
@@ -38,14 +38,21 @@
 -(void)layoutSubviews
 {
     [super layoutSubviews];
-    CGFloat kTopMargin = 10;
-    CGFloat kLabelH    = (self.height - 2*kTopMargin)/2.0;
-    self.shopNameLabel.frame = CGRectMake(0, kTopMargin, self.width, kLabelH);
-    self.promptLabel.frame = CGRectMake(0, self.shopNameLabel.bottom, self.width, kLabelH);
+    [self.shopNameLabel sizeToFit] ;
+    [self.promptLabel sizeToFit];
+    self.shopNameLabel.frame = CGRectMake(0, 8, self.width, self.shopNameLabel.height);
+    self.promptLabel.frame = CGRectMake(0, 0, self.width, self.promptLabel.height);
+    self.promptLabel.bottom = self.height - 8;
 
 }
 -(void)setShopName:(NSString *)shopName
 {
     self.shopNameLabel.text = shopName?:@"";
+}
+
+
++(CGFloat)height
+{
+    return 70;
 }
 @end

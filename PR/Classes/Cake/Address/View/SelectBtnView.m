@@ -39,7 +39,7 @@
         [self addSubview:_selectBtn];
         
         _arrowImage = [[UIImageView alloc]init];
-        [_arrowImage setBackgroundColor:[UIColor redColor]];
+        [_arrowImage setImage:[UIImage imageNamed:@"icon_right_arrow"]];
         [self addSubview:_arrowImage];
         
         [self setPixelSepSet:PSRectEdgeBottom];

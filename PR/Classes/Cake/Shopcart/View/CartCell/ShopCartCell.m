@@ -31,16 +31,16 @@
         
         _priceLabel = [[UILabel alloc]init];
         [_priceLabel setText:@"xxxx"];
-        [_priceLabel setTextColor:kColorRed];
+        [_priceLabel setTextColor:UIColorFromRGB(0xff9219)];
         [_priceLabel setFont:KFontNormal(12)];
         [_priceLabel setTextAlignment:NSTextAlignmentLeft];
         [self addSubview:_priceLabel];
         
         _deleteBtn = [[UIButton alloc]init];
         [_deleteBtn setTitle:@"删除" forState:UIControlStateNormal];
-        [_deleteBtn.titleLabel setFont:KFontNormal(14)];
+        [_deleteBtn.titleLabel setFont:KFontNormal(15)];
         [_deleteBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_deleteBtn setBackgroundColor:[UIColor redColor]];
+        [_deleteBtn setBackgroundColor:UIColorFromRGB(0xff7272)];
         [self addSubview:_deleteBtn];
         
     }
@@ -50,11 +50,12 @@
 -(void)layoutSubviews
 {
     [super layoutSubviews];
-    CGFloat deleteBtnW       = 50;
+    CGFloat deleteBtnW       = 60*DDDisplayScale;
     self.deleteBtn.frame     = CGRectMake(self.width - deleteBtnW, 0, deleteBtnW, self.height);
-    CGFloat leftMargin       = 15;
+    CGFloat leftMargin       = 0;
     CGFloat numControllerW   = kWidth;
     self.numController.frame = CGRectMake(leftMargin, 10, numControllerW, kHeight);
+    self.numController.right = self.deleteBtn.left - 10;
     self.priceLabel.frame    = CGRectMake(leftMargin, 0, numControllerW, 21);
     self.priceLabel.bottom   = self.height - 10;
 }
@@ -90,11 +91,12 @@
         
         _subTitleLabel = [[UILabel alloc]init];
         [_subTitleLabel setTextColor:kColorGray];
+        [_subTitleLabel setFont:KFontNormal(12)];
         [_subTitleLabel setTextAlignment:NSTextAlignmentLeft];
         [self addSubview:_subTitleLabel];
         
         _priceLabel = [[UILabel alloc]init];
-        [_priceLabel setTextColor:kColorRed];
+        [_priceLabel setTextColor:UIColorFromRGB(0xff8219)];
         [_priceLabel setFont:KFontNormal(12)];
         [_priceLabel setTextAlignment:NSTextAlignmentLeft];
         [self addSubview:_priceLabel];
@@ -163,8 +165,8 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         _seletedBtn         = [UIButton  buttonWithType:UIButtonTypeCustom];
-        [_seletedBtn setImage:[UIImage imageNamed:@"icon_radio_normal"]forState:UIControlStateNormal];
-        [_seletedBtn setImage:[UIImage imageNamed:@"icon_radio_selected"] forState:UIControlStateSelected];
+        [_seletedBtn setImage:[UIImage imageNamed:@"icon_ unselected"]forState:UIControlStateNormal];
+        [_seletedBtn setImage:[UIImage imageNamed:@"icon_ selected"] forState:UIControlStateSelected];
         [_seletedBtn setImage: [UIImage imageNamed:@"icon_radio_disable"] forState:UIControlStateDisabled];
         [_seletedBtn addTarget:self action:@selector(seletedBtnOnClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_seletedBtn];
@@ -201,10 +203,10 @@
 {
     [super layoutSubviews];
     
-    CGFloat seletedBtnW      = 25;
-    self.seletedBtn.frame    = CGRectMake(15, 0, seletedBtnW, self.height);
-    CGFloat goodImageViewW   = 65;
-    self.goodImageView.frame = CGRectMake(self.seletedBtn.right + 10, (self.height - goodImageViewW)/2.0, goodImageViewW, goodImageViewW);
+    CGFloat seletedBtnW      = 48 * DDDisplayScale;
+    self.seletedBtn.frame    = CGRectMake(0, 0, seletedBtnW, self.height);
+    CGFloat goodImageViewW   = 70 *DDDisplayScale;
+    self.goodImageView.frame = CGRectMake(self.seletedBtn.right, (self.height - goodImageViewW)/2.0, goodImageViewW, goodImageViewW);
     self.detailView.frame    = CGRectMake(self.goodImageView.right + 10, 0, self.width - self.goodImageView.right - 15 -10, self.height);
     
     self.editingView.frame   = self.detailView.frame;
@@ -214,8 +216,13 @@
 -(void)setVM:(CartOrderCellViewModel *)vM
 {
     CONDITION_CHECK_RETURN([vM isKindOfClass:[CartOrderCellViewModel class]]);
+    _vM = vM;
     CartOrderCellViewModel *info = vM;
-    self.seletedBtn.selected  = vM.product.isSelected;
+    if (vM.isEdit) {
+        self.seletedBtn.selected = vM.deletedState;
+    }else{
+         self.seletedBtn.selected  = vM.product.isSelected;
+    }
     [self.detailView setProduct:info];
     [self.editingView setProduct:info];
     self.detailView.hidden  = info.isEdit;
@@ -227,8 +234,9 @@
 +(CGFloat)getHeightWithCartOrderCellViewModel:(CartOrderCellViewModel *)vM;
 {
     CONDITION_CHECK_RETURN_VAULE([vM isKindOfClass:[CartOrderCellViewModel class]], 0);
-    return 95;
+    return 79;
 }
+
 
 
 -(void)seletedBtnOnClicked:(UIButton *)sender

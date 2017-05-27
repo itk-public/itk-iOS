@@ -30,16 +30,16 @@
 -(instancetype)init{
     if (self = [super init]) {
         _titleLabel = [[UILabel alloc]init];
-        [_titleLabel setFont:KFontNormal(12)];
+        [_titleLabel setFont:KFontNormal(16)];
         [_titleLabel setTextAlignment:NSTextAlignmentCenter];
-        [_titleLabel setTextColor:kColorNormal];
+        [_titleLabel setTextColor:UIColorFromRGB(0x323232)];
         [self addSubview:_titleLabel];
         
         
         _subTitleLabel = [[UILabel alloc]init];
-        [_subTitleLabel setFont:KFontNormal(12)];
+        [_subTitleLabel setFont:KFontNormal(16)];
         [_subTitleLabel setTextAlignment:NSTextAlignmentCenter];
-        [_subTitleLabel setTextColor:kColorTheme];
+        [_subTitleLabel setTextColor:UIColorFromRGB(0xff8e27)];
         [self addSubview:_subTitleLabel];
         
         [self setPixelSepSet:PSRectEdgeRight];
@@ -51,8 +51,11 @@
 -(void)layoutSubviews
 {
     [super layoutSubviews];
-    self.titleLabel.frame    = CGRectMake(0, 0, self.width - OnePoint, self.height/2.0);
-    self.subTitleLabel.frame = CGRectMake(0, self.titleLabel.bottom,self.titleLabel.width, self.titleLabel.height);
+    [self.titleLabel sizeToFit];
+    [self.subTitleLabel sizeToFit];
+    self.titleLabel.frame    = CGRectMake(0, 8, self.width - OnePoint, self.titleLabel.height);
+    self.subTitleLabel.frame = CGRectMake(0, 0,self.titleLabel.width, self.subTitleLabel.height);
+    self.subTitleLabel.bottom = self.height - 9;
 }
 
 -(void)setTitle:(NSString *)title subTitle:(NSString *)subTitle
@@ -63,47 +66,43 @@
 @end
 
 @interface AssetsCell()
-@property (strong,nonatomic) NSMutableArray *contentArray;
+@property (strong,nonatomic) SingleAssetsView *leftView;
+@property (strong,nonatomic) SingleAssetsView *rightView;
 
 @end
 @implementation AssetsCell
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        _contentArray = [NSMutableArray array];
-        SingleAssetsModel *model1 = [[SingleAssetsModel alloc]init];
-        model1.title = @"账号余额";
-        model1.value = @"￥134.99";
-        [_contentArray addObject:model1];
+        _leftView = [[SingleAssetsView alloc]init];
+        [self.contentView addSubview:_leftView];
         
-        SingleAssetsModel *model2 = [[SingleAssetsModel alloc]init];
-        model2.title = @"优惠券";
-        model2.value = @"5张";
-        [_contentArray addObject:model2];
+        _rightView = [[SingleAssetsView alloc]init];
+        [self.contentView addSubview:_rightView];
         
-        for (SingleAssetsModel *info in _contentArray) {
-            SingleAssetsView *view = [[SingleAssetsView alloc]init];
-            [view setTitle:info.title subTitle:info.value];
-            [self.contentView addSubview:view];
-        }
     }
     return self;
 }
 
 -(void)layoutSubviews{
     [super layoutSubviews];
-    NSInteger i = 0;
-    for (SingleAssetsView *view in self.contentView.subviews) {
-        CGFloat viewW = self.width/[self.contentView.subviews count];
-        CGFloat viewX = viewW * i ;
-        view.frame = CGRectMake(viewX, 0, viewW, self.height);
-        i ++;
-    }
+    CGFloat viewW = self.width/2.0;
+    self.leftView.frame = CGRectMake(0, 0, viewW, self.height);
+    self.rightView.frame = CGRectMake(self.leftView.width, 0, viewW, self.height);
+}
+
+
+-(void)setObject:(id)object
+{
+    CONDITION_CHECK_RETURN([object isKindOfClass:[AssetsInfo class]]);
+    AssetsInfo *info = (AssetsInfo *)object;
+    [self.leftView setTitle:@"账户余额" subTitle:info.balanceString];
+    [self.rightView setTitle:@"优惠券" subTitle:info.couponString];
 }
 
 
 +(CGFloat)tableView:(UITableView *)tableView rowHeightForObject:(id)object
 {
-    return 50;
+    return 60;
 }
 @end

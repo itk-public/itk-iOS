@@ -10,8 +10,10 @@
 #import "LoginViewController.h"
 #import "PRMBWantedOffice.h"
 #import "UserCenterDataConstructor.h"
+#import "PRLoadingAnimation.h"
+#import "PRShowToastUtil.h"
 
-@interface UserCenterViewController ()
+@interface UserCenterViewController ()<WTNetWorkDataConstructorDelegate>
 @property (strong,nonatomic) UserCenterDataConstructor *dataConstructor;
 
 @end
@@ -21,25 +23,39 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navTitle = @"个人中心";
-    
-    [self constructData];
+}
+
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.dataConstructor loadData];
     [self.tableView reloadData];
 }
+
 
 - (void)constructData
 {
     if (_dataConstructor == nil) {
         _dataConstructor          = [[UserCenterDataConstructor alloc] init];
-//        _dataConstructor.delegate = self;
-//        _dataConstructor.responder = self;
+        _dataConstructor.delegate = self;
     }
-    [self.dataConstructor constructData];
     self.tableViewAdaptor.items = self.dataConstructor.items;
 }
-
--(void)test
+#pragma mark - WTNetWorkDataConstructorDelegate
+- (void)dataConstructor:(id)dataConstructor didFinishLoad:(id)dataModel
 {
-//    [PRMBWantedOffice nativeArrestWarrant:APPURL_VIEW_IDENTIFIER_MEMBER_LOGIN param:nil];
-
+    [[PRLoadingAnimation sharedInstance] removeLoadingAnimation:self.view];
+    [self.dataConstructor constructData];
+    [self.tableView reloadData];
 }
+
+
+- (void)dataConstructorDidFailLoadData:(id)dataConstructor withError:(NSError *)errorDataModel
+{
+    [[PRLoadingAnimation sharedInstance] removeLoadingAnimation:self.view];
+    [PRShowToastUtil showNotice:errorDataModel.localizedDescription];
+}
+
+
 @end

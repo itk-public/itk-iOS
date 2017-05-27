@@ -22,7 +22,7 @@ alpha:0.5]
 
 
 #define kColorTheme              UIColorFromRGB(0x47d6cc)
-#define kColorNormal             UIColorFromRGB(0x333333)
+#define kColorNormal             UIColorFromRGB(0x4c4c4c)
 #define kColorActionSepLine      UIColorFromRGB(0x444444)
 #define kColorYHBrown            UIColorFromRGB(0x946632)
 #define kColorYHOrange           UIColorFromRGB(0xfd7622)
@@ -34,8 +34,8 @@ alpha:0.5]
 #define kColorLightBlue          UIColorFromRGB(0x0099ff)
 
 #define kColorReferenceTawnyColor       kColorTheme
-#define kColorMall                      UIColorFromRGB(0xff5400)
-#define kColorOrange                    kColorReferenceTawnyColor
+#define kColorMall                      UIColorFromRGB(0xff8219)
+#define kColorOrange                    UIColorFromRGB(0xff8219)
 #define kColorBRAVO                     UIColorFromRGB(0x4e6012)
 #define kColorPrice                     UIColorFromRGB(0xff4600)
 #define kColorCSX                       UIColorFromRGB(0X0e8b2f)
@@ -49,7 +49,7 @@ alpha:0.5]
 #define kColorNaviActionColor           kColorYHBrown
 
 
-#define kColorOutsideLine               UIColorFromRGB(0xf1f6f9)
+#define kColorOutsideLine               UIColorFromRGB(0xaaaaaa)
 #define kColorBlakLight                 UIColorFromRGB(0x666666)
 #define kColorTextFiledPlaceHolderLabel UIColorFromRGB(0xcccccc)
 
@@ -60,7 +60,7 @@ alpha:0.5]
 #define kColorSubTitleInfo              UIColorFromRGB(0x666666)
 #define kColorSubTitleInfo_Desalination UIColorFromRGB(0x999999)
 
-#define kSepLineColor                   UIColorFromRGB(0xf1f6f9)
+#define kSepLineColor                   UIColorFromRGB(0xe9eff3)
 #define kSepLine1Color                  UIColorFromRGB(0xececec)
 #define kDarkSepLineColor               UIColorFromRGB(0xaaaaaa)
 #define kAutoSepLineColor               iPhone6p ? kDarkSepLineColor : kSepLineColor

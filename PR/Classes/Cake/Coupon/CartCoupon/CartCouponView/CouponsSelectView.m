@@ -14,11 +14,11 @@
 #import "CouponModel.h"
 
 static UIView *hudView  = nil;
-#define kCouponsSelectViewH  320
+#define kCouponsSelectViewH  (410 * DDDisplayScale)
 @interface CouponsSelectView()<UITableViewDelegate,UITableViewDataSource>
 
 @property (strong,nonatomic) UITableView         *tableView;
-@property (strong,nonatomic) ThemeButton         *closeBtn;
+@property (strong,nonatomic) UIButton            *closeBtn;
 @property (strong,nonatomic) TableViewHeaderView *headerView;
 @property (strong,nonatomic) NSArray             *couponsList;
 
@@ -40,14 +40,14 @@ static UIView *hudView  = nil;
         [self addSubview:_tableView];
         
         _headerView = [[TableViewHeaderView alloc]init];
-        _headerView.frame = CGRectMake(0, 0, 0, 60);
-        [_headerView setBackgroundColor:[UIColor whiteColor]];
+        _headerView.frame = CGRectMake(0, 0, 0, [TableViewHeaderView height]);
         [self addSubview:_headerView];
         
-        _closeBtn = [ThemeButton buttonWithType:UIButtonTypeSystem];
-        [_closeBtn setType:CustomBtnTypeGreenBg];
+        _closeBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+        [_closeBtn setTitleColor:UIColorFromRGB(0xffffff) forState:UIControlStateNormal];
+        [_closeBtn setBackgroundColor:kColorTheme];
         [_closeBtn setTitle:@"关闭" forState:UIControlStateNormal];
-        _closeBtn.frame = CGRectMake(0, 0, 0, 60);
+        _closeBtn.frame = CGRectMake(0, 0, 0, 49);
         [_closeBtn addTarget:self action:@selector(closeBtnOnClicked) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_closeBtn];
     }

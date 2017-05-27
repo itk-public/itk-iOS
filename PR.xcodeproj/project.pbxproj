@@ -16,9 +16,7 @@
 		B408A0941EC992F900695466 /* LocalShopcartDataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B408A0931EC992F900695466 /* LocalShopcartDataHandler.m */; };
 		B408A0981EC99A4C00695466 /* QuantityView.m in Sources */ = {isa = PBXBuildFile; fileRef = B408A0971EC99A4C00695466 /* QuantityView.m */; };
 		B408A09B1ECB289D00695466 /* ProductOutline.m in Sources */ = {isa = PBXBuildFile; fileRef = B408A09A1ECB289D00695466 /* ProductOutline.m */; };
-		B408A0A01ECB28FB00695466 /* CartShopInfoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B408A09D1ECB28FB00695466 /* CartShopInfoViewCell.m */; };
 		B408A0A11ECB28FB00695466 /* ShopCartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B408A09F1ECB28FB00695466 /* ShopCartCell.m */; };
-		B408A0A41ECB291F00695466 /* SectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B408A0A31ECB291F00695466 /* SectionHeaderView.m */; };
 		B408A0AF1ECB2A9D00695466 /* SelectAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B408A0AE1ECB2A9D00695466 /* SelectAddressViewController.m */; };
 		B408A0B21ECB2CE500695466 /* SelectAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B408A0B11ECB2CE500695466 /* SelectAddressCell.m */; };
 		B408A0B61ECB2EFC00695466 /* SecretPhoneLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B408A0B51ECB2EFC00695466 /* SecretPhoneLabel.m */; };
@@ -346,12 +344,8 @@
 		B408A0971EC99A4C00695466 /* QuantityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuantityView.m; sourceTree = "<group>"; };
 		B408A0991ECB289D00695466 /* ProductOutline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductOutline.h; sourceTree = "<group>"; };
 		B408A09A1ECB289D00695466 /* ProductOutline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductOutline.m; sourceTree = "<group>"; };
-		B408A09C1ECB28FB00695466 /* CartShopInfoViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartShopInfoViewCell.h; sourceTree = "<group>"; };
-		B408A09D1ECB28FB00695466 /* CartShopInfoViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartShopInfoViewCell.m; sourceTree = "<group>"; };
 		B408A09E1ECB28FB00695466 /* ShopCartCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopCartCell.h; sourceTree = "<group>"; };
 		B408A09F1ECB28FB00695466 /* ShopCartCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopCartCell.m; sourceTree = "<group>"; };
-		B408A0A21ECB291F00695466 /* SectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionHeaderView.h; sourceTree = "<group>"; };
-		B408A0A31ECB291F00695466 /* SectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionHeaderView.m; sourceTree = "<group>"; };
 		B408A0AD1ECB2A9D00695466 /* SelectAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectAddressViewController.h; sourceTree = "<group>"; };
 		B408A0AE1ECB2A9D00695466 /* SelectAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectAddressViewController.m; sourceTree = "<group>"; };
 		B408A0B01ECB2CE500695466 /* SelectAddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectAddressCell.h; sourceTree = "<group>"; };
@@ -1742,8 +1736,6 @@
 		B40A94D71EBDA54000B4212A /* CartCell */ = {
 			isa = PBXGroup;
 			children = (
-				B408A09C1ECB28FB00695466 /* CartShopInfoViewCell.h */,
-				B408A09D1ECB28FB00695466 /* CartShopInfoViewCell.m */,
 				B408A09E1ECB28FB00695466 /* ShopCartCell.h */,
 				B408A09F1ECB28FB00695466 /* ShopCartCell.m */,
 				B40A94DA1EBDA54000B4212A /* CartSeparateCell.h */,
@@ -1756,8 +1748,6 @@
 			isa = PBXGroup;
 			children = (
 				B40A94DD1EBDA54000B4212A /* CartSellerFooterView.h */,
-				B408A0A21ECB291F00695466 /* SectionHeaderView.h */,
-				B408A0A31ECB291F00695466 /* SectionHeaderView.m */,
 				B40A94DE1EBDA54000B4212A /* CartSellerFooterView.m */,
 				B40A94DF1EBDA54000B4212A /* CartSellerHeaderView.h */,
 				B40A94E01EBDA54000B4212A /* CartSellerHeaderView.m */,
@@ -3349,7 +3339,6 @@
 				B42E3CDD1E55D701007B7A55 /* UIButton+WebCache.m in Sources */,
 				B4A059711EBDAC56004DD7B7 /* AlterView.m in Sources */,
 				B40A96A31EBDA54100B4212A /* HeadPortraitCell.m in Sources */,
-				B408A0A01ECB28FB00695466 /* CartShopInfoViewCell.m in Sources */,
 				B40A96891EBDA54100B4212A /* CommitErrorHandler.m in Sources */,
 				B40A96AD1EBDA54100B4212A /* YHDeviceInfo.m in Sources */,
 				B408A0911EC9909800695466 /* ShopcartManager.m in Sources */,
@@ -3455,7 +3444,6 @@
 				B40A96ED1EBDA54100B4212A /* AgreementProtocolView.m in Sources */,
 				B4F2B0041E63D54300468E01 /* MJRefreshGifHeader.m in Sources */,
 				B408A0A11ECB28FB00695466 /* ShopCartCell.m in Sources */,
-				B408A0A41ECB291F00695466 /* SectionHeaderView.m in Sources */,
 				B40A96411EBDA54100B4212A /* CouponModel.m in Sources */,
 				B40A96EF1EBDA54100B4212A /* AutoOptionURL.m in Sources */,
 				B40A96B21EBDA54100B4212A /* YHDataModel.m in Sources */,

@@ -10,4 +10,5 @@
 
 @interface TableViewHeaderView : UIView
 -(void)setShopName:(NSString *)shopName;
++(CGFloat)height;
 @end

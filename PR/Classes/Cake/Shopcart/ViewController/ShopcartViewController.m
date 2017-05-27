@@ -36,9 +36,10 @@
 }
 
 - (void)viewDidLoad {
+     [super viewDidLoad];
     self.navTitle = @"购物车";
     [self shopcartTableView];
-    [super viewDidLoad];
+   
     [self addRightBtn];
     // 设置允许摇一摇功能
     [UIApplication sharedApplication].applicationSupportsShakeToEdit = YES;
@@ -49,26 +50,20 @@
                                              selector:@selector(keyBoardHide)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+}
+
+-(void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    self.shopcartTableView.frame = self.view.bounds;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-//    if ([self.identifier isEqualToString:APPURL_VIEW_IDENTIFIER_CART]) {
-//        self.shopcartTableView.height               = self.view.height;
-//        self.shopcartTableView.contentInset         = UIEdgeInsetsMake(self.shopcartTableView.contentInset.top, 0, 0, 0);
-//    }else{
-//        self.shopcartTableView.height               = self.view.height - 49 ;
-//        self.shopcartTableView.contentInset         = UIEdgeInsetsMake(self.shopcartTableView.contentInset.top, 0, 0, 0);
-//    }
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
-    
-    if ([self.cartDataSoure.sellerList.sellerArray count] > 1) {
-        self.shopcartTableView.contentInset = UIEdgeInsetsMake(self.shopcartTableView.contentInset.top, 0, -44, 0);
-    }else{
-        self.shopcartTableView.contentInset = UIEdgeInsetsMake(self.shopcartTableView.contentInset.top, 0, 0, 0);
-    }
-//    [self actualReqData:DataRefreshOption_UserActive];
+    //    [self actualReqData:DataRefreshOption_UserActive];
     if(self.shopcartTableView.scrollEnabled){
         [self setWaittingStatus:YES];
     }

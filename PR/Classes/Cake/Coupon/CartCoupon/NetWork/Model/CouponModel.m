@@ -32,11 +32,11 @@
 {
     NSMutableAttributedString *fristStr      = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%zd",self.amount]];
     NSDictionary       *fristAttribute       = [NSDictionary dictionaryWithObjectsAndKeys:
-                                                KFontBold(12),NSFontAttributeName,
+                                                KFontBold(18),NSFontAttributeName,
                                                 kColorOrange ,NSForegroundColorAttributeName,nil];
     [fristStr addAttributes:fristAttribute range:NSMakeRange(0, fristStr.string.length)];
     
-    NSString *secondeStr                          = @"元";
+    NSString *secondeStr                          = @" 元";
     NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc]initWithString:secondeStr];
     
     NSDictionary       *secondAttribute       = [NSDictionary dictionaryWithObjectsAndKeys:

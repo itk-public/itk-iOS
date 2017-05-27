@@ -15,7 +15,7 @@
 @property (strong,nonatomic) UILabel     *titleLabel;
 @property (strong,nonatomic) UILabel     *subTitleLabel;
 @property (strong,nonatomic) UILabel     *dateLabel;
-@property (strong,nonatomic) ThemeButton *chooseBtn;
+@property (strong,nonatomic) UIButton    *chooseBtn;
 
 @end
 @implementation ChooseCouponCell
@@ -24,26 +24,28 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         _titleLabel = [[UILabel alloc]init];
         [_titleLabel setText:@"100元"];
-        [_titleLabel setTextColor:kColorRed];
-        [_titleLabel setFont:KFontNormal(12)];
+        [_titleLabel setFont:KFontNormal(18)];
         [_titleLabel setTextAlignment:NSTextAlignmentLeft];
         [self.contentView addSubview:_titleLabel];
         
         _subTitleLabel = [[UILabel alloc]init];
         [_subTitleLabel setTextAlignment:NSTextAlignmentLeft];
         [_subTitleLabel setFont:KFontNormal(12)];
-        [_subTitleLabel setTextColor:kColorNormal];
+        [_subTitleLabel setTextColor:UIColorFromRGB(0x4c4c4c)];
         [self.contentView addSubview:_subTitleLabel];
         
         _dateLabel = [[UILabel alloc]init];
-        [_dateLabel setTextColor:kColorGray];
+        [_dateLabel setTextColor:UIColorFromRGB(0x959595)];
         [_dateLabel setFont:KFontNormal(10)];
         [_dateLabel setTextAlignment:NSTextAlignmentLeft];
         [self.contentView addSubview:_dateLabel];
         
-        
-        _chooseBtn = [ThemeButton buttonWithType:UIButtonTypeSystem];
+        _chooseBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+        _chooseBtn.layer.cornerRadius = 4.0;
+        _chooseBtn.layer.borderColor  = UIColorFromRGB(0x47d6cc).CGColor;
+        _chooseBtn.layer.borderWidth  = OnePoint;
         [_chooseBtn setTitle:@"领取" forState:UIControlStateNormal];
+        [_chooseBtn setTitleColor:UIColorFromRGB(0x47d6cc) forState:UIControlStateNormal];
         [self.contentView addSubview:_chooseBtn];
     }
     return self;
@@ -53,8 +55,8 @@
 {
     [super layoutSubviews];
     CGFloat leftMarign       = 15;
-    CGFloat chooseBtnW       = 60;
-    CGFloat chooseBtnH       = 40;
+    CGFloat chooseBtnW       = 65;
+    CGFloat chooseBtnH       = 30;
     self.chooseBtn.frame     = CGRectMake(self.width - chooseBtnW - leftMarign, (self.height - chooseBtnH)/2.0, chooseBtnW, chooseBtnH);
 
     CGFloat labelW           = self.chooseBtn.left - 2*leftMarign;
@@ -77,6 +79,6 @@
 
 +(CGFloat)tableView:(UITableView *)tableView rowHeightForObject:(id)object
 {
-    return 60;
+    return 80;
 }
 @end
