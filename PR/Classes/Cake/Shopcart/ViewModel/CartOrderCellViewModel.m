@@ -22,7 +22,9 @@
 }
 
 
--(void)setIsEdit:(BOOL)isEdit{
-    _isEdit = isEdit;
+-(void)setEditType:(ShopcartEditType)editType
+{
+    _editType = editType;
 }
+
 @end

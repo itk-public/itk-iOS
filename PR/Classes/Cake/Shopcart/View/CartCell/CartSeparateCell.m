@@ -74,8 +74,8 @@
 
 
 -(void)updateWithSellerInfoModel:(CartSeparateModel *)model
-                          isEdit:(BOOL)isEdit
-                  CartDataHandle:(CartDataHandle *)dataHandle
+                        editType:(ShopcartEditType)editType
+                  CartDataHandle:(CartDataHandle *)dataHandle;
 {
     CONDITION_CHECK_RETURN([model isKindOfClass:[CartSeparateModel class]] && [dataHandle countOfOutOfDelivered]);
     _model                    = model;

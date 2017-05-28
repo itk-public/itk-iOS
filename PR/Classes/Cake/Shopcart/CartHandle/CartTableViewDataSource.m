@@ -28,7 +28,7 @@
     CONDITION_CHECK_RETURN(self.sectionDatas.count);
     for (CartSectionData *sectionData in self.sectionDatas) {
         if ([sectionData isKindOfClass:[CartSectionData class]]) {
-             sectionData.isEdit           = NO;
+             sectionData.editType           = ShopcartEditTypeNone;
         }
     }
 }

@@ -3,9 +3,9 @@
     "data": {
         "list": [{
                  "address": {
-                 "cityid": 1,
-                 "areaid":1,
-                 "townid":22,
+                 "cityId": 1,
+                 "areaId":1,
+                 "townId":22,
                  "town":"四十八镇",
                  "area": "开放科技发展有限公司",
                  "city": "上海",

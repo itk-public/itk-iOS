@@ -11,9 +11,9 @@
 -(instancetype)initWithDictionary:(NSDictionary *)dic
 {
     if (self = [super initWithDictionary:dic]) {
-        _cityId = [dic safeObjectForKey:@"cityid"];
-        _areaId = [dic safeObjectForKey:@"areaid"];
-        _townId = [dic safeObjectForKey:@"townid"];
+        _cityId = [dic safeObjectForKey:@"cityId"];
+        _areaId = [dic safeObjectForKey:@"areaId"];
+        _townId = [dic safeObjectForKey:@"townId"];
         _town   = [dic safeObjectForKey:@"town"];
         _area   = [dic safeObjectForKey:@"area"];
         _city   = [dic safeObjectForKey:@"city"];

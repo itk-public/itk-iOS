@@ -16,7 +16,7 @@
 -(void)setSellerProducts:(ShopCartSellerProductModel *)sellerProducts;
 
 //是否在编辑状态
-@property (assign,nonatomic ) BOOL                          isEdit;
+@property (assign,nonatomic ) ShopcartEditType               editType;
 @property (copy,nonatomic)    NSString                      *sellerid;
 
 //排序后的section数据源

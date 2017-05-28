@@ -77,13 +77,12 @@
 -(void)layoutSubviews
 {
     [super layoutSubviews];
-    CGFloat margin         = 10*DDDisplayScale;
-    CGFloat tempBtnW       = 55 * DDDisplayScale;
-    CGFloat btnW           = tempBtnW + margin;
-    CGFloat btnH           = kHeight + 10;
-    self.minusBtn.frame    = CGRectMake(-margin, 0, btnW, btnH);
+    CGFloat btnW           = 56;
+    CGFloat btnH           = kHeight;
+    self.minusBtn.frame    = CGRectMake(0, 0, btnW, btnH + 10);
+    [self.minusBtn setBackgroundColor:[UIColor redColor]];
     self.minusBtn.centerY  = kHeight/2.0;
-    self.goodNumtf.frame   = CGRectMake(self.minusBtn.right, 11.5,kWidth-2*tempBtnW, kHeight);
+    self.goodNumtf.frame   = CGRectMake(self.minusBtn.right, 11.5,self.width-2*btnW, kHeight + 10);
     self.goodNumtf.centerY = kHeight/2.0;
     self.addBtn.frame      = CGRectMake(self.goodNumtf.right,0, btnW,kHeight + 10);
     self.addBtn.centerY    = kHeight/2.0;

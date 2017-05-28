@@ -73,7 +73,7 @@
     BOOL isNormal = !(vm.product.isOutOfStock |
                       vm.product.isOffTheShelf |
                       vm.product.isOutDelivered);
-    if (setionData.isEdit) {
+    if (setionData.editType == ShopcartEditTypeAll) {
         isNormal  = YES;
     }
     return isNormal;

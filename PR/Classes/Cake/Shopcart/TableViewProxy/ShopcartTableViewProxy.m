@@ -9,7 +9,6 @@
 #import "ShopcartTableViewProxy.h"
 #import "CartSectionData.h"
 #import "CartSellerHeaderView.h"
-#import "CartSellerFooterView.h"
 #import "CartSeparateModel.h"
 #import "CartSeparateCell.h"
 #import "ActionHandler.h"
@@ -44,11 +43,7 @@
     }
     CartSectionData *setionData = [self.cartDataSoure sellerProductAtSection:section];
     if ([setionData isKindOfClass:[CartSectionData class]]) {
-        [headerView updateWithSellerInfoModel:setionData.sellerProductModel.sellerInfo
-                                       isEdit:setionData.isEdit
-                               CartDataHandle:setionData.dataHandle
-                                      section:section
-                                        freightPromotionMsg:setionData.sellerProductModel.infoModel.freightPromotionMsg];
+        [headerView updateWithSellerInfoModel:setionData.sellerProductModel.sellerInfo editType:setionData.editType CartDataHandle:setionData.dataHandle section:section freightPromotionMsg:nil];
         __weak typeof(self)weakSelf = self;
         headerView.shopcartSelectSellerAllProductBlock = ^(BOOL isSelected,NSInteger section){
             if (weakSelf.shopcartProxySellerSelectBlock) {
@@ -56,9 +51,9 @@
             }
         };
         
-        headerView.shopcartEditSellerBlock  = ^(BOOL isEdit,NSInteger section){
+        headerView.shopcartEditSellerBlock  = ^(ShopcartEditType editType,NSInteger section){
             if (weakSelf.shopcartProxySellerEditBlock) {
-                weakSelf.shopcartProxySellerEditBlock(isEdit, section);
+                weakSelf.shopcartProxySellerEditBlock(editType, section);
             }
         };
         return headerView;
@@ -162,7 +157,7 @@
         }
     }else if ([vM isKindOfClass:[CartSeparateModel class]]){
         CartSeparateCell *cell = [CartSeparateCell cellWithTableView:tableView];
-        [cell updateWithSellerInfoModel:vM isEdit:setionData.isEdit CartDataHandle:setionData.dataHandle];
+        [cell updateWithSellerInfoModel:vM editType:setionData.editType CartDataHandle:setionData.dataHandle];
         return cell;
     }
     return nil;

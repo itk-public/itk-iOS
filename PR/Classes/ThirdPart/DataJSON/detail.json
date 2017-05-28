@@ -10,12 +10,12 @@
             "title": "永辉会员店-梅川路店"
         },
         "id": "1500517040197738",
-        "ispickself": 1,
-        "pickself": { //自提信息
+        "pickSelf": 1,
+        "shop": { //自提信息
             "shopaddr": "上海市徐汇区田林路200号B楼104室",
-            "shopname": "田林路店",
+            "shopName": "田林路店",
             "shoptel": "4008005050",
-            "storeid": "9D13"
+            "shopId": "9D13"
         },
         "pricedetail": [{
                         "prompt": "运费",

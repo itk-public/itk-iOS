@@ -52,10 +52,9 @@ NSString * kToCommitSelleridKey   = @"toCommitSellerid";
     CartOrderCellViewModel *pModel = [self orderCellViewModelAtIndexPath:indexPath];
     CartSectionData *sellerData    = [self sellerDataAtIndex:indexPath.section];
     if (pModel == nil)  return;
-    if (pModel.isEdit) { //编辑状态下(删除)
+    if (pModel.editType == ShopcartEditTypeAll) { //编辑状态下(删除)
         pModel.deletedState = isSelected;
-        pModel.isEdit       = YES;
-        [sellerData.dataHandle upDateModel:pModel isEdit:YES seletedState:isSelected];
+        [sellerData.dataHandle upDateModel:pModel editType:ShopcartEditTypeAll seletedState:isSelected];
         [sellerData.dataHandle adjustFinalCellBottomLineView];
         if(self.reloadTableViewBlock){
             self.reloadTableViewBlock();
@@ -87,7 +86,7 @@ NSString * kToCommitSelleridKey   = @"toCommitSellerid";
 {
     CartSectionData *sellerData = [self sellerDataAtIndex:section];
     NSInteger countOfOutStock  = [sellerData.dataHandle countOfOutOfStockArr];
-    if (countOfOutStock &&isSelected &&!sellerData.isEdit) { //全选、有库存不足时给提示
+    if (countOfOutStock &&isSelected &&sellerData.editType != ShopcartEditTypeAll) { //全选、有库存不足时给提示
         [PRShowToastUtil showNotice:[NSString stringWithFormat:@"购物车中%zd种商品库存不足\n请根据库存提示修改",countOfOutStock]];
     }
     [sellerData.dataHandle emptyDeleteProducts];
@@ -96,11 +95,11 @@ NSString * kToCommitSelleridKey   = @"toCommitSellerid";
             BOOL isNormal = [self.adjustHandler modelIsNormal:vm section:section dataSource:self.dataSource];
             BOOL seletedState = isNormal?isSelected:NO;
             [sellerData.dataHandle upDateModel:vm
-                             isEdit:sellerData.isEdit
+                             editType:sellerData.editType
                        seletedState:seletedState];
             [self.dataBaseHandler updateProductWithProductId:vm.product.cid
                                                          num:vm.product.num
-                                                  isSelected:vm.isEdit?vm.product.isSelected:seletedState
+                                                  isSelected:vm.editType == ShopcartEditTypeAll?vm.product.isSelected:seletedState
                                                       shopId:vm.product.shopid
                                                    extraInfo:nil];
         }
@@ -123,9 +122,9 @@ NSString * kToCommitSelleridKey   = @"toCommitSellerid";
     }
     CartOrderCellViewModel *vM  = [self orderCellViewModelAtIndexPath:indexPath];
     CartSectionData *sellerData = [self sellerDataAtIndex:indexPath.section];
-    if(vM.isEdit){
+    if(vM.editType == ShopcartEditTypeAll){
         vM.deletedState         = YES;
-        [sellerData.dataHandle upDateModel:vM isEdit:YES seletedState:YES];
+        [sellerData.dataHandle upDateModel:vM editType:ShopcartEditTypeAll seletedState:YES];
     }else{
         vM.deletedState         = NO;
     }
@@ -159,11 +158,11 @@ NSString * kToCommitSelleridKey   = @"toCommitSellerid";
 }
 
 //点击编辑
-- (void)editSellerAtSection:(NSInteger)section isEdit:(BOOL)isEdit
+- (void)editSellerAtSection:(NSInteger)section editType:(ShopcartEditType)editType;
 {
     CartSectionData *sellerData = [self sellerDataAtIndex:section];
-    sellerData.isEdit = !sellerData.isEdit;
-    [sellerData.dataHandle upDateAllProductEditState:sellerData.isEdit];
+    sellerData.editType = editType;
+    [sellerData.dataHandle upDateAllProductEditType:sellerData.editType];
     if(self.reloadTableViewBlock){
         self.reloadTableViewBlock();
     }
@@ -172,16 +171,41 @@ NSString * kToCommitSelleridKey   = @"toCommitSellerid";
 //    }
 }
 //结算
--(void)commitSellerProductAtSection:(NSInteger)section
+- (void)commitSelectdProducts
 {
-    if (![self.adjustHandler isSeletedProductWithSection:section dataSource:self.dataSource]) return;
-    if ([[UserManager shareMananger]isUserLogin]) {
-        [self generateOrderWithSection:section];
-    }else{
-        [[SceneMananger shareMananger]showLoginViewWithCallback:nil];
+    if (self.dataSource.editType == ShopcartEditTypeAll) { //去删除
+        for (NSInteger i = 0; i < [self.dataSource.sellerList.sellerArray count] ;i ++) {
+            CartSectionData *sellerData = [self sellerDataAtIndex:i];
+            if ([sellerData isKindOfClass:[CartSectionData class]]) {
+                [sellerData.dataHandle deleteAllSeletedProducts];
+                if(self.reloadTableViewBlock){
+                    self.reloadTableViewBlock();
+                }
+            }
+        }
+    }else{ //去结算
+        NSMutableArray *selectedProduct = [NSMutableArray array];
+        for (NSInteger i = 0; i < [self.dataSource.sellerList.sellerArray count] ;i ++) {
+            CartSectionData *sellerData = [self sellerDataAtIndex:i];
+            if ([sellerData isKindOfClass:[CartSectionData class]]) {
+                if ([[sellerData.dataHandle productSeleted] count]) {
+                    NSDictionary *dict = @{@"sellerId":sellerData.sellerid?:@"",@"products":[sellerData.dataHandle productSeleted]};
+                    PRLOG(@"=======购物车的shangp =%@",[sellerData.dataHandle productSeleted]);
+                    [selectedProduct addObject:dict];
+                }
+            }
+        }
     }
+   
 }
 
+//全选或非全选所有商家
+-(void)selectAllSeller:(BOOL)isSelected
+{
+    for (NSInteger i = 0; i < [self.dataSource.sellerList.sellerArray count]; i ++) {
+        [self selectSellerAtSection:i isSelected:isSelected];
+    }
+}
 //删除商家下的所有选中商品
 - (void)deleteSellerProductAtSection:(NSInteger)section
 {
@@ -199,6 +223,24 @@ NSString * kToCommitSelleridKey   = @"toCommitSellerid";
     [view show];
 }
 
+-(void)updateAllSellerEditType:(ShopcartEditType)editType
+{
+    for (NSInteger i = 0; i < [self.dataSource.sellerList.sellerArray count] ;i ++) {
+        CartSectionData *sellerData = [self sellerDataAtIndex:i];
+        if ([sellerData isKindOfClass:[CartSectionData class]]) {
+            sellerData.editType = editType;
+            [sellerData.dataHandle upDateAllProductEditType:sellerData.editType];
+            if(self.reloadTableViewBlock){
+                self.reloadTableViewBlock();
+            }
+            //    if(!sellerData.isEdit){
+            //        [self requestShopcartProductList];
+            //    }
+
+        }
+    }
+    
+}
 
 #pragma mark private method
 -(CartSectionData *)sellerDataAtIndex:(NSInteger)index
@@ -246,9 +288,9 @@ NSString * kToCommitSelleridKey   = @"toCommitSellerid";
         ProductOutline *model = vM.product;
         model.num = 0;
         [sellerData.dataHandle removeProduct:vM];
-        if(vM.isEdit){ //删除状态下
+        if(vM.editType == ShopcartEditTypeAll){ //删除状态下
             vM.deletedState  = NO;
-            [sellerData.dataHandle upDateModel:vM isEdit:YES seletedState:NO];
+            [sellerData.dataHandle upDateModel:vM editType:ShopcartEditTypeAll seletedState:NO];
         }
         [sellerData.dataHandle adjustFinalCellBottomLineView];
         if(self.reloadTableViewBlock){

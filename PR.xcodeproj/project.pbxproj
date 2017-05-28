@@ -104,7 +104,6 @@
 		B40A968A1EBDA54100B4212A /* ShopcartFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = B40A94C81EBDA54000B4212A /* ShopcartFormat.m */; };
 		B40A968C1EBDA54100B4212A /* ShopcartTableViewProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = B40A94CE1EBDA54000B4212A /* ShopcartTableViewProxy.m */; };
 		B40A96911EBDA54100B4212A /* CartSeparateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B40A94DB1EBDA54000B4212A /* CartSeparateCell.m */; };
-		B40A96921EBDA54100B4212A /* CartSellerFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B40A94DE1EBDA54000B4212A /* CartSellerFooterView.m */; };
 		B40A96931EBDA54100B4212A /* CartSellerHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B40A94E01EBDA54000B4212A /* CartSellerHeaderView.m */; };
 		B40A96941EBDA54100B4212A /* CartTableViewDelegateAndDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B40A94E31EBDA54000B4212A /* CartTableViewDelegateAndDataSource.m */; };
 		B40A96951EBDA54100B4212A /* ShopcartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B40A94E61EBDA54000B4212A /* ShopcartViewController.m */; };
@@ -251,6 +250,9 @@
 		B44E769E1ECC8A2B00307BDE /* InPutView.m in Sources */ = {isa = PBXBuildFile; fileRef = B44E769D1ECC8A2B00307BDE /* InPutView.m */; };
 		B44E76A11ECC8D5C00307BDE /* SelectBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = B44E76A01ECC8D5C00307BDE /* SelectBtnView.m */; };
 		B44E76A41ECC96D500307BDE /* DetailAddressView.m in Sources */ = {isa = PBXBuildFile; fileRef = B44E76A31ECC96D500307BDE /* DetailAddressView.m */; };
+		B460B9AB1EDA8956006ECEC6 /* orderPlace.json in Resources */ = {isa = PBXBuildFile; fileRef = B460B9AA1EDA8956006ECEC6 /* orderPlace.json */; };
+		B460B9AD1EDA97B2006ECEC6 /* orderCommit.json in Resources */ = {isa = PBXBuildFile; fileRef = B460B9AC1EDA97B2006ECEC6 /* orderCommit.json */; };
+		B460B9B11EDABE89006ECEC6 /* ShopCartTableFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B460B9B01EDABE89006ECEC6 /* ShopCartTableFooterView.m */; };
 		B4925C3F1E5F0AF700E84762 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B4925C2D1E5F0AF700E84762 /* AFHTTPRequestOperation.m */; };
 		B4925C401E5F0AF700E84762 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B4925C2F1E5F0AF700E84762 /* AFHTTPRequestOperationManager.m */; };
 		B4925C411E5F0AF700E84762 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B4925C311E5F0AF700E84762 /* AFHTTPSessionManager.m */; };
@@ -282,6 +284,7 @@
 		B4B8F8751EC838B3006C8EAB /* place.json in Resources */ = {isa = PBXBuildFile; fileRef = B4B8F86E1EC838B3006C8EAB /* place.json */; };
 		B4B8F8761EC838B3006C8EAB /* status.json in Resources */ = {isa = PBXBuildFile; fileRef = B4B8F86F1EC838B3006C8EAB /* status.json */; };
 		B4B8F8781EC838C8006C8EAB /* phoneLogin.json in Resources */ = {isa = PBXBuildFile; fileRef = B4B8F8771EC838C8006C8EAB /* phoneLogin.json */; };
+		B4DDA2A71EDB1DA9002329AF /* ShopCartTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B4DDA2A61EDB1DA9002329AF /* ShopCartTableHeaderView.m */; };
 		B4F2AEC01E63D15900468E01 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = B4F2AEB51E63D15900468E01 /* FMDatabase.m */; };
 		B4F2AEC11E63D15900468E01 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B4F2AEB71E63D15900468E01 /* FMDatabaseAdditions.m */; };
 		B4F2AEC21E63D15900468E01 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = B4F2AEB91E63D15900468E01 /* FMDatabasePool.m */; };
@@ -527,8 +530,6 @@
 		B40A94CE1EBDA54000B4212A /* ShopcartTableViewProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopcartTableViewProxy.m; sourceTree = "<group>"; };
 		B40A94DA1EBDA54000B4212A /* CartSeparateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartSeparateCell.h; sourceTree = "<group>"; };
 		B40A94DB1EBDA54000B4212A /* CartSeparateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartSeparateCell.m; sourceTree = "<group>"; };
-		B40A94DD1EBDA54000B4212A /* CartSellerFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartSellerFooterView.h; sourceTree = "<group>"; };
-		B40A94DE1EBDA54000B4212A /* CartSellerFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartSellerFooterView.m; sourceTree = "<group>"; };
 		B40A94DF1EBDA54000B4212A /* CartSellerHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartSellerHeaderView.h; sourceTree = "<group>"; };
 		B40A94E01EBDA54000B4212A /* CartSellerHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartSellerHeaderView.m; sourceTree = "<group>"; };
 		B40A94E21EBDA54000B4212A /* CartTableViewDelegateAndDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartTableViewDelegateAndDataSource.h; sourceTree = "<group>"; };
@@ -840,6 +841,10 @@
 		B44E76A01ECC8D5C00307BDE /* SelectBtnView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectBtnView.m; sourceTree = "<group>"; };
 		B44E76A21ECC96D500307BDE /* DetailAddressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailAddressView.h; sourceTree = "<group>"; };
 		B44E76A31ECC96D500307BDE /* DetailAddressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailAddressView.m; sourceTree = "<group>"; };
+		B460B9AA1EDA8956006ECEC6 /* orderPlace.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = orderPlace.json; sourceTree = "<group>"; };
+		B460B9AC1EDA97B2006ECEC6 /* orderCommit.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = orderCommit.json; sourceTree = "<group>"; };
+		B460B9AF1EDABE89006ECEC6 /* ShopCartTableFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopCartTableFooterView.h; sourceTree = "<group>"; };
+		B460B9B01EDABE89006ECEC6 /* ShopCartTableFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopCartTableFooterView.m; sourceTree = "<group>"; };
 		B4925C2C1E5F0AF700E84762 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		B4925C2D1E5F0AF700E84762 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		B4925C2E1E5F0AF700E84762 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -898,6 +903,8 @@
 		B4B8F86E1EC838B3006C8EAB /* place.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = place.json; sourceTree = "<group>"; };
 		B4B8F86F1EC838B3006C8EAB /* status.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = status.json; sourceTree = "<group>"; };
 		B4B8F8771EC838C8006C8EAB /* phoneLogin.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = phoneLogin.json; sourceTree = "<group>"; };
+		B4DDA2A51EDB1DA9002329AF /* ShopCartTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopCartTableHeaderView.h; sourceTree = "<group>"; };
+		B4DDA2A61EDB1DA9002329AF /* ShopCartTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopCartTableHeaderView.m; sourceTree = "<group>"; };
 		B4F2AEB41E63D15900468E01 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		B4F2AEB51E63D15900468E01 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		B4F2AEB61E63D15900468E01 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -1726,6 +1733,7 @@
 		B40A94CF1EBDA54000B4212A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B460B9AE1EDABE6A006ECEC6 /* TableFooterView */,
 				B40A94D71EBDA54000B4212A /* CartCell */,
 				B40A94DC1EBDA54000B4212A /* SectionView */,
 				B40A94E11EBDA54000B4212A /* TableViewDelegate */,
@@ -1747,8 +1755,6 @@
 		B40A94DC1EBDA54000B4212A /* SectionView */ = {
 			isa = PBXGroup;
 			children = (
-				B40A94DD1EBDA54000B4212A /* CartSellerFooterView.h */,
-				B40A94DE1EBDA54000B4212A /* CartSellerFooterView.m */,
 				B40A94DF1EBDA54000B4212A /* CartSellerHeaderView.h */,
 				B40A94E01EBDA54000B4212A /* CartSellerHeaderView.m */,
 			);
@@ -2767,6 +2773,17 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
+		B460B9AE1EDABE6A006ECEC6 /* TableFooterView */ = {
+			isa = PBXGroup;
+			children = (
+				B460B9AF1EDABE89006ECEC6 /* ShopCartTableFooterView.h */,
+				B460B9B01EDABE89006ECEC6 /* ShopCartTableFooterView.m */,
+				B4DDA2A51EDB1DA9002329AF /* ShopCartTableHeaderView.h */,
+				B4DDA2A61EDB1DA9002329AF /* ShopCartTableHeaderView.m */,
+			);
+			path = TableFooterView;
+			sourceTree = "<group>";
+		};
 		B4A059671EBDA81D004DD7B7 /* ITKFont */ = {
 			isa = PBXGroup;
 			children = (
@@ -2930,6 +2947,8 @@
 				B4B8F8771EC838C8006C8EAB /* phoneLogin.json */,
 				B408A0831EC8475E00695466 /* getSecurityCode.json */,
 				B4136F261ECB346200322436 /* deliveryAddressList.json */,
+				B460B9AA1EDA8956006ECEC6 /* orderPlace.json */,
+				B460B9AC1EDA97B2006ECEC6 /* orderCommit.json */,
 			);
 			path = DataJSON;
 			sourceTree = "<group>";
@@ -3160,7 +3179,9 @@
 				B4F2B0071E63D54300468E01 /* MJRefresh.bundle in Resources */,
 				B4A712181E1FD38700368849 /* Assets.xcassets in Resources */,
 				B4B8F8781EC838C8006C8EAB /* phoneLogin.json in Resources */,
+				B460B9AB1EDA8956006ECEC6 /* orderPlace.json in Resources */,
 				B40A96991EBDA54100B4212A /* UserInfoItem.plist in Resources */,
+				B460B9AD1EDA97B2006ECEC6 /* orderCommit.json in Resources */,
 				B40A96E21EBDA54100B4212A /* ViewMap.plist in Resources */,
 				B4B8F8731EC838B3006C8EAB /* info.json in Resources */,
 				B408A0841EC8475E00695466 /* getSecurityCode.json in Resources */,
@@ -3304,8 +3325,8 @@
 				B4136F2D1ECB36B500322436 /* AddressModel.m in Sources */,
 				B4B8F8641EC82EE3006C8EAB /* UserDetailInfo.m in Sources */,
 				B40A96CD1EBDA54100B4212A /* NHPSNUnsloved.m in Sources */,
-				B40A96921EBDA54100B4212A /* CartSellerFooterView.m in Sources */,
 				B40A963C1EBDA54100B4212A /* TableViewHeaderView.m in Sources */,
+				B460B9B11EDABE89006ECEC6 /* ShopCartTableFooterView.m in Sources */,
 				B40A96291EBDA54100B4212A /* WTTableViewAdaptor.m in Sources */,
 				B40A96CB1EBDA54100B4212A /* NHPSNToPage.m in Sources */,
 				B40A963A1EBDA54100B4212A /* ChooseCouponCell.m in Sources */,
@@ -3362,6 +3383,7 @@
 				B40A96931EBDA54100B4212A /* CartSellerHeaderView.m in Sources */,
 				B408A07F1EC8421800695466 /* SecurityCodeAPIInteract.m in Sources */,
 				B40A96C91EBDA54100B4212A /* NHPSNLEGO.m in Sources */,
+				B4DDA2A71EDB1DA9002329AF /* ShopCartTableHeaderView.m in Sources */,
 				B4B8F84B1EC820FC006C8EAB /* LoginBaseViewController.m in Sources */,
 				B40A96DA1EBDA54100B4212A /* NSObject+Category.m in Sources */,
 				B40A96B01EBDA54100B4212A /* DebugManager.m in Sources */,

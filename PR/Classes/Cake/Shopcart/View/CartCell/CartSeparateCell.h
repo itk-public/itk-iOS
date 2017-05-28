@@ -22,7 +22,7 @@
 
 +(instancetype)cellWithTableView:(UITableView *)tableView;
 -(void)updateWithSellerInfoModel:(CartSeparateModel *)model
-                          isEdit:(BOOL)isEdit
+                          editType:(ShopcartEditType)editType
                   CartDataHandle:(CartDataHandle *)dataHandle;
 +(CGFloat)getHeight;
 

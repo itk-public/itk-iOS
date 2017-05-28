@@ -32,7 +32,7 @@
 @implementation CartDataHandle
 
 #pragma mark 赋值方法
--(void)setSellerProduct:(ShopCartSellerProductModel *)sellerProduct isEdit:(BOOL)isEdit{
+-(void)setSellerProduct:(ShopCartSellerProductModel *)sellerProduct editType:(ShopcartEditType)editType{
     CONDITION_CHECK_RETURN([sellerProduct isKindOfClass:[ShopCartSellerProductModel  class]]);
     _seller  = sellerProduct;
     [self.sortedProducts removeAllObjects];
@@ -40,7 +40,7 @@
     // 将数据中库存不足、下架的情况筛选出来类型排序
     NSArray *temp = sellerProduct.productArr;
     for(CartOrderCellViewModel *viewModel in temp){
-        if ([temp isKindOfClass:[CartOrderCellViewModel class]] &&
+        if ([viewModel isKindOfClass:[CartOrderCellViewModel class]] &&
             (viewModel.product.isOutOfStock ||
              viewModel.product.isOffTheShelf ||
              viewModel.product.isOutDelivered)){
@@ -53,7 +53,7 @@
         }
     }
     [self.sortedProducts safeAddObjectsFromArray:self.cartViewData.dataArray];
-    [self upDateDataArrayBaseOnDelectedArray:isEdit];
+    [self upDateDataArrayBaseOnDelectedArray:editType];
     [self adjustFinalCellBottomLineView];
 }
 
@@ -250,22 +250,22 @@
 }
 
 //更新所有商品的编辑状态
--(BOOL)upDateAllProductEditState:(BOOL)isEdit
+-(BOOL)upDateAllProductEditType:(ShopcartEditType)editType
 {
     [self emptyDeleteProducts];
     for (CartOrderCellViewModel *vM  in self.sortedProducts) {
         if ([vM isKindOfClass:[CartOrderCellViewModel class]]) {
-            vM.isEdit                  = isEdit;
+            vM.editType                = editType;
             vM.deletedState            = NO;
         }
     }
     return YES;
 }
 //更新商品的编辑状态和是否删除状态
--(BOOL)upDateModel:(CartOrderCellViewModel *)vm isEdit:(BOOL)isEdit seletedState:(BOOL)seletedState
+-(BOOL)upDateModel:(CartOrderCellViewModel *)vm editType:(ShopcartEditType)editType seletedState:(BOOL)seletedState
 {
-    vm.isEdit  = isEdit;
-    if (isEdit) { //编辑状态下
+    vm.editType         = editType;
+    if (editType ==  ShopcartEditTypeAll) { //编辑状态下
         vm.deletedState = seletedState;
         if (seletedState) {
             [self  deleteProductsAddItem:vm];
@@ -279,13 +279,13 @@
 }
 
 // 根据self.seletedToDeletedArr的值，修改vm的中的isSelectedToDeleted的值
--(void)upDateDataArrayBaseOnDelectedArray:(BOOL)isEdit
+-(void)upDateDataArrayBaseOnDelectedArray:(ShopcartEditType)editType
 {
-    if(!isEdit) return;
+    if(!(editType == ShopcartEditTypeAll)) return;
     CONDITION_CHECK_RETURN([self.sortedProducts count]);
     for (CartOrderCellViewModel *vM in self.sortedProducts) {
         if ([vM isKindOfClass:[CartOrderCellViewModel class]]) {
-            vM.isEdit                  = isEdit;
+            vM.editType                 = editType;
             for (CartOrderCellViewModel *deleteVm in self.deleteProducts ) {
                 if ([deleteVm isKindOfClass:[CartOrderCellViewModel class]] && [deleteVm.product.cid isEqualToString:vM.product.cid]) {
                      vM.deletedState = YES;

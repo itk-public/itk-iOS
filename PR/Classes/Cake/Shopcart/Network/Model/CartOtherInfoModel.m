@@ -12,7 +12,7 @@
 -(instancetype)initWithDict:(NSDictionary *)dict;
 {
     if (self = [super init]) {
-        _storeid                                 = [dict safeObjectForKey:@"storeid" hintClass:[NSString class]];
+        _storeid                                 = [dict safeObjectForKey:@"id" hintClass:[NSString class]];
 
         _amountPrice                             = [NSString stringWithFormat:@"%.2f",([[dict safeObjectForKey:@"priceTotal" hintClass:[NSNumber class]] doubleValue])/100];
         NSInteger priceTotal = [[dict safeObjectForKey:@"priceTotal" hintClass:[NSNumber class]] integerValue]/100;

@@ -9,8 +9,8 @@
 #import "UserDetailInfo.h"
 #import "FileManager.h"
 
-NSString *keyOfUid       = @"uid";
-NSString *keyOfUserToken = @"accesstoken";
+NSString *keyOfUid       = @"uId";
+NSString *keyOfUserToken = @"accessToken";
 NSString *keyOfVersion   = @"infoVersion";
 
 #define UserSaveFileName  @"uif.data"

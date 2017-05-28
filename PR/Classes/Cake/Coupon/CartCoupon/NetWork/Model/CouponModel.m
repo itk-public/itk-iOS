@@ -14,8 +14,8 @@
     if (self = [super initWithDictionary:dic]) {
         _amount    = [[dic safeObjectForKey:@"amount"]integerValue]/100;
         _cid       = [dic safeObjectForKey:@"id"];
-        _startDate = [dic safeObjectForKey:@"startdate"];
-        _endDate   = [dic safeObjectForKey:@"enddata"];
+        _startDate = [dic safeObjectForKey:@"startDate"];
+        _endDate   = [dic safeObjectForKey:@"endDate"];
         _desc      = [dic safeObjectForKey:@"desc"];
     }
     return self;

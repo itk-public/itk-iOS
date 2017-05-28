@@ -1,0 +1,30 @@
+//请求参数
+
+{
+    "addressId": "xxxx",
+    "shopId":"xxxx",
+    "expectTime": {
+        "date": 1495987200000,
+        "timeSlots": [{
+                      "to": "20:00",
+                      "from": "09:00"
+                      }]
+    },
+    "seller": [{
+               "sellerId": "1",
+               "products": [{
+                            "id": "M-919787",
+                            "num": 100
+                            }],
+               "couponId":"xxxxx"
+               }, {
+               "sellerId": "2",
+               "products": [{
+                            "id": "839394",
+                            "num": 100
+                            }],
+               "couponId":"xxxxx",
+               }],
+    "platformCouponId":"xxxx",
+    "deliveryType":"xxxx",       //配送方式
+}

@@ -14,6 +14,6 @@
 @property (strong,nonatomic)  CartSellerListModel *sellerList;
 
 -(CartSectionData *)sellerProductAtSection:(NSInteger)section;
--(void)setUnEidt;
+@property (assign,nonatomic)  ShopcartEditType editType;
 
 @end

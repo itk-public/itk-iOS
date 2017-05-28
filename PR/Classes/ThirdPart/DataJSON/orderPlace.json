@@ -1,0 +1,128 @@
+
+//请求参数
+{
+    "pickSelf": 0,
+    "addressId":"33",
+    "shopId": "xxx",
+    "withPlatformCoupon": "xxxxxx",  //是不是有平台优惠券可以用 bool
+    "deliveryType":"xxxx",       //配送方式
+    "seller": [{
+               "sellerId": "1",
+               "products": [{
+                            "id": "M-919787",
+                            "num": 100
+                            }, {
+                            "id": "M-839346",
+                            "num": 100000
+                            }],
+               "withCoupon":"xxxxxx", //是不是有优惠券可以用 bool
+               }, {
+               "sellerId": "2",
+               "products": [{
+                            "id": "839394",
+                            "num": 100
+                            }, {
+                            "id": "724065",
+                            "num": 400
+                            }, {
+                            "id": "3919",
+                            "num": 400
+                            }, {
+                            "id": "844746",
+                            "num": 400
+                            }],
+               "withCoupon":"xxxxxx", //是不是有优惠券可以用 bool
+               }],
+}
+
+
+//返回数据
+
+{
+    "code": 0,
+    "data": {
+        "appointments": [
+                         {
+                         "dates": [
+                                   1495987200000
+                                   ],
+                         "times": [
+                                   {
+                                   "fromHour": 9,
+                                   "fromMinute": 0,
+                                   "immediateDescription": "",
+                                   "interval": 660,
+                                   "isimmediateSupport": 0,
+                                   "toHour": 20,
+                                   "toMinute": 0
+                                   }
+                                   ]
+                         }
+                         ],
+        "recvInfo": {
+            "address": {
+                "cityId": 1,
+                "areaId": 1,
+                "townId": 22,
+                "town": "四十八镇",
+                "area": "开放科技发展有限公司",
+                "city": "上海",
+                "detail": "田林路192号华鑫技园J座8层801田林路192号华鑫技园J座8层801田林路192号华鑫技园J座8层801"
+            },
+            "shop": {
+                "action": "myyh://yhlife.com/show/native?name=merhome&merid=2",
+                "cityName": "上海",
+                "icon": "http://image.yonghuivip.com/hydlogo.png",
+                "id": "8",
+                "shopName": "永辉会员店",
+                "title": "超市"
+            }
+            "id": "27141",
+            "name": "eeee",
+            "phone": "15051447570"
+        },
+        "platformCoupon": "xxxxxx",
+        "deliveryType": [
+                         {
+                         "id": "xxx",
+                         "title": "itk快递"
+                         }
+                         ],
+        "sellerList": [
+                       {
+                       "seller": {
+                       "action": "myyh://yhlife.com/show/native?name=merhome&merid=1",
+                       "icon": "https://image.yonghuivip.com/20170526/%E6%AC%A1%E6%97%A5%E8%BE%BE@3x.png",
+                       "id": "1",
+                       "title": "次日达商城-金钟路店"
+                       },
+                       "priceTotal": "xxxxxx",
+                       "coupon": {
+                       "id": "xxxx",
+                       "title": "xxx"
+                       },
+                       "products": [
+                                    {
+                                    "id": "M-919787",
+                                    "imgurl": "xxxxx",
+                                    "num": 100,
+                                    "price": {
+                                    "market": 4900,
+                                    "total": 4900,
+                                    "value": 4900
+                                    },
+                                    "sellerId": "1",
+                                    "spec": {
+                                    "desc": "130g*4"
+                                    },
+                                    "subtitle": "四喜良粽-尝鲜装(130g*4)",
+                                    "title": "四喜良粽-尝鲜装(130g*4)"
+                                    }
+                                    ],
+                       "totalPayment": "0"
+                       }
+                       ]
+    },
+    "message": "xxxxx",
+    "now": 1495945996581
+}

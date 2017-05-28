@@ -37,7 +37,7 @@ IMP_SINGLETON
 -(void)saveUserInfo:(NSDictionary *)dict;
 {
     NSString *uid = [dict safeObjectForKey:@"uid"];
-    NSString *uToken = [dict safeObjectForKey:@"accesstoken"];
+    NSString *uToken = [dict safeObjectForKey:@"accessToken"];
     self.loginUserData.userId = uid;
     self.loginUserData.userToken = uToken;
     [self.loginUserData saveToLocal];

@@ -7,9 +7,7 @@
 //
 
 #import "YHDataModel.h"
-#import "ShopCartSellerProductModel.h"
 
 @interface CartSellerListModel : YHDataModel
 @property (readonly,nonatomic) NSArray *sellerArray;
-
 @end

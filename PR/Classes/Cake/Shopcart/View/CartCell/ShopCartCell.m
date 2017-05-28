@@ -53,9 +53,14 @@
     CGFloat deleteBtnW       = 60*DDDisplayScale;
     self.deleteBtn.frame     = CGRectMake(self.width - deleteBtnW, 0, deleteBtnW, self.height);
     CGFloat leftMargin       = 0;
-    CGFloat numControllerW   = kWidth;
+    
+    CGFloat numControllerW   = self.deleteBtn.hidden?(self.width - 15):177*DDDisplayScale;
     self.numController.frame = CGRectMake(leftMargin, 10, numControllerW, kHeight);
-    self.numController.right = self.deleteBtn.left - 10;
+    if (self.deleteBtn.hidden) {
+        self.numController.right = self.width - 10;
+    }else{
+         self.numController.right = self.deleteBtn.left - 10;
+    }
     self.priceLabel.frame    = CGRectMake(leftMargin, 0, numControllerW, 21);
     self.priceLabel.bottom   = self.height - 10;
 }
@@ -66,6 +71,7 @@
     self.priceLabel.text = product.product.priceInfo.marketPrice?:@"";
     [self.numController setTempModel:product];
     [self.numController updateQuantityViewCount:product.product.num];
+    self.deleteBtn.hidden = product.editType == ShopcartEditTypeAll?YES:NO;
 }
 @end
 
@@ -218,15 +224,15 @@
     CONDITION_CHECK_RETURN([vM isKindOfClass:[CartOrderCellViewModel class]]);
     _vM = vM;
     CartOrderCellViewModel *info = vM;
-    if (vM.isEdit) {
+    if (vM.editType == ShopcartEditTypeAll) {
         self.seletedBtn.selected = vM.deletedState;
     }else{
          self.seletedBtn.selected  = vM.product.isSelected;
     }
     [self.detailView setProduct:info];
     [self.editingView setProduct:info];
-    self.detailView.hidden  = info.isEdit;
-    self.editingView.hidden = !info.isEdit;
+    self.detailView.hidden  = vM.editType != ShopcartEditTypeNone;
+    self.editingView.hidden = !self.detailView.hidden;
     [self.goodImageView setImgInfo:vM.product.imageInfo withPlaceholderImage:[UIImage imageNamed:@"icon_default"]];
 }
 
@@ -242,7 +248,8 @@
 -(void)seletedBtnOnClicked:(UIButton *)sender
 {
     if (self.shopcartCellBlock) {
-        if (!(self.vM.product.isOutOfStock && !self.vM.isEdit)) {
+        if (!(self.vM.product.isOutOfStock && self.vM.editType != ShopcartEditTypeAll
+              )) {
             sender.selected = !sender.isSelected;
         }
         self.shopcartCellBlock(sender.isSelected);

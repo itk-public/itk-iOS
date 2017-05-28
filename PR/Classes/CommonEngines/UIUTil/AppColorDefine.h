@@ -40,7 +40,7 @@ alpha:0.5]
 #define kColorPrice                     UIColorFromRGB(0xff4600)
 #define kColorCSX                       UIColorFromRGB(0X0e8b2f)
 
-#define kVCViewBGColor                  UIColorFromRGB(0xf3f4f6)
+#define kVCViewBGColor                  UIColorFromRGB(0xf1f6f9)
 #define kColorEmptyTitle                UIColorFromRGB(0x929394)
 #define kColorGray                      UIColorFromRGB(0x959595)
 

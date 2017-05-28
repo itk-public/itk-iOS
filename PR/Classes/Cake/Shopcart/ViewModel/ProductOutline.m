@@ -31,19 +31,19 @@
         }
         _isOffTheShelf = [[dic safeObjectForKey:@"vailable" hintClass:[NSNumber class]]boolValue];
         _cid        = [dic safeObjectForKey:@"id" hintClass:[NSString class]];
-        NSString *imageurl = [dic safeObjectForKey:@"imgurl" hintClass:[NSString class]];
+        NSString *imageurl = [dic safeObjectForKey:@"imgUrl" hintClass:[NSString class]];
         if ([imageurl length]) {
             _imageInfo = [[ImageInfo alloc]initWithImageURL:imageurl];
         }
-        NSInteger isdelivery = [[dic safeObjectForKey:@"isdelivery"]integerValue];
+        NSInteger isdelivery = [[dic safeObjectForKey:@"isDelivery"]integerValue];
         _isOutDelivered = isdelivery == 0;
         _num = [[dic safeObjectForKey:@"num" hintClass:[NSNumber class]]integerValue]/100;
         _priceInfo = [PriceInfo modelFromDictionary:[dic safeObjectForKey:@"price"]];
-        _isSelected  = [[dic safeObjectForKey:@"selectstate"]boolValue];
-        _shopid    = [dic safeObjectForKey:@"shopid"];
+        _isSelected  = [[dic safeObjectForKey:@"selectState"]boolValue];
+        _shopid    = [dic safeObjectForKey:@"shopId"];
         _spec      = [dic safeObjectForKey:@"spec"];
-        _stocknum  = [[dic safeObjectForKey:@"stocknum"]integerValue]/100;
-        _subtitle  = [dic safeObjectForKey:@"subtitle"];
+        _stocknum  = [[dic safeObjectForKey:@"stockNum"]integerValue]/100;
+        _subtitle  = [dic safeObjectForKey:@"subTitle"];
         _title     = [dic safeObjectForKey:@"title"];
         
     }

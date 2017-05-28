@@ -17,7 +17,7 @@
     if (_dataHandle == nil) {
         _dataHandle = [[CartDataHandle alloc]init];
     }
-    [_dataHandle setSellerProduct:sellerProducts isEdit:self.isEdit];
+    [_dataHandle setSellerProduct:sellerProducts editType:self.editType];
     _sortedSellerProducts = [_dataHandle sortedSellerProducts];
 }
 

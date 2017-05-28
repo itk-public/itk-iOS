@@ -20,7 +20,13 @@ typedef NS_ENUM(NSInteger,ProductShelvesState)
 
 
 
-
+typedef NS_ENUM(NSInteger,ShopcartEditType)
+{
+    ShopcartEditTypeNone,       //非编辑模式
+    ShopcartEditTypeSeller,     //商家编辑模式
+    ShopcartEditTypeAll,        //全部编辑模式
+    
+};
 
 
 

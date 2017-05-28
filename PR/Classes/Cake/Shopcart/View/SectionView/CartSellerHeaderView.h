@@ -11,14 +11,14 @@
 #import "CartDataHandle.h"
 
 typedef void(^ShopcartSelectSellerAllProductBlock)(BOOL isSelected,NSInteger section);
-typedef void (^ShopcartEditSellerBlock)(BOOL isEdit,NSInteger section);
+typedef void (^ShopcartEditSellerBlock)(ShopcartEditType editType,NSInteger section);
 
 @interface CartSellerHeaderView : UITableViewHeaderFooterView
 @property (copy,nonatomic) ShopcartSelectSellerAllProductBlock shopcartSelectSellerAllProductBlock;
 @property (copy,nonatomic) ShopcartEditSellerBlock             shopcartEditSellerBlock;
 
 -(void)updateWithSellerInfoModel:(ShopDescInfo *)seller
-                          isEdit:(BOOL)isEdit
+                        editType:(ShopcartEditType)editType
                   CartDataHandle:(CartDataHandle *)dataHandle
                          section:(NSInteger)section
              freightPromotionMsg:(NSString *)freightPromotionMsg;

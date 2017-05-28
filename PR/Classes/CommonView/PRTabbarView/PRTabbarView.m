@@ -10,7 +10,7 @@
 
 #define WIDTH_TABBAR (APPLICATIONWIDTH/4)
 
-#define WIDTH_IMAGE         25.0f
+#define WIDTH_IMAGE         20.0f
 
 #define LITTE_SQUARE_WIDTH  10.5f
 

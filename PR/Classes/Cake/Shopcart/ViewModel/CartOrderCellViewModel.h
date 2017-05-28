@@ -15,7 +15,7 @@
 
 @property (strong,nonatomic) ProductOutline *product;
 @property (assign,nonatomic) BOOL deletedState;
-@property (assign,nonatomic) BOOL isEdit;
+@property (assign,nonatomic) ShopcartEditType editType;
 @property (assign,nonatomic) BOOL bottomLineHide;
 @property (nonatomic,assign)ProductShelvesState productsState;
 

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CartInfoDefine.h"
 
 FOUNDATION_EXTERN NSString * kToCommitStoridKey;
 FOUNDATION_EXTERN NSString * kToCommitSelleridKey;
@@ -45,13 +46,17 @@ typedef NS_ENUM(NSInteger,ShopcartFormatDataType)
 - (void)changeCountAtIndexPath:(NSIndexPath *)indexPath count:(NSInteger)count;
 //删除一个商品
 - (void)deleteProductAtIndexPath:(NSIndexPath *)indexPath;
-//点击编辑
-- (void)editSellerAtSection:(NSInteger)section isEdit:(BOOL)isEdit;
+//点击商家编辑
+- (void)editSellerAtSection:(NSInteger)section editType:(ShopcartEditType)editType;
 //删除商家下的所有选中商品
 - (void)deleteSellerProductAtSection:(NSInteger)section;
 //结算
-- (void)commitSellerProductAtSection:(NSInteger)section;
+- (void)commitSelectdProducts;
 //请求购物车的数据源
 - (void)requestShopcartProductList;
+//点击导航栏上的编辑按钮
+-(void)updateAllSellerEditType:(ShopcartEditType)editType;
+//全选或非全选所有商家
+-(void)selectAllSeller:(BOOL)isSelected;
 
 @end

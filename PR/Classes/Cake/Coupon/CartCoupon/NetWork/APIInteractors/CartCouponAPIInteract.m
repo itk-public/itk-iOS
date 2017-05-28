@@ -18,7 +18,7 @@
     
     BaseRequest *request = [BaseRequest requsetWithURL:
                             [IGURLManager urlWithPath:Cart_GetCoupons_URLPATH]
-                                             andParams:@{@"shopid":self.shopid?:@""}];
+                                             andParams:@{@"shopId":self.shopid?:@""}];
     request.needPublicInfo = YES;
     request.httpMethod     = kHttpMethodGet;
     return request;

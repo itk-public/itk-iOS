@@ -7,12 +7,12 @@
 //
 
 #import "ShopcartViewController.h"
-
 #import "ShopcartTableViewProxy.h"
 #import "ShopcartFormat.h"
-
 #import "PRLoadingAnimation.h"
 #import "PRMBWantedOffice.h"
+#import "ShopCartTableFooterView.h"
+#import "ShopCartTableHeaderView.h"
 
 @interface ShopcartViewController ()<ShopcartFormatDelegate,AsynDataLoadInterface>
 
@@ -24,6 +24,8 @@
 @property (strong,nonatomic ) CartTableViewDataSource     *cartDataSoure;
 @property (strong,nonatomic)  NSString                    *identifier;
 @property (assign,nonatomic)  CGFloat                      tableViewOffY;
+@property (strong,nonatomic) ShopCartTableFooterView      *footerView;
+@property (strong,nonatomic) ShopCartTableHeaderView      *headerView;
 
 @end
 
@@ -45,18 +47,18 @@
     [UIApplication sharedApplication].applicationSupportsShakeToEdit = YES;
     // 并让自己成为第一响应者
     [self becomeFirstResponder];
-    self.edgesForExtendedLayout = UIRectEdgeBottom;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyBoardHide)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
-    self.edgesForExtendedLayout = UIRectEdgeNone;
 }
+
 
 -(void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
-    self.shopcartTableView.frame = self.view.bounds;
+    self.shopcartTableView.height = self.view.height - [ShopCartTableFooterView height];
+    self.footerView.frame         = CGRectMake(0, self.shopcartTableView.bottom, self.view.width, [ShopCartTableFooterView height]);
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -68,6 +70,13 @@
         [self setWaittingStatus:YES];
     }
     [self requestShopcartListData];
+    self.headerView.height = [self.headerView height];
+    [self.headerView update];
+}
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
 }
 
 -(void)requestShopcartListData{
@@ -80,16 +89,36 @@
 {
     if(_shopcartTableView == nil){
         _shopcartTableView  = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
-        _shopcartTableView.autoresizingMask  =  UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
        _shopcartTableView.separatorStyle     = UITableViewCellSeparatorStyleNone;
         _shopcartTableView.delegate             = self.shopcartTableViewProxy;
         _shopcartTableView.dataSource           = self.shopcartTableViewProxy;
+        _shopcartTableView.showsVerticalScrollIndicator = NO;
         [_shopcartTableView setBackgroundColor:kVCViewBGColor];
+        
+        _headerView   = [[ShopCartTableHeaderView alloc]init];
+        _headerView.frame         = CGRectMake(0, 0, 0, [self.headerView height]);
+        [_shopcartTableView setTableHeaderView:_headerView];
         [self.view addSubview:_shopcartTableView];
+        [_headerView update];
     }
     return _shopcartTableView;
 }
 
+-(ShopCartTableFooterView *)footerView
+{
+    __weak typeof(self)weakSelf = self;
+    if (_footerView == nil) {
+        _footerView = [[ShopCartTableFooterView alloc]init];
+        _footerView.selectBtnBlock = ^(BOOL isSelected){
+            [weakSelf.shopcartFormat selectAllSeller:isSelected];
+        };
+        _footerView.commitBtnBlock = ^{
+            [weakSelf.shopcartFormat commitSelectdProducts];
+        };
+        [self.view addSubview:_footerView];
+    }
+    return _footerView;
+}
 -(ShopcartTableViewProxy *)shopcartTableViewProxy
 {
     if (_shopcartTableViewProxy == nil) {
@@ -112,14 +141,9 @@
             [weakSelf.shopcartFormat deleteProductAtIndexPath:indexPath];
         };
         
-        _shopcartTableViewProxy.shopcartProxySellerEditBlock = ^(BOOL isEdit,NSInteger section){
-            [weakSelf.shopcartFormat editSellerAtSection:section isEdit:isEdit];
+        _shopcartTableViewProxy.shopcartProxySellerEditBlock = ^(ShopcartEditType editType,NSInteger section){
+            [weakSelf.shopcartFormat editSellerAtSection:section editType:editType];
         };
-        
-        _shopcartTableViewProxy.shopcartProxyCommitSellerProductBlock = ^(NSInteger section){
-            [weakSelf.shopcartFormat commitSellerProductAtSection:section];
-        };
-        
         _shopcartTableViewProxy.shopcartProxyDeleteSellerProductBlock = ^(NSInteger section){
             [weakSelf.shopcartFormat deleteSellerProductAtSection:section];
         };
@@ -139,6 +163,7 @@
         _shopcartFormat.delegate = self;
         __weak typeof(self)weakSelf = self;
         _shopcartFormat.reloadTableViewBlock = ^{
+            [weakSelf.footerView updateWithCartTableViewDataSource:weakSelf.cartDataSoure];
             [weakSelf.shopcartTableView reloadData];
         };
     }
@@ -181,7 +206,7 @@
     if (refeshOption == DataRefreshOption_Enter ||
         refeshOption == DataRefreshOption_UserActive ||
         refeshOption == DataRefreshOption_AppToForeground) {
-        [self.cartDataSoure setUnEidt];
+//        [self.cartDataSoure setUnEidt];
     }
     [self requestShopcartListData];
 }
@@ -222,9 +247,13 @@
 }
 
 #pragma mark private method
--(void)rightBtnOnClicked
+-(void)rightBtnOnClicked:(UIButton *)sender
 {
-//    [PRMBWantedOffice nativeArrestWarrant:APPURL_VIEW_IDENTIFIER_QRCODE param:nil];
+    sender.selected = !sender.isSelected;
+    ShopcartEditType editType = sender.selected ?ShopcartEditTypeAll:ShopcartEditTypeNone;
+    [self.shopcartFormat updateAllSellerEditType:editType];
+    self.cartDataSoure.editType = editType;
+    [self.footerView updateWithCartTableViewDataSource:self.cartDataSoure];
 }
 
 -(void)addRightBtn
@@ -232,7 +261,11 @@
     UIButton *rightBtn                     = [UIButton buttonWithType:UIButtonTypeCustom];
     rightBtn.frame                         = CGRectMake(0, 0, 40, 40);
     [rightBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, -30)];
-    [rightBtn addTarget:self action:@selector(rightBtnOnClicked) forControlEvents:UIControlEventTouchUpInside];[rightBtn setImage:[UIImage imageNamed:@"icon_scan"] forState:UIControlStateNormal];
+    [rightBtn addTarget:self action:@selector(rightBtnOnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [rightBtn setTitle:@"编辑" forState:UIControlStateNormal];
+    [rightBtn setTitle:@"完成" forState:UIControlStateSelected];
+    [rightBtn setTitleColor:UIColorFromRGB(0x4c4c4c) forState:UIControlStateNormal];
+    [rightBtn.titleLabel setFont:KFontNormal(16)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:rightBtn];
 }
 
@@ -264,6 +297,7 @@
         self.cartDataSoure  = data;
         self.shopcartTableViewProxy.cartDataSoure = data;
         [self.shopcartTableView reloadData];
+       [self.footerView updateWithCartTableViewDataSource:self.cartDataSoure];
 //    }else if([data isKindOfClass:[OrderDetail class]]){
 //        CKConfirmOrderViewController * confirmVC = [[CKConfirmOrderViewController alloc] init];
 //        confirmVC.orderToCheck                   = data;

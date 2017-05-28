@@ -27,12 +27,7 @@
 {
     if (self = [super init]) {
         
-        NSDictionary *otherInfoDict = [NSDictionary dictionaryWithObjectsAndKeys:
-                                       [dict safeObjectForKey:@"priceTotal"],@"priceTotal",
-                                       [dict safeObjectForKey:@"storeid"],@"storeid",
-                                       nil];
-        
-        _infoModel                  = [CartOtherInfoModel cartOtherInfoModelWithDict:otherInfoDict];
+        _infoModel                  = [CartOtherInfoModel cartOtherInfoModelWithDict:dict];
         
         NSArray *productArr                = [dict objectForKey:@"products"];
         NSMutableArray *productArrM = [NSMutableArray array];

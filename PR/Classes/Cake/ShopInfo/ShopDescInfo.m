@@ -16,13 +16,13 @@
             _action = [Action actionWithString:actionStr];
         }
         
-        _cityname = [dic safeObjectForKey:@"cityname"];
+        _cityname = [dic safeObjectForKey:@"cityName"];
         NSString *iconStr = [dic safeObjectForKey:@"icon"];
         if ([iconStr length]) {
             _icon = [[ImageInfo alloc]initWithImageURL:iconStr];
         }
         _cid = [dic safeObjectForKey:@"id"];
-        _shopname = [dic safeObjectForKey:@"shopname"];
+        _shopname = [dic safeObjectForKey:@"shopName"];
         _title      = [dic safeObjectForKey:@"title"];
     }
     return self;

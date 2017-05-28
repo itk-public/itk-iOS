@@ -8,12 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "CartTableViewDataSource.h"
+#import "CartInfoDefine.h"
 
 typedef void (^ShopcartProxyProductSelectBlock)(BOOL isSelected,NSIndexPath *indexPath);
 typedef void (^ShopcartProxySellerSelectBlock)(BOOL isSelected,NSInteger section);
 typedef void (^ShopcartProxyChangeCountBlock)(NSInteger count,NSIndexPath *indexPath);
 typedef void (^ShopcartProxyDeleteBlock)(NSIndexPath *indexPath);
-typedef void (^ShopcartProxySellerEditBlock)(BOOL isEdit,NSInteger section);
+typedef void (^ShopcartProxySellerEditBlock)(ShopcartEditType editType,NSInteger section);
 typedef void (^ShopcartProxyDeleteSellerProductBlock)(NSInteger section);
 typedef void (^ShopcartProxyCommitSellerProductBlock)(NSInteger section);
 typedef void (^ShopcartProxyProductBeginEditBlock)(UITextField *textfiled);

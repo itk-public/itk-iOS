@@ -13,11 +13,10 @@
 
 @interface CartDataHandle : NSObject
 @property (readonly,nonatomic) ShopCartSellerProductModel  *seller;
-@property (readonly,nonatomic) BOOL                         isEdit;
-@property (assign,nonatomic)   BOOL                         isCSX; //是彩食鲜
+@property (readonly,nonatomic) ShopcartEditType             editType;
 //设置section的数据源
 -(void)setSellerProduct:(ShopCartSellerProductModel *)sellerProduct
-                 isEdit:(BOOL)isEdit;
+               editType:(ShopcartEditType)editType;
 
 //调整最后一个cell的底部的线条的长度
 -(void)adjustFinalCellBottomLineView;
@@ -49,9 +48,9 @@
 
 
 //更新所有商品的编辑状态
--(BOOL)upDateAllProductEditState:(BOOL)isEdit;
+-(BOOL)upDateAllProductEditType:(ShopcartEditType)editType;
 //更新商品的编辑状态和是否删除状态
--(BOOL)upDateModel:(CartOrderCellViewModel *)vm isEdit:(BOOL)isEdit seletedState:(BOOL)seletedState;
+-(BOOL)upDateModel:(CartOrderCellViewModel *)vm editType:(ShopcartEditType)editType seletedState:(BOOL)seletedState;
 //删除指定商品
 -(void)removeProduct:(CartOrderCellViewModel *)model;
 @end
