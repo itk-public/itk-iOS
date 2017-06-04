@@ -55,6 +55,12 @@
                 WTCellDataPipe * viewModel = [[WTCellDataPipe alloc] initWithDataModel:tItem cellClass:tClass cellType:tCellType];
                 viewModel.contentModel.cellSelResponse = self.responder;
                 [self.items addObject:viewModel.contentModel];
+                if (i == 0) {
+                    YHDataModel *model = [[YHDataModel alloc]init];
+                    model.cellClass = [HomeAddressViewCell class];
+                    model.identifier = @"HomeAddressViewCell";
+                    [self.items addObject:model];
+                }
             }
         }
     }

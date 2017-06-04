@@ -55,12 +55,13 @@
     [self.view addSubview:btn];
     self.footerBtn = btn;
 }
--(void)viewWillAppear:(BOOL)animated
+
+-(void)loadData
 {
-    [super viewWillAppear:animated];
     [[PRLoadingAnimation sharedInstance]addLoadingAnimationOnView:self.view];
     [self.dataConstructor loadData];
 }
+
 #pragma mark ---getter ---
 -(void)constructData
 {
@@ -68,13 +69,14 @@
         self.dataConstructor = [[SelectAddressDataConstructor alloc]init];
         self.dataConstructor.delegate = self;
     }
+    self.tableViewAdaptor.items = self.dataConstructor.items;
 }
 #pragma mark WTNetWorkDataConstructorDelegate
 - (void)dataConstructor:(id)dataConstructor didFinishLoad:(id)dataModel
 {
     [[PRLoadingAnimation sharedInstance]removeLoadingAnimation:self.view];
-    self.tableViewAdaptor.items = self.dataConstructor.items;
     [self.dataConstructor constructData];
+   
     [self.tableView reloadData];
 }
 

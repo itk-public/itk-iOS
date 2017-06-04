@@ -14,7 +14,7 @@
     if (self = [super init]) {
         if (dataModel && [dataModel isKindOfClass:[YHDataModel class]]) {
             self.contentModel           = dataModel;
-            self.contentModel.cellType  = cellType?:@"";
+            self.contentModel.identifier  = cellType?:@"";
             self.contentModel.cellClass = cellClass;
         }
     }

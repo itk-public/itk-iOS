@@ -1,4 +1,5 @@
-//
+
+\
 //  WTTableViewAdaptor.m
 //  PR
 //
@@ -27,7 +28,7 @@ NSString * boltCellAppendDataKey = @"boltAppend";
     NSString *cellType  = nil;
     id<YHTableViewCellItemProtocol> object = [self objectForRowAtIndexPath:indexPath];
     if (object) {
-        cellType = [object cellType];
+        cellType = [object identifier];
     }
     return cellType;
 }

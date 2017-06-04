@@ -8,9 +8,11 @@
 
 #import "HomeViewController.h"
 #import "HomeDataConstructor.h"
+#import "HomeHeaderView.h"
 
 @interface HomeViewController ()<WTNetWorkDataConstructorDelegate>
 @property (nonatomic, strong) HomeDataConstructor       * dataConstructor;
+@property (strong,nonatomic) HomeHeaderView             * headerView;
 
 @end
 
@@ -19,12 +21,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navTitle = @"首页";
+    self.headerView = [[HomeHeaderView alloc]init];
+    [self.tableView addSubview:self.headerView];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [self.dataConstructor loadData];
+    self.navigationController.navigationBar.hidden = YES;
+}
+
+-(void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    self.headerView.frame = CGRectMake(0, 25, self.view.width, 28);
+}
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    self.navigationController.navigationBar.hidden = NO;
 }
 - (void)constructData
 {

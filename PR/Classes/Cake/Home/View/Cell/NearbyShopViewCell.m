@@ -11,6 +11,7 @@
 #import "OnePixelSepView.h"
 #import "DynamicUIModel.h"
 #import "DMExhibitItem.h"
+#import "OnePixelSepView.h"
 
 @interface NearbyShopViewCell()
 
@@ -27,14 +28,13 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         _shopIcon = [[AutoImageView alloc]init];
-        [_shopIcon setBackgroundColor:[UIColor grayColor]];
         [self.contentView addSubview:_shopIcon];
         
         _shopNameLabel = [[UILabel alloc]init];
         [_shopNameLabel setText:@"某某店铺"];
         [_shopNameLabel setTextAlignment:NSTextAlignmentLeft];
-        [_shopNameLabel setFont:KFontNormal(16)];
-        [_shopNameLabel setTextColor:kColorNormal];
+        [_shopNameLabel setFont:KFontBold(16)];
+        [_shopNameLabel setTextColor:UIColorFromRGB(0x000000)];
         [self.contentView addSubview:_shopNameLabel];
         
         _salesLabel = [[UILabel alloc]init];
@@ -46,6 +46,7 @@
         
         _actionLabel = [[UILabel alloc]init];
         [_actionLabel setText:@"进店"];
+        [_actionLabel setFont:KFontNormal(14)];
         _actionLabel.layer.borderColor = kColorGray.CGColor;
         _actionLabel.layer.borderWidth = OnePoint;
         _actionLabel.layer.cornerRadius = 2.0;
@@ -56,6 +57,11 @@
         _grageView = [[UIView alloc]init];
         [_grageView setBackgroundColor:kColorGray];
         [self.contentView addSubview:_grageView];
+        
+        [self.contentView setPixelSepSet:PSRectEdgeBottom];
+        OnePixelSepView *lineView = [self.contentView psBottomSep];
+        lineView.isDottedLine     = YES;
+        [lineView setMargin:15];
     }
     return self;
 }

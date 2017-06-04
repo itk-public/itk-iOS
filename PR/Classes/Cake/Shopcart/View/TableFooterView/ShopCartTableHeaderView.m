@@ -7,6 +7,8 @@
 //
 
 #import "ShopCartTableHeaderView.h"
+#import "CombineAdressViewController.h"
+#import "SceneMananger.h"
 
 @interface SingleInfoView : UIView
 @property (strong,nonatomic) UILabel *leftLabel;
@@ -94,6 +96,7 @@
         
         _changeBtn = [UIButton buttonWithType:UIButtonTypeSystem];
         [_changeBtn setTitle:@"门店自提" forState:UIControlStateNormal];
+        [_changeBtn addTarget:self action:@selector(changeBtnOnClicked:) forControlEvents:UIControlEventTouchUpInside];
         [_changeBtn setTitleColor:UIColorFromRGB(0x00aaee) forState:UIControlStateNormal];
         _changeBtn.layer.borderColor = UIColorFromRGB(0x00aaee).CGColor;
         _changeBtn.layer.borderWidth = OnePoint;
@@ -142,5 +145,13 @@
     self.receiverViewH = [self.receiverView heightWithLeftString:@"收货信息" rightString:@"王杰 136****6508"];
     self.addressViewH = [self.addressView heightWithLeftString:nil rightString:@"上海市徐汇区康健路120弄38号604shi"];
     return 6 + self.deliveryTypeViewH+self.receiverViewH+self.addressViewH+kDeliveryTypeViewTop+kReceiverViewTop+kAddressViewTop+kAddressViewBottom;
+}
+
+#pragma mark btn action
+-(void)changeBtnOnClicked:(UIButton *)sender
+{
+    CombineAdressViewController *combineAddressVC = [[CombineAdressViewController alloc]init];
+    combineAddressVC.selectedSegmentIndex  = 0;
+    [[SceneMananger shareMananger] showViewController:combineAddressVC withStyle:U_SCENE_SHOW_PUSH];
 }
 @end

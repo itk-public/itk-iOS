@@ -1,0 +1,46 @@
+{
+    "code": 0,
+    "data": {
+        "categorys": [{
+                      "categoryId": "10000030",
+                      "categoryName": "新鲜水果"
+                      }, {
+                      "categoryId": "10000031",
+                      "categoryName": "时令鲜蔬"
+                      }, {
+                      "categoryId": "10000032",
+                      "categoryName": "大肉家禽"
+                      }, {
+                      "categoryId": "10000124",
+                      "categoryName": "海鲜荟萃"
+                      }, {
+                      "categoryId": "10000037",
+                      "categoryName": "蛋品杂粮"
+                      }, {
+                      "categoryId": "10001248",
+                      "categoryName": "主食厨房"
+                      }, {
+                      "categoryId": "10000034",
+                      "categoryName": "日配冷藏"
+                      },{
+                      "categoryId": "10000033",
+                      "categoryName": "酒水饮料"
+                      }, {
+                      "categoryId": "10000035",
+                      "categoryName": "休闲食品"
+                      }, {
+                      "categoryId": "10000039",
+                      "categoryName": "日用百货"
+                      }, {
+                      "categoryId": "10000036",
+                      "categoryName": "粮油调味"
+                      }, {
+                      "categoryId": "10000038",
+                      "categoryName": "清洁美妆"
+                      }],
+        "cityId": 1,
+        "shopId": "9442"
+    },
+    "message": "",
+    "now": 1496583414786
+}

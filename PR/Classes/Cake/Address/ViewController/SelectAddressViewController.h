@@ -9,5 +9,5 @@
 #import "WTTableViewController.h"
 
 @interface SelectAddressViewController : WTTableViewController
-
+-(void)loadData;
 @end

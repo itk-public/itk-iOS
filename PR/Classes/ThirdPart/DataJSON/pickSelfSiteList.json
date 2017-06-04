@@ -1,0 +1,13 @@
+{
+    "code": 0,
+    "data": {
+        "siteList":[{
+            "siteTitle":"商周路自提点",
+            "siteAddress":"上海市青浦区金泽镇商周路238号",
+            "id":"1"
+         }
+        ]
+    },
+    "message": "OK",
+    "now": 1490088964173
+}

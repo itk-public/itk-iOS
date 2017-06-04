@@ -8,9 +8,11 @@
 
 #import "AddressManager.h"
 #import "AddressListAPIInteract.h"
+#import "PickSelfSiteListAPIInteract.h"
 
 @interface AddressManager()
 @property (strong,nonatomic) AddressListAPIInteract *listAPI;
+@property (strong,nonatomic) PickSelfSiteListAPIInteract *pickSelfSiteListAPI;
 
 @end
 @implementation AddressManager
@@ -26,6 +28,22 @@
     } failed:^(BaseAPIInteract *interact, NSError *error, id modelData) {
         if (self.delegate && [self.delegate respondsToSelector:@selector(loadDataFailed:dataType:error:)]) {
             [self.delegate loadDataFailed:self dataType:AddressManagerTypeList error:error];
+        }
+    }];
+}
+
+-(void)pickSelfSiteList
+{
+    if (self.pickSelfSiteListAPI == nil) {
+        self.pickSelfSiteListAPI = [[PickSelfSiteListAPIInteract alloc]init];
+    }
+    [self.pickSelfSiteListAPI interactScuess:^(BaseAPIInteract *interact, id modelData) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(loadDataSuccessful:dataType:data:isCache:)]) {
+            [self.delegate loadDataSuccessful:self dataType:AddressManagerTypePickSelfSite data:modelData isCache:NO];
+        }
+    } failed:^(BaseAPIInteract *interact, NSError *error, id modelData) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(loadDataFailed:dataType:error:)]) {
+            [self.delegate loadDataFailed:self dataType:AddressManagerTypePickSelfSite error:error];
         }
     }];
 }

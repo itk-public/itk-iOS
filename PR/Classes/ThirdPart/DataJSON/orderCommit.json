@@ -1,4 +1,4 @@
-//请求参数
+//请求参数，订单结算的去结算的请求参数
 
 {
     "addressId": "xxxx",
@@ -10,15 +10,15 @@
                       "from": "09:00"
                       }]
     },
-    "seller": [{
-               "sellerId": "1",
+    "shopList": [{
+               "shopId": "1",
                "products": [{
                             "id": "M-919787",
                             "num": 100
                             }],
                "couponId":"xxxxx"
                }, {
-               "sellerId": "2",
+               "shopId": "2",
                "products": [{
                             "id": "839394",
                             "num": 100

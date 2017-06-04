@@ -25,8 +25,8 @@
         
         _titleLabel = [[UILabel alloc]init];
         [_titleLabel setTextAlignment:NSTextAlignmentLeft];
-        [_titleLabel setTextColor:kColorGray];
-        [_titleLabel setFont:KFontNormal(14)];
+        [_titleLabel setTextColor:UIColorFromRGB(0x686868)];
+        [_titleLabel setFont:KFontNormal(12)];
         [self.contentView addSubview:_titleLabel];
     }
     return self;
@@ -47,6 +47,7 @@
     DynamicCardItem *cardItem = object;
     DMExhibitItem *item       = cardItem.data;
     [self.titleLabel setText:item.title];
+    [self.iconImage setImage:[UIImage imageNamed:item.imgInfo.imgUrl]];
 }
 
 

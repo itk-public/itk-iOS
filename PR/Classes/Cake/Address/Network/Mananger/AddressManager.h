@@ -12,6 +12,7 @@
 typedef NS_ENUM(NSInteger,AddressManagerType)
 {
     AddressManagerTypeList = 1,       //地址列表
+    AddressManagerTypePickSelfSite,   //自提点列表
 };
 
 @protocol AddressManagerDelegate <NSObject>
@@ -25,4 +26,6 @@ typedef NS_ENUM(NSInteger,AddressManagerType)
 @property (weak,nonatomic) id<AddressManagerDelegate> delegate;
 //获取地址列表
 -(void)addressList;
+//获取自提点列表
+-(void)pickSelfSiteList;
 @end

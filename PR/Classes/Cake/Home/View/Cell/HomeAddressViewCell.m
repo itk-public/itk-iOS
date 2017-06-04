@@ -7,21 +7,23 @@
 //
 
 #import "HomeAddressViewCell.h"
+#import "OnePixelSepView.h"
 
 @interface HomeAddressViewCell()
-@property (strong,nonatomic) UILabel *locationIconLabel;
+@property (strong,nonatomic) UIImageView *locationIcon;
 @property (strong,nonatomic) UILabel *addressLabel;
 @property (strong,nonatomic) UILabel *editPromptLabel;
-@property (strong,nonatomic) UILabel *arrowIconLabel;
+@property (strong,nonatomic) UIImageView *arrowIcon;
 @end
 
 @implementation HomeAddressViewCell
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        _locationIconLabel = [[UILabel alloc]init];
-        [_locationIconLabel setBackgroundColor:[UIColor grayColor]];
-        [self.contentView addSubview:_locationIconLabel];
+        [self.contentView setBackgroundColor:kVCViewBGColor];
+        _locationIcon = [[UIImageView alloc]init];
+        [_locationIcon setImage:[UIImage imageNamed:@"icon_home-location"]];
+        [self.contentView addSubview:_locationIcon];
         
         _addressLabel = [[UILabel alloc]init];
         [_addressLabel setText:@"金泽镇朝阳村5组888号"];
@@ -37,9 +39,11 @@
         [_editPromptLabel setTextAlignment:NSTextAlignmentRight];
         [self.contentView addSubview:_editPromptLabel];
         
-        _arrowIconLabel = [[UILabel alloc]init];
-        [_arrowIconLabel setTextColor:kColorGray];
-        [self.contentView addSubview:_arrowIconLabel];
+        _arrowIcon = [[UIImageView alloc]init];
+        [_arrowIcon setImage:[UIImage imageNamed:@"icon_right_arrow"]];
+        [self.contentView addSubview:_arrowIcon];
+        
+        [self.contentView setPixelSepSet:PSRectEdgeBottom];
     }
     return self;
 }
@@ -49,16 +53,21 @@
 {
     [super layoutSubviews];
     CGFloat kLeftMargin = 15;
-    CGFloat kLocationIconW = 10;
+    CGFloat kLocationIconW = 14;
     CGFloat kLocationIconH = 14;
-    self.locationIconLabel.frame = CGRectMake(kLeftMargin, (self.height - kLocationIconH)/2.0, kLocationIconW, kLocationIconH);
+    self.locationIcon.frame = CGRectMake(kLeftMargin, (self.height - kLocationIconH)/2.0, kLocationIconW, kLocationIconH);
     
     CGFloat kArrowIconW = 8;
     CGFloat kArrowIconH = 13;
-    self.arrowIconLabel.frame = CGRectMake(self.width - kLeftMargin - kArrowIconW,self.locationIconLabel.top, kArrowIconW, kArrowIconH);
+    self.arrowIcon.frame = CGRectMake(self.width - kLeftMargin - kArrowIconW,self.locationIcon.top, kArrowIconW, kArrowIconH);
     CGFloat kArrowIconLeftMarin = 12.0;
     CGFloat kEditPromptLabelW   = [self.editPromptLabel sizeThatFits:CGSizeMake(MAXFLOAT, self.height)].width;
-    self.editPromptLabel.frame  = CGRectMake(self.arrowIconLabel.left - kArrowIconLeftMarin - kEditPromptLabelW, 0, kEditPromptLabelW, self.height);
-    self.addressLabel.frame = CGRectMake(self.locationIconLabel.right + kArrowIconLeftMarin, 0, self.editPromptLabel.left - self.locationIconLabel.right - 2*kArrowIconLeftMarin, self.height);
+    self.editPromptLabel.frame  = CGRectMake(self.arrowIcon.left - kArrowIconLeftMarin - kEditPromptLabelW, 0, kEditPromptLabelW, self.height);
+    self.addressLabel.frame = CGRectMake(self.locationIcon.right + kArrowIconLeftMarin, 0, self.editPromptLabel.left - self.locationIcon.right - 2*kArrowIconLeftMarin, self.height);
+}
+
++(CGFloat)tableView:(UITableView *)tableView rowHeightForObject:(id)object
+{
+    return 45;
 }
 @end

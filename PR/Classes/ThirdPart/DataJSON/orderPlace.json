@@ -1,13 +1,12 @@
 
-//请求参数
+//请求参数,购物车到订单结算页的接口
 {
-    "pickSelf": 0,
     "addressId":"33",
     "shopId": "xxx",
     "withPlatformCoupon": "xxxxxx",  //是不是有平台优惠券可以用 bool
-    "deliveryType":"xxxx",       //配送方式
-    "seller": [{
-               "sellerId": "1",
+    "allocationType":"xxxx",       //配送方式
+    "shopList": [{
+               "shopId": "1",
                "products": [{
                             "id": "M-919787",
                             "num": 100
@@ -17,7 +16,7 @@
                             }],
                "withCoupon":"xxxxxx", //是不是有优惠券可以用 bool
                }, {
-               "sellerId": "2",
+               "shopId": "2",
                "products": [{
                             "id": "839394",
                             "num": 100
@@ -82,15 +81,15 @@
             "phone": "15051447570"
         },
         "platformCoupon": "xxxxxx",
-        "deliveryType": [
+        "allocationType": [
                          {
                          "id": "xxx",
                          "title": "itk快递"
                          }
                          ],
-        "sellerList": [
+        "shopList": [
                        {
-                       "seller": {
+                       "shop": {
                        "action": "myyh://yhlife.com/show/native?name=merhome&merid=1",
                        "icon": "https://image.yonghuivip.com/20170526/%E6%AC%A1%E6%97%A5%E8%BE%BE@3x.png",
                        "id": "1",
@@ -111,7 +110,7 @@
                                     "total": 4900,
                                     "value": 4900
                                     },
-                                    "sellerId": "1",
+                                    "shopId": "1",
                                     "spec": {
                                     "desc": "130g*4"
                                     },

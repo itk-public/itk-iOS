@@ -39,5 +39,12 @@
 #pragma mark --------地址模块-----------------
 //获取地址列表
 #define  DeliveryAddressList_URLPATH               @"/api/address/deliveryAddressList"
+//获取门店列表
+#define  PickSelfSiteList_URLPATH                  @"/api/address/pickSelfSiteList"
+
+
+#pragma mark ---------分类-------------------
+//获取店铺分类
+#define ShopCategory_URLPATH                        @"/api/category/shopCategory"
 
 #endif /* URLPathDefine_h */

@@ -23,7 +23,7 @@
         CGFloat kIconW  = (self.width - ([self.contentView.subviews count] + 1)*kMargin)*1.0/[self.contentView.subviews count];
         NSInteger tempCount = 0;
         for (SingleIconView *item in self.contentView.subviews) {
-            item.frame = CGRectMake((tempCount+1) * kMargin + tempCount * kIconW,10,kIconW , self.height - 2*10);
+            item.frame = CGRectMake((tempCount+1) * kMargin + tempCount * kIconW,0,kIconW , self.height);
             tempCount ++;
         }
     }
