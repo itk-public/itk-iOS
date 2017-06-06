@@ -9,5 +9,5 @@
 #import "WTTableViewController.h"
 
 @interface CategroyRightViewController : WTTableViewController
-
+-(void)loadData;
 @end

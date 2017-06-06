@@ -20,6 +20,6 @@
              title:(NSString *)title
              index:(NSInteger)index;
 @property (weak,nonatomic) id<CarouselItemViewDelegate> delegate;
-@property (readonly,nonatomic) NSInteger index;
+//@property (readonly,nonatomic) NSInteger index;
 -(void)setObject:(id)object;
 @end

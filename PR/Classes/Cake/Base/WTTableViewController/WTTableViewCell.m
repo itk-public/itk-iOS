@@ -13,10 +13,10 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        [self setSelectionStyle:UITableViewCellSelectionStyleNone];
+//        [self setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(doTarget)];
-    [self.contentView addGestureRecognizer:tap];
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(doTarget)];
+//    [self.contentView addGestureRecognizer:tap];
     return self;
 }
 - (void)setObject:(id)object

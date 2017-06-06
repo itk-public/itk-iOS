@@ -12,6 +12,7 @@
 typedef NS_ENUM(NSInteger,CategoryManangerType)
 {
     CategoryManangerTypeShopCategory = 0,
+    CategoryManangerTypeCategorySku,
     
 };
 
@@ -25,4 +26,5 @@ typedef NS_ENUM(NSInteger,CategoryManangerType)
 @interface CategoryMananger : NSObject
 @property (weak,nonatomic) id<CategoryManangerDelegate> delegate;
 -(void)shopCategoryWithShopId:(NSString *)shopId;
+-(void)categorySkuWithCategoryId:(NSString *)categoryId;
 @end

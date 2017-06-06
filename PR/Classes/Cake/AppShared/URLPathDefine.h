@@ -46,5 +46,6 @@
 #pragma mark ---------分类-------------------
 //获取店铺分类
 #define ShopCategory_URLPATH                        @"/api/category/shopCategory"
+#define CategorySku_URLPATH                        @"/api/category/categorySku"
 
 #endif /* URLPathDefine_h */

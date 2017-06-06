@@ -38,7 +38,7 @@
         [self.items removeAllObjects];
         for (PickSelfSiteModel *model in self.siteList) {
             if ([model isKindOfClass:[PickSelfSiteModel class]]) {
-                model.identifier = @"SelectPickSelfSiteCell";
+                model.cellIdentifier = @"SelectPickSelfSiteCell";
                 model.cellClass  = [SelectPickSelfSiteCell class];
                 [self.items addObject:model];
             }

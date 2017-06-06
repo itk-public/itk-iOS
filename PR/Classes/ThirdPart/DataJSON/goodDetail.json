@@ -1,0 +1,101 @@
+{
+    "code": 0,
+    "data": {
+        "action": "myyh://yhlife.com/show/web?url=http%3A%2F%2Fhyd.yonghui.cn%2Fapptest%2Fapi%2Fh5%2Fgoodspicdetail.html%3Fgoodsid%3D101963&needlogin=0",
+        "categorys": [{
+                      "action": "myyh://yhlife.com/show/web?url=http%3A%2F%2Fhyd.yonghui.cn%2Fapptest%2Fapi%2Fh5%2Fsubcategorysearch.html%3Fcategoryid%3D100108%26env%3D%26needlogin%3D0&needlogin=0",
+                      "id": "100108",
+                      "imgurl": "",
+                      "name": "酒饮冲调"
+                      }, {
+                      "action": "myyh://yhlife.com/show/web?url=http%3A%2F%2Fhyd.yonghui.cn%2Fapptest%2Fapi%2Fh5%2Fsubcategorysearch.html%3Fcategoryid%3D100336%26env%3D%26needlogin%3D0&needlogin=0",
+                      "id": "100336",
+                      "imgurl": "http://image.yonghuivip.com/image/14897182453535c20dcbcfbab07ab6c2df7e27444d5ac2afca569",
+                      "name": "饮料"
+                      }, {
+                      "action": "myyh://yhlife.com/show/web?url=http%3A%2F%2Fhyd.yonghui.cn%2Fapptest%2Fapi%2Fh5%2Fsubcategorysearch.html%3Fcategoryid%3D100225%26env%3D%26needlogin%3D0&needlogin=0",
+                      "id": "100225",
+                      "imgurl": "http://image.yonghuivip.com/image/147263989648273e60c2ee7bcc670e3bac28ab65759a77bbaf0f2",
+                      "name": "碳酸饮料"
+                      }],
+        "cityid": 1,
+        "cityname": "上海",
+        "comment": {
+            "comment": "这个家伙很懒，一个字都没留下",
+            "commentAt": 1488788514000,
+            "commentBy": "182****6679",
+            "rank": 5
+        },
+        "expiration": 0,
+        "id": "101963",
+        "isdelivery": 1,
+        "mainimgs": [{
+                     "imgurl": "http://image.yonghuivip.com//product/101963/1.jpg?imageView2/0/h/480/format/webp/interlace/1"
+                     }, {
+                     "imgurl": "http://image.yonghuivip.com//product/101963/2.jpg?imageView2/0/h/480/format/webp/interlace/1"
+                     }, {
+                     "imgurl": "http://image.yonghuivip.com//product/101963/3.jpg?imageView2/0/h/480/format/webp/interlace/1"
+                     }, {
+                     "imgurl": "http://image.yonghuivip.com//product/101963/4.jpg?imageView2/0/h/480/format/webp/interlace/1"
+                     }, {
+                     "imgurl": "http://image.yonghuivip.com//product/101963/5.jpg?imageView2/0/h/480/format/webp/interlace/1"
+                     }],
+        "picdetail": ["http://image.yonghuivip.com//product/101963/1478247183172998f3b74cb227cef6ac3d17744d981119b7a3ef6?imageView2/0/w/480/format/webp/interlace/1", "http://image.yonghuivip.com//product/101963/14782471793737c584f560b5ebb607abb4a288e392549c02fed88?imageView2/0/w/480/format/webp/interlace/1", "http://image.yonghuivip.com//product/101963/1478247175849edbb551f59c009edeca3c5bd056908a1e07e27ba?imageView2/0/w/480/format/webp/interlace/1", "http://image.yonghuivip.com//product/101963/147824719248212ed4ef9b1413587b3f8dea88db62886b314ee7a?imageView2/0/w/480/format/webp/interlace/1", "http://image.yonghuivip.com//product/101963/147824719444690173c738146416fdcb22bf731fb5ae9909979fd?imageView2/0/w/480/format/webp/interlace/1", "http://image.yonghuivip.com//product/101963/1478247187434992ae89e5c2ec6752b4a08bc3659027185c94300?imageView2/0/w/480/format/webp/interlace/1"],
+        "place": [{
+                  "prompt": "产地/品牌",
+                  "value": "上海 可口可乐"
+                  }, {
+                  "prompt": "规格",
+                  "value": "600ml*1瓶"
+                  }, {
+                  "prompt": "保质期",
+                  "value": "9月"
+                  }],
+        "price": {
+            "canBuy": 1,
+            "market": 300,
+            "marketflag": "market",
+            "showprice": 1,
+            "spec": "600ml*1瓶",
+            "value": 300
+        },
+        "productType": 1,
+        "promotion": {
+            "couponkinds": [],
+            "promoactionurl": "",
+            "promonames": "ydd-201705261604",
+            "promos": [{
+                       "name": "ydd-201705261604",
+                       "subname": "ydd-201705261604"
+                       }]
+        },
+        "secondSellercategory": "10001243",
+        "seller": {
+            "action": "myyh://yhlife.com/show/native?name=mercategory&merid=2&shopid=9D13",
+            "icon": "https://image.yonghuivip.com/20170527/%E6%B0%B8%E8%BE%89%E7%94%9F%E6%B4%BB@3x.png",
+            "id": "2",
+            "title": "田林路店"
+        },
+        "shopid": "9D13",
+        "skuStatus": {
+            "arrivalTimeDesc": "，现在下单，次日早间送达",
+            "color": "666666",
+            "pattern": "t",
+            "status": 0,
+            "statusDesc": "现货"
+        },
+        "spec": [{
+                 "pid": "101963"
+                 }],
+        "stock": {
+            "count": 1400,
+            "desc": "",
+            "minNum": 0,
+            "minQtyNum": 0
+        },
+        "subtitle": "可乐",
+        "title": "可口可乐600ml"
+    },
+    "message": "OK",
+    "now": 1496759274071
+}

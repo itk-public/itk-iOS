@@ -10,18 +10,14 @@
 #import "CategoryLeftDataConstructor.h"
 #import "PRLoadingAnimation.h"
 #import "PRShowToastUtil.h"
+#import "ShopCategoryModel.h"
 
 @interface CategoryLeftViewController ()<WTNetWorkDataConstructorDelegate>
 @property (strong,nonatomic) CategoryLeftDataConstructor *dataConstructor;
+@property (strong,nonatomic) ShopCategoryModel *lastSelecteModel;
 @end
 
 @implementation CategoryLeftViewController
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
-
 -(void)loadData
 {
     [self.dataConstructor loadData];
@@ -35,13 +31,35 @@
     self.tableViewAdaptor.items = self.dataConstructor.items;
 }
 
+-(void)tableView:(UITableView *)tableView  didSelectObject:(id<YHTableViewCellItemProtocol>)object
+  rowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ShopCategoryModel *model = [self.tableViewAdaptor.items safeObjectAtIndex:indexPath.row hintClass:[ShopCategoryModel class]];
+    if (model && self.lastSelecteModel == model) {
+        return;
+    }
+    if (self.lastSelecteModel && self.lastSelecteModel != model) {
+        self.lastSelecteModel.isSelected = NO;
+    }
+    model.isSelected = YES;
+    self.lastSelecteModel = model;
+    if (self.returnBlock) {
+        self.returnBlock(model);
+    }
+    [tableView reloadData];
+}
 #pragma mark WTNetWorkDataConstructorDelegate
 - (void)dataConstructor:(id)dataConstructor didFinishLoad:(id)dataModel
 {
     [[PRLoadingAnimation sharedInstance]removeLoadingAnimation:self.view];
     [self.dataConstructor constructData];
-    
-    [self.tableView reloadData];
+    if (self.returnBlock) {
+        self.returnBlock([self.dataConstructor.items safeObjectAtIndex:0]);
+        self.lastSelecteModel = [self.dataConstructor.items safeObjectAtIndex:0];
+        self.lastSelecteModel.isSelected = YES;
+        
+    }
+     [self.tableView reloadData];
 }
 
 - (void)dataConstructorDidFailLoadData:(id)dataConstructor withError:(NSError *)errorDataModel

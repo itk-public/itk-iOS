@@ -20,5 +20,8 @@
 //    [self.navigationController.navigationBar setAlpha:0];
 }
 
-
+#pragma mark - WTNetWorkDataConstructorDelegate
+- (void)dataConstructor:(id)dataConstructor didFinishLoad:(NSObject *)dataModel
+{
+}
 @end

@@ -7,31 +7,46 @@
 //
 
 #import "CategroyRightViewController.h"
+#import "CategoryRightDataConstructor.h"
+#import "PRLoadingAnimation.h"
+#import "PRShowToastUtil.h"
 
-@interface CategroyRightViewController ()
-
+@interface CategroyRightViewController ()<WTNetWorkDataConstructorDelegate>
+@property (strong,nonatomic) CategoryRightDataConstructor *dataConstructor;
 @end
 
 @implementation CategroyRightViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+}
+-(void)loadData
+{
+    [self.dataConstructor loadData];
+}
+-(void)constructData
+{
+    if (self.dataConstructor == nil) {
+        self.dataConstructor = [[CategoryRightDataConstructor alloc]init];
+        self.dataConstructor.delegate = self;
+    }
+    self.tableViewAdaptor.items = self.dataConstructor.items;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark WTNetWorkDataConstructorDelegate
+- (void)dataConstructor:(id)dataConstructor didFinishLoad:(id)dataModel
+{
+    [[PRLoadingAnimation sharedInstance]removeLoadingAnimation:self.view];
+    [self.dataConstructor constructData];
+    [self.tableView reloadData];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)dataConstructorDidFailLoadData:(id)dataConstructor withError:(NSError *)errorDataModel
+{
+    [[PRLoadingAnimation sharedInstance]removeLoadingAnimation:self.view];
+    [PRShowToastUtil showNotice:[errorDataModel localizedDescription] inView:self.view];
+    
 }
-*/
 
 @end

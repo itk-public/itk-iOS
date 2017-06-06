@@ -12,7 +12,7 @@
 
 #pragma mark - protocol synthesize
 @synthesize cellClass           = _cellClass;
-@synthesize identifier            = _identifier;
+@synthesize cellIdentifier      = _cellIdentifier;
 @synthesize cellHeight          = _cellHeight;
 @synthesize cellSelResponse     = _cellSelResponse;
 @synthesize cellTag             = _cellTag;

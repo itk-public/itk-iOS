@@ -11,12 +11,11 @@
 #import "ProductOutline.h"
 
 @interface CarouselItemView()
-
 @property (strong,nonatomic) UILabel *titleLabel;
 @property (strong,nonatomic) AutoImageView*image;
 @property (strong,nonatomic) UITapGestureRecognizer *tap;
-
 @end
+
 @implementation CarouselItemView
 -(instancetype)init{
     if (self = [super init]) {
@@ -34,7 +33,7 @@
              index:(NSInteger)index
 {
     [self setImageUrl:imageurl title:title];
-    _index  = index;
+//    _index  = index;
 }
 -(void)setImageUrl:(NSString *)imageurl title:(NSString *)title
 {
@@ -62,7 +61,7 @@
     self.titleLabel  = [[UILabel alloc]init];
     [self.titleLabel setTextColor:kColorGray];
     [self.titleLabel setFont:KFontNormal(14)];
-    [self.titleLabel setTextAlignment:NSTextAlignmentLeft];
+    [self.titleLabel setTextAlignment:NSTextAlignmentCenter];
     [self.titleLabel setText:@"商品名称"];
     [self addSubview:self.titleLabel];
 

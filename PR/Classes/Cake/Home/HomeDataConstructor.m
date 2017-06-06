@@ -58,7 +58,7 @@
                 if (i == 0) {
                     YHDataModel *model = [[YHDataModel alloc]init];
                     model.cellClass = [HomeAddressViewCell class];
-                    model.identifier = @"HomeAddressViewCell";
+                    model.cellIdentifier = @"HomeAddressViewCell";
                     [self.items addObject:model];
                 }
             }

@@ -27,6 +27,7 @@
     self.tableView.keyboardDismissMode  = UIScrollViewKeyboardDismissModeOnDrag;
     
     self.tableViewAdaptor.tableView     = self.tableView;
+    self.tableView.allowsSelection      = YES;
     [self.view addSubview:self.tableView];
     
 }

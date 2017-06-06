@@ -28,7 +28,7 @@ NSString * boltCellAppendDataKey = @"boltAppend";
     NSString *cellType  = nil;
     id<YHTableViewCellItemProtocol> object = [self objectForRowAtIndexPath:indexPath];
     if (object) {
-        cellType = [object identifier];
+        cellType = [object cellIdentifier];
     }
     return cellType;
 }

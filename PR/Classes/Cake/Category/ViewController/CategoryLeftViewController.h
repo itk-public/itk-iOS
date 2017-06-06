@@ -7,7 +7,11 @@
 //
 
 #import "WTTableViewController.h"
+@class ShopCategoryModel;
 
+typedef void (^DidSelectedCategoryBlock)(ShopCategoryModel *selectedCategroy);
 @interface CategoryLeftViewController : WTTableViewController
 -(void)loadData;
+@property (copy,nonatomic) DidSelectedCategoryBlock returnBlock;
+
 @end

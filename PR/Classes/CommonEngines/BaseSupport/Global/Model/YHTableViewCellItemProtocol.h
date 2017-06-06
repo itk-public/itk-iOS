@@ -27,7 +27,7 @@ typedef NS_ENUM(NSUInteger, YHGroupedCellPosition) {
 /**
  *  cell 类型
  */
-@property (nonatomic, copy  ) NSString      * identifier;
+@property (nonatomic, copy  ) NSString      * cellIdentifier;
 
 /**
  *  cell 高度

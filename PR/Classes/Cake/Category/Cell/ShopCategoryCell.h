@@ -9,5 +9,4 @@
 #import "WTTableViewCell.h"
 
 @interface ShopCategoryCell : WTTableViewCell
-
 @end

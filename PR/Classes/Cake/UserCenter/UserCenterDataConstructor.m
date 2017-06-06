@@ -47,20 +47,20 @@
         userInfo = [[UserInfo alloc]init];
     }
     userInfo.cellClass = [HeadPortraitCell class];
-    userInfo.identifier  = @"headPortraitcell";
+    userInfo.cellIdentifier  = @"headPortraitcell";
     [self.items addObject:userInfo];
     
     AssetsInfo *asstsInfo = self.userCenter.assetInfo;
     if (asstsInfo == nil) {
         asstsInfo = [[AssetsInfo alloc]init];
     }
-    asstsInfo.identifier  = @"assetsCell";
+    asstsInfo.cellIdentifier  = @"assetsCell";
     asstsInfo.cellClass = [AssetsCell class];
     [self.items addObject:asstsInfo];
     
     SeparateModel *separateModel1 = [[SeparateModel alloc]init];
     separateModel1.cellClass      = [SeparateCell class];
-    separateModel1.identifier      = @"separatecell";
+    separateModel1.cellIdentifier      = @"separatecell";
     [self.items addObject:separateModel1];
     
     OrderInfo *orderinfo = self.userCenter.orderInfo;
@@ -68,12 +68,12 @@
         orderinfo = [[OrderInfo alloc]init];
     }
     orderinfo.cellClass  = [OrderCell class];
-    orderinfo.identifier   = @"orderCell";
+    orderinfo.cellIdentifier   = @"orderCell";
     [self.items addObject:orderinfo];
     
     SeparateModel *separateModel2 = [[SeparateModel alloc]init];
     separateModel2.cellClass      = [SeparateCell class];
-    separateModel2.identifier       = @"separatecell";
+    separateModel2.cellIdentifier       = @"separatecell";
     [self.items addObject:separateModel2];
     
     [self.items safeAddObjectsFromArray:self.itemList];
@@ -89,7 +89,7 @@
         for (NSDictionary *dict in  itemInfo) {
             ItemListModel *info = [ItemListModel modelFromDictionary:dict];
             info.cellClass      = [ItemViewCell class];
-            info.identifier       = @"itemViewCell";
+            info.cellIdentifier       = @"itemViewCell";
            [_itemList addObject:info];
         }
     }

@@ -11,4 +11,5 @@
 @interface ShopCategoryModel : YHDataModel
 @property (readonly,nonatomic) NSString *categoryId;
 @property (readonly,nonatomic) NSString *categoryName;
+@property (assign,nonatomic)   BOOL isSelected;
 @end

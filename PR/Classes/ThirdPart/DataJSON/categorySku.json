@@ -1,0 +1,50 @@
+{
+    "code": 0,
+    "data": {
+        "skus": [
+                 {
+                 "subCategoryName": "苹果类",
+                 "subCategoryId": "111",
+                 "subCategorySkus": [
+                                     {
+                                     "action": "myyh://yhlife.com/show/native?name=prddetail&id=793427&merid=2",
+                                     "id": "793428",
+                                     "imgUrl": "http://image.yonghuivip.com//product/101963/1478247183172998f3b74cb227cef6ac3d17744d981119b7a3ef6?imageView2/0/w/480/format/webp/interlace/1",
+                                     "num": 100,
+                                     "price": {
+                                     "market": 3300
+                                     },
+                                     "shopId": "2",
+                                     "spec": "180g",
+                                     "stockNum": 900,
+                                     "subTitle": "青苹果",
+                                     "title": "青苹果"
+                                     }
+                                     ]
+                 },
+                 {
+                 "subCategoryName": "肉类",
+                 "subCategoryId": "111",
+                 "subCategorySkus": [
+                                     {
+                                     "action": "myyh://yhlife.com/show/native?name=prddetail&id=793427&merid=2",
+                                     "id": "793428",
+                                     "imgUrl": "https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1496674212&di=fcb8ec013f381bc93e2b5de5eeebd31b&src=http://pic15.nipic.com/20110717/7170514_095330317000_2.jpg",
+                                     "num": 100,
+                                     "price": {
+                                     "market": 3300
+                                     },
+                                     "shopId": "2",
+                                     "spec": "180g",
+                                     "stockNum": 900,
+                                     "subTitle": "青苹果",
+                                     "title": "青苹果"
+                                     }
+                                     ]
+                 }
+                 
+                 ]
+    },
+    "message": "OK",
+    "now": 1490088964173
+}

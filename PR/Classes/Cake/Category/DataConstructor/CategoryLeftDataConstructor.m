@@ -38,7 +38,7 @@
         for (ShopCategoryModel *model in self.categorys) {
             if ([model isKindOfClass:[ShopCategoryModel class]]) {
                 model.cellClass = [ShopCategoryCell class];
-                model.identifier = @"ShopCategoryCell";
+                model.cellIdentifier = @"ShopCategoryCell";
                 [self.items addObject:model];
             }
         }

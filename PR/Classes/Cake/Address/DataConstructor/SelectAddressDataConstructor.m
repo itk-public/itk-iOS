@@ -32,13 +32,13 @@
     if ([self.addressList.addressList count]) {
         [self.items removeAllObjects];
         AddressHeaderCellModel *headerModel = [[AddressHeaderCellModel alloc]init];
-        headerModel.identifier                = @"SelectAddressHeaderCell";
+        headerModel.cellIdentifier                = @"SelectAddressHeaderCell";
         headerModel.cellClass               = [SelectAddressHeaderCell class];
         [self.items addObject:headerModel];
         
         for (AddressModel *address in self.addressList.addressList) {
             if ([address isKindOfClass:[AddressModel class]]) {
-                address.identifier = @"SelectAddressCell";
+                address.cellIdentifier = @"SelectAddressCell";
                 address.cellClass = [SelectAddressCell class];
                 [self.items addObject:address];
             }
