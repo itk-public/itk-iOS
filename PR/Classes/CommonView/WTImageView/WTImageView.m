@@ -25,7 +25,7 @@
     _urlPath = [urlPath copy];
     [self sd_setImageWithURL:[NSURL URLWithString:self.urlPath]
             placeholderImage:self.defaultImage
-                     options:SDWebImageAllowInvalidSSLCertificates | SDWebImageRetryFailed
+                     options:SDWebImageAllowInvalidSSLCertificates
                     progress:^(NSInteger receivedSize, NSInteger expectedSize) {
                         
                     }
@@ -45,6 +45,7 @@
     if (self.imageDidLoadHandler != NULL) {
         __weak typeof(self) weakSelf = self;
         [self sd_setImageWithURL:imageURL placeholderImage:self.defaultImage completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL){
+            PRLOG(@"加载图片成功=====%@",error);
             if (error == nil) {
                 weakSelf.imageDidLoadHandler(weakSelf, image);
             }

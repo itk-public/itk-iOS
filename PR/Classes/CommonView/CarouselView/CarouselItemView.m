@@ -14,6 +14,7 @@
 @property (strong,nonatomic) UILabel *titleLabel;
 @property (strong,nonatomic) AutoImageView*image;
 @property (strong,nonatomic) UITapGestureRecognizer *tap;
+@property (strong,nonatomic) ProductOutline *product;
 @end
 
 @implementation CarouselItemView
@@ -21,7 +22,7 @@
     if (self = [super init]) {
         [self setBackgroundColor:[UIColor whiteColor]];
         _image = [[AutoImageView alloc]init];
-        [_image setBackgroundColor:[UIColor grayColor]];
+        [_image setContentMode: UIViewContentModeScaleAspectFill];
         [self addSubview:_image];
         _tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapCarouselItemView)];
         [self addGestureRecognizer:_tap];
@@ -33,8 +34,9 @@
              index:(NSInteger)index
 {
     [self setImageUrl:imageurl title:title];
-//    _index  = index;
 }
+
+
 -(void)setImageUrl:(NSString *)imageurl title:(NSString *)title
 {
     [_image setImgURLString:imageurl?:@""];
@@ -80,11 +82,13 @@
     }else{
         self.titleLabel.hidden = YES;
     }
+    self.product = item;
 }
+
 -(void)tapCarouselItemView
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(carouselItemViewDidSeleted:)]) {
-        [self.delegate carouselItemViewDidSeleted:self];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(carouselItemViewDidSeleted:product:)]) {
+        [self.delegate carouselItemViewDidSeleted:self product:self.product];
     }
 }
 @end

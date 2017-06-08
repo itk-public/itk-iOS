@@ -19,4 +19,5 @@
 @property (readonly,nonatomic) NSString *cid;
 @property (readonly,nonatomic) NSString *cityname;
 @property (readonly,nonatomic) Action   *action;
+@property (readonly,nonatomic) NSString *subTitle;
 @end

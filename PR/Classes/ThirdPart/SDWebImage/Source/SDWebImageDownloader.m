@@ -68,6 +68,7 @@ static NSString *const kCompletedCallbackKey = @"completed";
         _downloadQueue.maxConcurrentOperationCount = 6;
         _URLCallbacks = [NSMutableDictionary new];
 #ifdef SD_WEBP
+        //text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
         _HTTPHeaders = [@{@"Accept": @"image/webp,image/*;q=0.8"} mutableCopy];
 #else
         _HTTPHeaders = [@{@"Accept": @"image/*;q=0.8"} mutableCopy];

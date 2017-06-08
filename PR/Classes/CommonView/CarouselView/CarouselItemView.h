@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+@class ProductOutline;
 #define kLeftMargin 15
 #define kCarouselItemViewW  65
 @class CarouselItemView;
 @protocol CarouselItemViewDelegate  <NSObject>
--(void)carouselItemViewDidSeleted:(CarouselItemView *)itemView;
+-(void)carouselItemViewDidSeleted:(CarouselItemView *)itemView product:(ProductOutline *)product;
 @end
 
 
@@ -20,6 +21,5 @@
              title:(NSString *)title
              index:(NSInteger)index;
 @property (weak,nonatomic) id<CarouselItemViewDelegate> delegate;
-//@property (readonly,nonatomic) NSInteger index;
 -(void)setObject:(id)object;
 @end

@@ -52,4 +52,7 @@
 //新建收货地址
 #define APPURL_VIEW_IDENTIFIER_CREATEADDRESS  @"createAddress"
 
+//商品详情
+#define APPURL_VIEW_IDENTIFIER_GOODDETAIL     @"goodDetail"
+
 #endif /* PRMBureauDefine_h */

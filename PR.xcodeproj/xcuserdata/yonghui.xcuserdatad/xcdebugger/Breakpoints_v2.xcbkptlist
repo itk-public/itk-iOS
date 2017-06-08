@@ -1011,12 +1011,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PR/Classes/Cake/Home/View/Cell/HomeIconViewCell.m"
-            timestampString = "518173457.960171"
+            filePath = "PR/Classes/Cake/Home/View/Cell/NearbyShopViewCell.m"
+            timestampString = "518194326.050037"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
             landmarkName = "-setObject:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1027,13 +1027,45 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PR/Classes/Cake/Home/View/Cell/NearbyShopViewCell.m"
-            timestampString = "518194326.050037"
+            filePath = "PR/Classes/Cake/GoodDetail/ViewController/GoodDetailViewController.m"
+            timestampString = "518623455.487327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
-            landmarkName = "-setObject:"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "-viewWillAppear:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PR/Classes/Cake/GoodDetail/ViewController/GoodDetailViewController.m"
+            timestampString = "518623455.487327"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "-loadTabelViewWithPictureArray:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PR/Classes/CommonView/WTImageView/WTImageView.m"
+            timestampString = "518618730.565983"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "-reload"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

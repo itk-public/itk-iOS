@@ -24,6 +24,7 @@
         _cid = [dic safeObjectForKey:@"id"];
         _shopname = [dic safeObjectForKey:@"shopName"];
         _title      = [dic safeObjectForKey:@"title"];
+        _subTitle  = [dic safeObjectForKey:@"subTitle"];
     }
     return self;
 }

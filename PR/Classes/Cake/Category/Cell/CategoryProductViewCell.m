@@ -10,15 +10,23 @@
 #import "AutoImageView.h"
 #import "CarouselItemView.h"
 #import "SubCategoryModel.h"
+#import "PRMBWantedOffice.h"
 
 #define kBaseTag 10000
 #define kItemViewH  110
-@interface CategoryProductViewCell()
+@interface CategoryProductViewCell()<CarouselItemViewDelegate>
 @property (strong,nonatomic) SubCategoryModel *categoryModel;
 @end
 
 @implementation CategoryProductViewCell
 
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        [self setSelectionStyle:UITableViewCellSelectionStyleNone];
+    }
+    return self;
+}
 -(void)layoutSubviews
 {
     [super layoutSubviews];
@@ -64,6 +72,7 @@
     CarouselItemView *itemView = [self findCarouseItemView:index];
     if (itemView == nil) {
         CarouselItemView *newItemView = [[CarouselItemView alloc]init];
+        newItemView.delegate          = self;
         newItemView.tag               = index + kBaseTag;
         [self.contentView addSubview:newItemView];
         itemView = newItemView;
@@ -107,5 +116,11 @@
     SubCategoryModel *categoryModel = object;
     CGFloat row = [[self class] rowOfItemView:[categoryModel.subCategorySkus count] - 1];
     return (row + 1)*kItemViewH;
+}
+
+
+-(void)carouselItemViewDidSeleted:(CarouselItemView *)itemView product:(ProductOutline *)product
+{
+     [PRMBWantedOffice nativeArrestWarrant:APPURL_VIEW_IDENTIFIER_GOODDETAIL param:nil];
 }
 @end

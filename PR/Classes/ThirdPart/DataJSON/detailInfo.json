@@ -1,0 +1,52 @@
+{
+    "code": 0,
+    "data": {
+        "mainimgs": [
+        "http://image.yonghuivip.com//product/101963/1.jpg?imageView2/0/h/480/format/webp/interlace/1",
+        "http://image.yonghuivip.com//product/101963/1.jpg?imageView2/0/h/480/format/webp/interlace/1",
+        "http://image.yonghuivip.com//product/101963/1.jpg?imageView2/0/h/480/format/webp/interlace/1"
+                     ],
+        "evaluate": {
+            "content": "这个家伙很懒，一个字都没留下",
+            "nickName": "用户昵称",
+            "score": 5,
+            "totalNum": 200,
+            "favorableRate": 100
+        },
+        "product": {
+            "id": "793428",
+            "price": {
+                "market": 3300
+            },
+            "spec": "180g",
+            "stockNum": 900,
+            "subTitle": "澳洲优选草饲牛眼肉180g",
+            "title": "澳洲优选草饲牛眼肉180g"
+        },
+        "shop": {
+            "icon": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1496511168025&di=e8855c5b94f97fd12543443127d7ef97&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F15%2F23%2F09%2F74T58PICZjg_1024.jpg",
+            "subTitle": "月销205单",
+            "id": "9D03",
+            "title": "某某店铺"
+        },
+        "additionalInfo": [
+                           "itk快递",
+                           "月销量300笔",
+                           "江西"
+                           ],
+        "coupon": {
+            "icon": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1496511168025&di=e8855c5b94f97fd12543443127d7ef97&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F15%2F23%2F09%2F74T58PICZjg_1024.jpg",
+            "action": "xxxxx"
+        },
+        "pictureDetail": [
+                      "http://image.yonghuivip.com//product/101963/1.jpg?imageView2/0/h/480/format/webp/interlace/1",
+                      "http://image.yonghuivip.com//product/101963/1.jpg?imageView2/0/h/480/format/webp/interlace/1",
+                      "http://image.yonghuivip.com//product/101963/1.jpg?imageView2/0/h/480/format/webp/interlace/1",
+                      "http://image.yonghuivip.com//product/101963/147824719248212ed4ef9b1413587b3f8dea88db62886b314ee7a?imageView2/0/w/480/format/webp/interlace/1",
+                      "http://image.yonghuivip.com//product/101963/147824719444690173c738146416fdcb22bf731fb5ae9909979fd?imageView2/0/w/480/format/webp/interlace/1",
+                      "http://image.yonghuivip.com//product/101963/1478247187434992ae89e5c2ec6752b4a08bc3659027185c94300?imageView2/0/w/480/format/webp/interlace/1"
+                      ]
+    },
+    "message": "OK",
+    "now": 1496759274071
+}

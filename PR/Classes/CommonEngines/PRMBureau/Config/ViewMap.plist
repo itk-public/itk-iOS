@@ -82,5 +82,13 @@
 		<key>identifier</key>
 		<string>createAddress</string>
 	</dict>
+	<dict>
+		<key>className</key>
+		<string>GoodDetailViewController</string>
+		<key>description</key>
+		<string>商品详情</string>
+		<key>identifier</key>
+		<string>goodDetail</string>
+	</dict>
 </array>
 </plist>

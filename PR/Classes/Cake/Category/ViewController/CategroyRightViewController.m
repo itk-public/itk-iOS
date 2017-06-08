@@ -10,6 +10,7 @@
 #import "CategoryRightDataConstructor.h"
 #import "PRLoadingAnimation.h"
 #import "PRShowToastUtil.h"
+#import "PRMBWantedOffice.h"
 
 @interface CategroyRightViewController ()<WTNetWorkDataConstructorDelegate>
 @property (strong,nonatomic) CategoryRightDataConstructor *dataConstructor;
@@ -33,6 +34,7 @@
     }
     self.tableViewAdaptor.items = self.dataConstructor.items;
 }
+
 
 #pragma mark WTNetWorkDataConstructorDelegate
 - (void)dataConstructor:(id)dataConstructor didFinishLoad:(id)dataModel
