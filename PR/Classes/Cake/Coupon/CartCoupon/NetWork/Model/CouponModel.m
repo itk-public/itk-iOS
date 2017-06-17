@@ -16,7 +16,8 @@
         _cid       = [dic safeObjectForKey:@"id"];
         _startDate = [dic safeObjectForKey:@"startDate"];
         _endDate   = [dic safeObjectForKey:@"endDate"];
-        _desc      = [dic safeObjectForKey:@"desc"];
+        _desc      = [dic safeObjectForKey:@"condition"];
+        _isReceive = [[dic safeObjectForKey:@"isReceive"]boolValue];
     }
     return self;
 }
@@ -52,6 +53,6 @@
 }
 -(NSString *)dateString
 {
-    return [NSString stringWithFormat:@"使用日期:%@-%@",self.startDate?:@"",self.endDate?:@""];
+    return [NSString stringWithFormat:@"%@-%@",self.startDate?:@"",self.endDate?:@""];
 }
 @end

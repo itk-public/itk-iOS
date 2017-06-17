@@ -44,9 +44,6 @@
 //订单详情
 #define APPURL_VIEW_IDENTIFIER_ORDERDETAIL  @"orderDetail"
 
-//商品详情
-#define APPURL_VIEW_IDENTIFIER_GOODDETAIL   @"goodDetail"
-
 //选择收货地址
 #define APPURL_VIEW_IDENTIFIER_SELECTADDRESS  @"selectAddress"
 //新建收货地址
@@ -54,5 +51,9 @@
 
 //商品详情
 #define APPURL_VIEW_IDENTIFIER_GOODDETAIL     @"goodDetail"
+//搜索结果页
+#define APPURL_VIEW_IDENTIFIER_SEARCHRESULT   @"searchResult"
+//商家首页
+#define APPURL_VIEW_IDENTIFIER_SHOPHOME       @"shopHome"
 
 #endif /* PRMBureauDefine_h */

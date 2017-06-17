@@ -13,7 +13,7 @@
 @required
 -(void)loadDataSuccessful:(GoodDetailManager *)mananger  data:(id)data;
 
--(void)loadDataFailed:(GoodDetailManager *)cartShopApi  error:(NSError*)error;
+-(void)loadDataFailed:(GoodDetailManager *)manager  error:(NSError*)error;
 @end
 
 @interface GoodDetailManager : NSObject

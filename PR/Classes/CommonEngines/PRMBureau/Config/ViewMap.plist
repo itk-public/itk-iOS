@@ -90,5 +90,21 @@
 		<key>identifier</key>
 		<string>goodDetail</string>
 	</dict>
+	<dict>
+		<key>className</key>
+		<string>SearchResultViewController</string>
+		<key>description</key>
+		<string>搜索结果页</string>
+		<key>identifier</key>
+		<string>searchResult</string>
+	</dict>
+	<dict>
+		<key>className</key>
+		<string>ShopHomeViewController</string>
+		<key>description</key>
+		<string>商家首页</string>
+		<key>identifier</key>
+		<string>shopHome</string>
+	</dict>
 </array>
 </plist>

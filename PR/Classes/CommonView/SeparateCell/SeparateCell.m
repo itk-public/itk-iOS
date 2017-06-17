@@ -9,7 +9,14 @@
 #import "SeparateCell.h"
 
 @implementation SeparateModel
-
+-(instancetype)init
+{
+    if (self = [super init]) {
+        self.cellClass = [SeparateCell class];
+        self.cellIdentifier = @"cellIdentifier";
+    }
+    return self;
+}
 @end
 
 @implementation SeparateCell

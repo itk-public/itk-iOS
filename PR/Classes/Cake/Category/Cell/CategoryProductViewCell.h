@@ -7,6 +7,13 @@
 //
 
 #import "WTTableViewCell.h"
+#import "YHDataModel.h"
+#import "ProductOutline.h"
+
+//1行3个
+@interface CategoryProductViewCellModel : YHDataModel
+@property (strong,nonatomic) NSMutableArray<ProductOutline *> *products;
+@end
 
 @interface CategoryProductViewCell : WTTableViewCell
 

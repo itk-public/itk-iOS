@@ -179,6 +179,9 @@ NSString * boltCellAppendDataKey = @"boltAppend";
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(tableView:heightForHeaderInSection:)]) {
+      return   [self.delegate tableView:tableView heightForHeaderInSection:section];
+    }
     return 0.1;
 }
 
@@ -248,6 +251,15 @@ NSString * boltCellAppendDataKey = @"boltAppend";
             }
         }
     }
+}
+
+- (nullable UITableViewHeaderFooterView *)headerViewForSection:(NSInteger)section
+{
+    PRLOG(@"tableview的headerview=====");
+    if (self.delegate && [self.delegate respondsToSelector:@selector(headerViewForSection:)]) {
+        return [self.delegate headerViewForSection:section];
+    }
+    return nil;
 }
 
 

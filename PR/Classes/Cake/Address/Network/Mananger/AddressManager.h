@@ -17,9 +17,9 @@ typedef NS_ENUM(NSInteger,AddressManagerType)
 
 @protocol AddressManagerDelegate <NSObject>
 @required
--(void)loadDataSuccessful:(AddressManager *)cartShopApi dataType:(AddressManagerType)dataType  data:(id)data  isCache:(BOOL)isCache;
+-(void)loadDataSuccessful:(AddressManager *)manager dataType:(AddressManagerType)dataType  data:(id)data  isCache:(BOOL)isCache;
 
--(void)loadDataFailed:(AddressManager *)cartShopApi dataType:(AddressManagerType)dataType error:(NSError*)error;
+-(void)loadDataFailed:(AddressManager *)manager dataType:(AddressManagerType)dataType error:(NSError*)error;
 @end
 
 @interface AddressManager : NSObject

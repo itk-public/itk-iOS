@@ -110,7 +110,7 @@
     }
 }
 
--(void)loadDataFailed:(GoodDetailManager *)cartShopApi  error:(NSError*)error;
+-(void)loadDataFailed:(GoodDetailManager *)manager  error:(NSError*)error;
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(dataConstructorDidFailLoadData:withError:)]) {
         [self.delegate dataConstructorDidFailLoadData:self withError:error];

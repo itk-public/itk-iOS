@@ -45,7 +45,7 @@
     }
 }
 #pragma mark CategoryManangerDelegate
--(void)loadDataSuccessful:(CategoryMananger *)cartShopApi dataType:(CategoryManangerType)dataType  data:(id)data  isCache:(BOOL)isCache
+-(void)loadDataSuccessful:(CategoryMananger *)manager dataType:(CategoryManangerType)dataType  data:(id)data  isCache:(BOOL)isCache
 {
     self.categorys = data;
     if (self.delegate && [self.delegate respondsToSelector:@selector(dataConstructor:didFinishLoad:)]) {
@@ -53,7 +53,7 @@
     }
 }
 
--(void)loadDataFailed:(CategoryMananger *)cartShopApi dataType:(CategoryManangerType)dataType error:(NSError*)error
+-(void)loadDataFailed:(CategoryMananger *)manager dataType:(CategoryManangerType)dataType error:(NSError*)error
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(dataConstructorDidFailLoadData:withError:)]) {
         [self.delegate dataConstructorDidFailLoadData:self withError:error];

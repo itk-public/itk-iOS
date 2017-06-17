@@ -8,6 +8,9 @@
 
 #import "WTTableViewCell.h"
 #import "DMExhibitItem.h"
+
+typedef void(^SingleIconViewDidSelectBlock)();
 @interface SingleIconView : UIView
 @property (strong,nonatomic) DMExhibitItem *item;
+@property (copy,nonatomic) SingleIconViewDidSelectBlock returnBlock;
 @end

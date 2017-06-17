@@ -18,6 +18,8 @@
 @property (readonly,nonatomic) NSString *startDate;
 //结束时间 2016-07-30
 @property (readonly,nonatomic) NSString *endDate;
+//是否已领取
+@property (readonly,nonatomic) BOOL isReceive;
 
 -(void)updateShopId:(NSString *)shopid;
 -(NSMutableAttributedString *)titleAttributedString;

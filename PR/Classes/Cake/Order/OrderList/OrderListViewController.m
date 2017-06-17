@@ -43,6 +43,7 @@
 
 -(void)setStateView
 {
+    [self.view setBackgroundColor:kVCViewBGColor];
     MutiTitleHeaderView *statusView    = [[MutiTitleHeaderView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 46)];
     statusView.autoresizingMask        = UIViewAutoresizingFlexibleWidth;
     statusView.statusBtnTitles         = [[NSArray alloc]initWithObjects:

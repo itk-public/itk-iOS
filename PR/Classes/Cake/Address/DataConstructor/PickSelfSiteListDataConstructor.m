@@ -47,7 +47,7 @@
 }
 
 #pragma mark AddressManagerDelegate
--(void)loadDataSuccessful:(AddressManager *)cartShopApi dataType:(AddressManagerType)dataType  data:(id)data  isCache:(BOOL)isCache
+-(void)loadDataSuccessful:(AddressManager *)manager dataType:(AddressManagerType)dataType  data:(id)data  isCache:(BOOL)isCache
 {
     if([data isKindOfClass:[NSArray class]]){
         self.siteList = data;
@@ -57,7 +57,7 @@
     }
 }
 
--(void)loadDataFailed:(AddressManager *)cartShopApi dataType:(AddressManagerType)dataType error:(NSError*)error
+-(void)loadDataFailed:(AddressManager *)manager dataType:(AddressManagerType)dataType error:(NSError*)error
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(dataConstructorDidFailLoadData:withError:)]) {
         [self.delegate dataConstructorDidFailLoadData:self withError:error];

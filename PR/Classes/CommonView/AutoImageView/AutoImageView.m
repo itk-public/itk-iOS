@@ -69,8 +69,10 @@
 
 - (void)setImgInfo:(ImageInfo *)theImgInfo
 {
-    // 显示内容
-    [self setImgInfo:theImgInfo withPlaceholderImage:nil];
+    if (theImgInfo) {
+        // 显示内容
+        [self setImgInfo:theImgInfo withPlaceholderImage:nil];
+    }
 }
 
 - (void)setImgInfo:(ImageInfo *)theImgInfo withPlaceholderImage:(UIImage *)placehoderImge

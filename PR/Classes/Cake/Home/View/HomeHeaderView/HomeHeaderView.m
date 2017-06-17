@@ -7,6 +7,7 @@
 //
 
 #import "HomeHeaderView.h"
+#import "PRMBWantedOffice.h"
 @interface HomeHeaderView()
 
 @property (strong,nonatomic) UITextField *textFiled;
@@ -63,6 +64,12 @@
 
 -(void)coverBtnOnClicked
 {
-    PRLOG(@"点击搜索关键词");
+    [PRMBWantedOffice nativeArrestWarrant:APPURL_VIEW_IDENTIFIER_SEARCHRESULT param:nil];
 }
+
+-(void)messageBtnOnClicked
+{
+    PRLOG(@"点击查看信息");
+}
+        
 @end

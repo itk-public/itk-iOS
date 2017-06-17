@@ -28,6 +28,8 @@
         [_titleLabel setBackgroundColor:[UIColor whiteColor]];
         [_titleLabel setFont:KFontNormal(12)];
         [self addSubview:_titleLabel];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapSingleIconView)];
+        [self addGestureRecognizer:tap];
     }
     return self;
 }
@@ -48,6 +50,13 @@
     CONDITION_CHECK_RETURN([item isKindOfClass:[DMExhibitItem class]]);
     [self.titleLabel setText:item.title];
     [self.iconImage setImgInfo:item.imgInfo];
+}
+
+-(void)tapSingleIconView
+{
+    if (self.returnBlock) {
+        self.returnBlock();
+    }
 }
 @end
 

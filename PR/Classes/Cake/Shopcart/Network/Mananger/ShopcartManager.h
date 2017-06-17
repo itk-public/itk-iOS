@@ -22,7 +22,7 @@
  *  @param data     数据
  *  @param isCache  是否是缓存，返回的数据中只要有一条是新数据，则为NO
  */
--(void)loadDataSuccessful:(ShopcartManager *)cartShopApi dataType:(CartDataAPIType)dataType  data:(id)data  isCache:(BOOL)isCache;
+-(void)loadDataSuccessful:(ShopcartManager *)manager dataType:(CartDataAPIType)dataType  data:(id)data  isCache:(BOOL)isCache;
 
 
 /**
@@ -31,7 +31,7 @@
  *@param dataType 加载的数据类型
  *@param error 错误信息
  */
--(void)loadDataFailed:(ShopcartManager*)cartShopApi dataType:(CartDataAPIType)dataType error:(NSError*)error;
+-(void)loadDataFailed:(ShopcartManager*)manager dataType:(CartDataAPIType)dataType error:(NSError*)error;
 
 @end
 

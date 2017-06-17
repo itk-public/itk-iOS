@@ -28,6 +28,7 @@
 {
     if (self.categoryskus) {
         [self.items removeAllObjects];
+    
         for (SubCategoryModel *category in self.categoryskus) {
             if ([category isKindOfClass:[SubCategoryModel class]]) {
                 SubCategoryModel *newModel = [[SubCategoryModel alloc]init];
@@ -35,10 +36,28 @@
                 newModel.cellIdentifier = @"SubCategoryHeaderViewCell";
                 newModel.subCategoryName = category.subCategoryName;
                 [self.items addObject:newModel];
-                
-                category.cellClass = [CategoryProductViewCell class];
-                category.cellIdentifier = @"CategoryProductViewCell";
-                [self.items addObject:category];
+                NSInteger index = 0;
+                CategoryProductViewCellModel *cellModel = nil;
+                for (ProductOutline *product in category.subCategorySkus) {
+                    if ([product isKindOfClass:[ProductOutline class]]) {
+                        if (index%3 == 0) {
+                            PRLOG(@"===当前index====%zd",index);
+                            cellModel = [[CategoryProductViewCellModel alloc]init];
+                            cellModel.cellClass = [CategoryProductViewCell class];
+                            cellModel.cellIdentifier = @"CategoryProductViewCell";
+                        }
+                        [cellModel.products safeAddObject:product];
+                        if (index%3 == 2 || index + 1 == [category.subCategorySkus count]) {
+                             [self.items addObject:cellModel];
+                        }
+                        index ++;
+                    }
+                }
+               
+//                [cellModel.products safeAddObject:]
+//                category.cellClass = [CategoryProductViewCell class];
+//                category.cellIdentifier = @"CategoryProductViewCell";
+//                [self.items addObject:category];
             }
         }
     }
@@ -53,7 +72,7 @@
 }
 
 #pragma mark CategoryManangerDelegate
--(void)loadDataSuccessful:(CategoryMananger *)cartShopApi dataType:(CategoryManangerType)dataType  data:(id)data  isCache:(BOOL)isCache
+-(void)loadDataSuccessful:(CategoryMananger *)manager dataType:(CategoryManangerType)dataType  data:(id)data  isCache:(BOOL)isCache
 {
     self.categoryskus = data;
     if (self.delegate && [self.delegate respondsToSelector:@selector(dataConstructor:didFinishLoad:)]) {
@@ -61,7 +80,7 @@
     }
 }
 
--(void)loadDataFailed:(CategoryMananger *)cartShopApi dataType:(CategoryManangerType)dataType error:(NSError*)error
+-(void)loadDataFailed:(CategoryMananger *)manager dataType:(CategoryManangerType)dataType error:(NSError*)error
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(dataConstructorDidFailLoadData:withError:)]) {
         [self.delegate dataConstructorDidFailLoadData:self withError:error];

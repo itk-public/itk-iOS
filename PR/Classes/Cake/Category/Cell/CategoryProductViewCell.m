@@ -14,8 +14,21 @@
 
 #define kBaseTag 10000
 #define kItemViewH  110
+
+@implementation CategoryProductViewCellModel
+-(instancetype)init
+{
+    if (self =[super init]) {
+        _products = [NSMutableArray arrayWithCapacity:3];
+    }
+    return self;
+}
+@end
+
 @interface CategoryProductViewCell()<CarouselItemViewDelegate>
-@property (strong,nonatomic) SubCategoryModel *categoryModel;
+//@property (strong,nonatomic) SubCategoryModel *categoryModel;
+@property (strong,nonatomic) CategoryProductViewCellModel *cellModel;
+
 @end
 
 @implementation CategoryProductViewCell
@@ -27,25 +40,28 @@
     }
     return self;
 }
+
 -(void)layoutSubviews
 {
     [super layoutSubviews];
     CGFloat itemViewW = (self.width - 4*kLeftMargin)/3.0;
     NSInteger index = 0;
     for (CarouselItemView *itemView in self.contentView.subviews) {
-        CGFloat row = [[self class] rowOfItemView:index];
-        CGFloat column = [[self class] columnOfItemView:index];
-        CGFloat itemViewX = kLeftMargin * (column + 1) + itemViewW * column;
-        CGFloat itemViewY = row *kItemViewH;
-        itemView.frame = CGRectMake(itemViewX, itemViewY,itemViewW, kItemViewH);
-        index ++;
+        if ([itemView isKindOfClass:[CarouselItemView class]]) {
+            CGFloat row = [[self class] rowOfItemView:index];
+            CGFloat column = [[self class] columnOfItemView:index];
+            CGFloat itemViewX = kLeftMargin * (column + 1) + itemViewW * column;
+            CGFloat itemViewY = row *kItemViewH;
+            itemView.frame = CGRectMake(itemViewX, itemViewY,itemViewW, kItemViewH);
+            index ++;
+        }
     }
 }
 
 -(void)setObject:(id)object
 {
-    CONDITION_CHECK_RETURN([object isKindOfClass:[SubCategoryModel class]]);
-    self.categoryModel = object;
+    CONDITION_CHECK_RETURN([object isKindOfClass:[CategoryProductViewCellModel class]]);
+    self.cellModel = object;
     [self updateUI];
     [self setNeedsLayout];
 }
@@ -53,7 +69,7 @@
 -(void)updateUI
 {
     NSInteger index = 0;
-    for (NSInteger i = 0; i < [self.categoryModel.subCategorySkus count]; i ++) {
+    for (NSInteger i = 0; i < [self.cellModel.products count]; i ++) {
         [self addCarouseItemView:i];
         index = i;
     }
@@ -77,7 +93,7 @@
         [self.contentView addSubview:newItemView];
         itemView = newItemView;
     }
-    ProductOutline *product = [self.categoryModel.subCategorySkus safeObjectAtIndex:index hintClass:[ProductOutline class]];
+    ProductOutline *product = [self.cellModel.products safeObjectAtIndex:index hintClass:[ProductOutline class]];
     if (product) {
         [itemView setImageUrl:product.imageInfo.imgUrl title:product.title index:0];
     }
@@ -98,11 +114,7 @@
 //index所在行,从0开始
 +(NSInteger)rowOfItemView:(NSInteger)index
 {
-    
-//    if(index%4 == 0){
-        return index/3;
-//    }
-//    return index/3 + 1;
+    return 0;
 }
 //index所在列，从0开始
 +(NSInteger)columnOfItemView:(NSInteger)index
@@ -112,9 +124,9 @@
 
 +(CGFloat)tableView:(UITableView *)tableView rowHeightForObject:(id)object
 {
-    CONDITION_CHECK_RETURN_VAULE([object isKindOfClass:[SubCategoryModel class]], 0);
-    SubCategoryModel *categoryModel = object;
-    CGFloat row = [[self class] rowOfItemView:[categoryModel.subCategorySkus count] - 1];
+    CONDITION_CHECK_RETURN_VAULE([object isKindOfClass:[CategoryProductViewCellModel class]], 0);
+    CategoryProductViewCellModel *cellModel = object;
+    CGFloat row = [[self class] rowOfItemView:[cellModel.products count] - 1];
     return (row + 1)*kItemViewH;
 }
 

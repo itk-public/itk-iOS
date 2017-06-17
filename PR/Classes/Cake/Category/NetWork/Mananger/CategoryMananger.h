@@ -18,9 +18,9 @@ typedef NS_ENUM(NSInteger,CategoryManangerType)
 
 @protocol CategoryManangerDelegate <NSObject>
 @required
--(void)loadDataSuccessful:(CategoryMananger *)cartShopApi dataType:(CategoryManangerType)dataType  data:(id)data  isCache:(BOOL)isCache;
+-(void)loadDataSuccessful:(CategoryMananger *)manager dataType:(CategoryManangerType)dataType  data:(id)data  isCache:(BOOL)isCache;
 
--(void)loadDataFailed:(CategoryMananger *)cartShopApi dataType:(CategoryManangerType)dataType error:(NSError*)error;
+-(void)loadDataFailed:(CategoryMananger *)manager dataType:(CategoryManangerType)dataType error:(NSError*)error;
 @end
 
 @interface CategoryMananger : NSObject

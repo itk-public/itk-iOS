@@ -390,7 +390,7 @@ NSString * kToCommitSelleridKey   = @"toCommitSellerid";
 
 
 #pragma mark CartShopAPIDelegate
--(void)loadDataSuccessful:(ShopcartManager *)cartShopApi dataType:(CartDataAPIType)dataType  data:(id)data  isCache:(BOOL)isCache
+-(void)loadDataSuccessful:(ShopcartManager *)manager dataType:(CartDataAPIType)dataType  data:(id)data  isCache:(BOOL)isCache
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(loadDataSuccessful:dataType:data:extraInfo:)]) {
         if (self.dataSource == nil) {
@@ -410,7 +410,7 @@ NSString * kToCommitSelleridKey   = @"toCommitSellerid";
 }
 
 
--(void)loadDataFailed:(ShopcartManager*)cartShopApi dataType:(CartDataAPIType)dataType error:(NSError*)error
+-(void)loadDataFailed:(ShopcartManager*)manager dataType:(CartDataAPIType)dataType error:(NSError*)error
 {
     if (self.delegate &&
         [self.delegate respondsToSelector:@selector(loadDataFailed:dataType:error:)]) {

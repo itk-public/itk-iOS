@@ -7,12 +7,13 @@
 //
 
 #import "CarouselView.h"
-#import "CarouselItemView.h"
-#import "ProductOutline.h"
+#import "ShopHomeSingleCouponView.h"
 
-
-#define KTopMargin       10
+#define KTopMargin       15
 #define kBaseTag         1000
+
+//scrollview的right的距离
+//#define kScrollViewRightMargin(x) (ScreenWidth - kLeftMargin(x) - kOrderItemViewW(x))
 
 @interface CarouselView()<UIScrollViewDelegate>
 
@@ -22,9 +23,6 @@
 @property (assign,nonatomic) NSInteger      maxVisibleIndex;
 @property (assign,nonatomic) NSInteger      minVisibleIndex;
 @property (strong,nonatomic) NSArray        *dataList;
-@property (assign,nonatomic) CGFloat        lastOffsetX;
-
-//@property (strong,nonatomic) UIPageControl *pageControl;
 
 @end
 
@@ -35,7 +33,8 @@
         _scrollView.delegate = self;
         _scrollView.showsHorizontalScrollIndicator = NO;
         _scrollView.scrollsToTop = NO;
-        _scrollView.pagingEnabled = YES;
+        _scrollView.clipsToBounds = NO;
+//        _scrollView.pagingEnabled = YES;
         [self addSubview:_scrollView];
         
         _inUseViews = [NSMutableArray array];
@@ -43,37 +42,32 @@
         
         _maxVisibleIndex = 0;
         _minVisibleIndex = 0;
-        
-        //        _pageControl = [[UIPageControl alloc]init];
-        //        [_pageControl addTarget:self action:@selector(pageControlChanged:) forControlEvents:UIControlEventValueChanged];
-        //        [_pageControl setBackgroundColor:[UIColor orangeColor]];
-        //        [self addSubview:_pageControl];
-        //        [self bringSubviewToFront:_pageControl];
     }
     return self;
 }
 
 -(void)layoutSubviews{
+    
     [super layoutSubviews];
-    //    self.pageControl.frame = CGRectMake(0, 0, 100, 100);
-    self.scrollView.contentSize = CGSizeMake([self.dataList count]*kCarouselItemViewW+ ([self.dataList count]+1)*kLeftMargin,self.height);
+    NSInteger orderItemViewW = kShopHomeSingleCouponViewW;
+    NSInteger orderItemLeftMargin = 15;
+    self.scrollView.contentSize = CGSizeMake([self.dataList count]*(orderItemViewW + orderItemLeftMargin) + orderItemLeftMargin,self.height);
     self.scrollView.frame = self.bounds;
-    for (CarouselItemView *itemView in self.scrollView.subviews) {
-        if ([itemView isKindOfClass:[CarouselItemView class]]) {
-            CGFloat kItemViewX = kLeftMargin*(itemView.tag - kBaseTag + 1) + kCarouselItemViewW*(itemView.tag - kBaseTag);
-            itemView.frame = CGRectMake(kItemViewX, KTopMargin,kCarouselItemViewW, self.scrollView.height - 2*KTopMargin);
+    self.scrollView.width =  orderItemLeftMargin + orderItemViewW;
+    for (ShopHomeSingleCouponView *itemView in self.scrollView.subviews) {
+        if ([itemView isKindOfClass:[ShopHomeSingleCouponView class]]) {
+            CGFloat kItemViewX = orderItemLeftMargin*(itemView.tag - kBaseTag + 1) + orderItemViewW*(itemView.tag - kBaseTag);
+            itemView.frame = CGRectMake(kItemViewX, KTopMargin,orderItemViewW, self.scrollView.height - 2*KTopMargin);
         }
     }
 }
 
 
 -(void)setUpDatalist:(NSArray *)dataList{
-    CONDITION_CHECK_RETURN([dataList isKindOfClass:[NSArray class]] && [dataList count]);
+   CONDITION_CHECK_RETURN([dataList isKindOfClass:[NSArray class]] && [dataList count]);
     self.dataList  = dataList;
-    //    self.pageControl.numberOfPages = [self.dataList count];
-    //    self.pageControl.currentPage   = 0;
     if ([self.inUseViews count]) {
-        for (CarouselItemView *itemView in self.inUseViews) {
+        for (ShopHomeSingleCouponView *itemView in self.inUseViews) {
             [itemView removeFromSuperview];
         }
         [self.unUseViews addObjectsFromArray:self.inUseViews];
@@ -85,8 +79,6 @@
     [self setUpScrollView];
     [self setNeedsLayout];
     [self performSelector:@selector(removeUnVisibleView) withObject:nil afterDelay:0];
-    
-    
 }
 
 
@@ -106,21 +98,20 @@
     [self removeUnVisibleView];
     self.minVisibleIndex = [self getMinVisibleIndex];
     self.maxVisibleIndex = [self getMaxVisibleIndex];
-    //    self.pageControl.currentPage = self.minVisibleIndex;
     for (NSInteger i = self.minVisibleIndex ; i <= self.maxVisibleIndex ;i ++) {
         [self addSubViewToScrollViewWithTag:i];
     }
 }
 
-
 -(NSInteger)viewMaxNum
 {
     NSInteger kScrollViewW = ScreenWidth;
     NSInteger viewMaxNum   = 0;
-    if (kCarouselItemViewW && (kScrollViewW%kCarouselItemViewW)) {
-        viewMaxNum = kScrollViewW/kCarouselItemViewW + 3;
+    NSInteger orderItemViewW = kShopHomeSingleCouponViewW;
+    if (orderItemViewW && (kScrollViewW%orderItemViewW)) {
+        viewMaxNum = kScrollViewW/orderItemViewW + 3;
     }else{
-        viewMaxNum = kScrollViewW/kCarouselItemViewW + 2;
+        viewMaxNum = kScrollViewW/orderItemViewW + 2;
     }
     if (viewMaxNum > [self.dataList count] ) {
         viewMaxNum = [self.dataList count];
@@ -133,19 +124,19 @@
     [self.scrollView setContentOffset:CGPointZero];
     NSInteger viewMaxNum = [self viewMaxNum];
     for (NSInteger i = 0;  i < viewMaxNum; i++) {
-        ProductOutline *model = [self.dataList safeObjectAtIndex:i hintClass:[ProductOutline class]];
+        CouponModel *model = [self.dataList safeObjectAtIndex:i hintClass:[CouponModel class]];
         if (model) {
-            CarouselItemView *itemView = [self inUseViewWithTag:i + kBaseTag];
+            ShopHomeSingleCouponView *itemView = [self inUseViewWithTag:i + kBaseTag];
             if (itemView == nil) {
                 itemView = [self getReuseView];
                 if (itemView == nil) {
-                    itemView     = [[CarouselItemView alloc]init];
+                    itemView     = [[ShopHomeSingleCouponView alloc]init];
                 }
                 itemView.tag = kBaseTag + i;
                 [self.scrollView addSubview:itemView];
                 [self.inUseViews addObject:itemView];
             }
-            [itemView setObject:model];
+            [itemView setCoupon:model];
         }
     }
     
@@ -156,9 +147,10 @@
 -(void)removeUnVisibleView
 {
     NSArray *tempArray = [NSArray arrayWithArray:self.inUseViews];
-    for (CarouselItemView *subview in tempArray) {
-        if ([subview isKindOfClass:[CarouselItemView class]]) {
-            if (!CGRectIntersectsRect(self.scrollView.bounds,subview.frame) ) {
+    for (ShopHomeSingleCouponView *subview in tempArray) {
+        CGRect temp =  CGRectMake(self.scrollView.bounds.origin.x, self.scrollView.bounds.origin.y, self.scrollView.bounds.size.width  , self.scrollView.bounds.size.height);
+        if ([subview isKindOfClass:[ShopHomeSingleCouponView class]]) {
+            if (!CGRectIntersectsRect(temp,subview.frame) ) {
                 [subview removeFromSuperview];
                 [self.unUseViews addObject:subview];
                 if ([self.inUseViews containsObject:subview]) {
@@ -172,16 +164,18 @@
 
 -(void)addSubViewToScrollViewWithTag:(NSInteger)tag
 {
+    NSInteger orderItemViewW = kShopHomeSingleCouponViewW;
+    NSInteger orderItemLeftMargin = 15;
     if ([self inUseViewWithTag:tag] == nil){
-        CarouselItemView *itemView = [self getReuseView];
+        ShopHomeSingleCouponView *itemView = [self getReuseView];
         if (itemView) {
             itemView.tag   = tag + kBaseTag;
-            CGFloat kItemViewX = kLeftMargin*(tag + 1) + kCarouselItemViewW *tag;
-            itemView.frame = CGRectMake(kItemViewX, KTopMargin,kCarouselItemViewW , self.scrollView.height - 2*KTopMargin);
+            CGFloat kItemViewX = orderItemLeftMargin*(tag + 1) + orderItemViewW*tag;
+            itemView.frame = CGRectMake(kItemViewX, KTopMargin,orderItemViewW, self.scrollView.height - 2*KTopMargin);
             [self.scrollView addSubview:itemView];
-            ProductOutline  *model = [self.dataList safeObjectAtIndex:tag
-                                                           hintClass:[ProductOutline  class]];
-            [itemView setObject:model];
+             CouponModel *model = [self.dataList safeObjectAtIndex:tag
+                                                            hintClass:[CouponModel class]];
+            [itemView setCoupon:model];
             [self.inUseViews addObject:itemView];
         }
     }
@@ -192,11 +186,13 @@
 -(NSInteger)getMinVisibleIndex
 {
     NSInteger tempIndex = 0;
+    NSInteger orderItemViewW = kShopHomeSingleCouponViewW;
     NSInteger tempX = self.scrollView.bounds.origin.x - 1;
-    if (tempX%(kCarouselItemViewW + kLeftMargin)) {
-        tempIndex = tempX/(kCarouselItemViewW  + kLeftMargin);
+    NSInteger orderItemLeftMargin = 15;
+    if (tempX%(orderItemViewW + orderItemLeftMargin)) {
+        tempIndex = tempX/(orderItemViewW + orderItemLeftMargin);
     }else{
-        tempIndex = tempX/(kCarouselItemViewW + kLeftMargin) - 1;
+         tempIndex = tempX/(orderItemViewW + orderItemLeftMargin) - 1;
     }
     if (tempIndex < 0) {
         tempIndex = 0;
@@ -209,12 +205,14 @@
 -(NSInteger)getMaxVisibleIndex
 {
     NSInteger tempIndex = 0;
+    NSInteger orderItemViewW = kShopHomeSingleCouponViewW;
     NSInteger tempX = self.scrollView.bounds.origin.x + 1 +
-    self.scrollView.bounds.size.width;
-    if (tempX%(kCarouselItemViewW + kLeftMargin)) {
-        tempIndex = tempX/(kCarouselItemViewW  + kLeftMargin);
+    self.scrollView.bounds.size.width ;
+    NSInteger orderLeftMarign = 15;
+    if (tempX%(orderItemViewW + orderLeftMarign)) {
+        tempIndex = tempX/(orderItemViewW+ orderLeftMarign);
     }else{
-        tempIndex = tempX/(kCarouselItemViewW  + kLeftMargin) - 1;
+         tempIndex = tempX/(orderItemViewW + orderLeftMarign) - 1;
     }
     if (tempIndex > [self.dataList count] - 1) {
         tempIndex = [self.dataList count] -1;
@@ -223,9 +221,9 @@
 }
 
 
--(CarouselItemView *)inUseViewWithTag:(NSInteger)tag
+-(ShopHomeSingleCouponView *)inUseViewWithTag:(NSInteger)tag
 {
-    for (CarouselItemView *itemView in self.inUseViews) {
+    for (ShopHomeSingleCouponView *itemView in self.inUseViews) {
         if (itemView.tag == tag + kBaseTag) {
             return itemView;
         }
@@ -234,24 +232,35 @@
 }
 
 //获取复用的view
--(CarouselItemView *)getReuseView
+-(ShopHomeSingleCouponView *)getReuseView
 {
-    CarouselItemView *reuseView = nil;
+    ShopHomeSingleCouponView *reuseView = nil;
     if ([self.unUseViews count]) {
         reuseView = [self.unUseViews objectAtIndex:0];
         [self.unUseViews removeObject:reuseView];
     }
-    if ([reuseView isKindOfClass:[CarouselItemView class]]) {
+    if ([reuseView isKindOfClass:[ShopHomeSingleCouponView class]]) {
         return reuseView;
     }
     return nil;
 }
 
--(void)orderItemViewLeftSwipe:(CarouselItemView *)itemView
-{
-    CGFloat currentOffX = self.scrollView.contentOffset.x;
-    [self.scrollView setContentOffset:CGPointMake(currentOffX + 290, self.scrollView.contentOffset.y)];
-}
 
+//-(nullable UIView *)hitTest:(CGPoint)point withEvent:(nullable UIEvent *)event;
+//{
+//    for(ShopHomeSingleCouponView *itemView in self.scrollView.subviews){
+//        if ([itemView isKindOfClass:[OrderItemView class]]) {
+//            CGRect itemViewRect   = [itemView.superview convertRect:itemView.frame toView:self];
+//            if (CGRectContainsPoint(itemViewRect,point)) {
+//                return itemView;
+//            }
+//        }
+//    }
+//    
+//    if (CGRectContainsPoint(CGRectMake(self.scrollView.right, 0,self.width - self.scrollView.width , self.height),point)) {
+//        return self.scrollView;
+//    }
+//   return  [super hitTest:point withEvent:event];
+//}
 
 @end

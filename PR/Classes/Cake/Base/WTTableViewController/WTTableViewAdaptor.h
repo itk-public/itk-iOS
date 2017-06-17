@@ -82,5 +82,8 @@ FOUNDATION_EXTERN NSString * boltCellAppendDataKey;
 - (void)requestMoreData;
 
 - (void)tableViewDidScrolled:(UITableView *)tableView;
+- (UITableViewHeaderFooterView *)headerViewForSection:(NSInteger)section;
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section;
+
 
 @end

@@ -50,4 +50,8 @@
 
 //商品详情
 #define GoodDetail_URLPATH                         @"/api/good/detailInfo"
+//搜索
+#define SearchSku_URLPATH                          @"/aip/search/searchSku"
+//店铺首页
+#define ShopHome_URLPATH                          @"/aip/home/shopHome"
 #endif /* URLPathDefine_h */
