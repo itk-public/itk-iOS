@@ -11,9 +11,15 @@
 
 #define KTopMargin       15
 #define kBaseTag         1000
+#define kLeftMargin      15
 
-//scrollview的right的距离
-//#define kScrollViewRightMargin(x) (ScreenWidth - kLeftMargin(x) - kOrderItemViewW(x))
+@implementation CarouselSingleView
+
+@end
+
+@implementation CarouselSingleViewModel
+
+@end
 
 @interface CarouselView()<UIScrollViewDelegate>
 
@@ -34,7 +40,6 @@
         _scrollView.showsHorizontalScrollIndicator = NO;
         _scrollView.scrollsToTop = NO;
         _scrollView.clipsToBounds = NO;
-//        _scrollView.pagingEnabled = YES;
         [self addSubview:_scrollView];
         
         _inUseViews = [NSMutableArray array];
@@ -49,11 +54,11 @@
 -(void)layoutSubviews{
     
     [super layoutSubviews];
-    NSInteger orderItemViewW = kShopHomeSingleCouponViewW;
-    NSInteger orderItemLeftMargin = 15;
+    NSInteger orderItemViewW = self.singleViewW;
+    NSInteger orderItemLeftMargin = kLeftMargin;
     self.scrollView.contentSize = CGSizeMake([self.dataList count]*(orderItemViewW + orderItemLeftMargin) + orderItemLeftMargin,self.height);
     self.scrollView.frame = self.bounds;
-    self.scrollView.width =  orderItemLeftMargin + orderItemViewW;
+    self.scrollView.width =  self.width;
     for (ShopHomeSingleCouponView *itemView in self.scrollView.subviews) {
         if ([itemView isKindOfClass:[ShopHomeSingleCouponView class]]) {
             CGFloat kItemViewX = orderItemLeftMargin*(itemView.tag - kBaseTag + 1) + orderItemViewW*(itemView.tag - kBaseTag);
@@ -206,7 +211,7 @@
 {
     NSInteger tempIndex = 0;
     NSInteger orderItemViewW = kShopHomeSingleCouponViewW;
-    NSInteger tempX = self.scrollView.bounds.origin.x + 1 +
+    NSInteger tempX = self.scrollView.bounds.origin.x  +
     self.scrollView.bounds.size.width ;
     NSInteger orderLeftMarign = 15;
     if (tempX%(orderItemViewW + orderLeftMarign)) {

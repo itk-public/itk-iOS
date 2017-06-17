@@ -7,7 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "YHDataModel.h"
+
+@interface CarouselSingleViewModel : YHDataModel
+@property (strong,nonatomic) id data;
+@end
+
+@interface CarouselSingleView : UIView
+@property (strong,nonatomic) CarouselSingleViewModel *model;
+
+@end
+
 
 @interface CarouselView : UIView
 -(void)setUpDatalist:(NSArray *)dataList;
+@property (assign,nonatomic) CGFloat singleViewW ;
 @end
