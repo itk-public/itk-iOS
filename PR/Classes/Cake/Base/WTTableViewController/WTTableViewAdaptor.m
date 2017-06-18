@@ -253,7 +253,7 @@ NSString * boltCellAppendDataKey = @"boltAppend";
     }
 }
 
-- (nullable UITableViewHeaderFooterView *)headerViewForSection:(NSInteger)section
+- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section;
 {
     PRLOG(@"tableview的headerview=====");
     if (self.delegate && [self.delegate respondsToSelector:@selector(headerViewForSection:)]) {

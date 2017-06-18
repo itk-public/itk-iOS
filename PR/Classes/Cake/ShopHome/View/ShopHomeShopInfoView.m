@@ -113,4 +113,9 @@
 {
     PRLOG(@"点击关注");
 }
+
++(CGFloat)height
+{
+    return 110;
+}
 @end

@@ -7,10 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CouponModel.h"
+
+#import "CarouselView.h"
 
 #define kShopHomeSingleCouponViewW  170
-@interface ShopHomeSingleCouponView : UIView
-@property (strong,nonatomic) CouponModel *coupon;
-+(CGFloat)height;
+@interface ShopHomeSingleCouponView : CarouselSingleView
 @end

@@ -8,6 +8,7 @@
 
 #import "ShopHomeSingleCouponView.h"
 #import "AutoImageView.h"
+#import "CouponModel.h"
 
 @interface ShopHomeSingleCouponView()
 //左边view的容器
@@ -23,6 +24,7 @@
 //领券
 @property (strong,nonatomic) UILabel *receiveLabel;
 @property (strong,nonatomic) AutoImageView *imageView;
+@property (strong,nonatomic) CouponModel *coupon;
 @end
 
 @implementation ShopHomeSingleCouponView
@@ -86,6 +88,11 @@
     self.dateLabel.frame  = CGRectMake(self.priceLabel.left, self.conditionLabel.bottom + 5, kPriceLabelW, self.dateLabel.height);
 }
 
+-(void)setModel:(CarouselSingleViewModel *)model
+{
+    CouponModel *coupon = model.data;
+    [self setCoupon:coupon];
+}
 -(void)setCoupon:(CouponModel *)coupon
 {
     CONDITION_CHECK_RETURN([coupon isKindOfClass:[CouponModel class]]);

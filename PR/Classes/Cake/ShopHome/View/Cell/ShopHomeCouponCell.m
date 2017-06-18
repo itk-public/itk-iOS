@@ -8,13 +8,14 @@
 
 #import "ShopHomeCouponCell.h"
 #import "CarouselView.h"
+#import "ShopHomeCarouselView.h"
 
 @implementation ShopHomeCouponCellModel
 
 @end
 
 @interface ShopHomeCouponCell()
-@property (strong,nonatomic) CarouselView *carouselView;
+@property (strong,nonatomic) ShopHomeCarouselView *carouselView;
 
 @end
 @implementation ShopHomeCouponCell
@@ -22,7 +23,7 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self setSelectionStyle:UITableViewCellSelectionStyleNone];
-        _carouselView = [[CarouselView alloc]init];
+        _carouselView = [[ShopHomeCarouselView alloc]init];
         [self.contentView addSubview:_carouselView];
         [self.contentView setBackgroundColor:kVCViewBGColor];
     }

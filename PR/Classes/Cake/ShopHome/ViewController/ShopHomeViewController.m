@@ -11,10 +11,13 @@
 #import "PRLoadingAnimation.h"
 #import "PRShowToastUtil.h"
 #import "ShopHomeSectionHeaerView.h"
+#import "ShopHomeShopInfoView.h"
 
 @interface ShopHomeViewController ()<WTNetWorkDataConstructorDelegate>
 @property (strong,nonatomic) ShopHomeDataConstructor *dataConstructor;
 @property (strong,nonatomic) ShopHomeSectionHeaerView *sectionHeaderView;
+@property (strong,nonatomic) ShopHomeShopInfoView     *shopInfoView;
+
 @end
 
 @implementation ShopHomeViewController
@@ -23,6 +26,9 @@
     [super viewDidLoad];
     self.navTitle = @"店铺首页";
     self.tableView.sectionHeaderHeight = [ShopHomeSectionHeaerView height];
+    self.shopInfoView = [[ShopHomeShopInfoView alloc]init];
+    self.shopInfoView.frame = CGRectMake(0, 0, 0, [ShopHomeShopInfoView height]);
+    [self.tableView setTableHeaderView:self.shopInfoView];
 }
 
 -(void)viewWillAppear:(BOOL)animated

@@ -20,6 +20,7 @@
 -(instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithReuseIdentifier:reuseIdentifier]) {
+        [self.contentView setBackgroundColor:[UIColor darkGrayColor]];
         [self adjustData];
         [self addSingleIconView];
     }

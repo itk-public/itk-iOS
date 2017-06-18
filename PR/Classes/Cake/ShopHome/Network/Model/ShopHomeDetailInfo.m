@@ -17,7 +17,10 @@
         if (tempCoupons && [tempCoupons count]) {
             NSMutableArray *temp = [NSMutableArray arrayWithCapacity:[tempCoupons count]];
             for (NSDictionary *tempDict in tempCoupons) {
-                [temp safeAddObject:[CouponModel modelFromDictionary:tempDict]];
+                CouponModel *coupon = [CouponModel modelFromDictionary:tempDict];
+                CarouselSingleViewModel *model = [[CarouselSingleViewModel alloc]init];
+                model.data = coupon;
+                [temp safeAddObject:model];
             }
             _coupons = [NSArray arrayWithArray:temp];
             temp = nil;

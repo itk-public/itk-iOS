@@ -10,9 +10,10 @@
 #import "ShopHomeShopInfo.h"
 #import "CouponModel.h"
 #import "ProductOutline.h"
+#import "CarouselView.h"
 
 @interface ShopHomeDetailInfo : YHDataModel
 @property (readonly,nonatomic) ShopHomeShopInfo          *shopInfo;
-@property (readonly,nonatomic) NSArray<CouponModel *>    *coupons;
+@property (readonly,nonatomic) NSArray<CarouselSingleViewModel *>    *coupons;
 @property (readonly,nonatomic) NSArray<ProductOutline *> *products;
 @end

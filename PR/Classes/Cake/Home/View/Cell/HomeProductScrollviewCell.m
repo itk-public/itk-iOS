@@ -7,11 +7,11 @@
 //
 
 #import "HomeProductScrollviewCell.h"
-#import "CarouselView.h"
 #import "DynamicUIModel.h"
+#import "HomeCarouselView.h"
 
 @interface HomeProductScrollviewCell()
-@property (strong,nonatomic) CarouselView *carouseView;
+@property (strong,nonatomic) HomeCarouselView *carouseView;
 @end
 
 @implementation HomeProductScrollviewCell
@@ -19,7 +19,7 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        _carouseView = [[CarouselView alloc]init];
+        _carouseView = [[HomeCarouselView alloc]init];
         [self.contentView addSubview:_carouseView];
         [_carouseView setBackgroundColor:[UIColor redColor]];
     }

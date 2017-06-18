@@ -9,6 +9,7 @@
 #import "ShopHomeSingleProductView.h"
 #import "AutoImageView.h"
 #import "ProductOutline.h"
+#import "CouponModel.h"
 
 @interface ShopHomeSingleProductView()
 @property (strong,nonatomic) AutoImageView *productImage;

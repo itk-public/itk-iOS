@@ -38,11 +38,12 @@
 {
     [super layoutSubviews];
     [self.titleLabel sizeToFit];
-    self.titleLabel.frame = CGRectMake(0,self.height - self.titleLabel.height - 10 , self.width, self.titleLabel.height);
-    CGFloat iconLabelW  = 35;
+    CGFloat kTitleBottom  = 6;
+    self.titleLabel.frame = CGRectMake(0,self.height - self.titleLabel.height - kTitleBottom , self.width, self.titleLabel.height);
+    CGFloat iconLabelW  = self.height - self.titleLabel.height - 20;
     self.iconImage.frame  = CGRectMake(0, 0, iconLabelW, iconLabelW);
     self.iconImage.centerX = self.width/2.0;
-    self.iconImage.bottom = self.titleLabel.top - 10;
+    self.iconImage.bottom = self.titleLabel.top - kTitleBottom;
 }
 
 -(void)setItem:(DMExhibitItem *)item

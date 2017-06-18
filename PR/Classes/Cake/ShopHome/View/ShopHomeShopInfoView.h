@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ShopHomeShopInfoView : UIView
-
++(CGFloat)height;
 @end

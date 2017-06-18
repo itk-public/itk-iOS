@@ -21,5 +21,6 @@
 
 @interface CarouselView : UIView
 -(void)setUpDatalist:(NSArray *)dataList;
-@property (assign,nonatomic) CGFloat singleViewW ;
+@property (assign,nonatomic) CGFloat singleViewW;
+@property (strong,nonatomic) Class  carouselSingleViewClass;
 @end

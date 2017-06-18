@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CarouselView.h"
 @class ProductOutline;
 #define kLeftMargin 15
 #define kCarouselItemViewW  65
@@ -16,7 +17,7 @@
 @end
 
 
-@interface CarouselItemView : UIView
+@interface CarouselItemView : CarouselSingleView
 -(void)setImageUrl:(NSString *)imageurl
              title:(NSString *)title
              index:(NSInteger)index;
