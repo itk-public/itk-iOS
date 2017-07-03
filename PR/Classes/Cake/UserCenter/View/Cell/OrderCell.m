@@ -7,7 +7,7 @@
 //
 
 #import "OrderCell.h"
-#import "CustomInfoType.h"
+#import "OrderInfoDefine.h"
 #import "ItemView.h"
 #import "PRMBWantedOffice.h"
 #import "UserCenterModel.h"
@@ -15,16 +15,16 @@
 
 @interface SingleOrderViewModel : NSObject
 
-@property (readonly,nonatomic) OrderStatus orderStatus;
+@property (readonly,nonatomic) OrderFilterType orderStatus;
 @property (strong,nonatomic) NSString *numStr;
 @property (readonly,nonatomic) NSString *iconName;
 @property (readonly,nonatomic) NSString *title;
--(void)upDate:(OrderStatus)orderStatus num:(NSInteger)num iconName:(NSString *)iconName title:(NSString *)title;
+-(void)upDate:(OrderFilterType)orderStatus num:(NSInteger)num iconName:(NSString *)iconName title:(NSString *)title;
 
 @end
 
 @implementation SingleOrderViewModel
--(void)upDate:(OrderStatus)orderStatus num:(NSInteger)num iconName:(NSString *)iconName title:(NSString *)title;
+-(void)upDate:(OrderFilterType)orderStatus num:(NSInteger)num iconName:(NSString *)iconName title:(NSString *)title;
 {
     _orderStatus = orderStatus;
     if(num){
@@ -138,21 +138,20 @@
     CONDITION_CHECK_RETURN([object isKindOfClass:[OrderInfo class]]);
     _contentList = [NSMutableArray arrayWithCapacity:4];
     OrderInfo *orderInfo = object;
-    NSString  *toDeliveryString = nil;
     SingleOrderViewModel *model = [[SingleOrderViewModel alloc]init];
-    [model upDate:OrderStatusToDelivery num:orderInfo.toDelivery iconName:@"icon_usercenter_todelivery" title:@"待配送"];
+    [model upDate:OrderFilterTypeUnDelivery num:orderInfo.toDelivery iconName:@"icon_usercenter_todelivery" title:@"待配送"];
     [((SingleOrderView *)[self.contentView viewWithTag:kBaseTag]) setModel:model];
     
     SingleOrderViewModel *model2 = [[SingleOrderViewModel alloc]init];
-    [model2 upDate:OrderStatusToPickUp num:orderInfo.toPick iconName:@"icon_usercenter_pickup" title:@"待自提"];
+    [model2 upDate:OrderFilterTypeUnPickUpSelf  num:orderInfo.toPick iconName:@"icon_usercenter_pickup" title:@"待自提"];
     [((SingleOrderView *)[self.contentView viewWithTag:kBaseTag + 1]) setModel:model2];
     
     SingleOrderViewModel *model3 = [[SingleOrderViewModel alloc]init];
-    [model3 upDate:OrderStatusToComment num:orderInfo.toComment iconName:@"icon_usercenter_tocomment" title:@"待评价"];
+    [model3 upDate:OrderFilterTypeUnEvaluate num:orderInfo.toComment iconName:@"icon_usercenter_tocomment" title:@"待评价"];
      [((SingleOrderView *)[self.contentView viewWithTag:kBaseTag + 2]) setModel:model3];
     
     SingleOrderViewModel *model4 = [[SingleOrderViewModel alloc]init];
-    [model4 upDate:OrderStatusFefunding num:orderInfo.refunding iconName:@"icon_usercenter_refund" title:@"退款中"];
+    [model4 upDate:OrderFilterTypeRefunding num:orderInfo.refunding iconName:@"icon_usercenter_refund" title:@"退款中"];
     [((SingleOrderView *)[self.contentView viewWithTag:kBaseTag + 3]) setModel:model4];
 
     

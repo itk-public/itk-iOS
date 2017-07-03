@@ -221,6 +221,9 @@
      [[PRLoadingAnimation sharedInstance]removeLoadingAnimation:self.view];
     if (dataType == UserDataManangerTypePhoneQuickLogin || dataType == UserDataManangerTypeAccoutLogin) {
         NSLog(@"登录成功");
+        if (self.finshBlock) {
+            self.finshBlock(self);
+        }
     }else if (dataType == UserDataManangerTypeSafetyCode){
         [PRShowToastUtil showNotice:@"获取验证码成功"];
     }

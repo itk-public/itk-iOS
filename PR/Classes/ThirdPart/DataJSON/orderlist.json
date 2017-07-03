@@ -1,0 +1,65 @@
+{
+    "code": 0,
+    "data": {
+        "count": 1,
+        "groupbuy": {
+            "ordercount": 0
+        },
+        "orders": [{
+                   "deliverymode": 1,
+                   "canrate": 0,
+                   "action": "myyh://yhlife.com/show/native?name=orderdetail&orderid=1400817070132382",
+                   "id": "1400817070132382",
+                   "ispickself": 1,
+                   "pickSelfCode":"00d0d00d0d",
+                   "products": [{
+                                "action": "myyh://yhlife.com/show/native?name=prddetail&id=793427&merid=2",
+                                "available": 1,
+                                "id": "793430",
+                                "imgUrl": "http://image.yonghuivip.com//image/1471227484528dfaaeed694eae97c85b434d102c0fe199eb9c461?imageMogr2/thumbnail/200x200",
+                                "isDelivery": 1,
+                                "num": 100,
+                                "price": {
+                                "market": 3300,
+                                },
+                                "selectState": 1,
+                                "shopId": "2",
+                                "spec": "180g",
+                                "stockNum": 900,
+                                "subTitle": "澳洲优选草饲牛眼肉180g",
+                                "title": "澳洲优选草饲牛眼肉180g"
+                                }],
+                   "refundable": 0,
+                   "shop": {
+                   "action": "myyh://yhlife.com/show/native?name=merhome&merid=2",
+                   "cityName": "上海",
+                   "icon": "http://image.yonghuivip.com/hydlogo.png",
+                   "id": "8",
+                   "shopName": "永辉会员店",
+                   "title": "超市"
+                   },
+                   "status": 1,
+                   "expecttime": {
+                   "date": 1498899600000,
+                   "timeslots": [{
+                                 "from": "17:00",
+                                 "immediatedescription": "60分钟极速达",
+                                 "slottype": "immediate",
+                                 "to": "17:30"
+                                 }]
+                   },
+                   "timeinfo": {
+                   "generate": 1498899370000,
+                   "payend": 1498901170000,
+                   "refunded": 1498899370000,
+                   "refunding": 1498899370000
+                   },
+                   "title": "枇杷",
+                   "totalPayment": 7950
+                   }],
+        "page": 0,
+        "pagecount": 1
+    },
+    "message": "",
+    "now": 1498899383556
+}

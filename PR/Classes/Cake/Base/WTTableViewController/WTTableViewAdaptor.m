@@ -255,7 +255,6 @@ NSString * boltCellAppendDataKey = @"boltAppend";
 
 - (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section;
 {
-    PRLOG(@"tableview的headerview=====");
     if (self.delegate && [self.delegate respondsToSelector:@selector(headerViewForSection:)]) {
         return [self.delegate headerViewForSection:section];
     }

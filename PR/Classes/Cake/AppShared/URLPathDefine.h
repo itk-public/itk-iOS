@@ -54,4 +54,7 @@
 #define SearchSku_URLPATH                          @"/aip/search/searchSku"
 //店铺首页
 #define ShopHome_URLPATH                          @"/aip/home/shopHome"
+
+//订单列表
+#define OrderList_URLPATH                          @"/aip/order/orderList"
 #endif /* URLPathDefine_h */

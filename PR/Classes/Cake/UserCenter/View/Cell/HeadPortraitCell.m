@@ -10,6 +10,7 @@
 #import "UserCenterModel.h"
 #import "UserManager.h"
 #import "PRMBWantedOffice.h"
+#import "SceneMananger.h"
 
 @interface HeadPortraitCell()
 
@@ -45,8 +46,9 @@
         
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapView:)];
         [self.contentView addGestureRecognizer:tap];
+
+        [self setBackgroundColor:[UIColor clearColor]];
         
-        [self.contentView setBackgroundColor:kColorYHBrown];
     }
     return self;
 }
@@ -70,7 +72,7 @@
 
 +(CGFloat)tableView:(UITableView *)tableView rowHeightForObject:(id)object
 {
-    return 190;
+    return kHeadPortraitCellHeight;
 }
 
 -(void)layoutSubviews
@@ -97,6 +99,7 @@
 
 -(void)tapView:(UITapGestureRecognizer *)tap
 {
-     [PRMBWantedOffice nativeArrestWarrant:APPURL_VIEW_IDENTIFIER_MEMBER_LOGIN param:nil];
+     [[SceneMananger shareMananger]showLoginViewWithCallback:nil];
+//     [PRMBWantedOffice nativeArrestWarrant:APPURL_VIEW_IDENTIFIER_MEMBER_LOGIN param:nil];
 }
 @end

@@ -36,6 +36,7 @@
         [_scrollView addSubview:_seletedFlagLine];
         
         [self setPixelSepSet:PSRectEdgeBottom];
+        [self setBackgroundColor:[UIColor whiteColor]];
     }
     
     return self;

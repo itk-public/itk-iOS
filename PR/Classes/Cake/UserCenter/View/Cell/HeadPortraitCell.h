@@ -8,6 +8,7 @@
 
 #import "WTTableViewCell.h"
 
+#define kHeadPortraitCellHeight 190
 @interface HeadPortraitCell : WTTableViewCell
 
 @end

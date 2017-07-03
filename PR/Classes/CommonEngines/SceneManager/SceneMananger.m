@@ -384,41 +384,4 @@ IMP_SINGLETON
 @end
 
 
-//#import "SPTabbarViewController.h"
-//
-//@implementation SceneMananger (vcstack)
-//- (NSString *)stackTitle
-//{
-//    NSString * stitle = @"";
-//    if (self.visibleViewController.navigationController) {
-//        UIViewController * disposeVC = nil;
-//        for (UIViewController * aVC in [self.visibleViewController.navigationController viewControllers]) {
-//            if ([aVC isKindOfClass:[SPTabbarViewController class]]) {
-//                disposeVC = [(SPTabbarViewController *)aVC visiableViewController];
-//            }else{
-//                disposeVC = aVC;
-//            }
-//            
-//            if ([stitle length] > 0) {
-//                stitle = [stitle stringByAppendingString:@"|"];
-//            }
-//            
-//            NSString * appendTitle = nil;
-//            if ([disposeVC isKindOfClass:[BaseViewController class]]) {
-//                appendTitle = [[(BaseViewController *)disposeVC navTitle] stringByReplacingOccurrencesOfString:@"|" withString:@"||"];
-//            }else if ([aVC isKindOfClass:[UIViewController class]]){
-//                appendTitle = [[disposeVC title] stringByReplacingOccurrencesOfString:@"|" withString:@"||"];
-//            }
-//            
-//            stitle = [stitle stringByAppendingString:[NSString stringWithFormat:@"%@",appendTitle]];
-//        }
-//    }else{
-//        if ([self.visibleViewController isKindOfClass:[BaseViewController class]]) {
-//            stitle = [(BaseViewController *)self.visibleViewController navTitle];
-//        }else{
-//            stitle = [self.visibleViewController title];
-//        }
-//    }
-//    return stitle;
-//    
 

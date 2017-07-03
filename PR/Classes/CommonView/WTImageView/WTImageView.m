@@ -44,12 +44,19 @@
     NSURL *imageURL = [NSURL URLWithString:self.urlPath];
     if (self.imageDidLoadHandler != NULL) {
         __weak typeof(self) weakSelf = self;
-        [self sd_setImageWithURL:imageURL placeholderImage:self.defaultImage completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL){
-            PRLOG(@"加载图片成功=====%@",error);
+        [self sd_setImageWithURL:imageURL placeholderImage:nil options:SDWebImageLowPriority completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             if (error == nil) {
                 weakSelf.imageDidLoadHandler(weakSelf, image);
+            }else{
+                 PRLOG(@"加载图片成功=====%@",error);
             }
         }];
+//        [self sd_setImageWithURL:imageURL placeholderImage:self.defaultImage completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL){
+//            PRLOG(@"加载图片成功=====%@",error);
+//            if (error == nil) {
+//                weakSelf.imageDidLoadHandler(weakSelf, image);
+//            }
+//        }];
     } else {
         [self sd_setImageWithURL:imageURL placeholderImage:self.defaultImage];
     }

@@ -26,12 +26,14 @@ typedef NS_ENUM(NSInteger,CustomBtnTag)
     CustomBtnTagToBuyAgain,      //再次购买
 };
 
-typedef NS_ENUM(NSInteger,OrderStatus)
-{
-    OrderStatusToDelivery  = 1,   //待配送
-    OrderStatusToPickUp,          //待自提
-    OrderStatusToComment,         //待评价
-    OrderStatusFefunding,         //退款中
-};
+
+
+//typedef NS_ENUM(NSInteger,OrderFilterType)
+//{
+//    OrderFilterTypeToDelivery  = 1,   //待配送
+//    OrderFilterTypeToPickUp,          //待自提
+//    OrderFilterTypeToComment,         //待评价
+//    OrderFilterTypeFefunding,         //退款中
+//};
 
 #endif /* CustomBtnType_h */
