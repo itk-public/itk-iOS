@@ -9,5 +9,6 @@
 #import "BaseAPIInteract.h"
 
 @interface OrderListAPIInteract : BaseAPIInteract
+@property (assign,nonatomic) NSInteger page;
 
 @end

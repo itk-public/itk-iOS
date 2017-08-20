@@ -8,9 +8,11 @@
 
 #import "OrderListAPIInteract.h"
 #import "OrderDetail.h"
+#import "OrderListModel.h"
+#import "PartDataResponse.h"
 
 
-@interface OrderListAPIInteract()<IGParserInterface>
+@interface OrderListAPIInteract()<IGParserInterface,PartDataResponseItemParser>
 
 @end
 @implementation OrderListAPIInteract
@@ -32,15 +34,26 @@
 #pragma mark IGParserInterface
 - (id)parserSourceData:(NSDictionary *)info forRespondObj:(BaseRespond *)respond{
     CONDITION_CHECK_RETURN_VAULE([info isKindOfClass:[NSDictionary class]], nil);
-    NSArray *categorys = [info safeObjectForKey:@"orders" hintClass:[NSArray class]];
-    NSMutableArray *tempArray = [NSMutableArray array];
-    if (categorys) {
-        for (NSDictionary *tempDic in categorys) {
-            ShopCategoryModel *model = [ShopCategoryModel modelFromDictionary:tempDic];
-            [tempArray safeAddObject:model];
-        }
+    PartDataResponse * dataRespond = [[PartDataResponse alloc] initWithItemParser:self];
+    [dataRespond loadDict:info];
+    return dataRespond;
+}
+
+#pragma mark - PartDataResponseItemParser
+-(NSString *)itemsParseKey
+{
+    return @"orders";
+}
+
+-(NSArray *)parseItemWithInfo:(NSArray *)info
+{
+    CONDITION_CHECK_RETURN_VAULE([info isKindOfClass:[NSArray class]], nil);
+    NSMutableArray *itemObjs = [NSMutableArray array];
+    for (NSDictionary *dict in info) {
+        OrderDetail *orderDetail = [OrderDetail modelFromDictionary:dict];
+        [itemObjs addObject:orderDetail];
     }
-    return tempArray;
+    return itemObjs;
 }
 
 #pragma mark init

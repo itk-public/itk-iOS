@@ -11,5 +11,7 @@
 @interface WTTableViewCell : UITableViewCell
 @property (strong,nonatomic) id object;
 + (CGFloat)tableView:(UITableView*)tableView rowHeightForObject:(id)object;
+
++(instancetype)cellWithTableView:(UITableView *)tableView;
 -(void)doTarget;
 @end

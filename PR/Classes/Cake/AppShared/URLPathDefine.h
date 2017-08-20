@@ -12,6 +12,9 @@
 // 平台首页
 #define   DynamicData_URLPATH                     @"/api/v1/home"
 
+//农场首页
+#define   FarmData_URLPATH                        @"/api/v1/farm"
+
 //购物车同步
 #define   Cart_URLPATH                            @"/api/cart/place"
 
@@ -57,4 +60,11 @@
 
 //订单列表
 #define OrderList_URLPATH                          @"/aip/order/orderList"
+
+
+#pragma mark  -----------农场--------
+
+//搜索
+#define SearchSku_Farm_URLPATH                          @"/aip/farm/search/searchSku"
+
 #endif /* URLPathDefine_h */

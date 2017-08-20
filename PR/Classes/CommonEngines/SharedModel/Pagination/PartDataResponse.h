@@ -15,11 +15,11 @@
 @end
 
 @interface PartDataResponse : YHDataModel
-@property (readonly,nonatomic) NSArray   *items;
-@property (readonly,nonatomic) NSInteger  totalCount;
-@property (readonly,nonatomic) NSInteger  curPage;
-@property (readonly,nonatomic) NSInteger  pageSize;
-@property (assign,nonatomic)   BOOL       isFirstPage;
+@property(nonatomic,readonly) NSArray* items;
+@property(nonatomic,readonly) int totalCount;
+@property(nonatomic,readonly) int curPage;
+@property(nonatomic,readonly) int pageSize;
+@property (nonatomic,assign)  BOOL isFirstPage;
 
 -(instancetype)initWithItemParser:(id<PartDataResponseItemParser>)parser;
 -(void)loadDict:(NSDictionary *)dataDict;
@@ -28,6 +28,6 @@
 
 
 @interface PartPageResponse : PartDataResponse
-@property (readonly,nonatomic) NSInteger totalPage;
+@property (readonly,nonatomic) int totalPage;
 
 @end

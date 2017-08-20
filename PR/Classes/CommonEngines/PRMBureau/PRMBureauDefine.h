@@ -56,4 +56,9 @@
 //商家首页
 #define APPURL_VIEW_IDENTIFIER_SHOPHOME       @"shopHome"
 
+
+#pragma mark  ---------农场------------
+//搜索结果页
+#define APPURL_VIEW_IDENTIFIER_Farm_SEARCHRESULT  @"farmSearchResult"
+
 #endif /* PRMBureauDefine_h */

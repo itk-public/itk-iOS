@@ -106,5 +106,13 @@
 		<key>identifier</key>
 		<string>shopHome</string>
 	</dict>
+	<dict>
+		<key>className</key>
+		<string>FarmSearchResultViewController</string>
+		<key>description</key>
+		<string>搜索结果页-农场</string>
+		<key>identifier</key>
+		<string>farmSearchResult</string>
+	</dict>
 </array>
 </plist>

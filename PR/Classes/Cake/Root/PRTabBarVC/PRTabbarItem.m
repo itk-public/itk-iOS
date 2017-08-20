@@ -13,6 +13,8 @@
 #import "UserCenterViewController.h"
 #import "BaseNavigationController.h"
 
+#import "FarmShopcartViewController.h"
+
 
 @implementation PRTabbarItem
 
@@ -39,7 +41,7 @@
 + (instancetype)cartPage
 {
     PRTabbarItem * item = [[PRTabbarItem alloc] init];
-    item.rootvc = [[ShopcartViewController alloc] initWithNibName:nil bundle:nil];
+    item.rootvc = [[FarmShopcartViewController alloc] initWithNibName:nil bundle:nil];
     item.tabbarTitle = @"购物车";
     item.image = [UIImage imageNamed:@"tabbar_three_unselected"];
     item.selectedImage = [UIImage imageNamed:@"tabbar_three_selected"];

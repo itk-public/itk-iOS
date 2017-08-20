@@ -7,18 +7,18 @@
 //
 
 #import "OrderDetailActionViewCell.h"
-#import "ActionView.h"
+#import "ActionViewCell.h"
 
 @interface OrderDetailActionViewCell()
-@property (strong,nonatomic) ActionView *actionView;
+//@property (strong,nonatomic) ActionView *actionView;
 
 @end
 @implementation OrderDetailActionViewCell
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        _actionView = [ActionView defaultView];
-        [self.contentView addSubview:_actionView];
+//        _actionView = [ActionView defaultView];
+//        [self.contentView addSubview:_actionView];
     }
     return self;
 }
