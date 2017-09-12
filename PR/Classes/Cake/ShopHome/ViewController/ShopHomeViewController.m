@@ -63,6 +63,7 @@
 {
     return 50;
 }
+
 #pragma mark WTNetWorkDataConstructorDelegate
 - (void)dataConstructor:(id)dataConstructor didFinishLoad:(id)dataModel
 {

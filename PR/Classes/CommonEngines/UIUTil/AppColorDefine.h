@@ -22,7 +22,7 @@ alpha:0.5]
 
 
 #define kColorTheme              UIColorFromRGB(0x47d6cc)
-#define kColorNormal             UIColorFromRGB(0x4c4c4c)
+#define kColorNormal             UIColorFromRGB(0x000000)
 #define kColorActionSepLine      UIColorFromRGB(0x444444)
 #define kColorYHBrown            UIColorFromRGB(0x946632)
 #define kColorYHOrange           UIColorFromRGB(0xfd7622)

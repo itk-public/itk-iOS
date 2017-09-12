@@ -59,9 +59,9 @@
     //    self.edgesForExtendedLayout = UIRectEdgeNone;
     self.navigationController.navigationBar.translucent = NO;
    /* [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navbarbg"]  forBarMetrics:UIBarMetricsDefault]; */
-    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.barTintColor = kColorTheme;
     [self.navigationController.navigationBar setShadowImage:[UIImage imageNamed:@"dotline"]];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -127,7 +127,7 @@
         UILabel * lab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 180*displayScale, 25)];
         [lab setText:title];
         lab.font      = KFontNormal(18);
-        [lab setTextColor:kColorNavigationTitle];
+        [lab setTextColor:[UIColor whiteColor]];
         [lab setBackgroundColor:[UIColor clearColor]];
         [lab setTextAlignment:NSTextAlignmentCenter];
         [self.navigationItem setTitleView:lab];

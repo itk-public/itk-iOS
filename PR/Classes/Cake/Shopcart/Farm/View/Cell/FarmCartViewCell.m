@@ -10,6 +10,7 @@
 #import "AutoImageView.h"
 #import "ProductOutline.h"
 #import "CartOrderCellViewModel.h"
+#import "OnePixelSepView.h"
 
 @protocol FarmCartNumControllerViewDelegate <NSObject>
 -(void)farmCartNumControllerViewAddBtnOnClicked;
@@ -97,6 +98,8 @@
 @property (strong,nonatomic) UILabel *subtitleLabel;
 @property (strong,nonatomic) UILabel *priceLabel;
 @property (strong,nonatomic) FarmCartNumControllerView *numController;
+@property (strong,nonatomic) ProductOutline *product;
+@property (strong,nonatomic) OnePixelSepView *bottomLineView;
 
 @end
 
@@ -106,9 +109,9 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         _containerView = [[UIView alloc]init];
         [_containerView setBackgroundColor:[UIColor whiteColor]];
-        _containerView.layer.cornerRadius = 4.0;
-        _containerView.layer.borderColor  = [UIColor whiteColor].CGColor;
-        _containerView.layer.borderWidth  = OnePoint;
+//        _containerView.layer.cornerRadius = 4.0;
+//        _containerView.layer.borderColor  = [UIColor whiteColor].CGColor;
+//        _containerView.layer.borderWidth  = OnePoint;
         [self.contentView addSubview:_containerView];
         
         _selectBtn = [[UIButton alloc]init];
@@ -119,32 +122,39 @@
         [_containerView addSubview:_selectBtn];
         
         _productImageView = [[AutoImageView alloc]init];
-        [_productImageView setBackgroundColor:[UIColor grayColor]];
+        [_productImageView setContentMode:UIViewContentModeScaleAspectFit];
         [_containerView addSubview:_productImageView];
         
         _titleLabel = [[UILabel alloc]init];
         [_titleLabel setTextAlignment:NSTextAlignmentLeft];
         [_titleLabel setFont:KFontNormal(14)];
-        [_titleLabel setTextColor:UIColorFromRGB(0x111111)];
+        [_titleLabel setTextColor:UIColorFromRGB(0x000000)];
         [_containerView addSubview:_titleLabel];
         
         _subtitleLabel = [[UILabel alloc]init];
         _subtitleLabel.numberOfLines = 2;
         [_subtitleLabel setTextAlignment:NSTextAlignmentLeft];
         [_subtitleLabel setFont:KFontNormal(12)];
-        [_subtitleLabel setTextColor:UIColorFromRGB(0x666666)];
+        [_subtitleLabel setTextColor:UIColorFromRGB(0x929292)];
         [_containerView addSubview:_subtitleLabel];
         
         _priceLabel = [[UILabel alloc]init];
         [_priceLabel setTextAlignment:NSTextAlignmentLeft];
         [_priceLabel setFont:KFontNormal(12)];
-        [_priceLabel setTextColor:UIColorFromRGB(0x666666)];
+        [_priceLabel setTextColor:UIColorFromRGB(0x000000)];
         [_containerView addSubview:_priceLabel];
         
         _numController = [[FarmCartNumControllerView alloc]init];
         _numController.delegate = self;
         [_containerView addSubview:_numController];
+        [self.containerView setBackgroundColor:[UIColor whiteColor]];
+        
+        _bottomLineView = [[OnePixelSepView alloc]init];
+        [_bottomLineView setLineColor:UIColorFromRGB(0xdddddd)];
+        [self.containerView addSubview:_bottomLineView];
+        
         [self.contentView setBackgroundColor:kVCViewBGColor];
+        
     }
     return self;
 }
@@ -154,7 +164,7 @@
     [super layoutSubviews];
     
     CGFloat kContainerViewTop = 10;
-    self.containerView.frame = CGRectMake(kContainerViewTop, kContainerViewTop, self.width - 2*kContainerViewTop, self.height - kContainerViewTop);
+    self.containerView.frame = CGRectMake(kContainerViewTop, 0, self.width - 2*kContainerViewTop, self.height);
     
     CGFloat kSelectBtnW      = 40;
     self.selectBtn.frame     = CGRectMake(0, (self.containerView.height - kSelectBtnW)/2.0, kSelectBtnW, kSelectBtnW);
@@ -168,15 +178,17 @@
     self.titleLabel.frame          = CGRectMake(self.productImageView.right + 5,kTitleLabelTopMargin, self.containerView.width - self.productImageView.right - 5 - kTitleLabelRightMargin, self.titleLabel.height);
     
     [self.subtitleLabel sizeToFit];
-    self.subtitleLabel.frame  = CGRectMake(self.titleLabel.left, self.titleLabel.bottom + 10, self.titleLabel.width, self.subtitleLabel.height);
+    self.subtitleLabel.frame  = CGRectMake(self.titleLabel.left, self.titleLabel.bottom +5, self.titleLabel.width, self.subtitleLabel.height);
     
     [self.priceLabel sizeToFit];
-    self.priceLabel.frame = CGRectMake(self.titleLabel.left, self.containerView.height - self.priceLabel.height - 10, self.priceLabel.width, self.priceLabel.height);
+    self.priceLabel.frame = CGRectMake(self.titleLabel.left, self.containerView.height - self.priceLabel.height - 5, self.priceLabel.width, self.priceLabel.height);
     
     CGFloat kNumControllerW  = 110;
     CGFloat kNumControllerH  = 40;
     self.numController.frame = CGRectMake(self.containerView.width - 10 - kNumControllerW,self.containerView.height - kNumControllerH - 10, kNumControllerW, kNumControllerH);
     self.numController.right = self.containerView.width;
+    
+    self.bottomLineView.frame = CGRectMake(10, self.containerView.height - 1, self.containerView.width - 10, 1);
 }
 
 
@@ -191,14 +203,29 @@
 {
     if ([object isKindOfClass:[ProductOutline class]]) {
         ProductOutline *product = object;
+        self.product            = product;
         [self.productImageView setImgInfo:product.imageInfo];
         self.titleLabel.text    = product.title?:@"";
         self.subtitleLabel.text = product.subtitle?:@"";
         self.priceLabel.text    = [NSString stringWithFormat:@"￥%@",product.priceInfo.marketPrice?:@""];
         [self.numController setProduct:product];
         self.selectBtn.selected = product.isSelected;
+        [self updateGoodMarketPriceLab];
     }
 }
+
+
+-(void)updateGoodMarketPriceLab
+{
+    UIColor *color                         = UIColorFromRGB(0x000000);
+    NSMutableAttributedString * attrStr    = [[NSMutableAttributedString alloc] init];
+    [attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:@"￥ " attributes:ATTR_DICTIONARY(color, KFontNormal(10))]];
+    NSString * tempPriceStr                = [self.product.priceInfo.marketPrice?:@"" stringByReplacingOccurrencesOfString:@"￥" withString:@""];
+    CGFloat fontSize = 17;
+    [attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:tempPriceStr?:@"" attributes:ATTR_DICTIONARY(color, KFontNormal(fontSize))]];
+    self.priceLabel.attributedText = attrStr;
+}
+
 
 +(CGFloat)getHeightWithCartOrderCellViewModel:(CartOrderCellViewModel *)vM;
 {

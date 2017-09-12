@@ -60,5 +60,7 @@
 #pragma mark  ---------农场------------
 //搜索结果页
 #define APPURL_VIEW_IDENTIFIER_Farm_SEARCHRESULT  @"farmSearchResult"
+//订单结算页
+#define APPURL_VIEW_IDENTIFIER_ORDER_SETTLEMENT   @"orderSettlement"
 
 #endif /* PRMBureauDefine_h */

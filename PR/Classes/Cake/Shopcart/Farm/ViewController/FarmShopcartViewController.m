@@ -65,7 +65,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
     if(self.shopcartTableView.scrollEnabled){
         [self setWaittingStatus:YES];
     }
@@ -76,7 +76,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
 }
 
 -(void)requestShopcartListData{
@@ -265,7 +265,7 @@
     [rightBtn addTarget:self action:@selector(rightBtnOnClicked:) forControlEvents:UIControlEventTouchUpInside];
     [rightBtn setTitle:@"编辑" forState:UIControlStateNormal];
     [rightBtn setTitle:@"完成" forState:UIControlStateSelected];
-    [rightBtn setTitleColor:UIColorFromRGB(0x4c4c4c) forState:UIControlStateNormal];
+    [rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [rightBtn.titleLabel setFont:KFontNormal(16)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:rightBtn];
 }
@@ -293,19 +293,10 @@
 -(void)loadDataSuccessful:(ShopcartFormat *)shopcartFormat dataType:(ShopcartFormatDataType)dataType  data:(id)data extraInfo:(NSDictionary *)extraInfo
 {
     [[PRLoadingAnimation sharedInstance] removeLoadingAnimation:self.view];
-//    [self asynDataArrived];
-//    if (dataType == ShopcartFormatDataTypeFreshen) { //刷新购物车
-        self.cartDataSoure  = data;
-        self.shopcartTableViewProxy.cartDataSoure = data;
-        [self.shopcartTableView reloadData];
-       [self.footerView updateWithCartTableViewDataSource:self.cartDataSoure];
-//    }else if([data isKindOfClass:[OrderDetail class]]){
-//        CKConfirmOrderViewController * confirmVC = [[CKConfirmOrderViewController alloc] init];
-//        confirmVC.orderToCheck                   = data;
-//        confirmVC.storeid                        = [extraInfo safeObjectForKey:kToCommitStoridKey]?:@"";
-//        confirmVC.sellerid                       = [extraInfo safeObjectForKey:kToCommitSelleridKey]?:@"";
-//        [[SceneMananger shareMananger] showViewController:confirmVC withStyle:U_SCENE_SHOW_PUSH];
-//    }
+    self.cartDataSoure  = data;
+    self.shopcartTableViewProxy.cartDataSoure = data;
+    [self.shopcartTableView reloadData];
+    [self.footerView updateWithCartTableViewDataSource:self.cartDataSoure];
 }
 
 -(void)loadDataFailed:(ShopcartFormat *)shopcartFormat dataType:(ShopcartFormatDataType)dataType error:(NSError*)error

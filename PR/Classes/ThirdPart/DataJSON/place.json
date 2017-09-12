@@ -2,128 +2,79 @@
     "code": 0,
     "data": {
         "priceTotal": 3300,
-        "cartList": [{
-                     "products": [{
-                                  "action": "myyh://yhlife.com/show/native?name=prddetail&id=793427&merid=2",
-                                  "available": 1,
-                                  "id": "793427",
-                                  "imgUrl": "http://image.yonghuivip.com//image/1471227484528dfaaeed694eae97c85b434d102c0fe199eb9c461?imageMogr2/thumbnail/200x200",
-                                  "isDelivery": 1,
-                                  "num": 100,
-                                  "price": {
-                                  "market": 3300,
-                                  },
-                                  "selectState": 1,
-                                  "shopId": "2",
-                                  "spec": "180g",
-                                  "stockNum": 900,
-                                  "subTitle": "澳洲优选草饲牛眼肉180g",
-                                  "title": "澳洲优选草饲牛眼肉180g"
-                                  },
-                                  {
-                                  "action": "myyh://yhlife.com/show/native?name=prddetail&id=793427&merid=2",
-                                  "available": 1,
-                                  "id": "793428",
-                                  "imgUrl": "http://image.yonghuivip.com//image/1471227484528dfaaeed694eae97c85b434d102c0fe199eb9c461?imageMogr2/thumbnail/200x200",
-                                  "isDelivery": 1,
-                                  "num": 100,
-                                  "price": {
-                                  "market": 3300,
-                                  },
-                                  "selectState": 1,
-                                  "shopId": "2",
-                                  "spec": "180g",
-                                  "stockNum": 900,
-                                  "subTitle": "澳洲优选草饲牛眼肉180g",
-                                  "title": "澳洲优选草饲牛眼肉180g"
-                                  },
-                                  {
-                                  "action": "myyh://yhlife.com/show/native?name=prddetail&id=793427&merid=2",
-                                  "available": 1,
-                                  "id": "793429",
-                                  "imgUrl": "http://image.yonghuivip.com//image/1471227484528dfaaeed694eae97c85b434d102c0fe199eb9c461?imageMogr2/thumbnail/200x200",
-                                  "isDelivery": 1,
-                                  "num": 100,
-                                  "price": {
-                                  "market": 3300,
-                                  },
-                                  "selectState": 1,
-                                  "shopId": "2",
-                                  "spec": "180g",
-                                  "stockNum": 900,
-                                  "subTitle": "澳洲优选草饲牛眼肉180g",
-                                  "title": "澳洲优选草饲牛眼肉180g"}
-                                  ],
-                     "shop": {
-                     "action": "myyh://yhlife.com/show/native?name=merhome&merid=2",
-                     "cityName": "上海",
-                     "icon": "http://image.yonghuivip.com/hydlogo.png",
-                     "id": "2",
-                     "shopName": "永辉会员店",
-                     "title": "永辉会员店-梅川路店"
-                     },
-                     },
-                     {
-                     "products": [{
-                                  "action": "myyh://yhlife.com/show/native?name=prddetail&id=793427&merid=2",
-                                  "available": 1,
-                                  "id": "793430",
-                                  "imgUrl": "http://image.yonghuivip.com//image/1471227484528dfaaeed694eae97c85b434d102c0fe199eb9c461?imageMogr2/thumbnail/200x200",
-                                  "isDelivery": 1,
-                                  "num": 100,
-                                  "price": {
-                                  "market": 3300,
-                                  },
-                                  "selectState": 1,
-                                  "shopId": "2",
-                                  "spec": "180g",
-                                  "stockNum": 900,
-                                  "subTitle": "澳洲优选草饲牛眼肉180g",
-                                  "title": "澳洲优选草饲牛眼肉180g"
-                                  },
-                                  {
-                                  "action": "myyh://yhlife.com/show/native?name=prddetail&id=793427&merid=2",
-                                  "available": 1,
-                                  "id": "793431",
-                                  "imgUrl": "http://image.yonghuivip.com//image/1471227484528dfaaeed694eae97c85b434d102c0fe199eb9c461?imageMogr2/thumbnail/200x200",
-                                  "isDelivery": 1,
-                                  "num": 100,
-                                  "price": {
-                                  "market": 3300,
-                                  },
-                                  "selectState": 1,
-                                  "shopId": "2",
-                                  "spec": "180g",
-                                  "stockNum": 900,
-                                  "subTitle": "澳洲优选草饲牛眼肉180g",
-                                  "title": "澳洲优选草饲牛眼肉180g"
-                                  },
-                                  {
-                                  "action": "myyh://yhlife.com/show/native?name=prddetail&id=793427&merid=2",
-                                  "available": 1,
-                                  "id": "793432",
-                                  "imgUrl": "http://image.yonghuivip.com//image/1471227484528dfaaeed694eae97c85b434d102c0fe199eb9c461?imageMogr2/thumbnail/200x200",
-                                  "isDelivery": 1,
-                                  "num": 100,
-                                  "price": {
-                                  "market": 3300,
-                                  },
-                                  "selectState": 1,
-                                  "shopId": "2",
-                                  "spec": "180g",
-                                  "stockNum": 900,
-                                  "subTitle": "澳洲优选草饲牛眼肉180g",
-                                  "title": "澳洲优选草饲牛眼肉180g"
-                                  }],
-                     "shop": {
-                     "action": "myyh://yhlife.com/show/native?name=merhome&merid=2",
-                     "cityName": "上海",
-                     "icon": "http://image.yonghuivip.com/hydlogo.png",
-                     "id": "8",
-                     "shopName": "永辉会员店",
-                     "title": "超市"
-                     },
-                     }],
+        "cartList": {
+            "discount":[{
+                        "tag": "包邮",
+                        "title": "满100包邮",
+                        "subtitle":"还差31元"
+                        },
+                        {
+                        "tag": "满减",
+                        "title": "满150减30",
+                        "subtitle":"还差81元"
+                        }],
+            "products": [
+                         {
+                         "action": "myyh://yhlife.com/show/native?name=prddetail&id=793427&merid=2",
+                         "available": 1,
+                         "id": "793427",
+                         "imgUrl": "http://image.yonghuivip.com//image/1471227484528dfaaeed694eae97c85b434d102c0fe199eb9c461?imageMogr2/thumbnail/200x200",
+                         "isDelivery": 1,
+                         "num": 100,
+                         "price": {
+                         "market": 3300
+                         },
+                         "selectState": 1,
+                         "shopId": "2",
+                         "spec": "180g",
+                         "stockNum": 900,
+                         "subTitle": "澳洲优选草饲牛眼肉180g",
+                         "title": "澳洲优选草饲牛眼肉180g"
+                         },
+                         {
+                         "action": "myyh://yhlife.com/show/native?name=prddetail&id=793427&merid=2",
+                         "available": 1,
+                         "id": "793428",
+                         "imgUrl": "http://image.yonghuivip.com//image/1471227484528dfaaeed694eae97c85b434d102c0fe199eb9c461?imageMogr2/thumbnail/200x200",
+                         "isDelivery": 1,
+                         "num": 100,
+                         "price": {
+                         "market": 3300
+                         },
+                         "selectState": 1,
+                         "shopId": "2",
+                         "spec": "180g",
+                         "stockNum": 900,
+                         "subTitle": "澳洲优选草饲牛眼肉180g",
+                         "title": "澳洲优选草饲牛眼肉180g"
+                         },
+                         {
+                         "action": "myyh://yhlife.com/show/native?name=prddetail&id=793427&merid=2",
+                         "available": 1,
+                         "id": "793429",
+                         "imgUrl": "http://image.yonghuivip.com//image/1471227484528dfaaeed694eae97c85b434d102c0fe199eb9c461?imageMogr2/thumbnail/200x200",
+                         "isDelivery": 1,
+                         "num": 100,
+                         "price": {
+                         "market": 3300
+                         },
+                         "selectState": 1,
+                         "shopId": "2",
+                         "spec": "180g",
+                         "stockNum": 900,
+                         "subTitle": "澳洲优选草饲牛眼肉180g",
+                         "title": "澳洲优选草饲牛眼肉180g"
+                         }
+                         ],
+            "shop": {
+                "action": "myyh://yhlife.com/show/native?name=merhome&merid=2",
+                "cityName": "上海",
+                "icon": "http://image.yonghuivip.com/hydlogo.png",
+                "id": "2",
+                "shopName": "永辉会员店",
+                "title": "永辉会员店-梅川路店"
+            }
+        },
         "updateTime": 1489572091203
     },
     "message": "",

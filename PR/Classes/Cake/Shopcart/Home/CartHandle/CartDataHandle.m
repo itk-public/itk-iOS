@@ -53,6 +53,7 @@
         }
     }
     [self.sortedProducts safeAddObjectsFromArray:self.cartViewData.dataArray];
+//    [self.sortedProducts safeAddObjectsFromArray:sellerProduct.discount];
     [self upDateDataArrayBaseOnDelectedArray:editType];
     [self adjustFinalCellBottomLineView];
 }

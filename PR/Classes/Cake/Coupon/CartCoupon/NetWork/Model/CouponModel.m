@@ -18,6 +18,7 @@
         _endDate   = [dic safeObjectForKey:@"endDate"];
         _desc      = [dic safeObjectForKey:@"condition"];
         _isReceive = [[dic safeObjectForKey:@"isReceive"]boolValue];
+        _title     = [dic safeObjectForKey:@"title"];
     }
     return self;
 }

@@ -17,6 +17,7 @@
 
 @end
 
+
 @interface ProductOutline : YHDataModel
 //product调整action
 @property (readonly,nonatomic) Action *action;

@@ -114,5 +114,13 @@
 		<key>identifier</key>
 		<string>farmSearchResult</string>
 	</dict>
+	<dict>
+		<key>className</key>
+		<string>OrderSettlementViewController</string>
+		<key>description</key>
+		<string>订单结算页</string>
+		<key>identifier</key>
+		<string>orderSettlement</string>
+	</dict>
 </array>
 </plist>

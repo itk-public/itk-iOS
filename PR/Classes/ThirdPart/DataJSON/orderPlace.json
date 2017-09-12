@@ -49,9 +49,7 @@
                                    {
                                    "fromHour": 9,
                                    "fromMinute": 0,
-                                   "immediateDescription": "",
                                    "interval": 660,
-                                   "isimmediateSupport": 0,
                                    "toHour": 20,
                                    "toMinute": 0
                                    }
@@ -60,67 +58,40 @@
                          ],
         "recvInfo": {
             "address": {
-                "cityId": 1,
-                "areaId": 1,
-                "townId": 22,
-                "town": "四十八镇",
                 "area": "开放科技发展有限公司",
                 "city": "上海",
                 "detail": "田林路192号华鑫技园J座8层801田林路192号华鑫技园J座8层801田林路192号华鑫技园J座8层801"
             },
-            "shop": {
-                "action": "myyh://yhlife.com/show/native?name=merhome&merid=2",
-                "cityName": "上海",
-                "icon": "http://image.yonghuivip.com/hydlogo.png",
-                "id": "8",
-                "shopName": "永辉会员店",
-                "title": "超市"
-            }
             "id": "27141",
             "name": "eeee",
             "phone": "15051447570"
         },
-        "platformCoupon": "xxxxxx",
-        "allocationType": [
-                         {
-                         "id": "xxx",
-                         "title": "itk快递"
-                         }
-                         ],
-        "shopList": [
-                       {
-                       "shop": {
-                       "action": "myyh://yhlife.com/show/native?name=merhome&merid=1",
-                       "icon": "https://image.yonghuivip.com/20170526/%E6%AC%A1%E6%97%A5%E8%BE%BE@3x.png",
-                       "id": "1",
-                       "title": "次日达商城-金钟路店"
-                       },
-                       "priceTotal": "xxxxxx",
-                       "coupon": {
-                       "id": "xxxx",
-                       "title": "xxx"
-                       },
-                       "products": [
-                                    {
-                                    "id": "M-919787",
-                                    "imgurl": "xxxxx",
-                                    "num": 100,
-                                    "price": {
-                                    "market": 4900,
-                                    "total": 4900,
-                                    "value": 4900
-                                    },
-                                    "shopId": "1",
-                                    "spec": {
-                                    "desc": "130g*4"
-                                    },
-                                    "subtitle": "四喜良粽-尝鲜装(130g*4)",
-                                    "title": "四喜良粽-尝鲜装(130g*4)"
-                                    }
-                                    ],
-                       "totalPayment": "0"
-                       }
-                       ]
+        "products": [
+                     {
+                     "id": "M-919787",
+                     "imgurl": "xxxxx",
+                     "num": 100,
+                     "price": {
+                     "market": 4900,
+                     "total": 4900,
+                     "value": 4900
+                     },
+                     "shopId": "1",
+                     "spec": {
+                     "desc": "130g*4"
+                     },
+                     "subtitle": "四喜良粽-尝鲜装(130g*4)",
+                     "title": "四喜良粽-尝鲜装(130g*4)"
+                     }
+                     ],
+        "priceTotal": "xxxxxx",
+        "totalPayment": 0000,
+        "freight":900,
+        "discount":890,
+        "coupon": {
+            "id": "xxxx",
+            "title": "xxx"
+        }
     },
     "message": "xxxxx",
     "now": 1495945996581

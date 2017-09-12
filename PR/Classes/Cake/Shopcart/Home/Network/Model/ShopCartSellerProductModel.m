@@ -9,6 +9,7 @@
 #import "ShopCartSellerProductModel.h"
 #import "ErrorProtectCateGory.h"
 #import "ShopDescInfo.h"
+#import "ShopCartDiscountModel.h"
 
 
 @interface ShopCartSellerProductModel()
@@ -44,6 +45,18 @@
         
         _sellerInfo  = [ShopDescInfo modelFromDictionary:[dict safeObjectForKey:@"shop" hintClass:[NSDictionary class]]];
         
+        NSArray *tempDiscount  = [dict safeObjectForKey:@"discount" hintClass:[NSArray class]];
+        NSMutableArray *discountArrM = [NSMutableArray array];
+        if (tempDiscount) {
+            for (NSDictionary *dic in tempDiscount) {
+                ShopCartDiscountModel *discountModel = [ShopCartDiscountModel modelFromDictionary:dic];
+                [discountArrM addObject:discountModel];
+            }
+            _discount = [NSArray arrayWithArray:discountArrM];
+            [_productArr addObjectsFromArray:_discount];
+        }
+        
+    
     }
     return self;
 }

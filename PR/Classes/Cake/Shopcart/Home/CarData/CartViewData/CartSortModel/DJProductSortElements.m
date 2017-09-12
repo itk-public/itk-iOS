@@ -31,21 +31,6 @@
     NSMutableArray *fastCategorySortModelArray = [[NSMutableArray alloc]init];
     NSMutableArray *slowCategorySortModelArray = [[NSMutableArray alloc]init];
     NSMutableArray *csxCategorySortModelArray = [[NSMutableArray alloc]init];
-    for (CartOrderCellViewModel *cartOrderCellViewModel in originalProductArray) {
-        
-//        if (cartOrderCellViewModel.product.deliverySupportType == PTDeliveryFast) {
-//            
-//            [fastCategorySortModelArray addObject:cartOrderCellViewModel];
-//        }
-//        else if (cartOrderCellViewModel.product.deliverySupportType == PTDeliverySlow)
-//        {
-//            [slowCategorySortModelArray addObject:cartOrderCellViewModel];
-//        }
-//        else if (cartOrderCellViewModel.product.deliverySupportType == PTDeliveryEP)
-//        {
-//            [csxCategorySortModelArray addObject:cartOrderCellViewModel];
-//        }
-    }
     
     //对每个类别里面再次分类为
     CategorySortModel *fastCategorySortModel = [CategorySortModel initWithArray:fastCategorySortModelArray];

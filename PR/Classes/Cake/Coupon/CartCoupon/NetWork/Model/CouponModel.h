@@ -20,6 +20,8 @@
 @property (readonly,nonatomic) NSString *endDate;
 //是否已领取
 @property (readonly,nonatomic) BOOL isReceive;
+//优惠券的标题
+@property (readonly,nonatomic) NSString *title;
 
 -(void)updateShopId:(NSString *)shopid;
 -(NSMutableAttributedString *)titleAttributedString;

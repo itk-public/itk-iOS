@@ -23,6 +23,7 @@
 #import "CartOrderCellViewModel.h"
 #import "PRShowToastUtil.h"
 #import "LocalShopcartDataHandler.h"
+#import "PRMBWantedOffice.h"
 
 NSString * kToCommitStoridKey     = @"toCommitStorid";
 NSString * kToCommitSelleridKey   = @"toCommitSellerid";
@@ -196,7 +197,7 @@ NSString * kToCommitSelleridKey   = @"toCommitSellerid";
             }
         }
     }
-   
+     [PRMBWantedOffice nativeArrestWarrant: APPURL_VIEW_IDENTIFIER_ORDER_SETTLEMENT param:nil];
 }
 
 //全选或非全选所有商家
@@ -273,6 +274,7 @@ NSString * kToCommitSelleridKey   = @"toCommitSellerid";
                                                      commitBtnTitle:@"删除"
                                                             message:title
                                                            delegate:self];
+    
     alterView.object       = indexPath;
     alterView.tag          = AlterViewTypeDeletedOne;
     [alterView show];

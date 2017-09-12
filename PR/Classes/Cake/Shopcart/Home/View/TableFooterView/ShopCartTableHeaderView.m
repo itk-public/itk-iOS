@@ -59,57 +59,47 @@
 
 @end
 
-#define kDeliveryTypeViewTop  15
 #define kReceiverViewTop      12
 #define kAddressViewTop       9
 #define kAddressViewBottom    16
 @interface ShopCartTableHeaderView()
-@property (strong,nonatomic) SingleInfoView *deliveryTypeView;
 @property (strong,nonatomic) SingleInfoView *receiverView;
 @property (strong,nonatomic) SingleInfoView *addressView;
 @property (strong,nonatomic) UIImageView    *arrowImage;
-@property (strong,nonatomic) UIButton       *changeBtn;
 @property (strong,nonatomic) UIImageView    *topImageView;
 @property (strong,nonatomic) UIImageView    *bottomImageView;
 @property (assign,nonatomic) CGFloat         deliveryTypeViewH;
 @property (assign,nonatomic) CGFloat         receiverViewH;
 @property (assign,nonatomic) CGFloat         addressViewH;
+@property (strong,nonatomic) UIView          *containerView;
 @end
 
 @implementation ShopCartTableHeaderView
 -(instancetype)init
 {
     if (self = [super init]) {
-        [self setBackgroundColor:[UIColor whiteColor]];
-        _deliveryTypeView = [[SingleInfoView alloc]init];
-        [self addSubview:_deliveryTypeView];
+        [self setBackgroundColor:kVCViewBGColor];
+        _containerView = [[UIView alloc]init];
+        [_containerView setBackgroundColor:[UIColor whiteColor]];
+        [self addSubview:_containerView];
         
         _receiverView = [[SingleInfoView alloc]init];
-        [self addSubview:_receiverView];
+        [_containerView addSubview:_receiverView];
         
         _addressView  = [[SingleInfoView alloc]init];
-        [self addSubview:_addressView];
+        [_containerView addSubview:_addressView];
         
-        _arrowImage = [[UIImageView alloc]init];
+        _arrowImage   = [[UIImageView alloc]init];
         [_arrowImage setImage:[UIImage imageNamed:@"icon_arrow_right"]];
-        [self addSubview:_arrowImage];
-        
-        _changeBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-        [_changeBtn setTitle:@"门店自提" forState:UIControlStateNormal];
-        [_changeBtn addTarget:self action:@selector(changeBtnOnClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [_changeBtn setTitleColor:UIColorFromRGB(0x00aaee) forState:UIControlStateNormal];
-        _changeBtn.layer.borderColor = UIColorFromRGB(0x00aaee).CGColor;
-        _changeBtn.layer.borderWidth = OnePoint;
-        _changeBtn.layer.cornerRadius = 10.0;
-        [self addSubview:_changeBtn];
+        [_containerView addSubview:_arrowImage];
         
         _topImageView = [[UIImageView alloc]init];
         [_topImageView setBackgroundColor:[UIColor grayColor]];
-        [self addSubview:_topImageView];
+        [_containerView addSubview:_topImageView];
         
         _bottomImageView = [[UIImageView alloc]init];
         [_bottomImageView setBackgroundColor:[UIColor grayColor]];
-        [self addSubview:_bottomImageView];
+        [_containerView addSubview:_bottomImageView];
     }
     return self;
 }
@@ -117,20 +107,17 @@
 -(void)layoutSubviews
 {
     [super layoutSubviews];
-    self.topImageView.frame = CGRectMake(0, 0, self.width, 3);
-    self.bottomImageView.frame = CGRectMake(0, self.height - 3, self.width, 3);
+    self.containerView.frame   = CGRectMake(5, 0, self.width - 10, self.height);
+    self.topImageView.frame    = CGRectMake(0, 0, self.containerView.width, 3);
+    self.bottomImageView.frame = CGRectMake(0, self.height - 3, self.containerView.width, 3);
     
-    CGFloat kSingleInfoViewW  = self.width - 106;
-    self.deliveryTypeView.frame = CGRectMake(0, self.topImageView.bottom + kDeliveryTypeViewTop, kSingleInfoViewW, self.deliveryTypeViewH);
-    self.receiverView.frame    = CGRectMake(0, self.deliveryTypeView.bottom + kReceiverViewTop, kSingleInfoViewW, self.receiverViewH);
+    CGFloat kSingleInfoViewW   = self.containerView.width - 106;
+    self.receiverView.frame    = CGRectMake(0, self.topImageView.bottom + kReceiverViewTop, kSingleInfoViewW, self.receiverViewH);
     self.addressView.frame     = CGRectMake(0, self.receiverView.bottom + kAddressViewTop, kSingleInfoViewW, self.addressViewH);
     
-    CGFloat kChangeBtnW        = 75;
-    CGFloat kChangeBtnH        = 21;
-    self.changeBtn.frame       = CGRectMake(self.width - kChangeBtnW - 15, 15, kChangeBtnW, kChangeBtnH);
     CGFloat kArrowImageW       = 8;
     CGFloat kArrowImageH       = 13;
-    self.arrowImage.frame      = CGRectMake(self.width - 15 - kArrowImageW, (self.height - kArrowImageH)/2.0, kArrowImageW, kArrowImageH);
+    self.arrowImage.frame      = CGRectMake(self.containerView.width - 15 - kArrowImageW, (self.height - kArrowImageH)/2.0, kArrowImageW, kArrowImageH);
 }
 
 -(void)update
@@ -139,12 +126,12 @@
     [self layoutIfNeeded];
 }
 
+
 -(CGFloat)height
 {
-    self.deliveryTypeViewH = [self.deliveryTypeView heightWithLeftString:@"收货方式" rightString:@"送货上门"];
     self.receiverViewH = [self.receiverView heightWithLeftString:@"收货信息" rightString:@"王杰 136****6508"];
     self.addressViewH = [self.addressView heightWithLeftString:nil rightString:@"上海市徐汇区康健路120弄38号604shi"];
-    return 6 + self.deliveryTypeViewH+self.receiverViewH+self.addressViewH+kDeliveryTypeViewTop+kReceiverViewTop+kAddressViewTop+kAddressViewBottom;
+    return 6 + self.deliveryTypeViewH+self.receiverViewH+self.addressViewH+kReceiverViewTop+kAddressViewTop+kAddressViewBottom;
 }
 
 #pragma mark btn action

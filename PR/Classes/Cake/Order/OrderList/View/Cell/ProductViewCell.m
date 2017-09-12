@@ -58,6 +58,10 @@
         [_numLabel setTextAlignment:NSTextAlignmentRight];
         [_numLabel setText:@"x2"];
         [self.contentView addSubview:_numLabel];
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(doTarget)];
+        [self.contentView addGestureRecognizer:tap];
+
     }
     return self;
 }
@@ -90,7 +94,6 @@
 
 -(void)doTarget
 {
-    [super doTarget];
     [PRMBWantedOffice nativeArrestWarrant:APPURL_VIEW_IDENTIFIER_ORDERDETAIL param:nil];
     
 }

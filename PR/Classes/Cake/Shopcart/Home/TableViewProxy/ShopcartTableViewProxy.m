@@ -14,6 +14,8 @@
 #import "ActionHandler.h"
 #import "ShopCartCell.h"
 #import "CartSellerBaseHeaderView.h"
+#import "ShopCartDiscountModel.h"
+#import "ShopCartDiscountCell.h"
 
 @implementation ShopcartTableViewProxy
 
@@ -60,7 +62,6 @@
             };
             return headerView;
         }
-
     }
     return nil;
 }
@@ -85,6 +86,8 @@
         return [cellClass getHeightWithCartOrderCellViewModel:vM];
     }else if ([vM isKindOfClass:[CartSeparateModel class]]){
         return [CartSeparateCell getHeight];
+    }else if ([vM isKindOfClass:[ShopCartDiscountModel class]]){
+        return [ShopCartDiscountCell getHeightWithCartOrderCellViewModel:vM];
     }
     return 0;
 }
@@ -122,6 +125,10 @@
     }else if ([vM isKindOfClass:[CartSeparateModel class]]){
         CartSeparateCell *cell = [CartSeparateCell cellWithTableView:tableView];
         [cell updateWithSellerInfoModel:vM editType:setionData.editType CartDataHandle:setionData.dataHandle];
+        return cell;
+    }else if ([vM isKindOfClass:[ShopCartDiscountModel class]]){
+        ShopCartDiscountCell *cell = [ShopCartDiscountCell cellWithTableView:tableView];
+        cell.discountModel         = vM;
         return cell;
     }
     return nil;

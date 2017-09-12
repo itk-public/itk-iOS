@@ -61,6 +61,11 @@
 //订单列表
 #define OrderList_URLPATH                          @"/aip/order/orderList"
 
+//购物车 点击结算。
+#define OrderPlace_URLPATH                          @"/aip/order/place2"
+
+//订单结算，去提交订单
+#define OrderSubmit_URLPATH                         @"/aip/order/submit"
 
 #pragma mark  -----------农场--------
 

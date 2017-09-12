@@ -13,10 +13,11 @@
 
 @interface ShopCartSellerProductModel : NSObject
 
-@property (nonatomic,strong)   CartOtherInfoModel *infoModel;//价格信息
-@property (nonatomic,readonly) NSMutableArray    *productArr;//产品数组
-@property (strong,nonatomic)  ShopDescInfo       *sellerInfo;//商家信息
-@property (assign,nonatomic)   BOOL               isEdit;//是否编辑
+@property (nonatomic,strong)   CartOtherInfoModel *infoModel;        //价格信息
+@property (nonatomic,readonly) NSMutableArray    *productArr;       //产品数组
+@property (strong,nonatomic)  ShopDescInfo       *sellerInfo;       //商家信息
+@property (assign,nonatomic)   BOOL               isEdit;           //是否编辑
+@property (readonly,nonatomic) NSArray           *discount;         //促销数组
 
 
 + (instancetype)cartProudctWithOtherInfoModelWithDict:(NSDictionary *)dict;

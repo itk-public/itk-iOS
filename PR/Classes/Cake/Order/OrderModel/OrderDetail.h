@@ -13,6 +13,8 @@
 #import "ShopDescInfo.h"
 #import "ProductOutline.h"
 #import "OrderPriceDetail.h"
+#import "ODDeliveryTimeInfo.h"
+#import "CouponModel.h"
 
 @interface OrderDetail : YHDataModel
 //订单id
@@ -37,11 +39,23 @@
 @property (readonly,nonatomic) NSString *remark;
 //店铺信息
 @property (readonly,nonatomic) ShopDescInfo *shopInfo;
-//订单总计
-@property (readonly,nonatomic) NSString *totalPayment;
 //评价类型
 @property (readonly,nonatomic) EvaluateType  evalutateType;
 //价格信息
 @property (readonly,nonatomic) OrderPriceDetail *priceDetail;
+//配送时间信息
+@property (nonatomic,readonly) NSArray<ODDeliveryTimeInfo *> *deliveryTimeInfo;
+//选择的优惠券
+@property (readonly,nonatomic) CouponModel *coupon;
+//免邮
+@property (readonly,nonatomic) NSString *freeShipping;
+//运费
+@property (readonly,nonatomic) NSString *freight;
+//总计1
+@property (readonly,nonatomic) NSString *priceTotal;
+//优惠
+@property (readonly,nonatomic) NSString *discount;
+//总计2
+@property (readonly,nonatomic) NSString *totalPayment;
 
 @end

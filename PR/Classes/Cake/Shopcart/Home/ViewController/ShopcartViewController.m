@@ -67,13 +67,14 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
+//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
     if(self.shopcartTableView.scrollEnabled){
         [self setWaittingStatus:YES];
     }
     [self requestShopcartListData];
     self.headerView.height = [self.headerView height];
     [self.headerView update];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
 }
 -(void)viewDidAppear:(BOOL)animated
 {
@@ -268,7 +269,7 @@
     [rightBtn addTarget:self action:@selector(rightBtnOnClicked:) forControlEvents:UIControlEventTouchUpInside];
     [rightBtn setTitle:@"编辑" forState:UIControlStateNormal];
     [rightBtn setTitle:@"完成" forState:UIControlStateSelected];
-    [rightBtn setTitleColor:UIColorFromRGB(0x4c4c4c) forState:UIControlStateNormal];
+    [rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [rightBtn.titleLabel setFont:KFontNormal(16)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:rightBtn];
 }

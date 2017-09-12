@@ -45,6 +45,32 @@
        
         _priceDetail = [[OrderPriceDetail alloc]init];
         [_priceDetail updatePriceInfo:dic];
+        
+        NSArray *appointments = [dic safeObjectForKey:@"appointments" hintClass:[NSArray class]];
+        if (appointments) {
+            _deliveryTimeInfo     = [ODDeliveryTimeInfo dealAppointmentsTime:appointments];
+        }else{
+            NSDictionary * exception = [dic safeObjectForKey:@"expecttime" hintClass:[NSDictionary class]];
+            _deliveryTimeInfo = [ODDeliveryTimeInfo dealExceptionTimeDict:exception];
+        }
+        
+        _coupon = [CouponModel modelFromDictionary:[dic safeObjectForKey:@"coupon"]];
+        _freeShipping = [dic safeObjectForKey:@"freeShipping"];
+        
+        NSInteger priceTotalCent = [[dic safeObjectForKey:@"priceTotal"]integerValue];
+        _priceTotal = [NSString stringWithFormat:@"总计：￥%.2f元",priceTotalCent/100.0];
+        
+        NSInteger totalPaymentCent = [[dic safeObjectForKey:@"totalPayment"]integerValue];
+        _totalPayment = [NSString stringWithFormat:@"总计：%.2f元",totalPaymentCent/100.0];
+        
+        NSInteger freightCent = [[dic safeObjectForKey:@"freight"]integerValue];
+        _freight = [NSString stringWithFormat:@"运费：%zd元",freightCent/100];
+        
+        NSInteger discountCent = [[dic safeObjectForKey:@"discount"]integerValue];
+        _discount = [NSString stringWithFormat:@"合计：%.2f",discountCent/100.0];
+        
+        
+        
     }
     return self;
 }

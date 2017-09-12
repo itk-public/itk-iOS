@@ -96,14 +96,14 @@
         [self addSubview:_titleLabel];
         
         _subTitleLabel = [[UILabel alloc]init];
-        [_subTitleLabel setTextColor:kColorGray];
+        [_subTitleLabel setTextColor:UIColorFromRGB(0x929292)];
         [_subTitleLabel setFont:KFontNormal(12)];
         [_subTitleLabel setTextAlignment:NSTextAlignmentLeft];
         [self addSubview:_subTitleLabel];
         
         _priceLabel = [[UILabel alloc]init];
-        [_priceLabel setTextColor:UIColorFromRGB(0xff8219)];
-        [_priceLabel setFont:KFontNormal(12)];
+//        [_priceLabel setTextColor:UIColorFromRGB(0xff8219)];
+//        [_priceLabel setFont:KFontNormal(12)];
         [_priceLabel setTextAlignment:NSTextAlignmentLeft];
         [self addSubview:_priceLabel];
         
@@ -140,12 +140,24 @@
 -(void)setProduct:(CartOrderCellViewModel *)product
 {
     _product = product;
-    
-    self.priceLabel.text = product.product.priceInfo.marketPrice?:@"";
     self.titleLabel.text = product.product.title?:@"";
     self.subTitleLabel.text = product.product.subtitle?:@"";
     self.numLabel.text      = [NSString stringWithFormat:@"x%zd",product.product.num];
+    [self updateGoodMarketPriceLab];
 }
+
+
+-(void)updateGoodMarketPriceLab
+{
+    UIColor *color                         = UIColorFromRGB(0x000000);
+    NSMutableAttributedString * attrStr    = [[NSMutableAttributedString alloc] init];
+    [attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:@"￥ " attributes:ATTR_DICTIONARY(color, KFontNormal(10))]];
+    NSString * tempPriceStr                = [self.product.product.priceInfo.marketPrice?:@"" stringByReplacingOccurrencesOfString:@"￥" withString:@""];
+    CGFloat fontSize = 17;
+    [attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:tempPriceStr?:@"" attributes:ATTR_DICTIONARY(color, KFontNormal(fontSize))]];
+    self.priceLabel.attributedText = attrStr;
+}
+
 @end
 
 @interface ShopCartCell()
@@ -243,10 +255,8 @@
 +(CGFloat)getHeightWithCartOrderCellViewModel:(CartOrderCellViewModel *)vM;
 {
     CONDITION_CHECK_RETURN_VAULE([vM isKindOfClass:[CartOrderCellViewModel class]], 0);
-    return 79;
+    return 90;
 }
-
-
 
 -(void)seletedBtnOnClicked:(UIButton *)sender
 {

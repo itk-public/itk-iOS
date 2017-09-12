@@ -89,6 +89,8 @@
     [statusView setSeletedIndex:[self headIndexWithType:self.filterType]];
     self.statusView = statusView;
     [self.view addSubview:self.statusView];
+    self.tableView.top = self.statusView.bottom;
+    self.tableView.height = self.view.height - self.statusView.height;
 }
 
 

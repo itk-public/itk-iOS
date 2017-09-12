@@ -1,0 +1,78 @@
+{
+    "code": 0,
+    "data": {
+        "appointments": [
+                         {
+                         "dates": [
+                                   1495987200000
+                                   ],
+                         "times": [
+                                   {
+                                   "fromHour": 9,
+                                   "fromMinute": 0,
+                                   "interval": 60,
+                                   "toHour": 20,
+                                   "toMinute": 0
+                                   }
+                                   ]
+                         }
+                         ],
+        "recvInfo": {
+            "address": {
+                "area": "开放科技发展有限公司",
+                "city": "上海",
+                "detail": "田林路192号华鑫技园J座8层801田林路192号华鑫技园J座8层801田林路192号华鑫技园J座8层801"
+            },
+            "id": "27141",
+            "name": "eeee",
+            "phone": "15051447570"
+        },
+        "products": [
+                     {
+                     "imgUrl": "http://image.yonghuivip.com//image/1471227484528dfaaeed694eae97c85b434d102c0fe199eb9c461?imageMogr2/thumbnail/200x200",
+                     "id": "M-919787",
+                     "imgurl": "xxxxx",
+                     "num": 100,
+                     "price": {
+                     "market": 4900,
+                     "total": 4900,
+                     "value": 4900
+                     },
+                     "shopId": "1",
+                     "spec": {
+                     "desc": "130g*4"
+                     },
+                     "subtitle": "四喜良粽-尝鲜装(130g*4)",
+                     "title": "四喜良粽-尝鲜装(130g*4)"
+                     },
+                     {
+                     "imgUrl": "http://image.yonghuivip.com//image/1471227484528dfaaeed694eae97c85b434d102c0fe199eb9c461?imageMogr2/thumbnail/200x200",
+                     "id": "M-919787",
+                     "imgurl": "xxxxx",
+                     "num": 100,
+                     "price": {
+                     "market": 4900,
+                     "total": 4900,
+                     "value": 4900
+                     },
+                     "shopId": "1",
+                     "spec": {
+                     "desc": "130g*4"
+                     },
+                     "subtitle": "四喜良粽-尝鲜装(130g*4)",
+                     "title": "四喜良粽-尝鲜装(130g*4)"
+                     }
+                     ],
+        "priceTotal": 30900,
+        "totalPayment": 29900,
+        "freight": 900,
+        "discount": 890,
+        "coupon": {
+            "id": "xxxx",
+            "title": "满100减10"
+        },
+        "freeShipping":"满88包邮"
+    },
+    "message": "xxxxx",
+    "now": 1495945996581
+}
