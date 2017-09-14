@@ -11,6 +11,18 @@
 
 @implementation CartSeparateCell
 
++(instancetype)cellWithTableView:(UITableView *)tableView
+{
+    static NSString *ID                 = @"CartSeparateCell";
+    CartSeparateCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    if (!cell) {
+        cell = [[self alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.backgroundColor = [UIColor whiteColor];
+    }
+    
+    return cell;
+}
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
