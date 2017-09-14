@@ -11,6 +11,7 @@
 #import "ProductOutline.h"
 #import "CartOrderCellViewModel.h"
 #import "OnePixelSepView.h"
+#import "PRMBWantedOffice.h"
 
 @protocol FarmCartNumControllerViewDelegate <NSObject>
 -(void)farmCartNumControllerViewAddBtnOnClicked;
@@ -155,6 +156,9 @@
         
         [self.contentView setBackgroundColor:kVCViewBGColor];
         
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapFarmCartViewCell)];
+        [self.contentView addGestureRecognizer:tap];
+        
     }
     return self;
 }
@@ -260,4 +264,8 @@
     }
 }
 
+-(void)tapFarmCartViewCell
+{
+    [PRMBWantedOffice nativeArrestWarrant:APPURL_VIEW_IDENTIFIER_GOODDETAIL param:nil];
+}
 @end

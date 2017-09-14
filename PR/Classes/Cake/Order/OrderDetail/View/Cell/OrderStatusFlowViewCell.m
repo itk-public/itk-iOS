@@ -8,6 +8,11 @@
 
 #import "OrderStatusFlowViewCell.h"
 
+@implementation OrderStatusFlowViewCellModel
+
+@end
+
+
 @interface OrderStatusFlowViewCell()
 @property (strong,nonatomic) UILabel *orderIdLabel;
 

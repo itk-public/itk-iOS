@@ -37,12 +37,16 @@
 
         _containerView = [[UIView alloc]init];
         [_containerView setBackgroundColor:[UIColor whiteColor]];
+        [self.contentView addSubview:_containerView];
         
         _tagLabel = [[UILabel alloc]init];
         [_tagLabel setBackgroundColor:UIColorFromRGB(0xa6a6a6)];
+        [_tagLabel setFont:KFontNormal(12)];
+        [_tagLabel setTextColor:[UIColor whiteColor]];
         _tagLabel.layer.borderColor = _tagLabel.backgroundColor.CGColor;
         _tagLabel.layer.borderWidth = OnePoint;
         _tagLabel.layer.cornerRadius = 2.0;
+        _tagLabel.layer.masksToBounds = YES;
         [self.containerView addSubview:_tagLabel];
         
         _titleLabel = [[UILabel alloc]init];
@@ -67,7 +71,7 @@
 -(void)layoutSubviews
 {
     [super layoutSubviews];
-    CGFloat kContainerViewLeftMargin = 5;
+    CGFloat kContainerViewLeftMargin = 10;
     self.containerView.frame = CGRectMake(kContainerViewLeftMargin, 0, self.width - 2*kContainerViewLeftMargin, self.height);
     
     CGFloat kTagLabelLeftMargin      = 10;

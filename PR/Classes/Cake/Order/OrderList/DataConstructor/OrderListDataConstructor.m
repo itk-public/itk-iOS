@@ -75,6 +75,8 @@
                 OrderListSubtotalViewCellModel *subTotalModel = [[OrderListSubtotalViewCellModel alloc]init];
                 subTotalModel.cellIdentifier = @"OrderListSubtotalViewCell";
                 subTotalModel.cellClass      = [OrderListSubtotalViewCell class];
+                subTotalModel.totalPayment   = [NSString stringWithFormat:@"￥%.2f",orderDetail.totalPaymentCent/100.0];
+                subTotalModel.proudctCount   = [orderDetail.proudcts count];
                 [self.items addObject:subTotalModel];
                 
                 //actionview

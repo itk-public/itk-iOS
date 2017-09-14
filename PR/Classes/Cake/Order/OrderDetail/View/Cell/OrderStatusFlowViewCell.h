@@ -7,6 +7,11 @@
 //
 
 #import "WTTableViewCell.h"
+#import "YHDataModel.h"
+
+@interface  OrderStatusFlowViewCellModel: YHDataModel
+
+@end
 
 @interface OrderStatusFlowViewCell : WTTableViewCell
 

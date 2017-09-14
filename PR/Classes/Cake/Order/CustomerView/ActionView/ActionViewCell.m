@@ -22,7 +22,10 @@
         [self setBackgroundColor:[UIColor whiteColor]];
 #warning 后期改逻辑
         ThemeButton *btn1 = [self btnWithBtnTag:CustomBtnTagToComment];
+        [btn1.titleLabel setFont:KFontNormal(12)];
+        
         ThemeButton *btn2 = [self btnWithBtnTag:CustomBtnTagToBuyAgain];
+        [btn2.titleLabel setFont:KFontNormal(12)];
         
         self.btnArray = [NSMutableArray arrayWithObjects:btn1 ,btn2, nil];
         

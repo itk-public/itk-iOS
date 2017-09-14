@@ -10,12 +10,17 @@
 #import "OnePixelSepView.h"
 #import "SetupViewCell.h"
 #import "SetupDefine.h"
+#import "FileManager.h"
+#import "PRShowToastUtil.h"
+#import "RegisterFirstViewController.h"
+#import "SceneMananger.h"
 
 @interface SetupViewCell()
 @property (strong,nonatomic) UILabel *leftLabel;
 @property (strong,nonatomic) UILabel *subTitleLabel;
 @property (strong,nonatomic) UIImageView *arrow;
 @property (assign,nonatomic) SetupViewTnteractiveType  interactiveType;
+@property (strong,nonatomic) RegisterFirstViewController  *forgetPwdVC;
 
 @end
 @implementation SetupViewCell
@@ -40,6 +45,9 @@
         [self.contentView addSubview:_arrow];
         
         [self.contentView setPixelSepSet:PSRectEdgeBottom];
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapSetupViewCell)];
+        [self.contentView addGestureRecognizer:tap];
     }
     return self;
 }
@@ -68,6 +76,27 @@
     self.subTitleLabel.text = [dict safeObjectForKey:kSubTitleString]?:@"";
     self.interactiveType = [[dict safeObjectForKey:kTnteractiveType]integerValue];
     [self setNeedsLayout];
+}
+
+-(void)tapSetupViewCell
+{
+    if (self.interactiveType == SetupViewTnteractiveTypeClearCache) {
+        [FileManager clearCache];
+        [PRShowToastUtil showNotice:@"成功清除本地缓存"];
+        self.subTitleLabel.text = @"0.0M";
+    }else if(self.interactiveType == SetupViewTnteractiveTypeModifyPwd)
+    {
+        [self forgePwdBtnOnClicked];
+    }
+}
+
+-(void)forgePwdBtnOnClicked
+{
+    if (self.forgetPwdVC == nil) {
+        self.forgetPwdVC = [[RegisterFirstViewController alloc]init];
+        self.forgetPwdVC.type = LoginViewControllerTypeForgotPwd;
+    }
+    [[SceneMananger shareMananger] showViewController:self.forgetPwdVC withStyle: U_SCENE_SHOW_PUSH];
 }
 
 @end

@@ -14,6 +14,7 @@ typedef NS_ENUM(NSInteger,OrderManagerType)
     OrderManagerTypeOrderList = 0,        //订单列表
     OrderManagerTypeOrderPlace,           //购物车到订单结算
     OrderManagerTypeOrderSettlement,      //订单结算页的，提交订单
+    OrderManagerTypeOrderDetail,          //订单详情
 };
 
 @protocol OrderMangerDelegate <NSObject>
@@ -35,4 +36,7 @@ typedef NS_ENUM(NSInteger,OrderManagerType)
 
 //订单结算
 -(void)orderSubmit:(NSDictionary *)param;
+
+//订单详情
+-(void)orderDetail:(NSString *)orderId;
 @end

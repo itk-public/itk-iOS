@@ -86,7 +86,7 @@
     
     __weak typeof(self) weakself = self;
     for (NSString *str in tM.pictureDetail) {
-        WTImageView * detailImgView = [[WTImageView alloc] initWithFrame:CGRectMake(INT16_MAX, INT16_MAX, 10, 1)];
+        WTImageView * detailImgView = [[WTImageView alloc] initWithFrame:CGRectMake(INT16_MAX, INT16_MAX, 10, 10)];
         [self.view addSubview:detailImgView];
         detailImgView.defaultImage = [UIImage new];
         detailImgView.urlPath = str;
@@ -94,7 +94,6 @@
             [weakself updateWithProductImage:image forURL:imageView.urlPath];
         };
         [detailImgView reload];
-
     }
 }
 - (void)dataConstructorDidFailLoadData:(id)dataConstructor withError:(NSError *)errorDataModel

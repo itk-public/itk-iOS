@@ -11,15 +11,36 @@
 #import "OrderListModel.h"
 #import "OrderSettlementAPIInteract.h"
 #import "OrderSubmitAPIInteract.h"
+#import "OrderDetailAPIInteract.h"
 
 @interface OrderManager()
 @property (strong,nonatomic) OrderListAPIInteract *orderListAPI;
 @property (strong,nonatomic) OrderListModel *orderList;
 @property (strong,nonatomic) OrderSettlementAPIInteract *settlementAPI;
 @property (strong,nonatomic) OrderSubmitAPIInteract *submitAPI;
+@property (strong,nonatomic) OrderDetailAPIInteract *detailAPI;
 
 @end
 @implementation OrderManager
+
+-(void)orderDetail:(NSString *)orderId
+{
+    if (self.detailAPI == nil) {
+        self.detailAPI = [[OrderDetailAPIInteract alloc]init];
+    }
+    [self.detailAPI setOrderId:orderId];
+    [self.detailAPI interactScuess:^(BaseAPIInteract *interact, id modelData) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(loadDataSuccessful:dataType:data:isCache:)]) {
+            [self.delegate loadDataSuccessful:self dataType:OrderManagerTypeOrderDetail data:modelData isCache:NO];
+        }
+    } failed:^(BaseAPIInteract *interact, NSError *error, id modelData) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(loadDataFailed:dataType:error:)]) {
+            [self.delegate loadDataFailed:self dataType:OrderManagerTypeOrderDetail error:error];
+        }
+    }];
+}
+
+
 
 -(void)orderSubmit:(NSDictionary *)param;
 {

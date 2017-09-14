@@ -10,7 +10,8 @@
 #import "YHDataModel.h"
 
 @interface OrderListSubtotalViewCellModel : YHDataModel
-
+@property (assign,nonatomic) NSInteger proudctCount;
+@property (strong,nonatomic) NSString  *totalPayment;
 @end
 
 @interface OrderListSubtotalViewCell : WTTableViewCell

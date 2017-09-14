@@ -7,6 +7,11 @@
 //
 
 #import "WTTableViewCell.h"
+#import "YHDataModel.h"
+
+@interface DeliveryAddressViewCellModel : YHDataModel
+
+@end
 
 @interface DeliveryAddressViewCell : WTTableViewCell
 

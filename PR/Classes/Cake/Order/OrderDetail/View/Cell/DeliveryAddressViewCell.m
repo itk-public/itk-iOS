@@ -9,6 +9,12 @@
 #import "DeliveryAddressViewCell.h"
 #define kRightMargin 15
 #define kIconLabelW  45
+
+@implementation DeliveryAddressViewCellModel
+
+@end
+
+
 @interface DeliveryAddressViewCell()
 @property (strong,nonatomic) UILabel *iconLabel;
 @property (strong,nonatomic) UILabel *receiverInfoLabel;

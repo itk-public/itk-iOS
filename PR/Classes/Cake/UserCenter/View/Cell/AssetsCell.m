@@ -9,6 +9,8 @@
 #import "AssetsCell.h"
 #import "OnePixelSepView.h"
 #import "UserCenterModel.h"
+#import "AccountBalanceViewController.h"
+#import "SceneMananger.h"
 
 @interface SingleAssetsModel : NSObject
 @property (strong,nonatomic) NSString *title;
@@ -68,6 +70,7 @@
 @interface AssetsCell()
 @property (strong,nonatomic) SingleAssetsView *leftView;
 @property (strong,nonatomic) SingleAssetsView *rightView;
+@property (strong,nonatomic) AccountBalanceViewController *balanceVC;
 
 @end
 @implementation AssetsCell
@@ -75,6 +78,8 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         _leftView = [[SingleAssetsView alloc]init];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapLeftView)];
+        [_leftView addGestureRecognizer:tap];
         [self.contentView addSubview:_leftView];
         
         _rightView = [[SingleAssetsView alloc]init];
@@ -104,5 +109,13 @@
 +(CGFloat)tableView:(UITableView *)tableView rowHeightForObject:(id)object
 {
     return 60;
+}
+
+-(void)tapLeftView
+{
+    if (self.balanceVC == nil) {
+        self.balanceVC = [[AccountBalanceViewController alloc]init];
+    }
+    [[SceneMananger shareMananger]showViewController:self.balanceVC withStyle: U_SCENE_SHOW_PUSH];
 }
 @end

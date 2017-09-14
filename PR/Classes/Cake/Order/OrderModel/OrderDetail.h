@@ -57,5 +57,6 @@
 @property (readonly,nonatomic) NSString *discount;
 //总计2
 @property (readonly,nonatomic) NSString *totalPayment;
+@property (readonly,nonatomic) NSInteger totalPaymentCent;
 
 @end

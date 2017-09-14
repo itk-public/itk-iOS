@@ -124,7 +124,6 @@
         }
     }else if ([vM isKindOfClass:[CartSeparateModel class]]){
         CartSeparateCell *cell = [CartSeparateCell cellWithTableView:tableView];
-        [cell updateWithSellerInfoModel:vM editType:setionData.editType CartDataHandle:setionData.dataHandle];
         return cell;
     }else if ([vM isKindOfClass:[ShopCartDiscountModel class]]){
         ShopCartDiscountCell *cell = [ShopCartDiscountCell cellWithTableView:tableView];
@@ -160,7 +159,6 @@
         self.shopcartProxyDeleteBlock(indexPath);
     }
 }
-
 
 
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -1,0 +1,61 @@
+{
+    "code": 0,
+    "data": {
+        "shop": {
+            "shopaddr": "上海市徐汇区田林路200号B楼104室",
+            "shopName": "田林路店",
+            "shoptel": "4008005050",
+            "shopId": "9D13"
+        },
+        "id": "1500517040197738",
+        "pickSelf": 1,
+        "pricedetail": [
+                        {
+                        "prompt": "运费",
+                        "value": "¥14.80"
+                        },
+                        {
+                        "prompt": "实付款(含运费)",
+                        "value": "￥258.00"
+                        }
+                        ],
+        "products": [
+                     {
+                     "action": "myyh://yhlife.com/show/native?name=prddetail&id=793427&merid=2",
+                     "id": "793427",
+                     "imgUrl": "http://image.yonghuivip.com//image/1471227484528dfaaeed694eae97c85b434d102c0fe199eb9c461?imageMogr2/thumbnail/200x200",
+                     "num": 100,
+                     "price": {
+                     "market": 3300
+                     },
+                     "shopid": "2",
+                     "spec": "180g",
+                     "subtitle": "澳洲优选草饲牛眼肉180g",
+                     "title": "澳洲优选草饲牛眼肉180g"
+                     }
+                     ],
+        "recvinfo": {
+            "address": {
+                "area": "滨水花园总部",
+                "city": "上海",
+                "detail": "上海市徐汇区"
+            },
+            "id": "27208",
+            "name": "莫莫莫",
+            "phone": "15618389521"
+        },
+        "status": 6,
+        "timeinfo": {
+            "generate": 1490844679000,
+            "appointment": {
+                "date": 1490803200000,
+                "timeslots": {
+                    "from": "11: 30",
+                    "to": "12: 30"
+                }
+            }
+        }
+    },
+    "message": "",
+    "now": 1491740188784
+}

@@ -66,6 +66,10 @@
 
 //订单结算，去提交订单
 #define OrderSubmit_URLPATH                         @"/aip/order/submit"
+//订单详情
+#define OrderDetail_URLPATH                         @"/aip/order/orderDetail"
+//消费明细
+#define ConsumptionDetail_URLPATH                   @"/aip/order/consumption"
 
 #pragma mark  -----------农场--------
 

@@ -62,6 +62,7 @@
         
         NSInteger totalPaymentCent = [[dic safeObjectForKey:@"totalPayment"]integerValue];
         _totalPayment = [NSString stringWithFormat:@"总计：%.2f元",totalPaymentCent/100.0];
+        _totalPaymentCent = totalPaymentCent;
         
         NSInteger freightCent = [[dic safeObjectForKey:@"freight"]integerValue];
         _freight = [NSString stringWithFormat:@"运费：%zd元",freightCent/100];
@@ -69,6 +70,7 @@
         NSInteger discountCent = [[dic safeObjectForKey:@"discount"]integerValue];
         _discount = [NSString stringWithFormat:@"合计：%.2f",discountCent/100.0];
         
+
         
         
     }

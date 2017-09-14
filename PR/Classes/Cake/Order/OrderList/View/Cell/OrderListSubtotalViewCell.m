@@ -10,38 +10,59 @@
 #import "SubtotalView.h"
 #import "ShopDiscountView.h"
 #import "OrderListActionViewCell.h"
+#import "OnePixelSepView.h"
 
 @implementation OrderListSubtotalViewCellModel
 
 @end
 
 @interface OrderListSubtotalViewCell()
-//@property (strong,nonatomic) SubtotalView *subtotalView;
-//@property (strong,nonatomic) ActionView *actionView;
-
+@property (strong,nonatomic) UILabel *leftLable;
+@property (strong,nonatomic) UILabel *priceLabel;
 @end
 @implementation OrderListSubtotalViewCell
--(instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier
+
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-//    if (self = [super initWithReuseIdentifier:reuseIdentifier]) {
-////        [self.contentView setBackgroundColor:[UIColor grayColor]];
-////        _subtotalView = [SubtotalView defaultView];
-////        [self.contentView addSubview:_subtotalView];
-////        
-////        _actionView = [OrderListActionView defaultView];
-////        [self.contentView addSubview:_actionView];
-//    }
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        _leftLable = [[UILabel alloc]init];
+        [_leftLable setTextAlignment:NSTextAlignmentLeft];
+        [_leftLable setTextColor:UIColorFromRGB(0x030303)];
+        [_leftLable setFont:KFontNormal(12)];
+        [self.contentView addSubview:_leftLable];
+        
+        _priceLabel = [[UILabel alloc]init];
+        [_priceLabel setTextColor:kColorPrice];
+        [_priceLabel setTextAlignment:NSTextAlignmentRight];
+        [_priceLabel setFont:KFontNormal(12)];
+        [self.contentView addSubview:_priceLabel];
+        
+        [self.contentView setPixelSepSet: PSRectEdgeBottom];
+    }
     return self;
 }
-
 -(void)layoutSubviews
 {
     [super layoutSubviews];
-//    self.actionView.bottom = self.height - 10;
-//    self.subtotalView.bottom = self.actionView.top;
+    CGFloat kPriceLabelRightMargin = 15;
+    [self.priceLabel sizeToFit];
+    self.priceLabel.frame = CGRectMake(self.width - self.priceLabel.width - kPriceLabelRightMargin, 0, self.priceLabel.width, self.height);
+    [self.leftLable sizeToFit];
+    self.leftLable.frame  = CGRectMake(self.priceLabel.left - 5 - self.leftLable.width, 0, self.leftLable.width, self.height);
 }
-+(CGFloat)getHeight
+
+
+-(void)setObject:(id)object
 {
-   return  46*2 + 10;
+    if ([object isKindOfClass:[OrderListSubtotalViewCellModel class]]) {
+        OrderListSubtotalViewCellModel *model = object;
+        self.leftLable.text = [NSString stringWithFormat:@"共%zd件商品  小记",model.proudctCount];
+        self.priceLabel.text = model.totalPayment;
+    }
+}
+
++(CGFloat)tableView:(UITableView *)tableView rowHeightForObject:(id)object
+{
+    return 46;
 }
 @end

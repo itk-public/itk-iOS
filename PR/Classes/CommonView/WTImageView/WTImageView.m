@@ -25,7 +25,7 @@
     _urlPath = [urlPath copy];
     [self sd_setImageWithURL:[NSURL URLWithString:self.urlPath]
             placeholderImage:self.defaultImage
-                     options:SDWebImageAllowInvalidSSLCertificates
+                     options:SDWebImageAllowInvalidSSLCertificates | SDWebImageRetryFailed
                     progress:^(NSInteger receivedSize, NSInteger expectedSize) {
                         
                     }
@@ -44,19 +44,14 @@
     NSURL *imageURL = [NSURL URLWithString:self.urlPath];
     if (self.imageDidLoadHandler != NULL) {
         __weak typeof(self) weakSelf = self;
-        [self sd_setImageWithURL:imageURL placeholderImage:nil options:SDWebImageLowPriority completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        [self sd_setImageWithURL:imageURL placeholderImage:self.defaultImage completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL){
             if (error == nil) {
                 weakSelf.imageDidLoadHandler(weakSelf, image);
+                NSLog(@"图片加载成功了=====11111");
             }else{
-                 PRLOG(@"加载图片成功=====%@",error);
+                NSLog(@"图片加载失败了=====%@",error);
             }
         }];
-//        [self sd_setImageWithURL:imageURL placeholderImage:self.defaultImage completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL){
-//            PRLOG(@"加载图片成功=====%@",error);
-//            if (error == nil) {
-//                weakSelf.imageDidLoadHandler(weakSelf, image);
-//            }
-//        }];
     } else {
         [self sd_setImageWithURL:imageURL placeholderImage:self.defaultImage];
     }
@@ -66,6 +61,5 @@
 {
     self.image = nil;
 }
-
 
 @end

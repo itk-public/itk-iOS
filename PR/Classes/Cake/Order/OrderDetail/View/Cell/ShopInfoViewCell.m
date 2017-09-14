@@ -9,6 +9,10 @@
 #import "ShopInfoViewCell.h"
 #import "OnePixelSepView.h"
 
+@implementation ShopInfoViewCellModel
+
+@end
+
 @interface ShopInfoViewCell ()
 @property (strong,nonatomic) UILabel *iconLabel;
 @property (strong,nonatomic) UILabel *shopNameLabel;

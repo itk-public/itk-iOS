@@ -10,6 +10,7 @@
 #import "ErrorProtectCateGory.h"
 #import "ShopDescInfo.h"
 #import "ShopCartDiscountModel.h"
+#import "CartSeparateModel.h"
 
 
 @interface ShopCartSellerProductModel()
@@ -32,6 +33,7 @@
         
         NSArray *productArr                = [dict objectForKey:@"products"];
         NSMutableArray *productArrM = [NSMutableArray array];
+        [productArrM addObject:[[CartSeparateModel alloc]init]];
         for (NSDictionary *productDict in productArr)
         {
             ProductOutline *model             = [ProductOutline modelFromDictionary:productDict];
@@ -40,7 +42,7 @@
         }
         _productArr = [NSMutableArray arrayWithArray:productArrM];
         CartOrderCellViewModel *viewModel = [productArrM safeObjectAtIndex:0];
-        _infoModel.isOutDelivered         = viewModel.product.isOutDelivered;
+//        _infoModel.isOutDelivered         = viewModel.product.isOutDelivered;
         
         
         _sellerInfo  = [ShopDescInfo modelFromDictionary:[dict safeObjectForKey:@"shop" hintClass:[NSDictionary class]]];
@@ -48,6 +50,7 @@
         NSArray *tempDiscount  = [dict safeObjectForKey:@"discount" hintClass:[NSArray class]];
         NSMutableArray *discountArrM = [NSMutableArray array];
         if (tempDiscount) {
+             [_productArr addObject:[[CartSeparateModel alloc]init]];
             for (NSDictionary *dic in tempDiscount) {
                 ShopCartDiscountModel *discountModel = [ShopCartDiscountModel modelFromDictionary:dic];
                 [discountArrM addObject:discountModel];

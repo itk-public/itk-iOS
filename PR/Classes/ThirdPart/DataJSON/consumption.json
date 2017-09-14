@@ -1,0 +1,19 @@
+{
+    "code": 0,
+    "data": {
+        "cousumption": [
+                        {
+                        "cousumptionType": 1,
+                        "cousumptionDate": "2017-9-13 10:20",
+                        "amount": 89000
+                        },
+                        {
+                        "cousumptionType": 0,
+                        "cousumptionDate": "2017-9-13 10:20",
+                        "amount": 89000
+                        }
+                        ]
+    },
+    "message": "OK",
+    "now": 1490088964173
+}

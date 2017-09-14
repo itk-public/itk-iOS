@@ -12,11 +12,13 @@
 #import "PRShowToastUtil.h"
 #import "ShopCartTableHeaderView.h"
 #import "OrderManager.h"
+#import "OrderDetail.h"
 
 @interface OrderSettlementViewController ()<WTNetWorkDataConstructorDelegate,OrderMangerDelegate>
 @property (strong,nonatomic) OrderSettlementDataConstructor  *dataConstructor;
 @property (strong,nonatomic) ShopCartTableHeaderView         *headerView;
 @property (strong,nonatomic) OrderManager                    *manager;
+@property (strong,nonatomic) OrderDetail                     *orderDetail;
 @end
 
 @implementation OrderSettlementViewController
@@ -45,6 +47,7 @@
      self.headerView.frame         = CGRectMake(0, 0, 0, [self.headerView height]);
      self.headerView.hidden = NO;
      [self.tableView setTableHeaderView:_headerView];
+    self.orderDetail = dataModel;
 }
 
 - (void)dataConstructorDidFailLoadData:(id)dataConstructor withError:(NSError *)errorDataModel
@@ -70,6 +73,8 @@
 {
     
 }
+
+
 -(void)loadDataFailed:(OrderManager *)manager dataType:(OrderManagerType )dataType error:(NSError*)error
 {
     
